@@ -457,7 +457,7 @@ class DescendingOrder implements Comparator<User> {
 ```
 ## Lab 12-1 Collection 인터페이스를 구현하는 클래스 구현
 
-<a href="Lab_12-1.md">실습 파일</a> 참조
+<a href="Lab_14-1.md">실습 파일</a> 참조
 
 <br />
 <br />

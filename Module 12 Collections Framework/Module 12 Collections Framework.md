@@ -364,3 +364,95 @@ while (iterator.hasNext()) {
     System.out.println(str);
 }
 ```
+
+<br />
+
+### Comparable
+***
+* 값을 비교하는데 사용되는 compareTo() 메소드를 정의
+    * 같은 타입의 인스턴스를 비교해야 하는 클래스는 모두 Comparable 인터페이스를 구현
+* Boolean을 제외한 모든 Wrapper 클래스는 모두 정렬이 가능
+* Collections Framework에서 Collection에 저장되어 있는 요소들을 읽는 방법을 표준화
+
+```java
+public <T extends Comparable<T>> void bubbleSort(T[] items) {
+    for(int i = items.length - 1; i > 0; i--) {
+        for(int j = 0 ; j < i ; j++) {
+            if (items[j].compareTo(items[j+1]) > 0) {
+                T item = items[j];
+                items[j] = items[j+1];
+                items[j+1] = item;
+            }
+        }
+    }
+}
+```
+***
+
+Comparable 인터페이스를 구현하는 클래스는 값을 비교하는 compareTo() 메소드를 구현합니다. 
+
+|Method|설명|
+|-|-|
+|Int compareTo(T o)|이 개체를 지정된 개체와 비교하여 순서를 지정합니다.|
+
+T의 타입을 Comparable로 제한하는 bubbleSort 메소드는 Comparable 인터페이스를 구현하는 요소로 구성된 모든 인터페이스를 정렬할 수 있습니다.
+
+```java
+public <T extends Comparable<T>> void bubbleSort(T[] items) {
+    for(int i = items.length - 1; i > 0; i--) {
+        for(int j = 0 ; j < i ; j++) {
+            if (items[j].compareTo(items[j+1]) > 0) {
+                T item = items[j];
+                items[j] = items[j+1];
+                items[j+1] = item;
+            }
+        }
+    }
+}
+```
+
+<br />
+
+### Comparator
+***
+* Comparable 인터페이스를 구현한 클래스의 기본 정렬 기준과 다르게 정렬할 때 사용
+* 기본적인 정렬 기준(오름차순)을 기본 정렬 기준과 다르게 정렬하고 싶을 때 사용
+
+```java
+class DescendingOrder implements Comparator<User> {
+    public int compare(User o1, User o2) {
+        if(o1.getUserAge() > o2.getUserAge()){
+            return -1;
+        } else if(o1.getUserAge() < o2.getUserAge()){
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+}
+```
+***
+Comparator 인터페이스를 구현하는 클래스는 compare 메소드를 가지고 있고, 이 메소드는 기본적으로 제공되는 정렬 기준과 다른 정렬 기준을 사용하고 싶을 때 구현합니다.
+
+|Method|설명|
+|-|-|
+|Int compare(T o1, T o2)|전달된 객체의 순서를 반환합니다.|
+
+DecencingOrder 클래스는 Comparator 인터페이스를 구현합니다. DesendingOrder 클래스의 compare 메소드는 User의 나이를 기준으로 나이가 많으면 1을 반환합니다. 따라서 오름차순 정렬합니다.
+
+<br />
+
+```java
+class DescendingOrder implements Comparator<User> {
+    public int compare(User o1, User o2) {
+        if(o1.getUserAge() > o2.getUserAge()){
+            return -1;
+        } else if(o1.getUserAge() < o2.getUserAge()){
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+}
+```
+## Lab 12-1 Collection 인터페이스를 구현하는 클래스 구현

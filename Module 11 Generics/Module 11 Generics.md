@@ -1106,7 +1106,7 @@ static 필드는 객체와 다른 영역에 할당되는 공유 수준 변수이
 
 <br />
 
-## Generic 타입 제약
+### Generic 타입 제약
 ***
 * Generic 타입은 타입 변환 될 수 없으며, instanceof 연산자를 사용할 수 없음
     * 타입 파라미터는 모두 컴파일시 Object로 치환됨
@@ -1178,5 +1178,31 @@ lists[1] = Arrays.asList("A");
 
 지네릭 클래스는 Throwable 클래스를 직접 또는 간접적으로 확장할 수 없습니다.
 // 직접적으로 Exception 클래스 확장
-class MathException<T> extends Exception { /* ... */ } // 컴파일시 오류 // Throwable 직접적으로 확장
+class MathException<T> extends Exception { /* ... */ } // 컴파일시 오류 
+// Throwable 직접적으로 확장
 class QueueFullException<T> extends Throwable { /* ... */ // 컴파일시 오류
+
+<br />
+
+### 메소드 오버로딩 제약
+***
+* 타입 파라미터만 다른 동일한 시그너처의 메소드는 존재할 수 없음
+    * 타입 파라미터는 모두 컴파일시 Object로 치환됨
+***
+클래스는 타입 파라미터를 삭제한 후 동일한 타입을 가지는 두 개의 중복된 메소드를 가질 수 없습니다.
+```java
+public class Example {
+    public void print(Set<String> set) { }
+    public void print(Set<Integer> set) { }
+}
+```
+위 코드는 컴파일 후 아래와 같이 변경되고, 정상적으로 컴파일 되지 않습니다.
+```java
+public class Example {
+    public void print(Set<Object> set) { }
+    public void print(Set<Object> set) { }
+}
+```
+
+<br />
+

@@ -32,7 +32,7 @@ Java는 JDK 1.2 부터 Collection 클래스와 인터페이스를 포함하는 C
 <br />
 
 ### Collection 개요
-* * *
+***
 * Collection은 요소로 구성된 개체를 말함
     * 요소는 기본 유형이거나 개체에 대한 참조일 수 있음
 * 배열은 요소를 메모리상에 연속적으로 저장함
@@ -41,12 +41,14 @@ Java는 JDK 1.2 부터 Collection 클래스와 인터페이스를 포함하는 C
     * 배열의 크기가 고정되고, 배열에 데이터를 추가하는 모든 동작에 대한 코드를 직접 작성해야 함
 * Collection은 요소의 저장 방식을 추상화 함
     * 요소의 추가, 삭제 등 요소에 액세스 하는 모든 추상화된 동작을 제공
-* * *
+***
 
 ***Collection***은 요소(Element)로 구성된 개체를 말합니다. 요소는 기본 데이터 타입(int 와 같은)이거나 참조 타입 객체일 수 있습니다. 익숙한 예로, array는 같은 타입의 메모리상에 연속하여 저장된 요소의 Collection입니다. 아래와 같이 5개의 String 요소(String 개체에 대한 참조) 배열을 만들 수 있습니다.
+
 ```java
 String[] names = new String[5];
 ```
+
 여기에서 **new** 연산자는 5개의 문자열 참조의 배열에 대한 공간을 할당하고 할당된 공간의 시작 부분에 대한 참조를 반환합니다. 이 참조는 name 변수에 저장됩니다. 
 
 배열이 연속적으로 지정된다는 것은 중요한 의미를 가집니다. 다른 개별 요소에 먼저 액세스 하지 않고도 즉시 배열의 요소에 액세스 할 수 있습니다. 배열의 임의 액세스 속성은 코드에서 상대적인 위치가 주어졌을 때 요소에 빠르게 액세스 할 수 있는 저장 구조가 필요할 때 유용하게 사용됩니다.
@@ -57,13 +59,13 @@ Collection은 요소의 저장 방식을 추상화합니다. Collection에 요�
 
 <br />
 
-### Java Collection Framework
-* * *
+### Java Collections Framework
+***
 * Java Collection Framework는 java.util 패키지에 포함된 관련 인터페이스와 클래스의 모음
 * 광범위하게 적용할 수 있는 여러 Collection 프레임워크를 제공함
 * 타입 파라미터를 사용한 Generics 클래스 구현
 * Framework의 클래스들은 Collection의 동작을 위한 공통적인 메소드를 가지고 있음
-* * *
+***
 
 소프트웨어 프레임워크는 복잡한 문제를 해결하거나 서술하는데 사용되는 기본 개념 구조입니다. 프레임워크는 버즈워드로서 명확한 합의와 정의가 없는 용어로 불리지만, “Design Patterns: Elements of Reusable Object-Oriented Software”의 저자 중 한명인 랄프 존슨은 “소프트웨어의 구체적인 부분이 해당하는 설계와 구현을 재사용이 가능하게끔 협업화된 형태로 클래스들을 제공하는 것”이라고 정의했습니다.
 
@@ -85,6 +87,7 @@ public boolean isEmpty()
 ArrayList<Integer> myList = new ArrayList<>();
 System.out.println(myList.isEmpty());
 ```
+
 아래와 같이 myList에 add 메소드를 통해 요소를 추가했다면, isEmpty 메소드는 false를 반환합니다.
 
 ```java

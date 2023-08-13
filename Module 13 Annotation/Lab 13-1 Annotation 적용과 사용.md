@@ -172,11 +172,5 @@ public static void main(String [] args) {
 > javac *.java
 ```
 
-<br />
-<br />
-<br />
-<br />
-<br />
 
-## <a href="./Lab 13-1 Annotation 적용과 사용.md"> Lab 13-1 Annotation 적용과 사용</a>
 

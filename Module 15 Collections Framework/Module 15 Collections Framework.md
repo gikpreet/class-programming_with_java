@@ -15,4 +15,4 @@ Java에는 다수의 데이터 또는 데이터 집합을 쉽고 효과적으로
 5. Map
 6. Collections (Util Class)
 
-<a href="./Collections_Framework/Collections_Framework.md">다음 장</a>
+<a href="./Collections_Framework/01_Collections_Framework.md">다음 장</a>

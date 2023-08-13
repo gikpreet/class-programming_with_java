@@ -526,3 +526,289 @@ class Calculate {
 <br />
 
 ## <a href="./Lab 13-1 Annotation 적용과 사용.md"> Lab 13-1 Annotation 적용과 사용</a>
+해당 연습을 수행하십시오.
+
+<br />
+<br />
+<br />
+<br />
+<br />
+
+## Meta Annotation
+Java에서 Annotation은 Class, Method, Instance등과 같은 프로그램 요소에 메타 데이터를 첨부하는데 사용됩니다. 일부 Annotation은 다른 Annotation에 주석을 다는데 사용됩니다. 이러한 유형의 Annotation을 Meta Annotation이라고 합니다. 이번 장에서는 Meta Annotation에 대해 학습합니다.
+
+### Table of Contents
+1. @Retention
+2. @Documented
+3. @Target
+4. @Inherited
+5. @Repeatable
+
+<br />
+
+### @Retention
+***
+* Java 컴파일러에게 해당 Annotation이 어느 시점까지 영향을 미치는지 알림
+* RetentionPolicy로 제한을 둠
+    * SOURCE  
+    소스 수준에서만 유효하며, 컴파일러에서 무시됨
+    * CLASS  
+    컴파일시에는 유효하지만, JVM에서는 무시됨
+    * RUNTIME
+    런타임 환경에서 사용될 수 있도록 Reflection을 이용하여 JVM에서 유효함
+
+```java
+@Retention(RetentionPolicy.SOURCE)
+@interface RetentionSource
+{
+  String value() default "RetentionPolicy.Source";
+}
+```
+***
+
+@Retention은 일부 보존 정책과 함께 제공되는 메타 어노테이션입니다. 보존 정책은 어노테이션이 유지되는 기간, 즉 삭제 시점을 결정합니다. 보존 정책은 SOURCE, CLASS, RUNTIME 세 가지 중 하나를 지정할 수 있습니다.
+
+@Override, @SuppressWarning 어노테이션은 SOURCE 보존 정책에 해당합니다. 이런 종류의 어노테이션은 컴파일러 차원에서 유효합니다.
+
+```java
+@Retention(RetentionPolicy.SOURCE)
+@interface RetentionSource
+{
+String value() default "RetentionPolicy.Source";
+}
+```
+
+CLASS 보존 정책은 컴파일러가 어노테이션의 정보를 클래스 파일에 지정하게는 하지만 클래스 파일이 JVM에 로딩될 때는 어노테이션 정보가 무시되어 실행시에는 어노테이션 정보를 얻을 수 없습니다.
+
+```java
+@Retention(RetentionPolicy.CLASS)
+@interface RetentionClass
+{
+String value() default "RetentionPolicy.CLASS";
+}
+```
+
+RUNTIME 유지 정책은 실행시에 리플렉션을 이용하여 클래스 파일에 저장된 어노테이션의 정보를 읽어서 처리할 수 있도록 합니다. @FunctionalInterface 어노테이션은 유지 정책이 RUNTIME으로, 실행시에도 사용됩니다.
+
+```java
+@Retention(RetentionPolicy.RUNTIME)
+@interface RetentionRuntime
+{
+    String value() default "RetentionPolicy.RUNTIME";
+}
+```
+
+<br />
+
+### @Documented
+***
+Annotation 정보가 javadoc으로 생성한 문서에 포함되도록 함
+
+```java
+@Documented
+@interface CustomAnnotation {
+    String value();
+}
+```
+***
+
+@Documented 어노테이션은 어노테이션에 대한 정보가 javadoc으로 작성한 문서에 포함되도록 합니다. 
+```java
+@Documented
+@interface CustomAnnotation {
+    String value();
+}
+```
+@Documented 메타 어노테이션이 적용된 CustomAnnotation은 javadoc을 사용한 문서 생성시 생성된 문서에 정보가 포함됩니다.
+```java
+@CustomAnnotation("Hello")
+public class DocumentedAnnotationTest {
+    public static void main(String[] args) {
+        System.out.println("DocumentedAnnotationTest");
+    }
+}
+```
+<img src="images/image02.png" />
+
+### @Target
+***
+* 해당 사용자 정의 Annotation이 적용될 수 있는 대상을 지정
+* 메소드, 생성자, 필드, 지역 변수 등 Annotation이 지정될 대상 지정
+* 적용 대상은 ElementType에 정의됨
+```java
+@Target(ElementType.METHOD)
+@interface CustomAnnotation {
+   String value();
+}
+```
+***
+@Target 어노테이션은 사용자 정의 애노테이션이 적용될 수 있는 대상을 지정합니다. 대상은 메소드, 생성자, 필드, 지역 변수 등이 될 수 있으며, 대상은 ElementType에 정의되어 있습니다.
+
+|대상|설명|
+|---|---|
+|ANNOTATION_TYPE|	어노테이션 타입|
+|CONSTRUCTOR|	생성자|
+|FIELD|	필드|
+|LOCAL_VARIABLE|	지역 변수|
+|METHOD|	메소드|
+|PACKAGE|	패키지|
+|PARAMETER|	파라미터|
+|TYPE|	클래스, 인터페이스, Enum 타입|
+
+@Target 어노테이션은 하나 이상의 대상을 지정할 수 있습니다.
+```java
+@Target({ElementType.METHOD, ElementType.FIELD, ...})
+```
+
+<br />
+
+### @Inherited
+***
+* Annotation이 서브 클래스에 상속되도록 함
+* @Inherited Annotation이 적용된 클래스의 서브 클래스는 Annotation을 명시하지 않아도 적용된 것과 같이 인식됨
+* 클래스 정의에서만 사용됨
+```java
+@Inherited
+@interface CustomAnnotation { }
+
+@CustomAnnotation
+class BaseClass {}
+
+class DerivedClass extends BaseClass {} // @CustomAnnotation 어노테이션이 적용됨
+```
+***
+
+@Inherited 어노테이션은 어노테이션의 타겟 클래스의 서브 클래스가 필드, 메소드, 생성자뿐만 아니라 어노테이션까지 같이 상속하도록 지정합니다. 
+
+@Inherited 어노테이션은 클래스에만 적용됩니다.
+
+```java
+@Inherited
+@interface CustomAnnotation { }
+
+@CustomAnnotation
+class BaseClass {}
+
+class DerivedClass extends BaseClass {} // @CustomAnnotation 어노테이션이 적용됨
+```
+
+<br />
+
+### @Repeatable
+***
+* 반복되는 Annotation이 필요할 경우 사용
+* 반복되는 Annotation을 위한 컨테이너 Annotation
+
+```java
+@Repeatable(Animals.class)
+@interface Animal {
+    String species();
+    String lifespan();
+}
+
+@Retention(RetenionPolicy.RUNTIME)
+@interface Animals {
+    Animal[] value;
+}
+
+@Animal(species="cat", lifespan="15")
+@Animal(species="cow", lifespan="20")
+public class RepeatableAnnotationTest { ... }
+```
+***
+
+@Repeatable 어노테이션은 여러 번 반복해서 적용해야 하는 어노테이션을 정의할 때 사용합니다. 
+```java
+@Animal(species="cat", lifespan="15")
+@Animal(species="cow", lifespan="20")
+public class RepeatableAnnotationTest { }
+```
+일반적인 어노테이션과 달리 같은 이름의 어노테이션이 있을 수 있어 어노테이션들을 하나로 묶어서 다룰 수 있는 어노테이션 컨테이너가 필요합니다.
+```java
+@Repeatable(Animals.class)
+@interface Animal {
+   String species();
+   String lifespan();
+}
+
+@Retention(RetentionPolicy.RUNTIME)
+@interface Animals{
+   Animal[] value();
+}
+```
+
+<br />
+<br />
+<br />
+<br />
+<br />
+
+## Annotation 타입 정의
+Java는 사용자의 프로그램에 필요한 사용자 정의 Annotation을 만들 수 있도록 제공합니다. 이 장에서는 사용자 정의 Annotation을 정의하는 방법에 대해 알아봅니다.
+
+#### Table of Contents
+1. Annotation 타입 생성
+
+<br />
+
+### Annotation 타입 생성
+***
+* 인터페이스 선언과 동일한 방법으로 선언
+    * 필드를 파라미터 없는 메소드로 선언
+    * default 키워드를 사용하여 기본 값 할당
+```java
+<Access Modifier> @interface <Type name> {
+    <Field Type> <Field Name>() [default <default value>];
+}
+```
+* Reflection을 이용해 접근
+***
+Annotation 타입을 생성하는 것은 인터페이스를 선언하는 방식과 동일합니다. @Interface 키워드를 사용하고 필드는 파라미터 없는 메소드로 선언됩니다. 필드에 기본 값을 할당하려면 default 키워드를 사용합니다.
+
+```java
+<Access Modifier> @Interface <Type Name> {
+    <Field Type> <FieldName>() [default <default value>];
+}
+```
+**Type Name**
+클래스와 인터페이스와 마찬가지로 Camel Casing을 사용합니다.
+
+**Field Type**
+어노테이션을 구성하는 요소들의 타입으로 아래의 타입에서 선택 가능합니다.
+* 기본 데이터 타입(Primitive Data Type)
+* String
+* Class (Class <? extends MyClass>와 같은 선택적 타입 파라미터 사용)
+* Enum 타입 
+* Annotation 타입
+* 위 타입들의 배열
+
+**Field Name**
+어노테이션을 구성하는 요소들의 이름
+
+**default value**
+어노테이션 구성요소들의 기본 값으로 Annotation 적용시 해당 요소에 대한 값이 주어지지 않을 때 사용
+
+**예제**
+클래스의 정보를 Annotation으로 제공하기 위한 사용자 정보를 아래와 같이 구성할 수 있습니다. 아래의 DeviceAnnotation은 타입에만 적용할 수 있으며, 런타임 정보로 사용될 수 있고 해당 Annotation이 적용된 타겟 타입에서 파생된 하위 클래스에도 상속 됩니다.
+```java
+import java.lang.annotation.*;
+
+@Target({ElementType.TYPE})
+@Retention(RetentionPolicy.RUNTIME)
+@Inherited
+public @interface DeviceInformation {
+    boolean communicationSupport() default false;
+    String communicationInterface() default "None";
+    boolean batterySupport() default false;
+}
+```
+생성한 사용자 정의 Annotation은 아래와 같이 타입에 적용할 수 있습니다.
+```java
+@DeviceInformation({communication=”true”, communicationInterface=”5G”, 
+batterySupport=”true”})
+public class CellPhone { … }
+```
+
+## <a href="./Lab 13-2 사용자 정의 Annotation 생성.md"> Lab 13-2: 사용자 정의 Annotation 생성</a>
+해당 연습을 수행하십시오.
+

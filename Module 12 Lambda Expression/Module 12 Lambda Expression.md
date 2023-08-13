@@ -174,8 +174,7 @@ RunSomething run2 = () -> {
 Lambda Expression은 파라미터를 받아 짧은 코드 블록으로 실행할 수 있습니다. 이 장에서는 Lambda Experssion 표기 방법과 사용 방법을 알아봅니다.
 
 ### Table of Contents
-1. Funcational Interface
-2. Lambda Expression
+1. Lambda Expression 형식
 
 <br />
 

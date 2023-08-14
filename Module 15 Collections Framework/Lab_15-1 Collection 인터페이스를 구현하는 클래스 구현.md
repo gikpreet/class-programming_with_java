@@ -254,3 +254,5 @@ User {userNo=3, userName='User 3', userAge=10}
 User {userNo=4, userName='User 4', userAge=20}
 User {userNo=5, userName='User 5', userAge=30}
 ```
+
+<a href="./Collections_Framework/13_List_인터페이스.md">다음 장</a>

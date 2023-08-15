@@ -1,0 +1,188 @@
+## Lab 15-4 : Solve Circle-ellipse Problem
+연습 15-3에서 작성한 프로그램에서, Square는 Rectangle의 서브 타입으로 설계되었습니다.
+
+```mermaid
+classDiagram
+    Rectangle <|-- Square
+    class Rectangle {
+        +setwidth()
+        +setHeight()
+    }
+    class Square {
+        +setwidth()
+        +setHeight()
+    }
+```
+
+Rectangle의 서브 타입인 Square는 Rectangle을 완전히 대체할 수 없습니다. 직사각형과 정사각형은 서로 사각형의 특징을 가지고 있기는 하지만, 행동(Behavior) 측면에서 볼 때 다른 동작을 합니다. 따라서, 두 객체는 상속 관계를 가져서는 안됩니다. 타입은 행동으로 결정되어야 하고, 이 경우 Rectangle과 Square는 상속관계가 아니어야 합니다. 따라서, 아래와 같이 설계되어야 합니다.
+
+```mermaid
+classDiagram
+    Shape <|-- Rectangle
+    Shape <|-- Square
+    class Shape
+    <<interface>> Shape
+    Shape : setWidth()
+    Shape : setHeight()
+    class Rectangle {
+        +width
+        +height
+    }
+    class Square {
+        +length
+    }
+```
+
+**Shape 인터페이스 선언**
+1. Visual Studio Code를 엽니다.
+2. 파일 메뉴에서 폴더 열기를 클릭하고 c:\Labs\Lab15-4\Starter 폴더를 엽니다.
+3. 작성자 신뢰 경고 창에서, 예, 작성자를 신뢰합니다 버튼을 클릭합니다.
+4. Shape.java 파일을 열고 코드를 확인합니다.
+5. Shape 인터페이스에 width, height에 대한 getter와 setter 메소드들을 작성합니다.
+6. 완성된 코드는 아래와 유사할 것입니다.
+
+```java
+public interface Shape {
+    int width();
+    int height();
+    void setWidth(int width);
+    void setHeight(int height);
+    int getArea();
+}
+```
+
+**Shape 인터페이스를 구현하는 Rectangle 클래스 작성**
+1. Visual Studio Code 탐색기에서, Rectangle.java 파일을 엽니다.
+2. 코드를 확인합니다.
+3. 사각형의 높이와 너비를 표시하는 int형 변수 width와 height 두 전역 변수를 선언합니다.
+4. 두 개의 int 타입 파라미터를 가지는 Rectangle 클래스의 생성자를 선언하고 각각 width, height 필드에 할당합니다.
+5. Shape 인터페이스의 메소드를 구현합니다.
+6. 완성된 코드는 아래와 유사할 것입니다.
+```java
+public class Rectangle implements Shape {
+    protected int width;
+    protected int height;
+
+    public Rectangle(int width, int height) {
+        this.width = width;
+        this.height = height;
+    }
+
+    public int width() {
+        return this.width;
+    }
+    public int height() {
+        return this.height;
+    }
+    protected void setWidth(int width) {
+        this.width = width;
+    }
+    protected void setHeight(int height) {
+        this.height = height;
+    }
+    public int getArea() {
+        return this.width * this.height;
+    }
+}
+```
+5. 작업을 저장합니다.
+6. 아래 명령을 수행하여 프로그램을 컴파일 합니다. 오류가 있으면 수정합니다.
+```bash
+$ javac Shape.java Rectangle.java
+```
+
+**Rectangle 클래스 테스트**
+1. Visual Studio Code 탐색기에서 Test.java 파일을 엽니다.
+2. Test 클래스의 main 메소드에 Rectangle 클래스를 테스트하는 코드를 작성합니다.
+    * Shape 타입 변수 shape1을 선언하고, 10, 1을 인자로 Rectangle 객체로 초기화 합니다.
+    * shape1 객체의 getArea 메소드를 호출하고 return 값을 출력합니다.
+3. 완성된 코드는 아래와 유사할 것입니다.
+
+```java
+public class Test {
+    public static void main(String[] args) {
+        Shape shape1 = new Rectangle(10, 5);
+        System.out.println(shape1.getArea());
+
+        //
+        // To-do: Write test code for Square here
+        //
+    }
+}
+```
+
+4. 아래 명령을 수행하여 프로그램을 컴파일합니다.
+
+```bash
+$ javac Test.java
+```
+
+5.	아래 명령을 수행하여 응용 프로그램을 실행합니다.
+
+```bash
+> java Test
+50
+```
+
+**Shape 인터페이스를 구현하는 Square 클래스 작성**
+1. Visual Studio Code 탐색기에서, Square.java 파일을 엽니다.
+2. 코드를 확인합니다.
+3. 정사각형의 높이와 너비를 모두 표시하는 int형 전역 변수 length를 선언합니다.
+4. 하나의 int 타입 파라미터를 length를 가지는 Shape 클래스의 생성자를 선언하고 width, height 필드에 할당합니다.
+5. Shape 인터페이스의 메소드를 구현합니다.
+6. 완성된 코드는 아래와 유사할 것입니다.
+
+```java
+public class Square implements Shape {
+    protected int length;
+
+    public Square(int length) {
+        this.length = length;
+    }
+
+    public int width() {
+        return this.length;
+    }
+    public int height() {
+        return this.length;
+    }
+    protected void setWidth(int width) {
+        this.length = width;
+    }
+    protected void setHeight(int height) {
+        this.length = height;
+    }
+    public int getArea() {
+        return this.length * this.length;
+    }
+}
+```
+
+Shape 클래스 테스트
+1. Visual Studio Code 탐색기에서 Test.java 파일을 엽니다.
+2. Test 클래스의 main 메소드에 Square 클래스를 테스트하는 코드를 작성합니다.
+    * Shape 타입 변수 shape2을 선언하고, 5를 인자로 Square 객체로 초기화 합니다.
+    * shape1 객체의 getArea 메소드를 호출하고 return 값을 출력합니다.
+3.	완성된 코드는 아래와 유사할 것입니다.
+```java
+public class Test {
+    public static void main(String[] args) {
+        Shape shape1 = new Rectangle(10, 5);
+        System.out.println(shape1.getArea());
+
+        Shape shape2 = new Square(5);
+        System.out.println(shape1.getArea());
+    }
+}
+``````
+4. 아래 명령을 수행하여 프로그램을 컴파일합니다.
+```bash
+$ javac Test.java
+```
+10.	아래 명령을 수행하여 응용 프로그램을 실행합니다.
+```bash
+> java Test
+50
+25
+```
+<a href="./18_ISP.md">다음 장</a>

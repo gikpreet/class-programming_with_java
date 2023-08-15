@@ -5,7 +5,7 @@
 * 저장 순서를 유지하지 않음
 * HashSet, LinkedHashSet, TreeSet등으로 구현됨
 
-<img src="images/image09.png" width="600" />
+<img src="../images/image09.png" width="600" />
 
 ***
 

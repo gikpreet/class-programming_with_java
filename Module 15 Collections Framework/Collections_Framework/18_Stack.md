@@ -17,7 +17,7 @@ for(String s: stack) {
 
 Stack은 FILO(First In Last Out) 구조를 가진 전통적인 자료 구조이며, Java의 Collection Framework에서는 Vector에서 파행된 형태로 구현되었습니다.
 
-<img src="images/image08.png" width="600" />
+<img src="../images/image08.png" width="600" />
 
 **주요 메소드**
 |Method|설명|

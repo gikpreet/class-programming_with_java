@@ -22,7 +22,7 @@ Queue는 Stack과 반대로 FIFO(First In First Out) 형태를 가지는 자료�
 
 Java Collection Framework의 Queue는 인터페이스이며, LinkedList는 Queue 인터페이스의 구현체입니다.
 
-<img src="images/image06.png" width="600" />
+<img src="../images/image06.png" width="600" />
 
 **주요 메소드**
 |Method|설명|

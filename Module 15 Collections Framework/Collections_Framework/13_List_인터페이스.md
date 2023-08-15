@@ -6,7 +6,7 @@
 * Collection 인터페이스의 서브 타입
 * Vector, LinkedList, ArrayList등이 List 인터페이스의 서브 타입
 
-<img src="images/Image03.png" width="400" />
+<img src="../images/image03.png" width="400" />
 
 ***
 List 인터페이스는 저장되는 데이터의 중복을 허용하면서 저장 순서가 유지되는 자료 구조입니다. List 인터페이스를 구현하는 Collection 개체들은 길이가 고정되어 있지 않고, 데이터 사이의 빈 공간을 허용하지 않습니다.

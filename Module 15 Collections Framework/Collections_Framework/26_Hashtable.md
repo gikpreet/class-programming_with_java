@@ -21,7 +21,7 @@ map.remove("red");
 ***
 Hashtable은 Collection Framework 이전부터 존재하던 레거시 클래스로, HashMap과 동일하게 동작합니다. Hashtable은 HashMap과 달리 스레드에 안전합니다. 또, null 입력이 가능한 HashMap과 달리 null을 사용할 수 없습니다.
 
-<img src="images/image14.png" width="600" />
+<img src="../images/image14.png" width="600" />
 
 **생성 및 데이터 삽입**
 ```java

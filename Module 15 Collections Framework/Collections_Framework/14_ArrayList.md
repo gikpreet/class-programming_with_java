@@ -19,7 +19,7 @@ for (String s: list) {
 ***
 ArrayList는 Java 프로그래밍에서 가장 많이 사용되는 Collection 클래스입니다. RandomAccess 인터페이스를 구현하여 index를 이용해서 비 순서로 액세스할 수 있으며, Cloneable 인터페이스를 구현하여 복제본을 만들어 낼 수 있습니다.
 
-<img src="images/image04.png" width="600" />
+<img src="../images/image04.png" width="600" />
 
 **ArrayList 생성**
 *  기본 생성: 기본 크기가 10으로 설정됨

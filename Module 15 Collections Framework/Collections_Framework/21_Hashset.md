@@ -25,7 +25,7 @@ HashSet은 데이터의 위치를 Hash에 의해 특정하므로 해당 데이�
 **Hash**  
 Hash는 데이터를 검색할 때 사용할 Key와 실제 데이터의 Value가 한 쌍으로 존재하고, key 값이 배열의 인덱스로 저장되도록 하여 검색과 저장의 시간 복잡도를 O(1)에 수렴하게 되는, 검색과 저장을 빠르게 하는 기법을 의미합니다.
 
-<img src="images/image10.png" width="600" />
+<img src="../images/image10.png" width="600" />
 
 **주요 메소드**
 |Method|설명|

@@ -20,7 +20,7 @@ map.remove("red");
 
 HashMap은 Map 인터페이스의 구현체이며 Key-Value의 쌍으로 데이터를 저장하고 Key를 해싱하여 데이터에 액세스하고 삭제합니다. Key는 컬렉션 내에서 유일한 값을 가집니다.
 
-<img src="images/image13.png" width="600" />
+<img src="../images/image13.png" width="600" />
 
 HashMap에서 Key는 중복될 수 없으며, Value는 중복될 수 있습니다. Collection 또는 Iterable 인터페이스를 구현하지 않아 foreach문 등에서 순회될 수 없습니다. HashMap은 내부에 Key와 Value를 저장하는 자료 구조를 가지고 있습니다. HashMap은 HashSet와 유사한 방법으로 Key와 Value가 저장되는 위치를 결정합니다. 따라서 요소가 삽입되는 순서와 위치는 Hash 알고리즘이 결정합니다.
 

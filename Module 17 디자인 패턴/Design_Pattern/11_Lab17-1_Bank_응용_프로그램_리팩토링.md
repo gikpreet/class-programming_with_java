@@ -111,4 +111,4 @@ Balance: 100
 Balance Limited: 1000
 ```
 
-<a href="./12_연습문제.md">다음 장</a>
+<a href="./12_연습문제.md">연습 문제</a>

@@ -8,3 +8,5 @@
 4. 생성 패턴(Creational Patterns)
 5. 구조 패턴(Structural Patterns)
 6. 행위 패턴(Behavioral Patterns)
+
+<a href="./02_디자인_패턴.md">다음 장</a>

@@ -17,7 +17,10 @@ Stream은 `데이터 연산을 지원하도록 소스에서 추출된 연속된 
 3. Stream 중간 연산
 4. Stream 최종 연산
 
-link:./01_Module 18 Stream.adoc[]
+
+link:02_스트림.adoc[다음 장: 스트림]
+
+
 
 
 

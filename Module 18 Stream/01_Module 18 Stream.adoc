@@ -10,10 +10,14 @@ Stream은 `데이터 연산을 지원하도록 소스에서 추출된 연속된 
 * 필터링, 매핑, 정렬, 반복, 매칭, 기본 집계 등 다양한 형태의 연산을 통해 결과를 얻을 수 있습니다.
 * Stream을 이용한 연산에서 람다 식(Lambda Expression)을 사용할 수 있습니다.
 
-==== Table of contents
+== Table of contents
 
 1. Stream 이란?
 2. Stream 생성
 3. Stream 중간 연산
 4. Stream 최종 연산
+
+link:./01_Module 18 Stream.adoc[]
+
+
 

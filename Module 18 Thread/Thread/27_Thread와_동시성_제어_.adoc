@@ -1,0 +1,161 @@
+= Thread 동시성 제어
+
+* Synchronization – 흔히 말하는 동기화와는 의미가 다름
+* 현재 작업의 응답과 다음 작업의 요청을 맞춘다는 의미
+* 여러 Thread가 자원을 공유하는 경우
+** 서로의 자원에 영향을 주지 않아야 함
+** 한 Thread가 자원에 접근하여 작업을 마치기까지 다른 Thread는 대기해야 함
+** 한 Thread의 동작은 쪼개질 수 없어야 함
+* synchronized 키워드
+* 메소드 선언에 synchronized 키워드를 사용하면 Thread-safe하게 실행되는 메소드를 다른 코드의 추가 없이 사용할 수 있음
+
+---
+
+멀티 Thread 프로그램에서는 Thread들이 객체를 공유해서 사용하는 경우가 많습니다. 멀티 Thread 프로그램에서는 프로세스에서 발생할 수 있는 IPC 문제가 그대로 발생할 수 있습니다. Java에서는 멀티 Thread 프로그램에서 발생할 수 있는 동시성 문제를 해결할 수 있는 메소드와 객체들을 제공합니다.
+
+== Java 멀티 Thread 프로그램에서 임계 영역 지정
+자바는 임계 영역을 지정하기 위해 동기화 메소드와 동기화 블록을 제공합니다. Thread가 객체 내부의 동기화 메소드 또는 블록에 들어가면 즉시 객체에 잠금을 걸어 다른 Thread가 임계 영역에 진입하지 못하도록 합니다. 
+Java에서는 공유 객체를 사용중인 동안 임계 영역에 진입하지 못하도록 하는 동기화 메소드를 만드는 단순한 방법을 제공합니다. 메소드 선언에 synchronized 키워드를 사용하면 Thread-safe 하게 실행되는 메소드를 다른 코드의 추가 없이 사용할 수 있습니다.
+
+[source, java]
+----
+public synchronized void start() {
+    ...
+}
+----
+
+== 메소드 내의 특정 영역을 임계 구역으로 지정
+
+메소드 내에 동기화가 필요한 부분을 synchronized 블록으로 지정하여 메소드 내의 코드 일부를 동기화되는 임계 구역으로 지정할 수 있습니다.
+
+[source, java]
+----
+public void interrupt() {
+    if (this != Thread.currentThread()) {
+        checkAccess();
+        // thread may be blocked in an I/O operation
+        synchronized (blockerLock) {
+            Interruptible b = blocker;
+            if (b != null) {
+                interrupt();  // set interrupt status
+                b.interrupt(this);
+                return;
+            }
+        }
+    }
+    // set interrupt status
+    interrupt();
+}
+----
+
+== `wait()` 과 `notify()`
+
+Wait와 notify는 synchronized(동기화)된 {} 불록 안에서 사용해야 합니다. Wait를 만나게 되면 해당 쓰레드는 해당 객체의 모니터링 lock에 대한 권한을 가지고 있으며 모니터링 lock의 권한을 놓고 대기합니다. Wait()를 만나면 대기하고 있던 쓰레드를 깨워서 실행할 수 있도록 합니다.
+
+다음은 synchronized 블록 내에서 wait(), notify()을 이용해서 쓰레드의 상태를 변경하는 예제입니다.
+
+[source, java]
+----
+public static void main(String[] args) throws InterruptedException {
+    SharedCount sharedCount = new SharedCount();
+    Runnable runnableA = new MyThreadA(sharedCount);
+    Runnable runnableB = new MyThreadB(sharedCount);
+    Thread threadA = new Thread(runnableA);
+    Thread threadB = new Thread(runnableB);
+    threadA.start();
+    threadB.start();
+}
+----
+
+공유 객체인 SharedCount는 count를 증가시키는 increaseCount() method와 카운트를 감소시키는 decreaseCount() 메소드를 제공합니다.  increaseCount()는 count == 5 조건을 만족하면 wait() 즉, 대기상태로 변경됩니다. decreaseCount()는 count == -5 조건을 만족하면 wait(), 즉 대기상태로 변경됩니다. 
+
+즉 5 <= count >= -5 범위로 증가와 감소를 반복합니다.
+
+[source, java]
+----
+static class SharedCount{
+    private int count = 0 ;
+    public synchronized void increaseCount() {
+        count = count+1;
+        System.out.println("increaseCount:" + count);
+        try {
+            Thread.sleep(1000);
+            if(count == 5){
+                notify();
+                wait();
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public synchronized void decreaseCount(){
+        count = count-1;
+        System.out.println("decreaseCount:" + count);
+        try {
+            Thread.sleep(1000);
+            if(count == -5){
+                notify();
+                wait();
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+}
+----
+
+MyThreadA는 무한 반복하면서 increaseCount() 메소드를 호출하며, MYThreadB는 무한 반복하면서 decreseCount() 메소드를 호출합니다.MyThreadA, MyThreadB는 모두 Runable interface를 구현했습니다.
+
+[source, java]
+----
+static class MyThreadA implements Runnable{
+    private final SharedCount sharedCount;
+    public MyThreadA(SharedCount sharedCount){
+        this.sharedCount = sharedCount;
+    }
+    @Override
+    public void run() {
+        for(;;){
+            sharedCount.increaseCount();
+        }
+    }
+}
+
+static class MyThreadB implements Runnable{
+    private final SharedCount sharedCount;
+    public MyThreadB(SharedCount sharedCount){
+        this.sharedCount = sharedCount;
+    }
+    @Override
+    public void run() {
+       for (;;){
+           sharedCount.decreaseCount();
+       }
+    }
+}
+----
+
+Syncronized block내에서 wait()와 notify() 메소드를 이용해서 -5 <= count <=5 범위에서 증가와 감소를 한다는 것을 아래 실행 결과를 통해서 확인할 수 있습니다.
+
+실행결과
+
+----
+increaseCount:1   
+increaseCount:2
+increaseCount:3
+increaseCount:4
+increaseCount:5
+decreaseCount:4
+decreaseCount:3
+decreaseCount:2
+decreaseCount:1
+decreaseCount:0
+decreaseCount:-1
+decreaseCount:-2
+decreaseCount:-3
+decreaseCount:-4
+decreaseCount:-5
+----
+
+link:./28_Lab17_1.adoc[다음: Lab 17-1: synchronized를 이용한 Thread 동기화]

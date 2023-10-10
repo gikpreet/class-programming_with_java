@@ -1,0 +1,53 @@
+= Java의 역사
+
+* 1991년 셋톱 프로젝트를 위해 개발
+* 초창기 Oak, Green 등으로 불렸으나 최종적으로 Java라는 이름이 선택됨
+
+[cols="1, 3" options="header"]
+|===
+|연도	|내용
+|1995	|JDK 1.0 발표
+|1998	|J2SE(Java 2 Standard Edition) 발표
+|2004	|J2SE 5 발표
+|2006	|Java SE 6 발표, Sun Microsystems에서 대부분의 Java를 GPL 라이선스로 오픈
+|2009	|Oracle이 Sun Microsystems인수, Java에 대한 권리와 유지보수를 Oracle에서 인수
+|2011	|Java SE 7 발표
+|2018	|Java SE 9 발표, 64비트 버전만 공식 지원하며 32비트 지원 종료
+|2018	|Java SE 11 발표, Oracle JDK 유료 전환
+|2021	|Java SE 17 발표
+|===
+
+---
+
+1991년 Sun Microsystems에서 Green이라는 임베디드 시스템을 위한 플랫폼을 만들기 위한 프로젝트로 시작되었으며, 제임스 고슬링(James Gosling), 패트릭 노튼(Patrick Naughton), 크리스 와츠(Chris Warth), 에드 프랭크(Ed Frank), 마이크 쉐리던(Mike Sheridan)에 의해 개발되었습니다.
+
+초기에는 Oak라 명명되었으나 1995년 `Java`로 이름이 최종 결정되었으며, 다양한 환경의 CPU에서 실행되는 코드를 생성할 수 있는 이식성이 뛰어난 Cross Platform은 이식 가능한 언어를 요구하는 웹의 출현으로 컴퓨터 언어 프로젝트에 잘 맞았으며, 이런 이유로 Java의 초점은 임베디드 시스템에서 인터넷으로 옮겨지게 되었고 이런 시도는 큰 성공을 거두었습니다.
+
+2009년 Sun Microsystems를 Oracle이 인수하였고 Oracle의 독점적인 정책에 따라 JVM과 JDK는 많은 벤더와 오픈 소스 진영에서 여러 버전의 JDK와 JVM을 만들기 시작했습니다. 그에 따라 OpenJDK, Azul, Microsoft JDK등 많은 버전의 JDK를 사용할 수 있게 되었고, 2018년 Oracle JDK 독점 기능이 오픈 소스 버전인 OpenJDK에 이식되었으며, 2019년 Oracle JDK는 유료화 되었습니다.
+Java는 많은 버전 업이 있었으며 버전이 변경될 때 마다 추가되는 요구사항을 반영하며 발전했습니다. 
+
+[cols="1, 1, 3" options="header"]
+|===
+|버전	|연도  |내용
+|JDK 1.0a2	|1995	|Oak 언어 발표.
+|JDK1.0	    |1996	|이름이 Java로 변경됨
+|JDK 1.1	|1997	|Inner Class, Java Beans, RMI, Reflection, Calendar 유니코드 지원 등이 추가
+|J2SE 1.2	|1998	|Swing, JIT, Collection Framework등이 추가
+|J2SE 1.3	|1998	|HotSpot VM, JNDI, JPDA, JavaSound 등이 추가
+|J2SE 1.4	|2002	|Assert, 정규 표현식, XML API등이 추가
+|J2SE 1.5	|2004	|Generics, Annotation, AutoBoxing/UnBoxing, Enumeration, 가변 길이 파라미터, static import, Concurrency API등이 추가
+|Java SE 6	|2006	|Java Compiler API, Pluggable Annotation등이 추가
+|Java SE 7	|2011	|Switch 문에서 String 사용, try-catch-resource, File NIO 라이브러리 등이 추가
+|Java SE 8	|2014	|Lambda Expression, 새로운 날짜와 시간, Interface default method, Stream API 등이 추가
+|Java SE 9	|2017	|JShell 추가
+|Java SE 10	|2018	|var 키워드를 시용한 지역 변수 타입 추론, 병렬 처리 가비지 컬렉션, stop-the-world 등이 추가
+|Java SE 11	|2018	|Hotspot/jvmti 등이 추가되었으며, 이클립스 재단으로 넘어간 Java EE가 JDK에서 삭제되고 JavaFX가 JDK에서 분리되어 별도의 모듈로 제공
+|Java SE 12	|2019	|Switch 문 확장
+|Java SE 13	|2019	|yield 추가
+|Java SE 14	|2020	|record라는 데이터 오브젝터 선언 기능 추가
+|Java SE 15	|2020	|sealed class 추가
+|Java SE 16	|2020	|OpenJDK 버전 관리가 Git으로 변경
+|Java SE 17	|2021	|의사 난수 생성기 API 추가, Java Applet이 deprecate 처리됨
+|===
+
+link:./13_JDK_공급자[다음: JDK 공급자]

@@ -9,6 +9,13 @@
 ** 원격 코드를 안전하게 실행할 수 있어야 한다.
 ** 다른 객체 지향 언어들의 좋은 부분만 가지고 와서 사용하기 편해야 한다.
 
+[source, mermaid]
+----
+graph LR
+    A[Java Source Code] --> B[Java Virtual Machine]
+    B --> C[실행]
+----
+
 ---
 
 Java는 Sun Microsystems의 제임스 고슬링과 연구원들이 개발해 1995년 발표한 객체 지향 프로그래밍 언어입니다. 처음에는 가전제품 내에 탑재해 동작하는 프로그램을 위해 개발했지만 현재 전체적으로 가장 많이 사용하는 프로그래밍 언어중의 하나가 되었으며 모바일 기기용 응용 프로그램 개발에도 많이 사용됩니다.
@@ -17,4 +24,4 @@ Java는 C에서 진화한 C\++와는 다르게 초기 설계부터 객체 지향
 
 Java의 개발사인 Sun Microsystems는 자바를 GPL 라이선스로 오픈하였으며, 대부분의 코어 부분을 오픈하였습니다. 2009년 Sun Microsystems가 Oracle과 인수 합병됨에 따라 Java에 대한 권리 및 유지보수는 Oracle이 가지고 있습니다.
 
-link:./0_Java_프로그래밍_언어.adoc[다음: Java 프로그래밍 언어]
+link:./05_Write_Once_Run_Anywhere[다음: Java 프로그래밍 언어]

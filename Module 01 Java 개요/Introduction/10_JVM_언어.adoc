@@ -1,0 +1,41 @@
+= JVM 언어
+
+* Java와 같이 Java 바이트 코드를 생성하지만 언어 규격이 다른 프로그래밍 언어
+* **Clojure**  함수형 언어로, Java 플랫폼에서 동작하는 LISP의 방언
+* **Groovy**  Java에 Python, Ruby, SmallTalk등의 특징을 버무린 동적 타입 언어
+* **JRuby**  Ruby를 Java로 구현
+* **Jython**  Python을 Java로 구현
+* **Kotlin**  JetBrains에서 개발한 JVM언어로, 안드로이드의 공식 언어
+* **Rhino**  모질라 재단이 만든 JVM에서 동작하는 JavaScript 엔진
+* **Scala**  객체지향 언어의 특징과 함수형 언어의 특징을 함께 가지는 다중 패러다임 프로그래밍 언어
+
+---
+
+Java의 품질이 입증된 이후 많은 프로그래밍 언어들이 강력하고 이식성이 좋은 언어를 만들기 위해 Java 가상 머신을 사용하기 시작했으며 이후 Java 가상 머신에서 동작하는 많은 프로그래밍 언어들이 만들어졌습니다. 
+
+Java 가상 머신에서 실행될 수 있도록 바이트코드를 생성하거나 Java 가상 머신에서 실행되는 인터프리터를 지원하는 언어를 Java 가상 머신 지원 언어라고 부릅니다.
+
+[cols="1, 2" options="header"]
+|===
+|언어 | 설명
+|Alef	|객체지향 프로그래밍 언어로 Perl과 LISP 문법을 따름
+|AspectJ	|Java 프로그래밍 언어의 AOP 프로그래밍 확장
+|BeanShell	|Java 문법을 따르는 동적 스크립트 언어
+|CAL	|쿼크 프레임워크의 일부로 Haskell, Clean, Java에 영향받은 함수형 언어
+|Clojure	|LISP의 방언으로 다중 스레드 프로그래밍을 쉽게 할 수 있는 특징을 가진 함수형 언어
+|Fantom	|Java, C#과 유사한 언어로 Java 가상 머신과 .NET CLR, JavaScript 지원
+|Flink	|슈퍼 컴퓨팅을 위한 언어
+|Groovy	|Ruby, SmallTalk, Python등에 영향을 받아 설계된 동적 타임언어로, Gradle같은 빌드 도구, Grails 같은 엡 도구들이 이 언어로 작성됨
+|Hecl	|Java ME를 위한 스크립트 언어
+|Jaskell	|Haskell에서 영향을 받은 지연된 계산(Lazy evaluation)을 하는 스크립트 언어
+|Jelly	|XML 문법을 사용한 스크립트 언어
+|JudoScript	|함수형 언어로, JDBC, WSDL등 특정 영역을 위한 스크립팅 언어
+|Kotlin	|JetBrains에서 개발한 정적 타입 언어로 Generics등의 유용한 특징을 가지면서도 단순한 문법을 가지는 객체지향 언어
+|Mirah	|Ruby 문법을 기반으로 한 정적 타입 언어
+|Scala	|함수형 프로그래밍과 객체지향 프로그래밍을 혼합한 언어로, Spark등에서 사용되어 Java 가상 기계 기반 언어 중 가장 주류로 편입된 언어로 평가받고 있음
+|===
+
+Java 가상 머신 지원 언어 이외에도 C, COBOL, JavaScript, Scheme등 많은 기존 언어들이 자바 가상 머신상에서 동작하도록 구현되고 있습니다.
+
+link:./11_Java의_역사[다음: Java의 역사]
+

@@ -1,0 +1,49 @@
+= import 지시문과 java.lang 패키지
+
+* Java는 많은 유틸리티 클래스를 제공함
+** 유틸리티 클래스는 package 단위로 조직됨
+* java.lang은 통상적으로 많이 사용되는 유틸리티 클래스들을 포함하는 패키지
+
+[source, java]
+----
+java.lang.System.out.put.println(“Hello, World!”);
+----
+
+* 패키지 단위에 포함된 클래스 단위로 해당 패키지가 포함하는 클래스를 참조
+
+[source, java]
+----
+import java.lang.*;
+…
+System.out.println(“Hello, World!”);
+----
+
+* java.lang 패키지는 특별히 import문 없이도 사용할 수 있음
+
+---
+
+Java는 다양한 유용한 작업을 수행하는 많은 유틸리티 클래스를 제공하며, 이 유틸리티 클래스들은 `Package` 로 구성되어 있습니다. 패키지는 관련 클래스들의 집합입니다.
+
+Java는 많은 패키지를 제공합니다. 그 중 가장 중요하고 많이 쓰이는 패키지는 `java.lang` 패키지입니다. JVM 상에서 실행되는 Java 프로그램은 운영체제 상에서 바로 실행되는 것이 아니기 때문에 운영체제의 기능을 Java 코드로 접근하기는 어렵지만, `java.lang` 패키지에 속하는 `System`` 클래스를 이용하면 운영체제의 일부 기능들을 이용할 수 있습니다. 입/출력, 응용 프로그램 종료, 메모리 정리, 현재 시간 읽기, 시스템 속성 읽기, 환경 변수 읽기 등의 가장 일반적으로 사용하는 클래스가 포함되어 있습니다.
+
+`package` 의 식별자를 명시적으로 접두사로 사용하여 `package` 의 객체를 참조할 수 있습니다. 예를 들어 `java.lang` 패키지에는 `println` 을 비롯한 여러 메소드들을 제공하는 `System.out` 이 포함되어 있습니다. 다음과 같이 `System.out` 의 `println` 메소드를 호출할 수 있습니다.
+
+[source, python]
+----
+java.lang.System.out.println(“Hello, World!”);
+----
+
+그러나, 개체를 참조하기 위해 정규화 된 이름을 사용하는 것은 다루기 힘들고 오류가 발생하기 쉽습니다. 이런 부담을 줄이기 위해 프로그램의 시작 부분에 `import` 지시문을 써서 `package` 를 지정할 수 있습니다. `import` 지시문은 클래스가 프로그램에서 명시적으로 정의되지 않은 경우 검사할 `package` 를 지정합니다. 소스파일에 둘 이상의 `import` 지시문을 넣을 수 있지만 모두 파일 시작 부분에 배치해야 합니다.
+
+import 지시문은 아래와 같이 사용합니다.
+
+[source, java]
+----
+import java.lang.*;
+… 
+System.out.println(“Hello, World!”);
+----
+
+Hello, World 프로그램에서 `System` 클래스는 명시적으로 정의되지 않았습니다. Hello, World 프로그램이 컴파일 될 때, 컴파일러는 `System` 클래스를 `java.lang` 패키지에서 찾습니다. 컴파일러는 정규화 된 코드 `java.lang.System` 을 참조하는 코드를 생성합니다.
+
+link:./07_demo01.adoc[다음: Demo: Java 프로그램 컴파일 및 실행]

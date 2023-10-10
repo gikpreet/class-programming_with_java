@@ -1,0 +1,49 @@
+= System 클래스
+
+* System 클래스는 환경과 관련된 속성과 메소드를 가지고 있음
+* Out과 in을 이용한 표준 입력과 출력, err를 이용한 에러 출력 기능을 포함
+* 객체를 복사하는 메소드 등 여러 유용한 동작들을 제공
+* Java 프로그래밍에 가장 기본이 되는 클래들을 포함
+* System.in: 표준 입력
+* System.out: 표준 출력 – 화면
+* System.err: 오류 - 화면
+
+[cols="1, 1" options=header]
+|===
+| 변수 | 설명
+| `final static InputStream in` | 표준 입력에 사용
+|`final static PrintStream out`	|표준 출력, print(), println() 메소드로 모니터에 출력 수행
+|`final static PrintStream err`	|에러 출력. print(), println() 메소드로 모니터에 에러 출력
+|===
+
+---
+
+Java의 `System` 클래스는 `out` 과 `in` 을 이용한 표준 입력과 출력, `err` 를 이용한 에러 출력에 관현 클래스 변수를 제공합니다. 표준 입력은 일반적으로 키보드와 연결됩니다. 사용자가 키보드에서 입력하는 모든 것은 표준 입력 스트림에서 읽을 수 있습니다. 이와 유사하게 표준 출력 스트림은 표준 에러 스트림과 마찬가지로 화면으로 전달됩니다.
+
+== System 클래스의 변수
+
+[cols="1, 2", options=header]
+|===
+|변수 |설명
+|final static InputStream in	|표준 입력에 사용됨
+|final static PrintStream out	|표준 출력에 사용됨. print(), println() 매개 변수를 받아 모니터에 출력을 수행함
+|final static PrintStream err	|에러 출력에 사용됨. print(), println() 매개 변수를 받아 모니터에 에러 출력을 수행함.
+|===
+
+System 클래스는 표준 입/출력 이외에도 객체 복사, 현재 시간 반환, 응용 프로그램 종료, 가베지 컬렉션 수행, 시스템 환경 변수 목록 반환 등 여러 유용한 기능들을 수행하는 메소드를 제공합니다.
+
+== System 클래스의 주요 메소드
+
+[cols="1, 2", options=header]
+|===
+|변수 |설명
+|static void arraycopy(Object src, int srcPos, Object dest, int destPos, int length)	|배열을 복사합니다.
+|static long curremtTimeMillis()	|1970년 1월 1일 자정부터 현재까지의 시간을 밀리초 단위로 반환합니다.
+|static void exit(int status)	|수행중인 응용 프로그램을 종료합니다. Status로 종료 상태를 반환하며, 일반적으로 마이너스(-)는 비정상 종료를 뜻합니다.
+|static void gc()	|가비지 컬렉션을 실행합니다.
+|static Properties getProperties()	|시스템 환경변수 목록을 반환합니다.
+|static String getProperty()	|시스템 환경 변수를 반환합니다.
+|static String getProperty(String key, String def)	|프로그램 환경 변수를 설정합니다
+|===
+
+link:./10_standard_output.adoc[다음: 표준 출력]

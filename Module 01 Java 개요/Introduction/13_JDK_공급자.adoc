@@ -24,4 +24,5 @@ Java는 여러 방향으로 버전업하며 발전하고 있으며, JDK와 JVM�
 
 Oracle은 많은 재단과 벤더에서 만들어지는 JDK가 Java의 목적에 맞게 완벽하게 동작하는지를 알 수 있도록 하기 위해 TCK(Technology Compatibility Kit)를 만들어 엄격하게 관리하고 있습니다.
 
+link:./12_Java의_역사.adoc[이전: Java의 역사]
 link:./14_Lab1-1_Java_실행_환경_구성.adoc[다음: Java 실행 환경 구성]

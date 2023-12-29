@@ -1,4 +1,4 @@
-== Java 가상 머신
+== Java 가상 머신 개요
 
 * Java 바이트코드를 실행할 수 있는 주체
 * 인터프리터나 JIT 컴파일 방식으로 다른 컴퓨터에서 바이트코드를 구현할 수 있도록 구현됨
@@ -32,5 +32,7 @@ link:./07_Java_가상_머신[다음: Java 가상 머신]
 |JVM Language Stacks	|지역 변수, 파라미터 등이 생성되는 영역입니다. 
 |PC Register	|현재 쓰레드가 실행되는 부분의 주소와 명령을 저장합니다.
 |Native Method Stack	|자바 외의 언어로 작성된 Native 코드를 위한 메모리 영역입니다.
+|===
 
-link:./08_Java_동작_원리[다음: Java 동작 원리]
+link:./06_Java_가상_머신.adoc[다음: Java 가상 머신] +
+link:./08_Java_동작_원리.adoc[다음: Java 동작 원리]

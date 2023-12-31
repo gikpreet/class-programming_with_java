@@ -1,0 +1,41 @@
+= Class
+
+* Java 프로그램은 클래스, 인터페이스, 열거형 및 기타 형식의 집합
+* Class는 데이터와 메소드들의 집합
+
+[source, java]
+----
+class name {
+	…
+}
+----
+
+* Java 프로그램은 여러 개의 파일로 구성 가능
+* 하나의 class는 여러 파일에 나뉘어 존재할 수 없음
+* 하나의 파일에는 여러 클래스가 존재할 수 있으나, public class는 하나만 존재해야 함
+* 파일의 이름과 public class의 이름은 동일해야 함
+
+---
+
+Java에서 응용 프로그램은 하나 이상의 클래스, 인터페이스, 열거형 및 기타 형식의 집합입니다. 뒤 모듈들에서 상세히 다룰 객체지향 프로그래밍 개념을 빼고 이야기하면, 클래스는 해당 데이터를 조작할 수 있는 메소드와 결합된 데이터의 집합으로 생각할 수 있습니다.
+
+Hello, World 프로그램의 코드를 보면.
+
+[source, java]
+----
+public class Hello 
+{
+	public static void main(String[] args) 
+	{
+		System.out.println(“Hello, World!”);
+	}
+}
+----
+
+Java에서 클래스는 class 키워드를 사용하여 정의합니다. 클래스 이름 뒤에는 여는 중괄호 ( { )가 있으며 닫는 중괄호 ( } )가 나오기 전 까지의 모든 항목은 클래스의 일부로 정의됩니다.
+
+Java에서는 클래스를 하나 이상의 파일에 분산할 수 없습니다. 한 파일에 여러 클래스가 존재할 수는 있으나, 단일 클래스를 여러 파일로 확장할 수는 없습니다.
+한 파일에 public class는 하나만 존재해야 하며, 파일의 이름과 public class의 이름은 동일하도록 작성해야 합니다.
+
+link:./03_Hello_world.adoc[이전: Class] +
+link:./05_main_method.adoc[다음: main 메소드]

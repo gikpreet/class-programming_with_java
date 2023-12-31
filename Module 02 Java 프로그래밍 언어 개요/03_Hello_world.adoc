@@ -1,0 +1,67 @@
+= Hello, World!
+
+[source, java]
+----
+public class Hello 
+{
+	public static void main(String[] args) 
+	{
+		System.out.println(“Hello, World!”);
+	}
+}
+----
+
+---
+
+Java 프로그래밍 언어로 처음 작성해 볼 예제는 프로그래밍 언어를 처음 배울 때 피해갈 수 없는 Hello, World 입니다.
+예제 코드에는 Java 프로그램의 모든 필수 요소가 포함되어 있습니다. 이 프로그램을 콘솔에서 실행하면 다음과 같이 표시됩니다.
+
+----
+Hello, World!
+----
+
+== Hello World 예제
+
+Hello, World 예제는 C언어의 창시자인 브라이언 커닝헌과 데니스 리치가 “The C Programming Language ”에서 Hello, World!를 출력하는 예제를 첫 번째 예제로 소개한 이후 프로그래밍 언어를 배우는 첫 번째 단계로 일종의 암묵적인 규칙이 되었습니다.
+
+=== C Language
+
+[source, c]
+----
+#include <stdio.h>
+
+int main() {
+    printf("Hello, World!\n");
+    return 0;
+}
+----
+
+=== C++ Language
+
+[source, c++]
+----
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    cout << "Hello, World\n";
+    return 0;
+}
+----
+
+=== C# Language
+
+[source, cs]
+----
+using System;
+
+public class Hello {
+    public static void Main(string[] args) {
+        Console.WriteLine("Hello, World!");
+    }
+}
+----
+
+link:./02_java_program_structure.adoc[다음: Java 프로그램 구조] +
+link:./04_class.adoc[다음: Class]

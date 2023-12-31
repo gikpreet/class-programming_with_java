@@ -76,7 +76,3 @@ image:./images/image12.png[]
 macOS
 +
 image:./images/image13.png[]
-
-+
- 
-

@@ -6,45 +6,46 @@
 +
 Windows (ex. c:\java\module02)
 +
-image:./images/image01.png[]
+image:./images/image01.png[windows, 500]
 + 
 macOS (ex: $HOME/java/Module02)
 +
-image:./images/image02.png[]
+image:./images/image02.png[mac, 500]
 +
 2.	Visual Studio Code를 실행합니다.
 3.	파일 메뉴에서 폴더 열기를 클릭합니다.
 +
 Windows
 +
-image:./images/image03.png[]
+image:./images/image03.png[windows, 500]
 +
 macOS
-image:./images/image04.png[]
++
+image:./images/image04.png[mac, 500]
 +
 4.	Java 소스 파일들이 위치할 폴더를 지정하고 열기 버튼을 클릭합니다.
 +
 Windows
 +
-image:./images/image05.png[]
+image:./images/image05.png[windows, 500]
 +
 macOS
 +
-image:./images/image06.png[]
+image:./images/image06.png[mac, 500]
 +
 5.	Visual Studio Code의 왼쪽 메뉴에서 탐색기를 클릭하고 새 파일을 클릭합니다.
 +
 Windows
 +
-image:./images/image07.png[]
+image:./images/image07.png[windows, 500]
 +
 macOS
 +
-image:./images/image08.png[]
+image:./images/image08.png[windows, 500]
 +
 6.	생성된 파일의 이름을 HelloWorld.java로 지정합니다.
 +
-image:./images/image09.png[]
+image:./images/image09.png[windows, 500]
 +
 7.	파일에 아래와 같이 Hello, World! 문자열을 출력하는 Java 코드를 작성합니다.
 +
@@ -58,21 +59,23 @@ public class HelloWorld {
 ----
 8.	작성한 코드를 저장합니다. (코드를 저장하면 편집기의 아이콘이 동그라미에서 x 로 바뀝니다)
 +
-image:./images/image10.png[]
+image:./images/image10.png[windows 600]
 +
 9.	Visual Studio의 메뉴바에서 터미널을 클릭하고 새 터미널을 클릭합니다.
 10.	아래 명령을 실행하여 작성한 HelloWorld.java 를 컴파일 합니다.
-\> javac HelloWorld.java
++
+----
+> javac HelloWorld.java
+----
++
 11.	탐색기에서 HelloWorld.class 파일이 생성된 것을 확인합니다.
 +
 image:./images/image11.png[]
 +
 12.	아래 명령을 실행하여 컴파일된 HelloWord 프로그램을 실행합니다.
++
+----
 > java HelloWorld
-Windows
-+
-image:./images/image12.png[]
-+
-macOS
-+
-image:./images/image13.png[]
+----
+
+link:./08_basic_inputout.adoc[다음: 기본적입 입/출력 동작]

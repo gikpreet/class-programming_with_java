@@ -1,0 +1,14 @@
+= 기초적인 입/출력 동작
+
+이 단원에서는 Java에서 System 클래스를 사용해 명령어 기반 입/출력을 수행하는 것을 배웁니다. print 메소드와 println 메소드를 사용하여 정보를 화면에 출력하는 방법과 Scanner 클래스를 사용하여 콘솔 기반에서 값을 받아들이는 것을 학습합니다.
+
+== Table of Contents
+
+1.	System 클래스
+2.	표준 출력
+3.	Scanner 클래스
+4.	주석
+5.	Javadoc
+6.	예외 처리
+
+link:./09_systemclass.adoc[다음: 시스템 클래스]

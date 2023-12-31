@@ -1,0 +1,33 @@
+= Scanner 클래스
+
+* 문자열을 포함한 기본적인 데이터 타입을 읽기 위한 유틸리티 클래스
+* 다양한 타입의 데이터를 읽기 위한 메소드를 포함
+* 문자열을 읽기 위한 Scanner 클래스의 메소드
+**  `next()`  공백을 기준으로 한 단어를 읽음
+**  `nextLine()`  개행을 기준으로 한 줄을 읽음
+* java.util 패키지에 포함
+
+---
+
+Java에서 키보드로 부터의 표준 입력을 읽는 방법에는 여러가지가 있습니다. Console 클래스를 사용할 수도 있고, `Scanner` 클래스를 사용할 수도 있습니다. `Console` 클래스는 Java 1.6에 추가되었지만, IDE 환경에서 잘 동작하지 않는 등의 몇 가지 문제가 있어 `Scanner` 클래스를 많이 사용합니다. `Scanner` 클래스는 `java.util` 패키지에 포함되어 있습니다.
+
+`Scanner` 클래스는 문자열, 입력 스트림, 파일 등 다양한 입력으로부터 입력을 읽을 수 있습니다. 표준 입력을 읽기 위해서는 `InputStream` 을 인자로 `Scanner` 클래스가 생성되어야 하며, next 메소드와 nextLine 메소드를 사용하여 표준 입력을 읽을 수 있습니다. 
+
+== next 메소드
+
+next 메소드는 키보드에서 입력되는 값을 공백을 기준으로 한 단어를 읽습니다.
+
+== nextLine 메소드
+
+nextLine 메소드는 입력 라인의 끝까지 모든 문자를 읽으며, 입력은 문자열로 반환됩니다. 다음 코드를 사용하여 한 줄의 텍스트를 읽고 화면에 표시할 수 있습니다.
+
+[source, java]
+----
+import java.util.Scanner;
+…
+Scanner scanner = new Scanner(System.in);
+String input = scanner.nextLine();
+System.out.println(input);
+----
+
+link:./12_recommandations.adoc[다음: 권장 사항]

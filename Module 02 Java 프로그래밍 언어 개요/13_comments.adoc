@@ -44,3 +44,5 @@ int gCD(int a, int b) {
     return gCD(a, a % b) {
 }
 ----
+
+link:./14_javadoc.adoc[다음: Javadoc]

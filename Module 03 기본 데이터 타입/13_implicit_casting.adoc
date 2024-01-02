@@ -1,0 +1,69 @@
+= 암시적 타입 변환
+
+* int를 long으로 변환
+
+[source, java]
+----
+int value = 123;
+long longValue = intValue;
+System.out.printf("(long) %d = %d", intValue, longValue);
+----
+
+* 암시적 타입 변환은 실패하지 않음
+** 정밀도가 떨어질 수는 있음
+
+---
+
+32비트 정수인 int 타입에서 64비트 정수인 long 타입으로 변환하는 것은 특별한 변환 연산자가 필요없이 암시적으로 이루어집니다. 이 변환은 항상 성공하며 정보가 손실되지 않습니다.
+
+[source, java]
+----
+class Test 
+{ 
+    static void main(String[] args) 
+    { 
+        int intValue = 123; 
+        long longValue = intValue; 
+        System.out.printf("(long) %d = %d", intValue, longValue); 
+    } 
+}
+----
+
+== 정수의 암시적 타입 변환
+
+[source,java]
+----
+byte byteValue = 32;		    // 8비트 정수 byte
+short shortValue = byteValue;	// 8비트 정수 byte는 16비트 정수 short로 암시적 타입 변환 가능
+int intValue = shortValue;	    // 16비트 정수 short는 32비트 정수 int로 암시적 타입 변환 가능
+long longValue = intValue;	    // 32비트 정수 int는 64비트 정수 long으로 암시적 타입 변환 가능
+----
+
+정수 타입인 char는 같은 정수 타입인 int로 암시적 타입 변환될 수 있습니다.
+
+[source, java]
+----
+char c = 'a';
+int i = c;
+System.out.println(i);	// 97 출력
+----
+
+== 실수의 암시적 타입 변환
+
+[source, java]
+----
+float floatValue = 1.12F;	        // 단정도(32비트) 부동 소수점 float
+double doubleValue = floatValue     // 배정도(64비트) 부동 소수점 double로 암시적 타입 변환 가능
+System.out.println(floatValue);     // 1.12
+System.out.println(doubleValue);    // 1.1200000047683716
+----
+
+== 실수/정수 사이의 암시적 형 변환
+
+[source, java]
+----
+long longValue = 123;
+double doubleValue = longValue;
+----
+
+link:./14_explicit_casting.adoc[다음: 명시적 타입 변환]

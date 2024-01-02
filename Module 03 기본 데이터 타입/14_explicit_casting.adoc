@@ -1,0 +1,78 @@
+= 명시적 타입 변환
+
+* 명시적 타입 변환에는 타입 변환식(cast expression)을 사용해야 함
+
+[source, java]
+----
+long longValue = Long.MAX_VALUE;
+int intValue = (int)longValue;
+System.out.printf("(long) %d = %d", longValue, intValue);
+----
+
+* 데이터 손실이 발생할 수 있음
+
+---
+
+타입 변환식을 사용하여 변수의 타입을 명시적으로 변환할 수 있습니다. 다음 예는 명시적 타입 변환식을 사용하여 longValue 변수를 long 타입에서 int 타입으로 변환하는 것을 보여줍니다.
+
+[source, java]
+----
+class Test 
+{ 
+    public static void main(String[] args) 
+    { 
+        long longValue = Long.MAX_VALUE;
+        int intValue = (int)longValue;
+        System.out.printf("(long) %d = %d", longValue, intValue);
+    } 
+}
+----
+
+위의 예에서는 int보다 큰 수가 int로 변환되었기 때문에 overflow가 발생하여 아래와 같이 출력됩니다.
+
+----
+(long) 9223372036854775807 = -1
+----
+
+== 명시적 타입 변환 구문
+
+[source, java]
+----
+int intValue = (int)223372036854775807L;
+
+long longValue = 1000;
+int intValue = (int)longValue;
+----
+
+== 정수의 명시적 타입 번환
+
+[source, java]
+----
+long longValue = 100000;
+
+int intValue = (int) longValue;		    // 64bit 값을 32bit로 변환
+short shortValue = (short) intValue;	// 32bit 값을 16bit로 변환
+----
+
+== 실수의 명시적 타입 번환
+
+[source, java]
+----
+double doubleValue = 1.42;
+float floatValue = (float)doubleValue;   	// 64bit 부동 소수점을 32bit 부동 소수점으로 변환
+----
+
+== 정수에서 실수로 명시적 타입 변환
+
+정수에서 실수로 타입 변환할 경우 정수형으로 표현할 수 있는 정수의 범위를 넘지 않는 경우 일반적으로 정수부만을 추출합니다. 표현할 수 있는 정수의 범위를 넘으면 데이터가 변질됩니다.
+
+[source, java]
+----
+float floatValue = 32.123F;
+int intValue = (int)floatValue;  // 32bit 부동 소수점을 32bit 정수로 변환
+
+float floatValue = 10000000000.0F;
+int intValue = (int)floatValue;  // int의 표현 범위를 넘으므로 2147483647로 변환됨
+----
+
+link:./15_typecasting.adoc[다음: 연산시 타입 변환]

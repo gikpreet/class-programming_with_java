@@ -1,0 +1,11 @@
+= 데이터 타입 변환
+
+Java 에서는 두 가지 형태의 데이터 타입 변환이 있습니다. 이 단원에서는 원시 데이터 타입의 타입 변환에 대해 알아봅니다.
+
+== Table of Contents
+1. 기본 데이터 타입 변환 규칙
+2. 암시적 형 변환(Implicit data type conversion)
+3. 명시적 형 변환(Explicit data type conversion)
+4. 연산 시 타입 변환
+
+link:./12_type_casting_rule.adoc[다음: 기본 데이터 타입 변환 규칙]

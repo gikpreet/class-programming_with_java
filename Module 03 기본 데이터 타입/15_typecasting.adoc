@@ -1,0 +1,38 @@
+= 연산 시 타입 변환
+
+* 정수형 간의 산술 연산은 32bit 정수형으로 암시적 타입 변환
+* 정수와 실수의 산술 연산은 32bit 실수형으로 암시적 타입 변환
+
+---
+
+기본 데이터 타입간의 연산 과정에서도 타입 변환이 발생합니다.
+
+== 정수형 간의 산술 연산 시 타입 변환
+
+정수형 간의 산술 연산 시, 기본적으로 32bit 정수형(int)으로 암시적 타입 변환한 후 계산합니다. byte와 byte간의 연산이나, shot와 byte 연산등의 계산 결과는 int 타입입니다.
+
+[source, java]
+----
+byte byteValue = 6;
+short shortValue = 7;
+short result = byteValue + shortValue;		        // 오류
+int result = byteValue + shortValue;			    // 동작함
+short result = (short)(byteValue + shortValue);   	// short으로 할당할 경우 명시적 타입 변환
+----
+
+== 정수와 실수의 산술 연산 시 타입 변환
+
+정수와 실수의 산술 연산 시, float 타입과의 산술 연산은 32bit 실수형으로, double 타입과의 산술 연산은 64bit 실수형으로 암시적 타입 변환됩니다.
+
+[source, java]
+----
+float floatValue = 12.5F;
+int intValue = 5;
+float result = floatValue + intValue; 	// float으로 암시적 타입 변환
+
+double doubleValue = 12.5;
+int intValue = 5;
+double result = doubleValue + intValue;	// double로 암시적 타입 변환
+----
+
+link:./16_review.adoc[다음: 검토]

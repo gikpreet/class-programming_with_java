@@ -7,7 +7,7 @@
 * Error
 ** 메모리 부족 등 시스템에 심각한 상황이 발생했을 경우
 
-image:./images/image06.png[]
+image:./images/image06.png[exception, 500]
 
 ---
 

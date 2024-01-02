@@ -9,4 +9,4 @@
 3.	for문
 4.	foreach문
 
-link:./10_while.adoc[다음: whils statement]
+link:./10_while.adoc[다음: while statement]

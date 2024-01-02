@@ -1,0 +1,12 @@
+= 예외 발생시키기
+
+Java에서는 프로그래머가 필요한 경우 예외를 발생시키고 적절하게 처리할 수 있도록 throw문과 finally 절을 제공합니다. 이 장에서는 예외를 임의로 발생시키고 처리할 수 있는 방법을 배웁니다.
+
+== Table of Contents
+
+1.	throw 문
+2.	메소드에 예외 선언
+3.	finally절
+4.	try-with-resource문
+
+link:./26_throw.adoc[다음: throw statement]

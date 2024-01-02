@@ -1,0 +1,83 @@
+= while 문
+
+* boolean 값을 기준으로 내부 문을 수행
+* 반복이 시작될 때 boolean 식을 평가, boolean 값이 true일 때 내부 문 실행
+* 조건에 따라 한 번도 실행되지 않을 수 있음
+
+[source, java]
+----
+int i = 0;
+while (i < 10) {
+    System.out.println(i);
+    i++;
+}
+----
+
+---
+
+`while` 문은 가장 간단한 형태의 반복문입니다. boolean 식이 `true` 인 동안 포함된 문을 반복적으로 실행합니다. Java는 정수에서 boolean 타입으로의 암시적 형 변환을 지원하지 않으므로 `while` 문에서 평가되는 식은 boolean 이어야 합니다.
+
+== 실행 흐름
+
+while 문은 아래와 같은 절차로 실행됩니다.
+
+1. while 문을 제어하는 boolean 식이 평가됩니다.
+2. boolean 식이 true를 산출하면 제어가 포함된 문으로 이동합니다. 제어가 while 문에 포함된 문의 끝에 도달하면 제어가 암시적으로 while문의 시작으로 이동되고 boolean 표현식이 재평가됩니다.
+3.	만약 boolean 식이 false를 산출하면, 제어는 while 문의 끝으로 이동합니다. 따라서 boolean 식이 true인 동안 프로그램은 포함된 문들을 반복적으로 실행합니다.
+
+boolean 식은 `while` 반복의 시작 부분에서 테스트됩니다. 따라서 `while` 문에 포함된 문들이 한 번도 실행되지 않을 수 있습니다.
+
+== 실행 예제
+
+아래는 가장 간단한 형태의 while 문입니다. if절 에서와 같이 while 문에 포함된 문이 한 줄인 경우 중 괄호를 사용하지 않을 수 있습니다.
+
+[source, java]
+----
+while (i < 10) 
+System.out.println;
+----
+
+혼란을 방지하며 읽기 쉬운 코드를 작성하기 위해서는 아래와 같이 중괄호를 사용하는 것이 좋습니다.
+
+[source, java]
+----
+while (i < 10) {
+System.out.println(i++);
+}
+----
+
+`while` 문에 포함된 문이 두 줄 이상인 경우, 반드시 중괄호를 사용해야 합니다.
+
+[source, java]
+----
+while (i < 10) {
+	System.out.println(i);
+	i++;
+}
+----
+
+`while` 문은 가장 간단한 반복문이지만, 종료를 위한 값 업데이트를 명시하지 않아 오류가 많이 발생하는 문이기도 합니다. `while` 문을 작성할 때는 반드시 아래와 같은 형식을 가지도록 하는 것이 좋습니다.
+
+----
+초기값
+while (boolean-expression) {
+    embedded-statement
+    값 업데이트
+}
+----
+
+아래 예제는 `while` 문을 사용하여 구구단을 출력합니다.
+
+[source, java]
+----
+int i = 2; j = 1;
+while (i <= 9) {
+    while (j <= 9) {
+        System.out.println(i + “ * ” + j + “ = ” + i * j);
+    }
+    i++;
+    j = 1;
+}
+----
+
+link:./11_do.adoc[다음: do statement]

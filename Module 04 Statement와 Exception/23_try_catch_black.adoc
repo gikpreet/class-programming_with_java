@@ -1,0 +1,43 @@
+= try/catch 블록
+ 
+* 오류 처리에 대한 객체지향 적인 방법
+* 응용 프로그램 로직 코드를 try 블록에 작성
+* 예외 처리 코드는 분리된 catch 블록에 작성
+
+[source, java]
+----
+public static void main(String[] args) {
+   try {
+      // 프로그램 로직
+      String name = args[0];
+      System.out.println("Hello, " + name);
+   }
+   catch (ArrayIndexOutOfBoundsException e) {
+      // 오류 처리 코드
+System.out.println("usage: java Greetings <name>");
+      e.printStackTrace();
+   }
+}
+----
+
+---
+
+Java는 try/catch 블록의 형태로 오류 처리 문제에 대한 객체지향 적인 처리를 지원합니다. 예외를 사용하면 오류를 처리하는 코드와 정상적인 제어 흐름을 처리하는 코드를 분리할 수 있습니다. 사용법은 다음과 같습니다:
+
+----
+catch (class-type identifier) { … }
+----
+
+identifier는 반드시 선언되어야 하며 범위는 catch문으로 한정됩니다.
+
+----
+catch (Exception) {  // 컴파일 오류
+    …
+}
+----
+
+위의 예제는 `try` 및 `catch` 문을 사용하는 방법을 보여줍니다. `try` 블록은 예외를 발생시킬 수 있는 코드를 묶어서 포함합니다. 예외가 발생하면 런타임은 수행을 중지하고 예외를 잡을 수 있는 `catch` 블록을 검색합니다 적절한 `catch` 블록을 찾을 수 없는 경우 `catch` 블록을 찾을 때까지 호출한 함수 등을 검색합니다. (만약 main함수의 끝에 도달하면 프로그램이 종료됩니다). `catch` 블록을 찾으면 예외가 잡힌 것으로 간주되고 `catch` 의 본문부터 시작하여 정상 실행이 다시 시작됩니다.
+
+`try` 및 `catch` 블록을 사용하면 오류 처리 코드가 정상적인 제어 흐름을 처리하는 코드와 분리되어 프로그램을 더 쉽게 이해하고 오류를 쉽게 처리할 수 있습니다.
+
+link:./24_multiple_catch_black.adoc[다음: 다중 catch 블록]

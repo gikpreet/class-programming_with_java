@@ -1,0 +1,70 @@
+== 다중 catch 블록
+ 
+* 각 블록은 하나의 예외 클래스를 잡아냄
+
+[source, java]
+----
+public static void main(String[] args) {
+   try {
+      int i = Integer.parseInt(args[0]);
+      int j = Integer.parseInt(args[1]);
+      int k = i / j;
+   }
+   catch (ArrayIndexOutOfBoundsException e) {…}
+   catch (ArithmeticException e) {…}
+}
+----
+
+* 여러 예외를 한 catch 문에서 처리할 수 있음
+
+[source, java]
+----
+catch (ArrayIndexOutOfBoundsException | ArithmeticException e) {
+   e.printStackTrace();
+}
+----
+
+---
+
+`try` 블록 내부의 각 문은 하나 이상의 예외를 일으킬 수 있습니다. Java는 발생하는 상황에 따른 다양한 예외 클래스를 지원하므로 각각 특정 종류의 예외를 처리하는 많은 catch 블록을 작성하는 것이 허용됩니다.
+
+예외는 해당 예외 타입에만 적용되어 `catch` 됩니다. Java 런타임은 해당 유형의 catch 블록에서 특정 유형의 예외 개체를 자동으로 잡아냅니다.
+
+----
+1: try {
+2:   int i = Integer.parseInt(args[0]);
+3:   int j = Integer.parseInt(args[1]);
+4:   int k = i / j;
+5: }
+6: catch (ArrayIndexOutOfBoundsException e) {…}
+7: catch (ArithmeticException e) {…}
+8: catch (NumberformatException) {…}
+9: …
+----
+
+위 코드에서 두 번째 줄의 코드는 여러 오류를 일으킬 가능성이 있습니다. Java 프로그램이 실행될 때 파라미터가 전달되지 않을 수 있고, 파라미터가 전달되어도 정수형으로 전환이 불가능한 문자가 입력될 수 있습니다.
+
+Java 프로그래밍 언어에서 매개 변수가 전달되지 않은 채 두 번째 라인(또는 세 번째 라인)이 실행되면 런타임은 배열(문자열 형 배열 `args` )에 존재하지 않는 항목에 접근했다고 간주하고 ArrayIndexOutOf-BoundsException 예외가 발생합니다. 또한, 매개 변수가 전달되었으나 정수형으로 변환할 수 없는 값이 전달되면 NumberFormatException 예외가 발생합니다. 또한 `try` 문의 세 번째 라인에서 `j` 값으로 0이 전달되면 네 번째 라인에서 `ArithmeticException` 예외가 발생합니다. 
+
+만약 프로그램이 실행될 때 적당한 매개변수가 전달되어 `try` 블록 내에서 예외가 발생하지 않았다면 `try` 블록의 끝에 도달하고 `catch` 문을 건너뛰어 8번째 라인으로 이동합니다. `try-catch` 문에서 제어 흐름은 예외가 발생한 경우에만 `catch` 문에 진입합니다.
+
+제어 흐름이 적절한 `catch` 문을 찾지 못하면 현재 메소드를 종료하고 메소드가 호출된 문에서 검색을 다시 시작합니다. 검색을 계속하여, 필요한 경우 호출 스택을 main 메소드로 이동합니다. 이와 같은 방식으로 풀어나가는 과정에서 `main` 이 종료되면 main을 호출한 쓰레드 또는 프로세스가 구현된 방식으로 종료됩니다.
+
+== catch 블록
+
+Java에서 Error를 제외한 모든 예외는 `Exception` 클래스의 자식 클래스입니다. 따라서 `catch` 절에서 `java.lang.Exception` 을 처리하도록 코드를 작성하면 `try` 문에서 발생할 수 있는 모든 예외를 처리할 수 있습니다.
+
+[source, java]
+----
+catch(java.lang.Exception e) { … }	
+----
+
+만약 `java.lang.Exception` 을 처리하도록 코드를 작성했다면 Exception 클래스의 자식 클래스에 해당하는 모든 예외를 처리하는 코드를 작성할 수 없습니다. 아래 코드는 컴파일 오류를 발생합니다.
+
+[source, java]
+----
+catch(java.lang.Exception e) { … }
+catch(ArithmeticException e) { … } // 컴파일 오류
+----
+
+link:./25_throw_exception.adoc[다음: 예외 발생]

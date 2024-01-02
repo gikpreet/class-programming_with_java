@@ -1,0 +1,86 @@
+= switch 문
+
+* 여러 경우에 대응해야 하는 경우를 위해 switch 문을 사용
+* break문을 사용하여 문의 진행을 제어
+
+[source, java]
+----
+switch (monthNumber) {
+case 2:
+        daysInMonth = 28; break;
+case 4:
+case 6:
+case 9:
+case 11:
+daysInMonth = 30; break;
+default:
+        daysInMonth = 31; break;
+}
+----
+
+---
+
+`switch` 문은 중첩 `if` 문이 필요한 복잡한 조건을 쉽고 깔끔하게 처리할 수 있는 방법을 제공합니다. 여러 `case` 블록으로 구성되며, 각 블록은 고유한 상수와 연관된 `case` 레이블에 따라 분기되어 처리됩니다. 
+
+== switch 문 실행
+
+switch 문은 아래와 같이 실행됩니다.
+
+1. `case` 문에 지정된 상수 하나가 `switch` 문의 식의 값과 같으면 일치하는 `case` 레이블 다음에 오는 명령문 목록으로 제어가 이전됩니다.
+2. 모든 `case` 레이블 상수가 `switch` 식과 같지 않고 `switch` 문에 `default` 레이블이 포함되어 있으면 제어는 `default` 레이블 다음의 문으로 이전됩니다.
+3. `case` 레이블 상수가 `switch` 식과 일치하지 않고 `switch` 문에 `default` 레이블이 포함되어 있지 않은 경우, `switch` 문의 끝으로 제어가 이전됩니다.
+
+`switch` 문의 `case` 레이블에는 `정수 타입` , `char` , `String`, `enum` 등의 타입만 평가될 수 있으며, 조건식은 사용할 수 없습니다. 허용되지 않는 유형에서 허용되는 유형으로 암시적 타입 변환이 있으면 `switch` 문에 사용할 수 있습니다.
+
+== 상수 그룹화
+
+여러 상수를 그룹화하려면 아래 예와 같이 각 상수에 대해 case 키워드를 반복합니다.
+
+[source, java]
+----
+String monthName = "February";
+int monthDays = 0;
+switch (monthName) {
+case "February":
+        monthDays = 28;
+        break;
+case "April":
+    case "June":
+    case "September":
+    case "November":
+        monthDays = 30;
+        break;
+    default:
+        monthDays = 31;
+        break;
+    }
+}
+----
+
+`case` 와 `default` 레이블은 `switch` 식의 값을 기반으로 하는 프로그램의 제어 흐름에 대한 진입점을 제공하기 위해서만 사용합니다. 레이블은 프로그램의 제어 흐름을 변경하지 않습니다.
+`case` 레이블 상수의 값은 고유해야 합니다. 다음 예젠느 컴파일시에 오류를 발생합니다.
+
+[source, java]
+----
+switch (trumps) {
+    case “Clubs”:
+    case “Clubs”:	// Error: 중복된 레이블
+        ...
+    default:
+    default:		// Error: 중복된 레이블
+}
+----
+
+== switch 문에서 break 사용
+
+switch 문은 조건식을 먼저 계산한 다음, 그 결과와 일치하는 case 문으로 이동하여 이동한 case문 아래에 있는 문장들을 수행하며, break 문을 만나면 전체 switch문을 빠져나갑니다.
+
+break 절이 없는 switch 문은 아래와 같이 동작합니다.
+
+image:./images/image01.png[switdh, 300]
+ 
+break 절이 있는 switch 문은 아래와 같이 동작합니다.
+ 
+image:./images/image02.png[swith, 310]
+
+link:./09_iteration.adoc[다음: 반복문]

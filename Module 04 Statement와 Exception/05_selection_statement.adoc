@@ -1,0 +1,11 @@
+= 선택문(Selection Statement)
+
+if 및 switch문은 선택문으로 분류됩니다. 식의 값에 따라 선택하고 그 선택에 따라 선택적으로 문을 실행합니다. 이 장에서는 Java에서 지원하는 선택문을 배웁니다.
+
+== Table of Contents
+
+1. if문
+2. cascading if문
+3. switch문
+
+link:./06_if_statement.adoc[다음: if Statement]

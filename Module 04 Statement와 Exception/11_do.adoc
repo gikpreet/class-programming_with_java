@@ -1,0 +1,74 @@
+= do 문
+
+* boolean 값을 기준으로 내부 문을 수행
+* 반복이 끝날 때 boolean 식을 평가, boolean 값이 true일 때 내부 문 실행
+* 조건과 관계없이 최소 한 번은 실행됨
+
+[source, java]
+----
+int i = 0;
+do {
+    System.out.println(i);
+    i++;
+} while (i < 10);
+----
+
+---
+
+`do` 문은 `while` 문과 비슷합니다. 다른 점은 반복 여부를 결정하는 boolean 식이 반복의 시작이 아니라 끝에서 평가된다는 점입니다. 따라서 한 번도 실행될 수 없는 `while` 문과 달리 `do` 문은 최소 한 번 이상 반복합니다. `do` 문은 프로그램을 실행을 계속하기 전에 입력의 유효성을 검사해야 할 때 특히 유용합니다.
+
+== 실행 흐름
+
+`do` 문은 아래와 같이 실행됩니다.
+
+1.	제어가 `do` 문에 포함된 문으로 이동합니다.
+2.	제어가 포함된 문의 끝에 도달하면, boolean 식이 평가됩니다.
+3.	만약 boolean 식이 `true` 를 산출하면, 제어는 `do` 문의 시작으로 이동합니다.
+4.	만약 boolean 식이 `false` 를 산출하면, 제어는 `do` 문의 끝으로 이동합니다.
+
+== 예제
+
+다음과 같이 간단한 `while` 문을 사용할 수 있습니다. 실행되는 문이 한 줄일 때 중괄호를 생략할 수 있습니다.
+
+[source, java]
+----
+do
+    System.out.println(i++) 
+while (i < 10);
+----
+
+`while` 문에서와 같은 이유로, 중괄호를 써서 do문을 작성하는 것이 좋습니다. 아래와 같이 작성할 수 있습니다.
+
+[source, java]
+----
+do {
+    System.out.println(i);
+} while (i < 10);
+----
+
+`do` 문 마지막에는 반드시 세미 콜론을 사용해야 합니다.
+
+[source, java]
+----
+do {
+    System.,out.println(i++)
+} while (i < 10)	// 세미콜론( ; )이 없으므로 컴파일 오류
+----
+
+아래 예제는 do문을 사용해서 표준 입력으로 입력 받은 숫자의 구구단을 출력합니다.
+
+[source, java]
+----
+Scanner scanner = new Scanner(System.in);
+int i = scanner.nextInt();
+int j = 1;
+do {
+if (i < 1 || i >= 9) {
+         break;
+    }
+    System.out.println(i + “ * ” + j + “ = ” + i * j);
+} while (j <= 9);
+scanner.close();
+----
+
+link:./12_for.adoc[다음: for 문]

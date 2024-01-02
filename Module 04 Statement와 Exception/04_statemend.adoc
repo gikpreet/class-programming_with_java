@@ -1,0 +1,19 @@
+= 문의 종류
+
+* Java는 흐름제어를 위한 세 가지 종류의 문을 제공
+** 선택문: if 문과 switch 문
+** 반복문: while, do, for, foreach 문
+** 분기문: break, continue문
+
+---
+
+프로그램이 커질수록 프로그램 논리가 복잡해집니다. 따라서 프로그램에는 구조화된 흐름제어가 필요하며, 이는 추상화 수준에서의 구성 또는 문을 사용하여 제어할 수 있습니다. Java는 다음과 같은 범주의 흐름제어를 위한 문을 제공합니다.
+
+* 선택문(Selection statement) +
+if 및 switch 문은 선택문으로 분류됩니다. 식의 값을 선택하고 그 선택에 따라 문을 실행합니다.
+* 반복문(Iteration statement) +
+while, do, for, foreach 문은 특정 조건이 true일 동안 반복적으로 실행되는 문이며 반복문으로 분류됩니다.
+* 분기문(Jump Statement) +
+break, continue 문은 제어를 다른 문으로 옮기는데 사용됩니다.
+
+link:./05_selection_statement.adoc[다음: 선택문]

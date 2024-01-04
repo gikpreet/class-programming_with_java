@@ -1,0 +1,83 @@
+= 데모: 명령줄 인자 사용
+
+여기에서는 명령줄 인자를 사용하는 방법을 보여줍니다.
+
+== 데모 준비
+
+1.	Visual Studio Code를 실행합니다.
+2.	파일 메뉴에서 폴더 열기를 클릭하고 c:\demo\module06 폴더를 엽니다.
+3.	작성자 신뢰 경고 창에서, 예, 작성자를 신뢰합니다 버튼을 클릭합니다.
+4.	Visual Studio Code 탐색기에서 새 파일 버튼을 클릭하고 CommandLineArgs.java 파일을 만듭니다.
+5.	CommandLineArgs,java 파일에, 아래 코드를 작성합니다
++
+[source, java]
+----
+public class CommandLineArgs {
+    public static void main(String[] args) {
+        System.out.println("using for: ");
+        for (int i = 0; i < args.length; i++) {
+            System.out.println(i + " " + args[i]);
+        }
+    }
+}
+----
+
+== main 메소드 인자 사용
+1.	Visual Studio Code에서, for문 코드를 확인하고 보여줍니다.
+2.	터미널을 열고 아래 명령어를 입력하여 컴파일합니다.
++
+----
+> javac CommandLineArgs.java
+----
++
+3.	터미널에서 아래 명령을 실행합니다.
++
+----
+> java CommandLineArgs Ironman Captain-America Thor Hulk
+----
++
+4.	아래와 같은 결과를 확인합니다.
++
+----
+using for: 
+0 Ironman
+1 Captain-America
+2 Thor
+3 Hulk
+----
++
+5.	코드 파일에서, main 메소드를 아래와 같이 수정합니다.
++
+[source, java]
+----
+public class CommandLineArgs {
+    public static void main(String[] args) {
+        System.out.println("using foreach: ");
+        for (String arg: args) {
+            System.out.println(arg);
+        }
+    }
+}
+----
++
+6.	터미널을 열고 아래 명령어를 입력하여 컴파일합니다.
++
+----
+> javac CommandLineArgs.java
+----
++
+7.	터미널에서 아래 명령을 실행합니다.
++
+----
+> java CommandLineArgs Hello World
+----
++
+8.	아래와 같은 결과를 확인합니다.
++
+----
+using for: 
+Hello
+World
+----
+
+link:./23_using_array_in_foreach.adoc[다음: foreach 문에서 배열 사용]

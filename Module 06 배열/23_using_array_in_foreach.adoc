@@ -1,0 +1,53 @@
+= foreach 문에서 배열 사용
+
+* foreach 문은 배열 처리를 위한 상세 작업을 추상화 함
+
+[source, java]
+----
+class Example {
+    public static void main(String[] args) {
+        for (String arg: args) {
+            System.out.println(arg);
+        }
+    }
+}
+----
+
+---
+
+foreach문은 배열의 모든 요소를 반복하는 메커니즘을 추상화하므로 편리하고 유용하게 사용할 수 있습니다. for문을 사용하여 배열의 모든 요소를 반복하여 액세스하는 코드를 작성하면 아래와 같습니다:
+
+[source, java]
+----
+for (int i = 0; i < args.length; i++) {
+    System.out.println(args[i]);
+}
+----
+
+foreach문을 사용해서 위 코드를 작성하면 아래와 같이 됩니다:
+
+[source, java]
+----
+for (String arg: args) {
+    System.out.println(arg);
+}
+----
+
+배열에서 foreach문을 사용하면, 아래와 같은 코드를 작성할 필요가 없어집니다:
+
+* 정수 인덱스
+* 배열 경계 검사 (i < args.length)
+* 배열 요소 액세스 코드 (args[i])
+
+2차원 배열에서 foreach문을 사용하려면 아래와 같은 코드를 쓸 수 있습니다:
+
+[source, java]
+----
+for (int[] innerArray: array) {
+    for (int element: innerArray) {
+        System.out.print(element + " ");
+    }
+}
+----
+
+link:./24_lab_6-1.adoc[다음: 배열의 생성과 사용]

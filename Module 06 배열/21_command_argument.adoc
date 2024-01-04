@@ -1,0 +1,48 @@
+= 명령줄 인자
+
+* 런타임은 main 메소드로 명령줄 인자를 넘겨줌
+* main 메소드는 파라미터로 문자열(String) 타입 배열을 넘겨 받음
+* 프로그램 이름은 배열의 요소가 아님
+
+[source, java]
+----
+class Example {
+    public static void main(String[] args) {
+        for (int i = 0; i < args.length; i++) {
+            System.out.println(args[i]);
+        }
+    }
+}
+----
+
+콘솔 기반 프로그램을 실행할 때 명령줄에 추가 인자를 제공하는 경우가 많습니다. 예를 들어 명령 프롬프트에서 pkzip 프로그램을 실행하는 경우 추가 인자를 추가하여 .zip 파일을 생성할 수 있습니다. 다음 명령은 모든 현재 폴더의 .java 파일을 code.zip 파일에 추가합니다.
+
+----
+c:\> pkzip -add -rec -path=relative *.cs
+----
+
+만약 pkzip 프로그램을 java로 작성한다면 명령 실행과 함께 전달되는 인자들을 main 메소드의 args 파라미터로 전달받을 수 있습니다.
+
+[source, java]
+----
+class pkzip {
+    public static void main(String[] args) {
+        …
+    }
+}
+----
+
+이 예제에서, 파라미터로 전달되는 배열은 다음과 같습니다:
+
+
+[source, java]
+----
+String[] args = {
+    "-add",
+    "-rec",
+    "-path=relative",
+    "*.java"
+}
+----
+
+link:./22_demo_using_commandline_argument.adoc[다음: 데모 - 명령줄 인자 사용]

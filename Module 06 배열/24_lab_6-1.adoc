@@ -1,0 +1,142 @@
+= Lab 6-1 : 배열의 생성과 사용
+
+이 연습에서는 텍스트 파일의 이름을 main 함수의 인자로 받아 파일의 내용을 요약하는 프로그램을 작성합니다. 프로그램은 텍스트 파일의 내용을 문자열로 읽어 배열로 만들고 배열의 요소를 반복하며 처리합니다. 프로그램은 읽은 텍스트 파일의 문자 수, 모음 수, 자음 수 및 줄의 총 수를 출력합니다. 아래 절차에 따릅니다.
+
+== 연습 1: main 메소드의 인자에서 텍스트 파일의 이름 처리
+
+1.	Visual Studio Code를 실행합니다.
+2.	파일 메뉴에서 폴더 열기를 클릭하고 c:\Labs\Lab06-1\CreateAccount\Starter 폴더를 엽니다.
+3.	작성자 신뢰 경고 창에서, 예, 작성자를 신뢰합니다 버튼을 클릭합니다.
+4.	Visual Studio Code 탐색기에서 FileDetails.java 파일을 엽니다.
+5.	FileDetails 클래스의 main 메소드에 파라미터의 길이를 검사하는 코드를 작성합니다. 파라미터의 길이가 1보다 작거나 크면 “usage: java FileDetails FileName” 메시지를 출력하고 프로그램을 끝내는 코드를 작성합니다.
+6.	main 메소드의 파라미터 인자로 전달된 args 배열에 전달된 요소가 하나일 경우 요소의 값을 String 타입 변수 fileName에 할당합니다.
+7.	완성된 코드는 아래와 유사할 것입니다:
++
+[source, java]
+----
+public class FileDetails {
+    public static void main(String[] args) {
+        if (args.length != 1) {
+            System.out.println("Usage: java FileDetails FileName");
+            return;
+        }
+        String fileName = args[0];
+    }
+}
+----
++
+8.	FileDetails.java 프로그램을 컴파일 합니다. 오류가 있으면 수정합니다.
+
+=== 텍스트 파일을 읽어 배열에 저장
+1.	File 클래스 선언부터 catch문까지 코드의 주석을 해제합니다.
+2.	try문 블록에 char 타입 배열 contents를 정의하고 텍스트 파일의 크기와 같은 크기의 새 배열 인스턴스로 초기화합니다.
+3.	try문 블록에 for문을 선언하고 contents 배열의 요소를 반복하면서 stream에서 읽은 단일 문자를 순서대로 할당하는 코드를 작성합니다.
++
+|===
+|**알림** `stream` 의 `read` 메소드는 int 타입을 반환합니다. 배열의 요소에 할당하기 전에 `char` 로 형변환을 수행해야 합니다.
+|===
++
+4.	try문에 foreach문을 추가하고 `contents` 배열내의 모든 `char` 타입 요소를 출력하는 코드를 작성합니다.
+5.	완성된 코드는 아래와 유사할 것입니다:
++
+[source, java]
+----
+public static void main(String[] args) {
+    if (args.length != 1) {
+        System.out.println("Usage: java FileDetails FileName");
+        return;
+    }
+    String fileName = args[0];
+    File file = new File(fileName);
+    try (FileInputStream stream = new FileInputStream(file)) {
+        char[] contents = new char[(int)file.length()];
+        for (int i = 0; i < contents.length; i++) {
+            contents[i] = (char)stream.read();
+        }
+        for (char c: contents) {
+            System.out.println(c);
+        }
+    }
+    catch (Exception e) {
+        e.printStackTrace();
+    }
+}
+----
++
+6.	FileDetails.java 파일을 컴파일하고 오류가 있으면 수정합니다. 폴더에 포함된 Yesterday.txt 파일의 이름을 명령줄 인수로 사용하여 프로그램을 실행합니다. 실행 명령은 아래와 같습니다:
++
+----
+> java FileDetails Yesterday.txt
+----
++
+7.	foreach문을 주석처리 합니다.
+
+== 연습 2: 파일의 정보표시
+1.	`FileDetails` 클래스에 `summerize` 라는 `static` 메소드를 선언합니다. 이 메소드는 값을 반환하지 않으며 `char` 타입 배열이 필요합니다. 그리고 `main` 메소드의 `try` 블록에 `contents` 배열을 파라미터 인자로 전달하며 `summarize` 메소드를 호출하는 코드를 작성합니다.
+2.	`summarize` 메소드에 foreach문을 추가하고 파라미터로 전달받은 배열의 문자를 검사합니다. 모음(Vowel), 자음(consonant), 줄 바꿈(new line) 문자를 세고 결과를 별도의 변수에 저장합니다.
++
+|===
+|**알림** 문자가 모음인지 확인하려면 모든 모음 문자를 포함하는 문자열을 만들고 해당 문자열에 대한 indexOf 메소드를 사용하여 해당 문자열에 char가 있는지 확인할 수 있습니다.
+|===
++
+[source, java]
+----
+for (char c: contents) {
+if ("AEIOUaeiou".indexOf(c) != -1) {
+// 모음
+}
+    else {
+        // 모음이 아님
+    }
+}
+----
++
+3.	아래와 같은 메시지를 출력하는 코드를 작성합니다.
++
+* 파일에 포함된 문자 개수
+* 파일에 포함된 모음 수
+* 파일에 포함된 자음 수
+* 파일의 줄 수
++
+완성된 코드는 아래와 유사할 것입니다:
++
+[source, java]
+----
+static void summerize(char[] contents) {
+    int vowel = 0, consonants = 0, lines = 0;
+    for (char c: contents) {
+        if (Character.isLetter(c)) {
+            if ("AEIOUaeiou".indexOf(c) != -1) {
+                vowel++;
+            }
+            else {
+                consonants++;
+            }
+        } else if (c == '\n') {
+            lines++;
+        }
+    }
+    System.out.println("총 문자 수: " + contents.length);
+    System.out.println("모음 수: " + vowel);
+    System.out.println("자음 수: " + consonants);
+    System.out.println("줄 수: " + lines);
+}
+----
++
+4.	작업을 저장합니다.
+5.	FileDetails.java 파일을 컴파일하고 오류가 있으면 수정합니다. 폴더에 포함된 Yesterday.txt 파일의 이름을 명령줄 인수로 사용하여 프로그램을 실행합니다. 실행 명령은 아래와 같습니다:
++
+----
+> java FileDetails Yesterday.txt
+----
++
+6.	실행 결과는 아래와 같습니다:
++
+----
+총 문자 수: 658
+모음 수: 192
+자음 수: 299
+줄 수: 19
+----
+
+link:./25_review.adoc[다음: 검토]

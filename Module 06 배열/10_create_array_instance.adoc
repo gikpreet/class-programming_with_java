@@ -32,3 +32,4 @@ row[3] = 0;
 row[4] = 0;
 ----
 
+link:./11_initiate_element.adoc[다음: 배열 요소 초기화]

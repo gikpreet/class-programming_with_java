@@ -1,0 +1,124 @@
+= 메소드 호출
+
+* 선언한 메소드의 사용
+** 같은 클래스 내에서 메소드 호출
+*** 메소드 이름 뒤의 괄호에 하나 이상의 파라미터를 사용
+** 다른 클래스에 있는 메소드 호출
+*** 호출할 메소드가 있는 클래스를 표시
+*** 호출되는 메소드는 private으로 선언되면 안됨
+** 중첩 호출
+*** 메소드는 다른 메소드를 호출할 수 있고, 다른 메소드를 호출하는 메소드를 호출할 수 있음
+
+---
+
+정의한 메소드는 같은 클래스내에서 또는 다른 클래스에서 호출할 수 있습니다.
+
+== 메소드 호출
+
+메소드를 호출하려면 호출할 메소드가 정의한 파라미터와 같은 타입의 변수를 파라미터로 사용하며, 타입과 순서를 지켜야 합니다. 메소드에 파라미터가 없는 경우에는 빈 괄호를 써야 합니다.
+
+[source, java]
+----
+myMethod();
+----
+
+아래 예제에서 프로그램언 `MyClass` 의 `main` 메소드에서 시작합니다. 첫 번째 문은 “The Program is starting”을 출력하고, 두 번째 문에서 `myMethod` 를 호출합니다 제어 흐름은 myMethod로 이동하고, `myMethod` 메소드는 "Hello, World!"를 출락합니다. `myMethod` 메소드가 종료되면 제어는 `main` 메소드의 다음 문으로 이동하고 "The Program is ending"을 출력합니다.
+
+[source, java]
+----
+public class MyClass {
+    public static void myMethod() {
+        System.out.println("Hello, World");
+    }
+
+    public static void main(String[] args) {
+        System.out.println("The Program is Starting");
+        myMethod();
+        System.out.println("The Program is ending");
+    }
+}
+----
+
+== 다른 클래스에서 메소드 호출
+
+다른 클래스의 메소드를 호출하려면 아래의 규칙을 지켜야 합니다.
+
+* 호출하려는 메소드가 포함된 클래스의 이름을 지정해야 하고, 클래스 이름과 메소드의 이름을 .(dot operation)으로 연결해야 합니다.
+* 호출하려는 메소드는 `private` 으로 선언되면 안됩니다.
+
+아래 예제에서는 `MyClass` 클래스에서 `OtherClass` 에 선언된 `methodInOtherClass` 메소드를 호출합니다.
+
+[source, java]
+----
+public class MyClass {
+    public static void main(String[] args) {
+        System.out.println("The Program is Starting");
+        OtherClass.methodInOtherClass();
+        System.out.println("The Program is ending");
+    }
+}
+
+class OtherClass {
+    public static void methodInOtherClass() {
+        System.out.println("this method is in OtherClass");
+    }
+}
+----
+
+만약 `MyClass` 에서 `methodInOtherClass` 메소드를 호출할 때 클래스 이름을 지정하지 않으면 컴파일러는 `MyClass` 에서 `methodInOtherClass` 메소드를 찾습니다. `MyClass` 클래스에는 `methodInOtherClass` 메소드가 존재하지 않기 때문에 컴파일러는 "cannot find symbol" 오류를 표시합니다.
+
+메소드를 선언할 때 접근 제한자를 선언하지 않으면 `default` 가 되며, `default` 는 같은 패키지내에 있는 클래스에서만 볼 수 있도록 제한됩니다. 따라서, 같은 패키지 내에 있는 클래스에서라면 접근 제한자를 명시하지 않은 다른 클래스의 메소드를 호출할 수 있습니다.
+
+메소드를 선언할 때 `private` 키워드를 사용하여 선언하면 클래스 내부에서만 사용할 수 있도록 지정됩니다. 아래 코드는 컴파일 시에 "methodInOtherClass() has private access in OtherClass"오류를 표시합니다.
+
+[source, java]
+----
+public class MyClass {
+    public static void main(String[] args) {
+        System.out.println("The Program is Starting");
+        OtherClass.methodInOtherClass();
+        System.out.println("The Program is ending");
+    }
+}
+
+class OtherClass {
+    private static void methodInOtherClass() {
+        System.out.println("this method is in OtherClass");
+    }
+}
+----
+
+== 중첩 호출
+
+메소드 내에서 메소드를 호출할 수 있습니다. 
+
+[source, java]
+----
+public class MethodCall {
+    static void method1() {
+        System.out.println("method 1");
+    }
+
+    static void method2() {
+        method1();
+        System.out.println("method 2");
+    }
+
+    public static void main(String[] args) {
+        method2();
+        method1();
+    }
+}
+----
+
+위 코드를 컴파일하고 실행하면 다음과 같은 결과를 출력합니다:
+
+----
+method 1
+method 2
+method 1
+----
+
+Java에서는 메소드를 중첩하여 무제한으로 호출할 수 있습니다. 중첩 수준에는 제한이 없지만, 런타임 환경에서는 일반적으로 프로세스를 실행하는데 사용하는 메모리(RAM)가 제한되어 있습니다. 중첩된 메소드를 호출할 때 메모리가 부족하다면 클래스 디자인을 다시 살펴볼 필요가 있습니다.
+
+link:./05_return_statement.adoc[다음: return statement]

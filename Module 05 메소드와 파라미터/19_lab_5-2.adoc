@@ -1,0 +1,310 @@
+= Lab 5-2: 메소드 오버로딩
+
+== 연습 1: 프로시저를 추상화하는 메소드 생성
+
+이 연습에서는 지정한 숫자에서 시작하여 다른 지정한 숫자까지 특정 단계로 더하거나 곱하는 메소드를 작성합니다.
+
+처음으로 `main` 메소드에서 1부터 10까지 더하는 코드를 작성해 본 후 이를 메소드로 분리하여 메소드 파라미터로 전달받은 수를 이용해서 시작할 숫자, 끝나는 숫자 및 단계를 전달받아 더하는 메소드를 작성하고 테스트합니다. 아래 절차에 따릅니다.
+
+=== main 메소드에서 1부터 10까지 누적하여 더하는 코드 작성
+
+1.	Visual Studio Code를 실행합니다.
+2.	파일 메뉴에서 폴더 열기를 클릭하고 c:\Labs\Lab05-2\Starter 폴더를 엽니다.
+3.	작성자 신뢰 경고 창에서, 예, 작성자를 신뢰합니다 버튼을 클릭합니다.
+4.	Visual Studio Code 탐색기에서 Algorithm.java 파일을 엽니다.
+5.	`Algorithm` 클래스의 `main` 메소드에서, 1에서 10까지 더하는 코드를 작성합니다. 더한 값을 누적하는 int 타입 변수 `sum` 을 선언하고 0으로 초기화한 후, for 반복문을 사용하여 `sum` 변수에 증가치를 더한 후 `sum` 변수의 값을 출력합니다.
+6.	완성된 코드는 아래와 같을 것입니다.
++
+[source, java]
+----
+public class Algorithm {
+    public static void main(String[] args) {
+        int sum = 0;
+        for (int i = 1; i <= 10; i++) {
+            sum += i;
+        }
+        System.out.println(sum);
+    }
+}
+----
++
+7.	Algorithm.java 파일을 컴파일합니다. 오류가 있으면 수정합니다.
+8.	컴파일이 완료되면 프로그램을 실행하고 출력 값을 확인합니다.
+
+=== 1부터 10까지 값을 더하는 addFrom1To10 메소드 작성
+
+1.	main 메소드 위에, 1부터 10까지의 수를 누적하여 더하는 addFrom1To10 메소드를 작성합니다. 구문은 main 메소드와 동일하지만 sum 변수를 반환합니다.
+2.	main 메소드에서 블록 내에 작성한 코드를 삭제하고 addFrom1To10 메소드를 호출한 값을 출력하도록 변경합니다.
+3.	완성된 코드는 아래와 유사할 것입니다.
++
+[source, java]
+----
+public class Algorithm {
+    static int addFrom1To10() {
+        int sum = 0;
+        for (int i = 1; i <= 10; i++) {
+            sum += i;
+        }
+        return sum;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(addFrom1To10());
+    }
+}
+----
++
+4.	Algorithm.java 파일을 컴파일합니다. 오류가 있으면 수정합니다.
+5.	컴파일이 완료되면 프로그램을 실행하고 출력 값을 확인합니다.
+
+=== 1에서 10까지 더한 값을 상수로 선언
+
+1.	코드에서, `addFrom1To10` 메소드는 언제나 55를 반환합니다. 이런 경우 상수(Constant Number)로 표현하는 것이 좋습니다. `addFrom1To10` 메소드를 삭제하고 int 타입 상수 `addFrom1To10` 을 정적 변수(static)로 선언합니다. 클래스 내외로 공유되는 상수는 클래스 레벨에서 선언되어야 하며, `final` 키워드를 사용합니다. `final` 키워드를 변수 앞에 사용하면 더 이상 변경될 수 없다는 것을 의미합니다.
+2.	선언한 상수 `addFrom1To10` 에 55를 할당합니다.
+3.	`main` 메소드에서 `addFrom1To10` 상수를 출력하도록 코드를 수정합니다.
+4.	완성된 코드는 아래와 유사할 것입니다.
++
+[source, java]
+----
+public class Algorithm {
+    static int addFrom1To10 = 55;
+
+    public static void main(String[] args) {
+        System.out.println(addFrom1To10);
+    }
+}
+----
++
+5.	Algorithm.java 파일을 컴파일 합니다. 오류가 있으면 수정합니다.
+6.	컴파일이 완료되면 프로그램을 실행하고 출력 값을 확인합니다.
+
+=== 파라미터를 사용하여 특정 숫자에서 특정 숫자까지 지정된 간격으로 더하는 메소드 작성
+
+1.	`Algorithm` 클래스의 `addFrom1To10` 상수 아래에, int 타입을 반환하며 int 타입의 `begin`, `end`, `step` 세 파라미터를 가지는 정적 메소드 `sigma` 를 선언합니다.
+2.	`sigma` 메소드에 int 타입의 `result` 변수를 선언한 후 0으로 초기화 합니다.
+3.	`sigma` 메소드 블록 내에, for 반복문을 사용하여 `begin` 에서 시작하여 `end` 까지 `step` 간격으로 더하는 메소드를 작성합니다.
+4.	`main` 메소드에서 `sigma` 메소드를 1, 10, 1을 파라미터 인자로 전달하여 호출하고 `result` 값을 출력하는 코드를 작성합니다.
+5.	완성된 코드는 아래와 유사할 것입니다.
++
+[source, java]
+----
+public class Algorithm {
+    static int addFrom1To10 = 55;
+
+    static int sigma(int start, int end, int step) {
+        int result = 0;
+        for (int next = start; next <= end; next = next + step) {
+            result = result + next;
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(sigma(1, 10, 1));
+    }
+}
+----
++
+6.	Algorithm.java 파일을 컴파일하고 오류가 있으면 수정합니다.
+7.	컴파일이 완료되면 프로그램을 실행하고 출력 값을 확인합니다.
+
+=== 파라미터를 사용하여 특정 숫자에서 특정 숫자까지 지정된 간격으로 곱하는 메소드 작성
+
+1.	`Algorithm` 클래스의 `sigma` 메소드 아래에, int 타입을 반환하며 int 타입의 `int`, `end`, `step` 세 파라미터를 가지는 정적 메소드 `pi` 를 선언합니다.
+2.	`pi` 메소드 블록에 int 타입의 `result` 변수를 선언한 후 1로 초기화 합니다.
+3.	`pi` 메소드 블록내에, for 반복문을 사용하여 `begin` 에서 시작하여 `end` 까지 `step` 간격으로 곱하는 메소드를 작성합니다.
+4.	`main` 메소드에서 `pi` 메소드를 1, 10, 1을 파라미터 인자로 전달하여 호출하고 return 값을 출력하는 코드를 작성합니다.
+5.	완성된 코드는 아래와 유사할 것입니다.
++
+[source, java]
+----
+public class Algorithm {
+    static int addFrom1To10 = 55;
+
+    static int sigma(int start, int end, int step) {
+        int result = 0;
+        for (int next = start; next <= end; next = next + step) {
+            result = result + next;
+        }
+        return result;
+    }
+
+    static int pi(int start, int end, int step) {
+        int result = 1;
+        for (int next = start; next <= 10; next = next * step) {
+            result = result * next;
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(sigma(1, 10, 1));
+        System.out.println(pi(1, 10, 1));
+    }
+}
+----
++
+6.	결과 값은 아래와 같습니다.
++
+----
+55
+3628800
+----
+
+=== sigma 메소드의 pi 메소드의 차이점을 확인하고 수정
+
+앞에서 작성한 sigma 메소드와 pi 메소드는 너무 비슷합니다. 같은 패턴을 사용하는 두 메소드에서 서로 다른 부분을 [ ]로 표시하면 아래와 같습니다.
+
+[source, java]
+----
+static int [sigma](int start, int end, int step) {
+    int result = [0];
+    for (int next = start; next <= end; next = next + step) {
+        result = result [+] i;
+    }
+    return result;
+}
+----
+
+메소드의 이름을 일반적인 이름으로 변경합니다.
+
+[source, java]
+----
+static int [accumulate](int start, int end, int step)
+----
+
+메소드 내의 [ ] 로 표시된 값을 이름으로 변경합니다.
+
+[source, java]
+----
+static int [accumulate](int start, int end, int step) {
+    int result = [init];
+    for (int i = start; I <= end; I = I + c) {
+        result = [binder](result, i)
+    }
+}
+----
+
+바꾼 이름을 메소드의 파라미터로 만들고 적당한 타입 이름을 씁니다. 이 예제에서는 더하기와 곱하기를 수행하는 `Adder` 와 `Multiplier` 라는 미리 만들어진 클래스를 사용합니다.
+
+1.	pi 메소드 아래에, accumulate라는 이름의 메소드를 추가합니다.
+a.	accumulate 메소드는 Adder 타입의 binder, int 타입의 init, int 타입의 start, int 타입의 end, int 타입의 step을 파라미터로 가집니다.
+b.	accumulate 메소드의 블록 내부에, 파라미터로 받은 init과 binder를 사용하도록 위의 코드에서 [ ]을 제거한 코드를 작성합니다.
+c.	인자로 전달받은 binder 객체의 apply 메소드를 result와 next 변수를 파라미터 인자로 하여 호출합니다.
+2.	작성한 코드는 아래와 유사할 것입니다.
++
+[source, java]
+----
+public class Algorithm {
+    static final int addFrom1To10 = 55;
+    
+    …
+
+    static int accumulate(Adder binder, int init, int start, int end, int step) {
+        int result = init;
+        for (int next = start; next <= end; next = next + step) {
+            result = binder.apply(result, next);
+        }
+        return result;
+    }
+}
+----
++
+3.	작성한 메소드 아래에, `Multiplier` 클래스를 첫 번째 파라미터로 사용하는 오버로드 된 `accululate` 메소드를 작성합니다.
+a.	오버로드 된 `accumulate` 메소드는 `Multiplier` 타입의 `binder`, int 타입의 `init`, int 타입의 `start`, int 타입의 `end`, int 타입의 `step`을 파라미터로 가집니다.
+b.	`accumulate` 메소드의 블록 내부에, 파라미터로 받은 `init` 과 `binder` 를 사용하도록 위의 코드에서 [ ]을 제거한 코드를 작성합니다
+c.	인자로 전달받은 `binder` 객체의 `apply` 메소드를 `result` 와 `next` 변수를 파라미터 인자로 하여 호출합니다.
+4.	완성된 코드는 아래와 유사할 것입니다.
++
+[source, java]
+----
+public class Algorithm {
+    …
+
+   static int accumulate(Adder binder, int init, int start, int end, int step) {
+        int result = init;
+        for (int next = start; next <= end; next = next + step) {
+            result = binder.apply(result, next);
+        }
+        return result;
+    }
+
+    static int accumulate(Multiplier binder, int init, int start, int end, int step) {
+        int result = init;
+        for (int next = start; next <= end; next = next + step) {
+            result = binder.apply(result, next);
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(sigma(1, 10, 1));
+        System.out.println(pi(1, 10, 1));
+    }
+}
+----
+5.	Algorithm.java 파일을 컴파일 합니다. 오류가 있으면 수정합니다.
+
+== 연습 2: 메소드를 오버로드하여 다형성을 구현하는 메소드 작성
+
+이 연습에서는 `accumulate` 메소드를 오버로드하여 `sigma` 와 `pi` 두 메소드를 수정합니다.
+
+=== sigma와 pi 메소드 재 작성
+
+1.	sigma 메소드 블록의 코드를 삭제합니다.
+2.	sigma 메소드 블록에 `Adder` 클래스 생성자, 0, start, end, step을 순서대로 파라미터로 사용하여 `accumulate` 메소드를 호출하는 코드를 작성합니다.
+3.	`pi` 메소드 블록의 코드를 삭제합니다.
+4.	`pi`` 메소드 블록에 `Multiplier` 클래스 생성자, 1, start, end, step을 순서대로 파라미터로 사용하여 `accumulate` 메소드를 호출하는 코드를 작성합니다.
+5.	완성된 코드는 아래와 유사할 것입니다.
++
+[source, java]
+----
+public class Algorithm {
+    static int addFrom1To10 = 55;
+
+    static int sigma(int start, int end, int step) {
+        return accumulate(new Adder(), 0, start, end, step);
+    }
+
+    static int pi(int start, int end, int step) {
+        return accumulate(new Multiplier(), 1, start, end, step);
+    }
+
+    static int accumulate(Adder binder, int init, int start, int end, int step) {
+        int result = init;
+        for (int next = start; next <= end; next = next + step) {
+            result = binder.apply(result, next);
+        }
+        return result;
+    }
+
+    static int accumulate(Multiplier binder, int init, int start, int end, int step) {
+        int result = init;
+        for (int next = start; next <= end; next = next + step) {
+            result = binder.apply(result, next);
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(sigma(1, 10, 1));
+        System.out.println(pi(1, 10, 1));
+    }
+}
+----
++
+6.	Algorithm.java 프로그램을 컴파일합니다. 오류가 있으면 수정합니다.
+7.	프로그램을 실행하고 아래와 같은 결과를 확인합니다.
++
+----
+55
+3628800
+----
+
+연습에서 보듯이, 파라미터의 종류가 다르거나, 파라미터의 개수다 틀리면 프로시저의 이름 하나를 여러 번 사용할 수 있습니다 이를 오버로딩이라고 합니다. 오버로딩은 다음과 같은 특징을 가집니다.
+
+* 하나의 클래스 내에 같은 이름을 가진 다수의 메소드가 존재
+* 컴파일러에 의해 지원되는 정적인 기능
+* 파라미터의 타입과 개수에 의해 컴파일러가 적절한 메소드를 선택함
+
+link:./20_review.adoc[다음: 검토]

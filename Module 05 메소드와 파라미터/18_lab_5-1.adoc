@@ -1,0 +1,148 @@
+= Lab 5-1: 메소드 생성과 사용
+
+== 연습 1: 값을 반환하는 메소드에서 파라미터 사용
+
+이 연습에서는 준비된 `Utilities` 라는 이름의 클래스에 `max` 라는 메소드를 만듭니다. 이 메소드는 두 개의 정수 파라미터를 입력 받아 둘 중 큰 값을 반환합니다.
+
+클래스를 테스트하기 위해 `Test` 라는 다른 클래스를 생성하고 `Utilities.max` 메소드를 호출하여 입력 받은 숫자를 결정한 후 결과를 출력합니다. 아래 절차에 따릅니다.
+
+=== max 메소드 작성
+1.	Visual Studio Code를 실행합니다.
+2.	파일 메뉴에서 폴더 열기를 클릭하고 c:\Labs\Lab05-1\Starter 폴더를 엽니다.
+3.	작성자 신뢰 경고 창에서, 예, 작성자를 신뢰합니다 버튼을 클릭합니다.
+4.	Visual Studio Code 탐색기에서 `Utilities.java` 파일을 엽니다.
++
+파일은 Utilities 클래스를 포함하고 있습니다. 이 클래스에 max 정적 메소드를 작성합니다.
++
+5.	`Utilities` 클래스의 _To-do: Create max method here_ 구역에 `max` 라는 이름의 정적(static) 메소드를 추가합니다.
+6.	메소드는 `i`, `j` 라는 이름을 가진 두 개의 int 타입 파라미터를 가집니다. 메소드의 바디는 두 수를 비교하여 큰 값을 return 합니다.
++
+완성된 코드는 아래와 유사할 것입니다.
++
+[source, java]
+----
+import java.util.Scanner;
+
+public class Utilities {
+    public static int max(int i, int j) {
+        if (i > j) {
+            return i;
+        }
+        else {
+            return j;
+        }
+    }
+}
+----
+
+=== max 메소드 테스트
+1.	`Test` 클래스의 `main` 메소드에서, `Scanner` 객체 생성 코드 아래에 코드를 작성합니다.
+2.	`i`, `j` 이름을 가진 두 int 타입 변수를 선언합니다.
+3.	첫 번째 숫자를 입력하라는 메시지를 출력합니다.
+4.	i 변수 대해 `scanner.nextInt` 메소드를 사용해 표준 입력에서 입력되는 값을 int 타입으로 전달받아 할당합니다.
+5.	두 번째 숫자를 입력하라는 메시지를 출력합니다.
+6.	`j` 변수 대해 `scanner.nextInt` 메소드를 사용해 표준 입력에서 입력되는 값을 int 타입으로 전달받아 할당합니다.
+7.	int 타입 변수 `max` 를 선언합니다.
+8.	`i`, `j` 두 변수를 파라미터 인자로 `max` 메소드를 호출하고 결과를 `max` 변수에 할당합니다.
+9.	`max` 변수를 출력하는 코드를 작성합니다.
+10.	`scanner` 를 닫습니다.
+11.	완성된 코드는 아래와 유사할 것입니다.
++
+[source, java]
+----
+import java.util.Scanner;
+
+public class Utilities {
+    public static int max(int i, int j) {
+        if (i > j) {
+            return i;
+        }
+        else {
+           return j;
+        }
+    }
+}
+
+class Test {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int i, j;
+        System.out.print("첫 번째 숫자를 입력하세요: ");
+        i = scanner.nextInt();
+        System.out.print("두 번째 숫자를 입력하세요: ");
+        j = scanner.nextInt();
+        int max = Utilities.max(i, j);
+
+        System.out.printf("%d, %d 중 큰 숫자는 %d입니다.", i, j, max);
+        scanner.close();
+    }
+}
+----
++
+12.	작업을 저장합니다.
+13.	아래 명령을 실행하여 프로그램을 컴파일합니다.
++
+----
+> javac -encoding UTF-8 Utilities.java
+----
++
+14.	오류가 있으면 수정합니다.
+15.	컴파일이 완료되면 두 class 파일이 생성된 것을 확인합니다.
+16.	터미널에서 아래 명령을 실행하여 작성한 프로그램을 실행합니다.
++
+----
+> java Test
+----
+17.	프로그램이 동작하는 것을 확인합니다.
+
+== 연습 2: swap 메소드 테스트
+
+이 연습에서는 Java의 Pass by Value를 테스트하기 위해 `swap` 메소드를 작성하고 동작을 테스트합니다. 아래 절차에 따릅니다.
+
+1.	Visual Studio Code에 열려 있는 Utilities.java 파일의 `Utilities` 클래스에 `swap` 메소드를 추가합니다.
+2.	swap 메소드를 아래와 같이 작성합니다.
+a.	메소드는 public 접근 제한자를 가지며, 정적(static)이고 i, j 두 개의 int 타입 파라미터를 가집니다.
+b.	swap 메소드는 파라미터로 전달받은 두 값을 교체합니다. 임시 변수를 선언한 후 두 값 중 하나를 할당하고 임시 변수를 사용하여 값을 교환할 수 있습니다. 임시 변수의 이름은 temp이며 int 타입입니다.
+3.	완성된 코드는 아래와 유사할 것입니다.
++
+[source, java]
+----
+public static void swap(int i, int j) {
+int temp = i;
+i = j;
+j = temp;
+}
+----
++
+4.	`Test` 클래스의 `main` 메소드의 바디에서, 이전 연습에서 작성한 모든 코드를 주석처리 합니다.
+5.	`Test` 클래스의 `main` 메소드에서 `i`, `j` 두 int 타입 변수를 선언하고 `i` 에는 1, `j` 에는 2를 할당합니다.
+6.	두 변수의 값을 출력하는 코드를 작성합니다.
+7.	`i`, `j` 두 변수를 파라미터로 `swap` 메소드를 실행하는 코드를 작성합니다.
+8.	두 변수의 값을 출력하는 코드를 작성합니다.
+9.	완성된 코드는 아래와 유사할 것입니다.
++
+[source, java]
+----
+class Test {
+    public static void main(String[] args) {
+        int i = 1, j = 2;
+        System.out.printf("swap 메소드 호출 전 i: %d, j: %d\n", i, j);
+        Utilities.swap(i, j);
+        System.out.printf("swap 메소드 호출 후 i: %d, j: %d", i, j);
+    }
+}
+----
++
+10. 아래 명령을 실행하여 프로그램을 컴파일 합니다.
++
+----
+> javac -encoding UTF-8 Utilities.java
+----
+11.	프로그램을 실행하여 테스트하고 `swap` 메소드 호출후에도 `i`, `j` 변수에 저장된 값이 교환되지 않는 것을 확인합니다.
++
+----
+swap 메소드 호출 전: i: 1, J: 2
+swap 메소드 호출 후: i: 1, J: 2
+----
+
+link:./19_lab_5-2.adoc[다음: Lab 5-2 메소드 오버로딩]

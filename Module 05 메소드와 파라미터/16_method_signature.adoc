@@ -1,0 +1,59 @@
+= 메소드 시그너처
+
+* 메소드 시그너처는 클래스 내에서 유일해야 함
+* 시그너처 정의
+** 시그너처
+*** 메소드 이름
+*** 파라미터의 타입
+*** 파라미터의 개수
+** 시그너처에 영향을 미치지 않는 것
+*** 파라미터의 이름
+*** 메소드의 return 타입
+
+---
+
+컴파일러는 시그너처를 사용하여 클래스의 메소드를 구분합니다. 각 클래스에서 각 메소드의 시그너처는 유일해야 합니다.
+
+== 시그너처 정의
+
+메소드 시그너처는 메소드의 이름, 파라미터의 타입, 파라미터의 개수로 구성됩니다.
+
+아래의 세 메소드는 시그너처가 다르므로 같은 클래스에서 선언할 수 있습니다.
+
+[source, java]
+----
+static int doSomething() { 
+} 
+
+static int doSomething(int n) { 
+} 
+
+static int doSomething(int n, int p) { 
+}
+----
+
+== 시그너처에 영향을 미치지 않는 요소
+
+메소드 시그너처는 return 타입을 포함하지 않습니다. 아래 두 메소드는 같은 시그너처로 판단되어 컴파일시에 오류를 출력합니다.
+
+[source, java]
+----
+static int doSomething (int n) { 
+} 
+
+static String doSomething (int n) { 
+}
+----
+
+메소드 시그너처는 파라미터의 이름을 포함하지 않습니다. 아래 두 메소드는 같은 시그너처로 판단되어 컴파일시에 오류를 출력합니다.
+
+[source, java]
+----
+static int doSomething (int n) { 
+} 
+
+static int doSomething (int j) { 
+}
+----
+
+link:./17_using_overloaded_method.adoc[다음: 오버로드된 메소드 사용]

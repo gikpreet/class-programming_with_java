@@ -1,0 +1,10 @@
+= 객체 계층 구조
+
+Java의 모든 클래스는 java.lang.Object에서 파생된, Object 클래스의 서브 클래스입니다. 이 단원에서는 Java 객체들의 계층 구조에 대해 학습합니다.
+
+== Table of Contents
+
+1.	Object 타입
+2.	공통 메소드
+
+link:./20_object_type.adoc[다음: Object 타입]

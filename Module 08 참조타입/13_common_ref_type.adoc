@@ -1,0 +1,13 @@
+= 공통 참조 타입
+
+Java는 많은 참조 타입 클래스를 미리 만들어 가지고 있습니다. 이 장에서는 많이 사용되는 공통 참조 타입인 Exception 클래스와 String 클래스에 대해 알아봅니다.
+
+== Table of Contents
+
+1.	Exception 클래스
+2.	String 클래스
+3.	String 클래스의 메소드, 연산자
+4.	String 비교
+5.	String 비교 연산자
+
+link:./14_exception_class.adoc[다음: exception 클래스]

@@ -1,0 +1,69 @@
+= 새 객체 인스턴스화
+
+* 클래스 변수 정의는 객체를 생성하지 않음
+* new 연산자를 사용해서 객체 생성
+
+[source, java]
+----
+class Program {
+    public static void main(String[] args) {
+        int age = 27;
+        BankAccount account = new BankAccount();
+        Account.deposit(2200);
+    }
+}
+----
+
+---
+
+클래스의 인스턴스를 생성할 때는 new 키워드를 사용합니다. 아래 코드를 살펴봅시다.
+
+[source, java]
+----
+class Time {
+    public int hour, minute;
+}
+
+public class Program {
+    public static void main(String[] args) {
+        Time now;
+        now.hour = 11;
+        now.minute = 59;
+    }
+}
+----
+
+클래스 변수를 선언할 때 해당 클래스의 인스턴스(객체)를 생성하지 않습니다. 위 코드에서 now 변수의 선언은 Time 클래스의 객체를 생성하지 않습니다. 클래스 변수를 선언하면 해당 클래스의 객체를 참조할 수 있는 참조가 생성됩니다. 이것이 클래스를 참조 타입(Reference Type)이라고 부르는 이유입니다. 즉, 런타임에서 앞의 코드를 실행할 수 있는 경우 존재하지 않는 Time 개체에 액세스 하려고 시도합니다. 위 코드는 컴파일시에 오류가 발생합니다.
+
+----
+error: variable now might not have been initialized
+----
+
+
+이 오류를 수정하려면, new 키워드를 사용해서 Time 객체를 생성해야 합니다. new 키워드를 사용해서 객체를 생성하면 now 변수가 생성된 Time 타입의 객체를 참조합니다.
+
+[source, java]
+----
+public class Program {
+    public static void main(String[] args) {
+        Time now = new Time();
+        now.hour = 11;
+        now.minute = 59;
+    }
+}
+----
+
+위와 같이 클래스를 인스턴스화하면 객체의 필드는 기본값으로 초기화됩니다. 코드는 컴파일에 성공합니다.
+
+[source, java]
+----
+public class Program {
+    public static void main(String[] args) {
+        Time now = new Time();
+        System.out.println(now.hour);		// 0 출력
+        System.out.println(now.minute);	    // 0 출력
+    }
+}
+----
+
+link:./16_this.adoc[다음: this 키워드]

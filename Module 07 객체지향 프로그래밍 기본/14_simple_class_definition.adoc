@@ -1,0 +1,71 @@
+= 단순한 클래스 정의
+
+* 데이터와 메소드 모두 클래스 내에 위치
+* 메소드는 public, 데이터는 private
+
+[source, java]
+----
+class BankAccount {
+    	public void withDraw(int amount)
+	{ ... }
+	public void deposit(int amount)
+	{ ... }
+	private decimal balance;
+	private String name;
+}
+----
+
+Java에서 클래스는 아래와 같은 방법으로 정의될 수 있습니다:
+
+* `class` 키워드를 사용합니다.
+* 데이터를 명확히 클래스 내부에 정의합니다.
+* 메소드 역시 클래스 내부에 정의합니다.
+* 데이터와 메소드에 접근 제한자를 추가합니다. 가장 단순한 접근 제한자는 public과 private입니다.
+
+|===
+|**참조** `public` 과 `private` 을 사용하여 캡슐화하는 것은 프로그래머에게 달려 있습니다. Java는 이를 강제하지 않습니다.
+|===
+
+`public` 은 액세스가 제한되지 않는 다는 것을 의미합니다. private은 포함하는 타입에서만 액세스가 제한됩니다:
+
+[source, java]
+----
+class BankAccount {
+    public void deposit(int amount) {
+        balance += amount;
+    }
+    private int balance;
+}
+----
+
+이 예에서는 `deposit` 메소드가 `BankAccount` 의 메소드이기 때문에 `BankAccount` 객체의 `private` 멤버 `balance` 에 액세스 할 수 있습니다. 즉, 잔고는 `BankAccount` 내부에 있습니다. `BankAccount` 외부의 객체는 `balance` 에 액세스 할 수 없습니다. 다음 코드는 컴파일 시 오류가 발생합니다.
+
+[source, java]
+----
+class BankRobber 
+{ 
+    public void stealFrom(BankAccount underAttack) 
+    { 
+        underAttack.balance -= 100; 
+    } 
+}
+----
+
+
+위 코드에서 `balance` 는 `BankAccount` 에 있습니다. `BankRobber` 클래스는 `BankAccount` 의 외부에 있기 대문에 `BankAccout` 에서 `private` 으로 선언된 `balance` 에 액세스 할 수 없습니다.
+
+정적 데이터를 선언하려면 아래 코드와 같이 정적 메서드(main 등)에서 사용하는 방식을 따르고 변수 선언시에 static 키워드를 접두사루 붙입니다. 
+
+[source, java]
+----
+class BankAccount {
+    public void deposit(int amount) { … }
+    public static void main(String[] args) [ … ]
+    private int balance;
+    private static int interestRate;
+}
+----
+
+만약 클래스 멤버를 선언할 때 접근 제한자를 쓰지 않으면 기본적으로 `default` 로 설정됩니다. `default` 는 가시성이 클래스로 제한되는 접근 제한자로, 같은 패키지 내에 있는 클래스에서는 액세스 할 수 있습니다. 이에 대해서는 이후에 다룹니다.
+
+link:./15_instance.adoc[다음: 새 객체 인스턴스화]

@@ -1,0 +1,48 @@
+= Generic 객체 생성
+
+* Generic 타입을 생성할 때 타입 파라미터가 주어져야 함
+* 참조 변수와 생성자에 주어지는 타입 파라미터는 동일해야 함
+
+[source, java]
+----
+Box<Integer> box = new Box<Integer>();
+Box<String> box = new Box<String>();
+----
+
+* 타입 파라미터의 상속 관계는 Generic 타입 생성시 영향을 주지 않음
+** 타입 파라미터는 불공변성을 가짐
+** Generic 타입의 상속 관계는 일반 상속관계와 동일하게 적용됨
+* 타입 파라미터가 명확한 경우, 생성자 호출시 전달되어야 하는 타입 변수는 생략 가능
+
+---
+
+Generic 타입을 이용해 객체를 생성할 때는 타입 파라미터에 사용하고자 하는 타입 파라미터를 제공해야 합니다.
+
+`Box<T>` 에서 T는 타입 파라미터이며, T의 타입으로 Integer라는 타입 파라미터를 전달하여 `Box<T>` 가 Integer를 받거나 제공할 수 있는 객체로 생성됩니다.
+
+Box의 생성자에서는 Integer를 타입 파라미터로, 참조 변수에서는 타입 인수로 생성할 경우, 타입 인수간 상속 관계로 동작에 문제가 없어 보이지만 Generic에서 타입 파라미터는 불공변성을 가지므로 Integer로 선언된 타입에는 반드시 Integer 타입 파라미터로 생성되어야 합니다.
+
+Generic 타입 객체는 아래와 같이 생성됩니다.
+
+[source, java]
+----
+Box<Integer> box1 = new Box<Integer>(1);
+Box<String> box2 = new Box<String>(“Hello”);
+----
+
+생성자를 호출할 때 타입 파라미터의 타입을 생략할 수 있습니다.
+
+[source, java]
+----
+Box<Integer> box = new Box<>(1);
+----
+
+타입 파라미터 자체를 생략하면, 컴파일시에 타입 오류를 발생하지 않고 오류 가능성을 경고만 합니다. 오류는 런타임에 발생합니다.
+
+[source, java]
+----
+Box<Integer> box = new Box<>("Hello");	// 컴파일 오류
+Box<Integer> box = new Box("Hello");	// 오류 가능성 경고
+----
+
+link:./11_generic_method.adoc[다음: Generic 메소드]

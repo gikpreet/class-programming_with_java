@@ -1,0 +1,97 @@
+= Generic 타입 선언
+
+* 일반 타입 선언(클래스와 인터페이스)에 타입 파라미터를 추가한 형태로 사용
+* 타입 파라미터는 클래스나 인터페이스의 이름뒤에 선언하며, < > 기호 사이에 열거됨
+
+[source, java]
+----
+public class Box<T> {
+    private T t;
+
+    public void set(T t) {
+        this.t = t;
+    }
+
+    public T get() {
+        return this.t;
+    }
+}
+----
+
+* 하나 이상의 타입 파라미터를 사용할 수 있음
+
+[source, java]
+----
+class Pair<K, V> {
+    private K key;
+    private V value;
+
+    public K getKey() {
+        return this. key;
+    }
+
+    public V getValue() {
+        return this. value;
+    }
+}
+----
+
+---
+
+Generic 타입은 일반 타입(클래스 또는 인터페이스)의 선언과 유사합니다. 
+
+아래의 Box 클래스는 전역 변수 item을 일반적인 타입으로 선언하기 위해 Object 타입으로 선언했습니다.
+
+[source, java]
+----
+public static class Box {
+    Object item;
+
+    public void set(Object item) {
+        this.item = item;
+    }
+
+    public Object get() {
+        return this.item;
+    }
+}
+----
+
+위와 같은 형식의 클래스를 Generic 타입으로 변경하는 절차는 아래와 같습니다.
+
+1. Box 클래스 이름 뒤에 타입 파라미터 T를 추가
++
+[source, java]
+----
+public static class Box<T> {
+    Object item;
+
+    public void set(Object item) {
+        this.item = item;
+    }
+
+    public Object get() {
+        return this.item;
+    }
+}
+----
++
+2. 클래스 내부에 선언된 유효한 타입들을 타입 파라미터 T로 치환합니다.
++
+[source, java]
+----
+public static class Box<T> {
+    T item;
+
+    public void set(T item) {
+        this.item = item;
+    }
+
+    public T get() {
+        return this.item;
+    }
+}
+----
+
+link:./09_generic_constructor.adoc[다음: Generic 타입 생성자]
+

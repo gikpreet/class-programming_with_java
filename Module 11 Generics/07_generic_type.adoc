@@ -1,0 +1,11 @@
+= Generic 타입
+
+Generic 타입은 클래스 또는 인터페이스에 선언하며, 타입 파라미터 이름은 단일 대문자를 사용하고 기본 데이터 타입은 사용할 수 없으며 인자의 상속관계는 Generic 타입의 상속관계와는 관련이 없는 등의 특징을 가지고 있습니다. 이 장에서는 Generic 타입에 대해 알아봅니다.
+
+== Table of Contents
+
+1. Generic 타입 선언
+2. 객체 생성
+
+link:./08_declare_generic_type.adoc[다음: 지네릭 타입 선언]
+

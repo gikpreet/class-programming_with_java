@@ -1,0 +1,46 @@
+= 타입 변환 감소
+
+* 수퍼 타입을 서브 타입으로 변환하기 위해서는 타입 변환이 필요함
+
+[source, java]
+----
+public class TypeSafetyExample {
+    public static class Box {
+        Object item;
+        …
+    }
+    public static void main(String [] args) {
+        …
+        Integer value = (Integer) box.get();
+        …
+    }
+}
+----
+
+* Generic을 적용할 경우 별도의 타입 변환 과정을 필요로 하지 않음
+
+[source, java]
+----
+public class TypeSafetyGenericsExample {
+    public static class Box<T> {
+        T item;
+        …
+    }
+    public static void main(String [] args) {
+        …
+        Integer value = box.get();
+        …
+    }
+}
+----
+
+---
+
+Generic이 적용되지 않은 경우, Box 클래스의 전역 변수 item이 다양한 타입을 처리할 수 있도록 정의되어야 하는 경우 java.lang.Object로 선언됩니다. Java에서 기본 데이터 타입(Primitive Data Type)을 제외한 모든 타입은 Object의 서브 타입이므로 데이터의 설정에는 별다른 작업이 필요하지 않습니다.
+
+하지만 데이터를 사용해야 하는 경우에 Box에 저장되어 있는 데이터는 클래스 인스턴스 타입으로 변환되어야 합니다. 이 과정을 수행할 때 마다 타입 변환이 요구됩니다.
+
+이에 비해 Generic을 적용할 경우 클래스의 전역 변수 타입이 타입 인자를 통해 명확하게 설명되므로 컴파일러에서 확인이 가능하여, 이를 통해 데이터 간 호환 타입에 대한 부가적인 설명이 필요 없게 되어 타입 변환이 없는 간결한 코드 작성이 가능합니다.
+
+link:./06_algorithm_generalization.adoc[다음: 알고리즘 일반화]
+

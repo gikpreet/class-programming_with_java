@@ -1,0 +1,82 @@
+= 상속 및 서브타입
+
+* 타입 파라미터의 상속 관계는 Generic 타입의 상속과 무관함
+* Generic 파라미터로 지정된 타입 인스턴스의 동작은 공변적
+
+[source, java]
+----
+Box<Number> box = new Box<Number>();
+box.add(new Integer(10));   // OK
+box.add(new Double(10.1));  // OK
+----
+
+* 타입 파라미터는 반공변적
+
+[source, java]
+----
+Box<Number> box = new Box<Integer>();	// 컴파일 오류
+----
+
+* Generic 클래스의 확장
+** 타입 파라미터를 변경하지 않는 한 서브 타입 지정 관계가 유지됨
+
+---
+
+Generic 파라미터로 전달되어 생성된 인스턴스는 클래스의 타입 변환 규칙과 동일합니다. 타입 파라미터로 지정되어 생성된 Generic 객체 내의 타입은 Java의 타입 변환 규칙을 위반하지 않는 한 같은 방식으로 동작할 수 있습니다.
+
+[source, java]
+----
+Box<Number> box = new Box<Number>();
+box.add(new Integer(10));   // OK
+box.add(new Double(10.1));  // OK
+----
+
+선언되는 Generic 파라미터 타입과 생성자에서 생성되는 Generic 파라미터 타입은 타입 변환 규칙을 따르지 않습니다. 반드시 같은 타입으로 선언되어야 합니다. 아래 코드에서 Box<Number>와 Box<Integer>는 별개의 타입으로 인식됩니다.
+
+[source, java]
+----
+Box<Number> box = new Box<Integer>();		// 컴파일 오류
+----
+
+== Generic 타입 상속
+
+Generic 클래스 역시 일반 클래스와 동일하게 확장될 수 있습니다. 서브 타입은 슈퍼 타입 Generic 파라미터 보다 더 많은 Generic 파라미터를 가질 수 있습니다.
+
+[source, java]
+----
+public class Product<T, M> {
+    private T kind;
+    private M model;
+ 
+    public T getKind() {
+        return kind;
+    }
+ 
+    public void setKind(T kind) {
+        this.kind = kind;
+    }
+ 
+    public M getModel() {
+        return model;
+    }
+ 
+    public void setModel(M model) {
+        this.model = model;
+    }
+}
+
+public class ChildProduct<T, M, C> extends Product<T, M> {
+    private C company;
+ 
+    public C getCompany() {
+        return company;
+    }
+ 
+    public void setCompany(C company) {
+        this.company = company;
+    }
+}
+----
+
+link:./19_wildcard.adoc[다음: 와일드 카드]
+

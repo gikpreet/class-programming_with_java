@@ -1,0 +1,187 @@
+= 와일드 카드
+
+* 파라미터나 return 값이 특정한 타입 파라미터를 정의하지 않고 임의의 타입을 지정
+** 타입 인자에 대한 제한을 두지 않음
+** 특정 타입 또는 상속 받은 타입으로 타입 인자를 제한
+** 특정 타입 또는 상위 타입으로 타입 인자를 제한
+* 무제한 와일드 카드
+** 타입 인자에 제한을 두지 않음
+
+[source, java]
+----
+void genericMethod(Collection<?> collection) { ... }
+----
+
+* 슈퍼 타입 제한 와일드 카드
+** 지정된 타입이나 그로부터 상속 받은 타입에 한해서만 적용
+** 타입 파라미터에 extends 키워드를 사용해 허용가능한 최상위 타입을 선언
+
+[source, java]
+----
+void genericMethod(List<? extends Number>) { ... }
+----
+
+* 서브 타입 제한 와일드 카드
+** 지정된 타입이나 슈퍼 타입에 한해서만 적용
+** 타입 파라미터에 super 키워드를 사용해 허용 가능한 최하위 타입을 선언
+
+[source, java]
+----
+void genericMethod(List<? super Number>) { ... }
+----
+
+---
+
+와일드 카드는 Generic을 정의할 때 return 값에 대해 특정한 타입 파라미터를 정의하지 않고 임의의 타입이 올 수 있는 기능을 제공합니다. Generic 파라미터의 와일드 카드는 <?> 형식으로 정의되며, 인자로 받을 수 있는 타입의 제한이 가능합니다.
+
+== 무제한 와일드 카드(Unbounds Wildcards)
+
+Generic 파라미터로 전달받은 타입에 제한을 두지 않으며, 아래와 같이 사용합니다.
+
+----
+<Access Modifier> <Type Parameter List> <Return Type> 
+Method name(<?>Parameter list)
+----
+
+[source, java]
+----
+public class GenericMethodWithWildcardTest {
+    static void showList(List<?> list) {
+        Iterator<?> it = list.iterator();
+        while(it.hasNext()) {
+            System.out.print(it.next().toString() + ' ');
+        }
+        System.out.println("");
+    }
+ 
+    public static void main(String[] args) {
+        List<Number> numberList = Arrays.asList(1, 2, 3);
+        List<String> stringList = Arrays.asList("one", "two", "three");
+ 
+        showList(numberList);
+        showList(stringList);
+    }
+}
+----
+
+----
+1 2 3 
+one two three
+----
+
+== 슈퍼 타입 제한 와일드 카드
+
+[source, java]
+----
+<? extends [Type]>
+----
+
+슈퍼 타입 제한 와일드 카드는 와일드 카드에 들어갈 수 있는 타입 인수를 주어진 타입이거나 상속된 타입으로만 제한합니다.
+
+[source, java]
+----
+import java.util.List;
+import java.util.Arrays;
+import java.util.Iterator;
+
+public class GenericMethodWithWildcardTest {
+    static <T> void find(T item, List<? extends Number> list) {
+        Iterator<?> it = list.iterator();
+        while(it.hasNext()) {
+            Object element = it.next();
+            if (element.equals(item)) {
+                System.out.println(item + " found");
+                return;
+            }
+        }
+        System.out.println(item + " not found.");
+    }
+
+   public static void main(String[] args) {
+       List<Number> list = Arrays.asList(1, 2, 3);
+       Number value = new Integer(2);
+
+       find(value, list);
+    }
+}
+----
+
+GenericMethodWIthWildcardTest 클래스의 find 메소드는 슈퍼 타입 제한 와일드 카드를 사용해 Number의 서브 타입에 대해서만 호출을 허용합니다. 만약, Number의 서브 타입이 아닌 객체가 Generic 파라미터로 넘겨지면 컴파일러는 오류를 출력합니다.
+
+[source, java]
+----
+public static void main(String[] args) {
+    List<Object> list = Arrays.asList(1, 2, 3);
+    Number value = new Integer(2);
+
+    find(value, list);
+}
+----
+
+----
+java: method find in class GenericMethodWithWildcardTest cannot be applied to given types;
+  required: T,java.util.List<? extends java.lang.Number>
+  found: java.lang.Number,java.util.List<java.lang.Object>
+  reason: cannot infer type-variable(s) T
+    (argument mismatch; java.util.List<java.lang.Object> cannot be converted to java.util.List<? extends java.lang.Number>)
+----
+
+== 서브 타입 제한 와일드카드
+
+[source, java]
+----
+<? super [Type]>
+----
+
+서브 타입 제한 와일드카드는 와일드카드에 들어올 수 있는 타입 인자를 주어진 타입이거나 또는 주어진 타입의 슈퍼 타입으로 제한합니다.
+
+[source, java]
+----
+import java.util.List;
+import java.util.Arrays;
+import java.util.Iterator;
+
+public class GenericMethodWithWildcardTest {
+    static <T> void find(T item, List<? super Number> list) {
+        Iterator<?> it = list.iterator();
+        while(it.hasNext()) {
+            Object  element = it.next();
+            if (element.equals(item)) {
+                System.out.println(item + " found");
+                return;
+            }
+        }
+        System.out.println(item + " not found.");
+    }
+
+    public static void main(String[] args) {
+        List<Object> list = Arrays.asList(1, 2, 3);
+        Number value = new Integer(2);
+
+        find(value, list);
+    }
+}
+----
+
+`GenericMethodWIthWildcardTest` 클래스의 find 메소드는 서브 타입 제한 와일드 카드를 사용해 `Number` 의 슈퍼 타입에 대해서만 호출을 허용합니다. 만약, `Number` 의 슈퍼 타입이 아닌 객체가 Generic 파라미터로 넘겨지면 컴파일러는 오류를 출력합니다.
+
+[source, java]
+----
+public static void main(String[] args) {
+    List<Integer> list = Arrays.asList(1, 2, 3);
+    Number value = new Integer(2);
+
+    find(value, list);
+}
+----
+
+----
+java: method find in class GenericMethodWithWildcardTest cannot be applied to given types;
+required: T,java.util.List<? super java.lang.Number>
+found: java.lang.Number,java.util.List<java.lang.Integer>
+reason: cannot infer type-variable(s) T
+  (argument mismatch; java.util.List<java.lang.Integer> cannot be converted to java.util.List<? super java.lang.Number>)
+----
+
+link:./20_type_deletion.adoc[다음: 타입 삭제]
+

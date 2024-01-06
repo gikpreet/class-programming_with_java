@@ -1,0 +1,40 @@
+= Generic 타입 생성자
+
+* Generic 타입 생성자에서는 타입 파라미터를 사용하지 않음
+* 일반 크래스와 동일한 방법으로 생성자 선언
+
+[source, java]
+----
+class Box<T> {
+    T box;
+    public Box(T box) {
+        this.box = box;
+    }
+}
+----
+
+---
+
+Generic 클래스 생성자에서는 타입 파라미터를 사용하지 않습니다. Generic 클래스의 생성자는 일반 클래스의 생성자 규칙과 동일합니다.
+
+[source, java]
+----
+class Box<T> {
+    T box;
+
+    public Box(T box) {
+        this.box = box;
+    }
+}
+----
+
+위와 같이 선언한 클래스는 아래와 같은 방식으로 생성할 수 있습니다.
+
+[source, java]
+----
+Box<Integer> box = new Box<Integer>(1);
+----
+
+link:./10_create_generic_object.adoc[다음: Generic 객체 생성]
+
+

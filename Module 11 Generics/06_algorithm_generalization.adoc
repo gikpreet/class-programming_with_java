@@ -1,0 +1,70 @@
+= 알고리즘 일반화 구현
+
+* Generics는 알고리즘 일반화를 구현할 수 있도록 함
+** 다양한 타입의 객체들을 다루는 메소드나 컬렉션 클래스에 컴파일 시 타입 체크를 가능하도록 함
+
+[source, java]
+----
+public static <T extends Comparable<T>> void bubbleSort(T[] items) {
+    for(int i = items.length - 1 ; i > 0 ; i--) {
+        for(int j = 0 ; j < i ; j++)  {
+            if (items[j].compareTo(items[j+1]) > 0) {
+                T item = items[j];
+                items[j] = items[j+1];
+                items[j+1] = item;
+            }
+        }
+    }
+}
+----
+
+* 타입 파라미터가 Compatable의 서브 타입이면 정렬 가능하도록 정의
+* 비교 가능한 아이템의 경우 정렬이 가능하도록 선언하며, 특정 데이터 타입에 국한되지 않는 일반적인 알고리즘의 구현이 가능
+
+---
+
+Generics는 모듈이나 알고리즘을 구현한 후 다양한 타입에 적용할 수 있도록 지원합니다. 
+
+버블 정렬은 각 항목의 비교를 통해 항목의 순서를 정렬하는 잘 알려진 알고리즘입니다. 일반적인 버블 정렬 알고리즘은 하나의 타입에 대한 정렬을 수행하지만, Generic는 항목간 비교가 가능한 Comparable 항목이라면 정렬 가능한 일반적인 알고리즘 작성을 가능하게 합니다. 또한, 알고리즘 구현 단계에서 특정 타입을 이용한 검증을 통해 알고리즘의 신뢰성이 확보되었다면 다른 타입에 대해서도 신뢰성이 보장되었다고 할 수 있습니다.
+
+[source, java]
+----
+public class BubbleSortExample {
+    public static <T extends Comparable<T>> void bubbleSort(T[] items) {
+        for(int i = items.length - 1 ; i > 0 ; i--) {
+            for(int j = 0 ; j < i; j++)  {
+                if (items[j].compareTo(items[j+1]) > 0) {
+                    T item = items[j];
+                    items[j] = items[j+1];
+                    items[j+1] = item;
+                }
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        Integer[] integerList =  {1, 10, 7, 2, 5, 4, 9, 8, 3, 6};
+        String[] stringList =  {"James", "Robert", "John", "Michael", "William", "Noah", "Liam", "Jacob"};
+
+        System.out.println("정렬 전 : " + Arrays.toString(integerList));
+        bubbleSort(integerList);
+        System.out.println("정렬 후 : " + Arrays.toString(integerList));
+
+        System.out.println("정렬 전 : " + Arrays.toString(stringList));
+        bubbleSort(stringList);
+        System.out.println("정렬 후 : " + Arrays.toString(stringList));
+    }
+}
+----
+
+실행 결과는 아래와 같습니다.
+
+----
+정렬 전 : [1, 10, 7, 2, 5, 4, 9, 8, 3, 6] 
+정렬 후 : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] 
+정렬 전 : [James, Robert, John, Michael, William, Noah, Liam, Jacob] 
+정렬 후 : [Jacob, James, John, Liam, Michael, Noah, Robert, William]
+----
+
+link:./07_generic_type.adoc[다음: 지네릭 타입]
+

@@ -1,0 +1,28 @@
+= 타입 제한
+
+* 타입 파라미터로 전달 가능한 함수는 참조 타입, 즉 클래스나 인터페이스로 제한됨
+* int, boolean등 기본 데이터 타입을 사용해야 하는 경우 Wrapper 클래스를 사용
+
+---
+
+Java의 Generics에서는 타입 파라미터로 기본 데이터 타입을 사용할 수 없으며, 사용할 경우 컴파일 타임에 오류가 발생합니다.
+
+[source, java]
+----
+Pair<String, int> p1 = new OrderedPair<String, int>("Even", 8);
+----
+
+----
+unexpected type 
+required: reference 
+found: int
+----
+
+정수형, 부동 소수점 형등의 Generic 사용을 위해서는 Wrapper 클래스를 사용할 수 있습니다.
+
+----
+Pair<String, Integer> p1 = new OrderedPair<String, Integer>("Even", 8);
+----
+
+link:./18_inheritance_subtype.adoc[다음: 상속 및 서브타입]
+

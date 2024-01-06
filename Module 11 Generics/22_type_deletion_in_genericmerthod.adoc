@@ -1,0 +1,84 @@
+= Generic 메소드에서의 타입 삭제
+
+* Generic 타입과 동일하게 타입 파라미터는 삭제됨
+* 타입 제한이 없는 경우 타입 파라미터는 Object 타입으로 변경됨
+* 타입 제한이 없는 경우 해당 타입으로 변경됨
+
+[source, java]
+----
+public static <T> int count(T[] anArray, T elem) {
+    int cnt = 0;
+    for (T e : anArray)
+        …
+}
+
+public static int count(Object[] anArray, Object elem) {
+    int cnt = 0;
+    for (Object e : anArray)
+        …
+}
+----
+
+---
+
+Generic 타입에서와 동일하게, Java 컴파일러는 Generic 메소드의 타입 파라미터도 삭제합니다.
+
+== 타입 파라미터 제한이 없는 경우
+
+타입 파라미터를 삭제한 후 타입 파라미터를 Object로 대치합니다.
+
+[source, java]
+----
+public static <T> int count(T[] array, T element) {
+    int count = 0;
+    for (T e : array) {
+        if (e.equals(element)) {
+            ++count;
+        }
+    }
+    return count;
+}
+----
+
+<T> 타입 파라미터를 가지는 Generic 메소드 count는 타입 파라미터 제한이 없으므로 컴파일러는 이를 Object로 대체합니다.
+
+[source, java]
+----
+public static int count(Object[] array, Object element) {
+    int count = 0;
+    for (Object e : array) {
+        if (e.equals(element)) {
+            ++count;
+        }
+    }
+    return count;
+}
+----
+
+== 제한된 타입 파라미터를 사용하는 경우
+
+타입 파라미터를 삭제한 후 해당 타입으로 대치합니다.
+
+[source, java]
+----
+class Shape { ... }
+class Circle extends Shape { ... }
+class Rectangle extends Shape { ... }
+----
+
+Shape, Shape의 서브타입인 Circle, Shape의 서브타입인 Rectangle 클래스가 있을 때, 다양한 모양을 그릴 수 있는 일반적인 Generic 메소드를 아래와 같이 정의할 수 있습니다.
+
+[source, java]
+----
+public static <T extends Shape> void draw(T shape) { ... }
+----
+
+컴파일시에, 컴파일러는 draw Generic 메소드의 타입 파라미터 T를 Shape로 대치합니다.
+
+[source, java]
+----
+public static void draw(Shape shape) { ... }
+----
+
+link:./23_generics_limitations.adoc[다음: Generics 제약]
+

@@ -1,0 +1,51 @@
+= Generic 메소드 선언
+
+* 일반 메소드 선언과 동일하며, 일반화 할 타입을 타입 파라미터로 선언
+* 메소드 앞에 <> 기호를 사용하여 타입 파라미터 목록을 선언
+
+[source, java]
+----
+<Access Modifier> <Type Parameter List> <Return Type> Method name(Parameter list)
+
+public <T> List<T> arrayToList(T[] array) { ... }
+----
+
+---
+
+Generic 메소드의 선언은 일반 메소드 선언과 동일하며, 일반화할 타입을 타입 파라미터로 선언합니다. 메소드는 타입 파라미터의 목록을 가져야 하며, 메소드 선언에 타입 파라미터 목록을 선언해야 합니다.
+
+다음 메소드는 배열을 파라미터로 받아 리스트를 반환합니다.
+
+[source, java]
+----
+public class GenericMethod {
+    public static <T> List<T> arrayToList(T[] array) {
+        List<T> list = new LinkedList<T>();
+            
+        for(T t : array) {
+            list.add(t);
+        }   
+        return  list;
+    }
+
+    public static void main(String[] args) {
+        Integer[] array = {1, 2, 3};
+
+        GenericMethod me = new GenericMethod();
+        List<Integer> list = me.<Integer>arrayToList(array);
+    }
+}
+----
+
+메소드 호출 시 메소드 이름앞에 <> 기호와 함께 타입 파라미터를 선언해야 합니다.
+
+[source, java]
+----
+Integer[] array = {1, 2, 3};
+List<Integer> list = GenericMethod.<Integer>arrayToList(array);
+----
+
+타입 파라미터는 Generic 타입에서와 마찬가지로 두 개 이상 사용할 수 있습니다.
+
+link:./13_type_influence.adoc[다음: 타입 추론]
+

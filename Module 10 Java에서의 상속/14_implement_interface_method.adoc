@@ -1,0 +1,50 @@
+= 인터페이스 메소드 구현
+
+* 구현되는 메소드는 인터페이스의 메소드와 시그너처가 같아야 함
+* 구현 메소드 역시 가상 메소드로, 파생되는 클래스에서 오버라이드 할 수 없음
+* 클래스에서 구현되는 메소드는 인터페이스의 추상 메소드보다 좁은 가시성을 가질 수 없음
+
+[source, java]
+----
+interface Flyable {
+    void fly();
+}
+
+interface Sucklable {
+    void suckle();
+}
+
+class Bat implements Flyable, Sucklable {
+    void fly() { ... }
+    void suckle() { ... }
+}
+----
+
+---
+
+클래스가 인터페이스를 구현할 때 해당 인터페이스에 선언된 모든 메소드를 구현해야 합니다. 이 제약은 인터페이스의 메소드는 본문을 정의할 수 없으므로 다형적인 동작을 수행하는 타입을 만드는데 적당합니다.
+
+클래스가 구현하는 메소드는 모든 측면에서 인터페이스에 선언된 메소드와 동일해야 합니다.
+
+* 접근 제한 +
+인터페이스 메소드는 암시적으로 public으로 선언됩니다. 따라서, 인터페이스를 구현하는 클래스의 인터페이스의 메소드를 구현하는 메소드 역시 public으로 선언되어야 합니다. Java의 클래스 메소드 기본 접근 제한자는 default입니다. 따라서, public으로 명시적으로 선언되어야 합니다.
+* return 타입 +
+인터페이스의 메소드 return 타입이 T로 선언되었으면, 인터페이스를 구현하는 클래스의 구현 메소드의 return 타입은 반드시 T 타입이어야 합니다. T의 서브 타입을 허용합니다.
+* 이름 +
+이름은 당연히 같아야 합니다.
+* 파라미터 목록 +
+파라미터의 목록과 순서, 타입이 반드시 일치해야 합니다.
++
+[source, java]
+----
+interface Attackable {
+    int Attack(int power, String targetName);
+}
+
+class Tank implements Attackable {
+    public int Attack(int power, String targetName) { … }
+    public int Attack(String targetName, int power) { … }	// 컴파일시 오류
+}
+----
+
+link:./15_methods_in_interface.adoc[다음: 인터페이스에서 메소드 구현]

@@ -1,0 +1,52 @@
+= final 메소드
+
+* final 로 선언된 메소드는 서브 클래스에서 오버라이드 할 수 없음
+
+[source, java]
+----
+class Product {
+    final String getName() { ... }
+}
+
+class IDCard extends Product {
+    public String getName() { ... }	// 컴파일 시 오류
+}
+----
+
+---
+
+클래스의 모든 메소드가 가상 메소드이어야 하는 것은 아닙니다. 가상 메소드는 파생되는 클래스에 의해 언제든 재정의 될 수 있습니다. 특정 객체가 반드시 자신만의 구현을 하는 메소드를 가져야 할 때도 있습니다. 이런 경우 메소드를 final 키워드로 선언하면 서브 클래스에서 메소드를 오버라이드 할 수 없게 됩니다.
+
+[source, java]
+----
+class Product {
+    final String getName() {
+        return "Product";
+    }
+}
+
+class IDCard extends Product {
+    public String getName() {   // 컴파일 시 오류
+        return "IDCard";
+    }
+}
+----
+
+오버라이드 할 수 없다고 해서 상속되지 않는 것은 아닙니다. final로 선언된 메소드를 가진 슈퍼 클래스에서 파생된 서브 클래스는 슈퍼 클래스의 final 메소드를 상속합니다.
+
+[source, java]
+----
+class Product {
+    final String getName() {
+        return "Product";
+    }
+}
+
+class IDCard extends Product {
+}
+
+IDCard idCard = new IDCard();
+idCard.getName();	// “Product”
+----
+
+link:./10_final_class.adoc[다음: final 클래스]

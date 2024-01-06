@@ -1,0 +1,67 @@
+= 메소드 오버라이딩
+
+* 서브 클래스에서 슈퍼 클래스의 메소드와 같은 시그너처로 정의
+* 서브 클래스에서 오버라이드하는 메소드는 슈퍼 클래스의 가상 메소드보다 낮은 가시성을 가질 수 없음
+
+[source, java]
+----
+class Product {
+    public String getName() { ... }
+}
+
+class IDCard extends Product {
+    public String getName() { ... }
+}
+----
+
+---
+
+메소드 오버라이딩은 가상 메소드의 또 다른 구현을 정의합니다. 슈퍼 클래스에서 가상 메소드를 정의하고 서브 클래스에서 다형적으로 재정의 할 수 있습니다.
+
+[source, java]
+----
+class Product {
+    public String getName() {
+        return "Product";
+    }
+}
+
+public class IDCard extends Product {
+    public String getName() {
+        return "IDCard";
+    }
+}
+Product product = new Product();
+IDCard iDCard = new IDCard();
+System.out.println(product.getName());	// “Product”
+System.out.println(iDCard.getName());		// “IDCard”
+----
+
+기본 클래스와 파생된 클래스에 시그너처가 같은 메소드가 존재한다면 호출되는 메소드는 실제로 생성되는 인스턴스에 따라 결정됩니다.
+
+[source, java]
+----
+Product id = new IDCard();
+System.out.println(id.getName()); 		//  “IDCard”
+----
+
+== 오버라이딩 메소드 가시성
+
+서브 클래스에서 오버라이드하는 메소드는 슈퍼 클래스의 가상 메소드보다 낮은 가시성을 가질 수 없습니다.
+
+[source, java]
+----
+class Product {
+    public String getName() {
+        return "Product";
+    }
+}
+
+public class IDCard extends Product {
+    String getName() {
+        return "IDCard";	// 컴파일시 오류
+    }
+}
+----
+
+link:./09_final_method.adoc[다음: final 메소드]

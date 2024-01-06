@@ -1,0 +1,34 @@
+= 인터페이스 선언
+
+* interface 키워드를 사용하여 선언
+
+[source, java]
+----
+interface BinaryOp {
+    void apply(int right, int left);
+}
+class Adder implements BinaryOp {
+    public int apply(int right, int left) {
+        ...
+    }
+}
+----
+
+---
+
+인터페이스는 코드가 없는 클래스와 비슷합니다. 클래스를 선언하는 방법과 같은 방식으로 인터페이스를 선언합니다. class 키워드 대신 interface 키워드를 사용하는 것만 다릅니다. 
+
+== 인터페이스 기능
+
+인터페이스의 메소드는 기본적으로 구현을 가질 수 없습니다. 인터페이스의 메소드는 본문이 없는 시그너처만 가진 메소드여야 합니다.
+
+[source, java]
+----
+interface BinaryOp {
+    int apply() { ... } 	// 컴파일시 오류
+}
+----
+
+Java 8에서 `Interface` 에 `default` 를 사용하여 모든 타입의 기본 구현을 정의할 수 있는 방법이 추가되었고, `static` 메서드 또한 추가되었습니다. 그러나 구현을 가질 수 없는 인터페이스의 메소드는 객체지향 다형성 구현을 위해 가장 중요한 기능입니다.
+
+link:./13_multiple_interface_implemenatation.adoc[다음: 인터페이스 선언]

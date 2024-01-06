@@ -1,0 +1,32 @@
+= 인터페이스에서 메소드 구현
+
+* 인터페이스에 추상 메소드가 아닌 메소드를 작성할 수 있음
+* 인터페이스를 구현하는 클래스에 상속됨
+* default 키워드 사용
+
+---
+
+인터페이스는 Java에서 타입을 선언할 수 있는 유일한 방법이므로, 실제 코드를 구현한 로직은 포함되지 않는 것이 원칙이지만, Java 8 버전에서부터 default 메소드 기능이 추가되어 인터페이스 내부에서도 로직이 포함된 코드를 작성할 수 있습니다. 또한, 변수도 선언할 수 있습니다.
+
+[source, java]
+----
+interface Attackable {
+    String startMessage = "Attack!";
+    default String startAttack() {
+        return this.startMessage;
+    }
+    public void Attack();
+}
+
+class Soldier implements Attackable {
+    public void Attack() {
+        System.out.println(this.startAttack());
+    }
+}
+----
+
+기존에 존재하던 인터페이스를 구현하여 작성된 클래스가 이미 사용되고 있을 경우, 인터페이스를 버전업하던 과정에서 추가적으로 구현해야 하거나 필수적으로 존재해야 할 메소드가 있다면 인터페이스의 호환성이 문제가 될 수 있습니다. 인터페이스에 메소드가 추가되면 크 인터페이스를 구현하는 클래스는 추가된 메소드를 반드시 구현해야 합니다. 따라서 인터페이스를 구현하는 모든 클래스들은 수정되어야 합니다.
+
+인터페이스의 `default` 메소드는 이런 문제를 해결할 수 있습니다. `default` 를 사용하여 인터페이스에 메소드가 추가되면 파생된 클래스들를 수정하여 추가된 인터페이스를 구현할 필요없이, 추가된 메소드만을 사용할 수 있어 하위 호환이 유지됩니다.
+
+link:./16_static_method_in_interface.adoc[다음: 인터페이스에서 static 메소드 구현]

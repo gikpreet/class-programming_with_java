@@ -1,0 +1,91 @@
+== private 생성자
+
+* private 생성자는 직접 생성을 원하지 않는 객체 생성을 막아줌
+** 인스턴스 메소드 호출을 막는 경우의 클래스
+** static 메소드의 호출만을 위한 클래스
+** 공유 객체를 위한 데이터를 저장하는 클래스
+* 절차적 기능을 공유하는 유용한 방법
+
+[source, java]
+----
+class Math {
+    public static double Cos(double x) { ... }
+    public static double Sin(double x) { ... }
+    private Math() { ... }
+}
+----
+
+생성자는 private으로도 선언할 수 있습니다.
+
+== 절차적 함수에 private 생성자 사용
+
+객체 지향 프로그래밍은 다양한 영역에서 소프트웨어를 구조화하기 위한 패러다임을 제공합니다. 그러나 객체 지향 패러다임이 모든 곳에서 정답은 아닙니다. 예를 들어, Sin 도는 Cos계산을 위한 배정도 부동 소수점 연산에서 객체 지향 패러다임은 그다지 쓸모가 없습니다.
+
+* 함수 선언 +
+사인과 코사인을 계산하는 가장 직관적인 방법은 객체 외부에 선언된 전역 함수를 사용하는 것입니다.
++
+[source, java]
+----
+double Sin(double a) { … }
+double Cos(double a) { … }
+----
++
+그러나 Java에서 객체 밖에 존재하는 전역 함수는 허용되지 않습니다. 글로벌 함수는 절차적 언어인 C 언어나 또는 절차/객체 지향 모두를 가진 C++같은 언어에서는 허용되지만 Java에서는 허용되지 않습니다. Java에서 함수는 반드시 클래스 내부에 선언되어야 합니다.
++
+[source, java]
+----
+class Math {
+         public double Sin(double a) { … }
+         public double Cos(double a) { … }
+}
+----
+
+* static 메소드와 인스턴스 메소드 +
+클래스 내부에 함수를 배치하는 방식의 단점은 Sin과 Cos이 함수가 아닌 인스턴스 메소드가 된다는 것입니다. 따라서 이 경우 Sin과 Cos를 사용하기 위해서는 Math 클래스의 인스턴스를 생성하고 인스턴스 메소드로 Sin과 Cos을 호출해야 합니다.
++
+[source, java]
+----
+class Test {
+    public static void main(String[] args) {
+        Math math = new Math();
+        double result = math.Cos(28);
+        result = new Math().Sin(28);
+    }
+}
+----
++
+`Sin` 과 `Cos` 를 정적 메소드로 선언하면, 이름 공간이 정해진 함수와 유사하게 정의할 수 있습니다. static 메소드는 정적으로 동작하므로 클래스의 인스턴스가 생성될 필요 없습니다.
++
+[source, java]
+----
+class Math {
+         public static double Sin(double a) { … }
+         public static double Cos(double a) { … }
+	   private Math() {}
+}
+
+class Test {
+    public static void main(String[] args) {
+        double result = math.Cos(28);
+    }
+}
+----
+
+* static 메소드의 장점 +
+Sin과 Cos과 같은 절차적 함수를 static 메소드로 선언하면 여러 장점을 가질 수 있습니다.
+** 단순화 +
+`Math` 클래스의 인스턴스를 생성하지 않고 바로 단 한번의 호출로 함수를 사용할 수 있게 됩니다.
+** 빠른 속도
+Math 객체를 생성하는데 필요한 동작을 수행하지 않습니다.
+
+Math 클래스와 같이 정적 메소드만 포함하고 있는 클래스는 객체를 생성해도 아무런 쓸모가 없어집니다. 이런 경우 Math 객체가 생성되는 것을 막는 것이 좋습니다. 객체 생성을 막는 방법에는 두 가지가 있습니다.
+
+* 추상 클래스로 선언
+가능하지만, 좋은 생각은 아닙니다. 추상 클래스는 서브 클래스를 만들기 위한 목적으로 사용됩니다.
+* Math 클래스 생성자를 private로 선언
+Math 클래스를 private으로 선언하면 컴파일러가 기본 생성자를 생성하지 못하게 되어 Math 클래스의 인스턴스는 생성될 수 없습니다. private 생성자는 Math에서 다른 클래스가 파생되는 것을 방지합니다.
+
+== Singleton 패턴
+Singleton 패턴의 목적은 클래스가 단 하나의 인스턴스만 가지도록 보장하고 이에 대한 전역 액세스 지점을 제공하는 것입니다. Singleton 패턴을 구현하기 위한 방법으로 `private` 생성자와 `static` 메소드를 사용하도록 클래스를 선언하는 것이 제안됩니다.
+
+link:./11_static_constructor.adoc[다음: static 생성자]

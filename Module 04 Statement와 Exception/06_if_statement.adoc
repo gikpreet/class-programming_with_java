@@ -3,7 +3,7 @@
 * 조건문의 결과에 따라 블록의 실행 여부를 결정
 * 문법
 ----
-if (boolean-statement)
+if (boolean-expression)
 	첫 번째 문
 else
 	두 번째 문
@@ -20,7 +20,7 @@ if (x = 0)	// Java에서는 (x == 0)으로 써야 함
 if 문은 가장 많이 사용되는 의사 결정문입니다. 다음과 같이 선택적으로 else 절과 결합될 수 있습니다. 
 
 ----
-if (boolean-statement)
+if (boolean-expression)
 	첫 번째 Statement
 else
 	두 번째 Statement

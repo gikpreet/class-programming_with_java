@@ -42,7 +42,7 @@ public class MethodCall {
     }
 
     static void myMethod() {
-        int count;
+        int count = 0;
         ++count;
         System.out.printf("메소드가 %d 번 호출되었습니다.", count);
     }

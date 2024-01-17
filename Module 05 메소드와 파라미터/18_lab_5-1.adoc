@@ -108,9 +108,9 @@ b.	swap 메소드는 파라미터로 전달받은 두 값을 교체합니다. �
 [source, java]
 ----
 public static void swap(int i, int j) {
-int temp = i;
-i = j;
-j = temp;
+    int temp = i;
+    i = j;
+    j = temp;
 }
 ----
 +

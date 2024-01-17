@@ -44,7 +44,7 @@ public class MethodCall {
     static void myMethod() {
         int count;
         ++count;
-        System.out.printf("메소드가 %d 번 호출되었습니다.");
+        System.out.printf("메소드가 %d 번 호출되었습니다.", count);
     }
 
     public static void main(String[] args) {

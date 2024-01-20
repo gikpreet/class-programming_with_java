@@ -23,7 +23,7 @@ image:./images/image02.png[]
 
 ---
 
-Java는 int, long, byte와 같은 기본 데이터 타입(primitive data type)을 제공합니다. 이 타입들은 또한 값 타입(Value Type)이라고도 부릅니다. Java와 같은 객체지향 언어는 복잡하고 강력한 데이터를 처리하기 위해 참조 타입(Reference Type)을 제공합니다.
+Java는 int, long, byte와 같은 기본 데이터 타입(primitive data type)을 제공합니다. 이 타입들은 값 타입(Value Type)이라고도 부릅니다. Java와 같은 객체지향 언어는 복잡하고 강력한 데이터를 처리하기 위해 참조 타입(Reference Type)을 제공합니다.
 
 * 값 타입(Value Type) +
 값 타입 변수는 자바에서 제공하는 8개의 기본 데이터 타입입니다. 값 타입 변수는 단순하게 동작하며, 선언된 변수는 변수 자체에 저장됩니다.

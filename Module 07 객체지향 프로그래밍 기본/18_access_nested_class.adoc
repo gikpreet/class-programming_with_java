@@ -59,10 +59,10 @@ class Bank
             balance = 0;
         } 
         private class NumberSetter { 
-            public void set(Account account) { 
+            public static void set(Account account) { 
                 account.number = nextNumber++; 
             } 
-            private int nextNumber = 2311; 
+            private static int nextNumber = 2311; 
         } 
         private int number; 
         private int balance; 

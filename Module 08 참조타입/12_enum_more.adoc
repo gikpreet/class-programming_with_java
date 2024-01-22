@@ -30,4 +30,6 @@ public enum Season {
 }   
 ----
 
+---
+
 link:./13_common_ref_type.adoc[다음: 공통 참조 타입]

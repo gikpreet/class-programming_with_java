@@ -1,5 +1,33 @@
 == enum 생성자
 
-https://www.nextree.co.kr/p11686/
+* enum의 각 열거형 상수에 추가 속성 부여
+** 이름을 나타내는 상수와 함꼐 추가적인 속성을 사용할 수 있음
+** 생성자 파라미터 순서대로 속성을 부여
+* 생성자는 private
+** enum 타입은 고정된 상수의 집합으로, 컴파일시에 타입 안정성이 보장되어야 함
+** 외부에서 접근 가능한 생성자가 없으므로, 실제로 final과 동일하게 동작
+** Singleton을 일반화 함
+
++
+[source, java]
+----
+public enum Season {
+    Spring("봄"),
+    Summer("여름"),
+    Fall("가을"),
+    Winter("겨울");
+
+    private String korName;
+
+    private Season() {}
+    private Season(String korName) {
+        this.korName = korName;
+    }
+
+    public String getKorName() {
+        return this.korName;
+    }
+}   
+----
 
 link:./13_common_ref_type.adoc[다음: 공통 참조 타입]

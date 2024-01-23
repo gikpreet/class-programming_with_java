@@ -7,6 +7,7 @@
 interface BinaryOp {
     void apply(int right, int left);
 }
+
 class Adder implements BinaryOp {
     public int apply(int right, int left) {
         ...

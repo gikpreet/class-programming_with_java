@@ -4,9 +4,10 @@
 
 [source, java]
 ----
-Class Product {
+class Product {
     ...
 }
+
 class IDCard extends Product {
     ...
 }

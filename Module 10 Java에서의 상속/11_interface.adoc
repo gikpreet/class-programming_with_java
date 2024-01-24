@@ -8,4 +8,4 @@
 2.	다중 인터페이스 구현
 3.	인터페이스 메소드 구현
 
-link:./12_1_define_interface.adoc[다음: 인터페이스 선언]
+link:./12_define_interface.adoc[다음: 인터페이스 선언]

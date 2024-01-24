@@ -41,7 +41,7 @@ Java의 Collections Framework에서 제공하는 Iterator 인터페이스에는 
 public interface Iterator<E> {
     ...
 
-    default voud remove() {
+    default void remove() {
         throw new UnsupportdOperationException("remove");
     }
 }
@@ -49,4 +49,27 @@ public interface Iterator<E> {
 
 Java 8 이전의 Iterator 인터페이스에서 remove 인터페이스는 추상 메소드로 선언되었습니다.
 
-반복 읽기를 구현하는 Iterator 인터페이스를 구현하는 객체에서 값을 제거하는 작업은 흔하지 않아, 
+반복 읽기를 구현하는 Iterator 인터페이스를 구현하는 객체에서 값을 제거하는 작업은 흔하지 않아, Java 8 이전의 많은 클래스에서는 Iterator를 상속하는 많은 클래스들이 remove() 메소드에 빈 바디를 쓰는 경우가 많았습니다. 
+
+[source, java]
+----
+// Java 8 이전의 Iterator 인터페이스 구현에서 많은 경우의 클래스
+public class CollectionIterator<E> implements Iterator<E> {
+    public boolean hasNext() {
+        ...
+    }
+
+    public E next() {
+        ....
+    }
+
+    public void move() {
+
+    }
+}
+----
+
+인터페이스의 default 메소드를 사용하면 사용하지 않는 메소드를 인터페이스에서 default로 구현해 사용하지 않는 클래스에서 구현을 강제할 필요가 없어 불필요한 코드를 줄일 수 있습니다.
+
+=== 동작 다중 상속
+

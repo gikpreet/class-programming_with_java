@@ -25,12 +25,12 @@ Java의 기본 데이터 타입(Primitive Data Type)에 대응하는 Wrapper 클
 |Primitive Data Type	|Wrapper Class
 |byte	|Byte
 |short	|Short
-|Int	|Integer
-|Long	|Long
-|Float	|Float
-|Double	|Double
-|Char	|Character
-|Boolean	|Boolean
+|int	|Integer
+|long	|Long
+|float	|Float
+|double	|Double
+|char	|Character
+|boolean	|Boolean
 |===
 
 기본 데이터 타입은 아래와 같이 객체로 Wrapping 될 수 있습니다.

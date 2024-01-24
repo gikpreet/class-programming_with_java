@@ -1,0 +1,14 @@
+= Module 12 Lambda Expression
+
+Lambda Expression은 메소드를 하나의 식(expresson)으로 표현할 수 있도록 하여, 함수를 간결하고 명확한 식으로 표현할 수 있게 해주는 Java의 함수형 언어 지원입니다. 이 모듈에서는 Java의 Lambda Expression에 대해서 학습합니다. 이 장을 마치면, 다음과 같은 것들을 할 수 있게 됩니다.
+
+* Lambda Expression에 대해 이해하고 적용할 수 있습니다.
+* Lambda Expression을 적용해 Java에서 함수형 프로그래밍 기법을 사용할 수 있습니다.
+
+== Table of Contents
+
+1. Lambda Expression 개요
+2. Lambda Expression 형식
+3. Lambda Expression 활용
+
+link:./02_overvide_lambda.adoc[다음: Lambda Expression 개요]

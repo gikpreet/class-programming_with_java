@@ -71,5 +71,63 @@ public class CollectionIterator<E> implements Iterator<E> {
 
 인터페이스의 default 메소드를 사용하면 사용하지 않는 메소드를 인터페이스에서 default로 구현해 사용하지 않는 클래스에서 구현을 강제할 필요가 없어 불필요한 코드를 줄일 수 있습니다.
 
-=== 동작 다중 상속
+=== 기능 중복 배제
 
+아래와 같이, 탈것을 표현하는 추상 클래스가 있고,
+
+[source, java]
+----
+public abstract class Vehicle {
+    int speed;
+    Location location;
+
+    void move(Location location) {
+        this.location = location;
+    }
+}
+----
+
+출력을 지정하여 가속이 가능한 자동차를 표현하는 SportsCar 인터페이스가 있으며,
+
+[source, java]
+----
+public interface SportsCar {
+    void setOutput(int output);
+    int getOutput();
+}
+----
+
+Vehicle 클래스의 서브 클래스이며, SportsCar 구현하는 Porche 클래스가 있는 경우를 가정해 봅시다.
+
+[source, java]
+----
+public class Porche extends Vehicle implements SportsCar {
+    int output;
+    void setOutput(int output) {
+        this.output = output;
+    }
+
+    int getOutput() {
+        return this.output;
+    }
+}
+----
+
+후에 SportsCar 인터페이스에 급가속(Boost) 기능이 포함되어야 하는 경우, 새 메소드를 작성하지 않고 기존의 setOutput 메소드와 getOutput 메소드를 사용하여 메소드를 작성할 수 있습니다. 이런 형식의 메소드를 템플릿 메소드(template method)라고 합니다.
+
+[source, java]
+----
+public interface SportsCar {
+    void setOutput(int output);
+    int getOutput();
+    default void setBoost() {
+        setOutput(getOutput() * 2);
+    }
+}
+----
+
+== 인터페이스의 static 메소드
+
+클래스에 선언된 static 메소드와 동일하게 동작합니다.
+
+link:./13_multiple_interface_implemenatation.adoc[다음: 다중 인터페이스 구현]

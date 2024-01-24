@@ -12,7 +12,7 @@
 ----
 interface InterfaceWithDefaultMethod {
     void aMethod();
-    void defaultMethod() { ... }
+    void default Method() { ... }
 }
 ----
 

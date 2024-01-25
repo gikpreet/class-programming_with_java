@@ -1,0 +1,38 @@
+= 메소드 참조
+
+* Lambda Expression을 단순하게 만들어주는 구문
+* Lambda Expression이 단 하나의 메소드만을 호출하는 경우에 사용
+** 해당 Lambda Expression에서 불필요한 parameter를 제거하고 사용할 수 있음
+** 불필요한 parameter를 제거하고 :: 기호를 사용하여 표현
+
+[source, java]
+----
+public interface BinaryOp {
+    public int apply(int i, int j);
+}
+
+class Calc {
+    public static int add(int i, int j) {
+        return i + j;
+    }
+
+    public int mult(int i, int j) {
+        return i * j;
+    }
+}
+
+class Test {
+    public static void main(String[] args) {
+        BinaryOp adder = Calc::add;
+        BinaryOp multer = new Calc()::mult;
+        System.out.println(adder.apply(1, 2));
+        System.out.println(multer.apply(2, 3));
+    }
+}
+----
+
+---
+
+메소드 참조(Method Reference)는 Lambda Expression이 단 하나의 메소드만을 호출하는 경우에 해당 Lambda Expression에서 불필요한 parameter를 제거하고 사용할 수 있도록 해 줍니다.
+
+메소드 참조를 사용하면 불필요한 파라미터를 제거하고 `::` 를 사용하여 표현할 수 있습니다.

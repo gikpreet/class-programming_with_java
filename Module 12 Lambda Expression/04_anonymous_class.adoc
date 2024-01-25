@@ -1,0 +1,51 @@
+= Anomymous Class
+* 단 한번만 사용될 수 있고 하나의 객체만을 생성할 수 있는 일회용 클래스
+* 클래스의 선언과 객체 생성을 동시에 수행
+* Funcational Interface에 대한 Anomymous Class를 생성해 사용
+
+[source, java]
+----
+@FunctionalInterface
+public interface BinaryOp {
+    public int apply(int right, int left);
+}
+
+BinaryOp binder = new BinaryOp() {
+    public int apply(int right, int left) {
+        return right + left;
+    }
+};
+----
+
+---
+
+Anomymous Method는 단 한번만 사용할 수 있고, 하나의 객체만을 생성할 수 있는 일회용 클래스입니다. Functional Interface는 익명, 내부 클래스를 사용하여 일회성을 생성하여 사용할 수 있습니다.
+
+[source, java]
+----
+@FunctionalInterface
+public interface RunSomething {
+    void doIt();
+
+    static void printName(){
+        System.out.println("catsbi");
+    }
+    
+    default void printAge(){
+        System.out.println("33");
+    }
+}
+----
+
+default 메소드와 static 메소드가 포함된 위와 같은 Interface는 아래와 같이 anomymous method를 사용할 수 있습니다.
+
+[source, java]
+----
+RunSomething run = new RunSomething() {
+    public void doIt() {
+        System.out.print("Hello");
+    }
+};
+----
+
+link:./05_lambda_expression.adoc[다음: Lambda Expression]

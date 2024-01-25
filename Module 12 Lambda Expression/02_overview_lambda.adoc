@@ -1,0 +1,10 @@
+= Lambda Expression 개요
+
+Anonymous Method 형식으로 동작하는 Lambda Expression은 파라미터를 받아 짧은 코드 블록으로 수행하고 필요에 따라 값을 반환하는 표현 방법을 말합니다. 이 장에서는 Lambda Expression에 대해 공부합니다.
+
+== Table of Contents
+
+1. Funcational Interface
+2. Lambda Expression
+
+link:./03_functional_interface.adoc[다음: Functional Interface]

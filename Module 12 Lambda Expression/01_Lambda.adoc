@@ -11,4 +11,4 @@ Lambda Expression은 메소드를 하나의 식(expresson)으로 표현할 수 �
 2. Lambda Expression 형식
 3. Lambda Expression 활용
 
-link:./02_overvide_lambda.adoc[다음: Lambda Expression 개요]
+link:./02_overview_lambda.adoc[다음: Lambda Expression 개요]

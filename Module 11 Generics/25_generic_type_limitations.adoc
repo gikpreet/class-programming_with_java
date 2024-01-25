@@ -1,4 +1,4 @@
-### Generic 타입 제약
+=    Generic 타입 제약
 
 * Generic 타입은 타입 변환 될 수 없으며, instanceof 연산자를 사용할 수 없음
 ** 타입 파라미터는 모두 컴파일시 Object로 치환됨
@@ -73,14 +73,15 @@ Java에서 Generic 배열을 생성하려면 와일드 카드 타입을 사용�
 List<?> lists = new List<?>[2];
 lists[0] = Arrays.asList(1);
 lists[1] = Arrays.asList("A");
-    for (List<?> list : lists) {
-        System.out.println(list);
-    }
+
+for (List<?> list : lists) {
+    System.out.println(list);
+}
 ----
 
 == Exception 타입의 서브 타입이 될 수 없음
 
-지네릭 클래스는 Throwable 클래스를 직접 또는 간접적으로 확장할 수 없습니다.
+Generic 클래스는 Throwable 타입을 직접 또는 간접적으로 확장할 수 없습니다.
 
 [source, java]
 ----

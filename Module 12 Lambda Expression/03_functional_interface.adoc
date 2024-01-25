@@ -1,4 +1,5 @@
 = Funcational Interface
+
 * 하나의 abstract method를 가지고 있는 인터페이스
 ** SAM(Single Abstract Method) 인터페이스
 * @FunctionalInterface 어노테이션이 적용될 수 있는 Target 인터페이스

@@ -78,4 +78,5 @@ image:./images/image11.png[]
 > java HelloWorld
 ----
 
+link:./06_java_langa_package.adoc[이전: import 지시문과 java.lang 패키지] +
 link:./08_basic_inputout.adoc[다음: 기본적입 입/출력 동작]

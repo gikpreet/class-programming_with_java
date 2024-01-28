@@ -79,4 +79,5 @@ image:./images/image20.png[trust, 500]
 +
 image:./images/image21.png[trust, 500]
 
-link:./22_lab2-2.adoc[다음: Lab 2-2 디버깅]
+link:./21_jdk_tools.adoc[이전: JDK 도구] +
+link:./23_lab2-2.adoc[다음: Lab 2-2 디버깅]

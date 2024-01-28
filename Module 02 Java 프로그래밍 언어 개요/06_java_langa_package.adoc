@@ -45,5 +45,5 @@ System.out.println(“Hello, World!”);
 
 Hello, World 프로그램에서 System 클래스는 명시적으로 정의되지 않았습니다. Hello, World 프로그램이 컴파일 될 때, 컴파일러는 System 클래스를 java.lang 패키지에서 찾습니다. 컴파일러는 정규화 된 코드 `java.lang.System` 을 참조하는 코드를 생성합니다.
 
-
-link:./07_demo.adoc[다음: Java 프로그램 컴파일 및 실행]
+link:./05_main_method.adoc[이전: main 메소드] +
+link:./07_demo.adoc[다음: 데모 - Java 프로그램 컴파일 및 실행]

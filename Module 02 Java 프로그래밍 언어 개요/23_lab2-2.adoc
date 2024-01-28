@@ -31,4 +31,5 @@ image:./images/image27.png[image27, 350]
 +
 image:./images/image28.png[image28, 450]
 
-link:./23_lab2-3.adoc[다음: Lab 2-3 예외 처리]
+link:./22_lab2-1.adoc[이전: Lab 2-1 간단한 Java 프로그램 작성] +
+link:./24_lab2-3.adoc[다음: Lab 2-3 예외 처리]

@@ -41,8 +41,9 @@ int gCD(int a, int b) {
     if (b == 0) {
         return a;
     }
-    return gCD(a, a % b) {
+    return gCD(a, a % b);
 }
 ----
 
+link:./12_recommandations.adoc[이전: 권장 사항] +
 link:./14_javadoc.adoc[다음: Javadoc]

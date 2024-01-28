@@ -104,4 +104,5 @@ System.out.printf("%tF %tT", date, date);
 2022-06-07 00:50:24
 ----
 
+link:./09_systemclass.adoc[이전: System 클래스] +
 link:./11_scanner_class.adoc[다음: Scanner 클래스]

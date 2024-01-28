@@ -35,6 +35,8 @@ Microsoft Visual Studio Code              Microsoft.VisualStudioCode            
 +
 ----
 % brew install --cask visual-studio-code
+==> Casks
+caskroom/cask/visual-studio-code           visual-studio                              visual-studio-code
 ----
 +
 3. 아래 명령을 실행하여 설치된 Vislau Studio Code를 확인합니다.

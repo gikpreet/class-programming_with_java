@@ -74,5 +74,5 @@ if (x) …	    // x != 0 으로 써야 함
 if (x = 0) …	// x == 0 으로 써야 함
 ----
 
-link:./05_selection_statement[이전: Selection Statement(선택 문)] +
-link:./07_cascading_if.adoc[다음: Cascading if statement]
+link:./05_selection_statement[이전: Selection Statement (선택 문)] +
+link:./07_cascading_if.adoc[다음: Cascading if statement (Cascading if 문)]

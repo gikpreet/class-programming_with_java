@@ -72,4 +72,4 @@ scanner.close();
 ----
 
 link:./10_while.adoc[이전: while statement (while 문)] +
-link:./12_for.adoc[다음: for 문]
+link:./12_for.adoc[다음: for statement (for 문)]

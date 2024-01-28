@@ -17,4 +17,4 @@ while, do, for, foreach 문은 특정 조건이 true일 동안 반복적으로 �
 break, continue 문은 제어를 다른 문으로 옮기는데 사용됩니다.
 
 link:./03_block.adoc[이전: Statement Block(문 블록)] +
-link:./05_selection_statement.adoc[다음: 선택문]
+link:./05_selection_statement.adoc[다음: Selection Statement(선택 문)]

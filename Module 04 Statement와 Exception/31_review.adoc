@@ -28,4 +28,4 @@ catch (Exception) {...}
 catch (IOException) {...}
 ----
 
-link:./30_lab4-2.adoc[이전: 예외 처리]
+link:./30_lab4-2.adoc[이전: Lab 4-2 예외 처리]

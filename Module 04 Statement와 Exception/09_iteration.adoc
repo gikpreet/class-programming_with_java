@@ -10,4 +10,4 @@
 4.	foreach statement (foreach 문)
 
 link:./08_switch.adoc[이전: switch statement (switch 문)] +
-link:./10_while.adoc[다음: while statement]
+link:./10_while.adoc[다음: while statement (while 문)]

@@ -1,4 +1,4 @@
-= try-with-resource 절
+= try-with-resource clause (try-with-resource 절)
  
 * 예외 발생 여부와 상관없이 try 절에 명시한 객체의 close 메소드를 호출
 * 스트림, 소켓, 데이터베이스 연결 등을 finally 절에서 close() 메소드를 명시적으로 호출하지 않아도 연결을 닫고 리소스를 회수

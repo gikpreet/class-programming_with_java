@@ -81,4 +81,4 @@ while (i <= 9) {
 ----
 
 link:./09_iteration.adoc[이전: Iteration Statement (반복 문)] +
-link:./11_do.adoc[다음: do statement]
+link:./11_do.adoc[다음: do statement (do 문)]

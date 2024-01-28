@@ -66,9 +66,9 @@ while 및 do 문과 마찬가지로 다음 예제와 같이 한 줄로 이루어
 for (int i = 0; i < 10; i++) 
     System.out.println(i);
 
-for (int i – 0; i < 10; i++) {
+for (int i - 0; i < 10; i++) {
     System.out.println(i);
-    System.out.println(10 – i);
+    System.out.println(10 - i);
 }
 ----
 

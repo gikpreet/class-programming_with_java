@@ -8,4 +8,4 @@
 2.	Statement Type (문 유형)
 
 link:./01_statement_and_exception.adoc[이전: Statement와 Exception] + 
-link:./03_block.adoc[다음: statement 블록]
+link:./03_block.adoc[다음: statement block(문 블록)]

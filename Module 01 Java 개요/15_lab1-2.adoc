@@ -66,4 +66,7 @@ image:./images/image12.png[]
 +
 ----
 $ code -v
+1.85.2
+8b3775030ed1a69b13e4f4c628c612102e30a681
+arm64
 ----

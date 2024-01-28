@@ -32,5 +32,5 @@ image:./images/image07.png[]
 |Native Method Stack	|자바 외의 언어로 작성된 Native 코드를 위한 메모리 영역입니다.
 |===
 
-link:./06_java_virtual_machine.adoc[다음: Java 가상 머신] +
+link:./06_java_virtual_machine.adoc[이전: Java 가상 머신] +
 link:./08_java_operation_principle.adoc[다음: Java 동작 원리]

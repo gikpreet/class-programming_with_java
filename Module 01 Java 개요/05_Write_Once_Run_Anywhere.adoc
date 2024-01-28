@@ -1,6 +1,6 @@
 = Write Once Run Anywhere
 
-image:../images/image06.png[]
+image:./images/image06.png[]
 
 ---
 

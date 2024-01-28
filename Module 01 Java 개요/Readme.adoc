@@ -13,4 +13,4 @@ link:./10_jvm_language.adoc[-- JVM 언어] +
 link:./11_history_java.adoc[- Chapter 3: Java의 역사] +
 link:./12_history_java_2.adoc[-- Java의 역사] +
 link:./13_jdk_provider.adoc[--  JDK 공급자] +
-link:./14_lab1-1.adoc[연습: Java 실행 환경 구성]
+link:./14_lab1-1.adoc[연습: Lab 1-1 Java 실행 환경 구성]

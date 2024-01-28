@@ -9,4 +9,5 @@
 2. Java 데이터 타입
 3. 기본 데이터 타입
 
+link:./01_Primitive_data_type.adoc[이전: 기본 데이터 타입 타입] +
 link:./03_valuetype_reftype.adoc[다음: 값 타입과 참조 타입]

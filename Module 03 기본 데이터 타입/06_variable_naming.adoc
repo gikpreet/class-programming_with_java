@@ -9,4 +9,5 @@
 2.	권장되는 변수 이름 짓기
 3.	Java 키워드
 
+link:./05_primitive_data_type.adoc[이전: 기본 데이터 타입] +
 link:./07_naming_rule.adoc[다음: 변수 명명 규칙]

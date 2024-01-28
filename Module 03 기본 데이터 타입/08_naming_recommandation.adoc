@@ -25,11 +25,13 @@ void openDocument() { }
 ----
 
 == PascalCasing 명명 규칙
-쌍봉 낙타 규칙이라고도 불리는 PascalCasing 명명 규칙은 CamelCasing 규칙과 유사하나 모든 단어의 첫 단어를 대문자로 지정하는 방법입니다. 클래스, 인터페이스, 열거형 등아 사용합니다.
+
+쌍봉 낙타 규칙이라고도 불리는 PascalCasing 명명 규칙은 CamelCasing 규칙과 유사하나 모든 단어의 첫 단어를 대문자로 지정하는 방법입니다. 클래스, 인터페이스, 열거형 등에 사용합니다.
 
 [source, java]
 ----
 class ProductFactory
 ----
 
+link:./07_naming_rule.adoc[이전: 변수 명명 규칙] +
 link:./09_java_keyword.adoc[다음: Java 키워드]

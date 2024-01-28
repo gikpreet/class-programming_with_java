@@ -74,4 +74,5 @@ Java에서는 다른 대부분의 언어와 마찬가지로 키워드를 변수 
 |`while`
 |===
 
+link:./08_naming_recommandation.adoc[이전: 권장되는 변수 이름 짓기] +
 link:./10_using_primitive_types.adoc[다음: 기본 데이터 타입 사용]

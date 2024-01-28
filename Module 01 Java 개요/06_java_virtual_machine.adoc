@@ -9,5 +9,5 @@ Java 가상 머신은 Java 바이트코드를 실행하는 실행하는 가상 �
 3. JDK와 JRE
 4. JVM 언어
 
-link:./05_write_once_run_anywhere.adoc[이전: Write Once Run Anywhere] +
+link:./05_write_once_run_anywher.adoc[이전: Write Once Run Anywhere] +
 link:./07_overview_java_virtual_machine.adoc[다음: Java 가상 머신 개요]

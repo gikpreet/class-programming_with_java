@@ -1,4 +1,4 @@
-== Java 가상 머신 개요
+= Java 가상 머신 개요
 
 * Java 바이트코드를 실행할 수 있는 주체
 * 인터프리터나 JIT 컴파일 방식으로 다른 컴퓨터에서 바이트코드를 구현할 수 있도록 구현됨
@@ -17,9 +17,7 @@ Java 가상 머신은 `Java 바이트코드`를 실행하는 가상 머신이며
 
 Java 가상 머신은 응용 프로그램 개발을 단순화하며, 보안을 강제하고 강화된 환경에서 응용 프로그램을 수행하고, 여러 언어로 만들어진 프로그램이 동작하도록 만들며 응용 프로그램의 배포와 관리를 쉽게 합니다. 또한 이 환경은 가비지 컬렉션과 같은 일반적인 서비스를 포함하여 관리되는 환경을 제공합니다.
 
-image:../images/image07.png[]
-
-link:./07_Java_가상_머신[다음: Java 가상 머신]
+image:./images/image07.png[]
 
 [cols="1, 2" options=header]
 |===
@@ -34,5 +32,5 @@ link:./07_Java_가상_머신[다음: Java 가상 머신]
 |Native Method Stack	|자바 외의 언어로 작성된 Native 코드를 위한 메모리 영역입니다.
 |===
 
-link:./06_Java_가상_머신.adoc[다음: Java 가상 머신] +
-link:./08_Java_동작_원리.adoc[다음: Java 동작 원리]
+link:./06_java_virtual_machine.adoc[다음: Java 가상 머신] +
+link:./08_java_operation_principle.adoc[다음: Java 동작 원리]

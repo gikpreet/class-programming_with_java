@@ -25,5 +25,5 @@ Java는 C에서 진화한 C\++와는 다르게 초기 설계부터 객체 지향
 Java의 개발사인 Sun Microsystems는 자바를 GPL 라이선스로 오픈하였으며, 대부분의 코어 부분을 오픈하였습니다. 2009년 Sun Microsystems가 Oracle과 인수 합병됨에 따라 Java에 대한 권리 및 유지보수는 Oracle이 가지고 있습니다.
 
 
-link:./03_Java_소프트웨어_플랫폼.adoc[이전: Java 소프트웨어 플랫폼] +
+link:./03_java_software_platform.adoc[이전: Java 소프트웨어 플랫폼] +
 link:./05_Write_Once_Run_Anywhere.adoc[다음: Write Once Run Anywhere]

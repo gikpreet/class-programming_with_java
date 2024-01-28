@@ -3,15 +3,20 @@
 * Java는 많은 유틸리티 클래스를 제공함
 * 유틸리티 클래스는 package 단위로 조직됨
 * java.lang은 통상적으로 많이 사용되는 유틸리티 클래스들을 포함하는 패키지
-
++
+----
 java.lang.System.out.put.println(“Hello, World!”);
-
+----
++
 * 패키지 단위에 포함된 클래스 단위로 해당 패키지가 포함하는 클래스를 참조
-
++
+[source, java]
+----
 import java.lang.*;
 …
 System.out.println(“Hello, World!”);
-
+----
++
 * java.lang 패키지는 특별히 import문 없이도 사용할 수 있음
 
 ---

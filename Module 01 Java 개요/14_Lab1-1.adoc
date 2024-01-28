@@ -142,10 +142,54 @@ brew -v
 
 === 컴퓨터에 설치된 Java 확인
 
-1. 터미널틀 실행합니다.
+1. 터미널을 실행합니다.
 2. 아래 명령을 실행하여 Java가 설치되어 있는지 확인합니다.
 +
 ----
 % java --version
 ----
-3. Java가 설치되어 있어 Java 버전이 표시된다면, 설치된 Java 버전을 삭제합니다.
++
+3. Java가 설치되어 있어 아래와 같이 Java 버전이 표시된다면, 설치된 Java 버전을 확인합니다.
++
+----
+% java --version
+openjdk 11.0.15 2022-04-19
+OpenJDK Runtime Environment Temurin-11.0.15+10 (build 11.0.15+10)
+OpenJDK 64-Bit Server VM Temurin-11.0.15+10 (build 11.0.15+10, mixed mode)
+----
+
+=== Temurin JDK 설치
+
+1. 아래 명령을 실행하여 최신 버전의 Temurin Java 버전을 설치합니다.
++
+----
+% brew install --cask temurin
+----
++
+2. 터미널을 종료합니다.
+
+=== 설치 확인
+
+1. 터미널을 다시 실행하고, 아래 명령을 실행하여 설치된 Temurin을 확인합니다.
++
+----
+% ls -l /Library/Java/JavaVirtualMachines/
+----
++
+2. 아래 명령을 실행하여 설치된 Java 버전을 확인합니다.
++
+----
+% java --version
+openjdk 21.0.2 2024-01-16 LTS
+OpenJDK Runtime Environment Temurin-21.0.2+13 (build 21.0.2+13-LTS)
+OpenJDK 64-Bit Server VM Temurin-21.0.2+13 (build 21.0.2+13-LTS, mixed mode)
+----
++
+3. 아래 명령을 실행하여 설정된 JAVA_HOME 환경 변수를 확인합니다.
++
+----
+% echo $JAVA_HOME
+/Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home
+----
+
+

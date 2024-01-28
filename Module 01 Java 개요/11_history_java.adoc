@@ -7,5 +7,5 @@ Java는 오픈소스와 상용 버전이 섞여 있으며 다양한 라이선스
 1.	Java의 역사
 2.	JVM 언어
 
-link:./10_JVM_언어.adoc[이전: JVM 언어] +
-link:./12_Java의_역사[다음: Java의 역사]
+link:./10_jvm_language.adoc[이전: JVM 언어] +
+link:./12_history_java_2.adoc[다음: Java의 역사]

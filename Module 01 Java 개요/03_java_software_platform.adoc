@@ -25,7 +25,7 @@ Java에서 바이트코드는 Java 가상 머신이 이해할 수 있는 언어�
 
 Java 가상 머신은 대표적인 프로세스 가상 머신이며, Java로 작성된 프로그램은 아래와 같은 형태로 실행됩니다.
 
-image:../images/image01.png[]
+image:./images/image01.png[]
 
 이와 유사한 형태의 가상 머신은 Microsoft의 CLR(Common Language Runtime)등이 있습니다.
 
@@ -40,5 +40,5 @@ Java 플랫폼은 Java 프로그래밍 언어로 프로그램을 개발하고 �
 |Jakarta EE (Jakarta Enterprise Edition)	|이전의 Java EE(Enterprise Edition)이며, Java를 이용한 서버 개발을 위한 플랫폼입니다. Java EE는 데스크톱 등에서 동작하는 표준 플랫폼인 Java SE에 웹 애플리케이션 서버에서 동작하는 장애 복구 미 분산 아키텍처를 제공하는 기능을 추가한 서버를 위한 플랫폼입니다.
 |===
 
-link:./02_Java_소프트웨어_플랫폼_소개.adoc[다음: Java 소프트웨어 플랫폼 소개] +
-link:./04_Java_프로그래밍_언어.adoc[다음: Java 프로그래밍 언어]
+link:./02_introduction_java_platform.adoc[다음: Java 소프트웨어 플랫폼 소개] +
+link:./04_java_programming_language.adoc[다음: Java 프로그래밍 언어]

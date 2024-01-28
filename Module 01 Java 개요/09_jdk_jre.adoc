@@ -62,7 +62,7 @@ Java 언어의 2차원 그래픽 작성에 사용되는 API로, 사용자 인터
 ** JAR (Java Archive) +
 다수의 파일을 JAR 형식으로 번들링 할 수 있게 하여 다운로드 속도를 개선하고 파일 크기를 줄일 수 있도록 하는 플랫폼 독립형 파일 형식
 
-image:../images/image09.png[]
+image:./images/image09.png[]
 
-link:./08_Java_동작_원리.adoc[다음: JVM 언어] +
-link:./10_JVM_언어.adoc[다음: JVM 언어]
+link:./08_java_operation_principle.adoc[다음: 동작 원리] +
+link:./10_jvm_language.adoc[다음: JVM 언어]

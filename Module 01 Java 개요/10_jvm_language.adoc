@@ -37,6 +37,6 @@ Java 가상 머신에서 실행될 수 있도록 바이트코드를 생성하거
 
 Java 가상 머신 지원 언어 이외에도 C, COBOL, JavaScript, Scheme등 많은 기존 언어들이 자바 가상 머신상에서 동작하도록 구현되고 있습니다.
 
-link:./09_JDK와_JRE.adoc[이전: JDK와 JRE] +
-link:./11_Java의_역사.adoc[다음: Java의 역사]
+link:./09_jdk_jre.adoc[이전: JDK와 JRE] +
+link:./11_history_java.adoc[다음: Java의 역사]
 

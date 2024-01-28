@@ -25,7 +25,7 @@ Java에서 바이트코드는 Java 가상 머신이 이해할 수 있는 언어�
 
 Java 가상 머신은 대표적인 프로세스 가상 머신이며, Java로 작성된 프로그램은 아래와 같은 형태로 실행됩니다.
 
-image:../images/image01.png[]
+image:./images/image01.png[]
 
 이와 유사한 형태의 가상 머신은 Microsoft의 CLR(Common Language Runtime)등이 있습니다.
 

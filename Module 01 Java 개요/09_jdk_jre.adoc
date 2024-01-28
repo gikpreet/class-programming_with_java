@@ -64,5 +64,5 @@ Java 언어의 2차원 그래픽 작성에 사용되는 API로, 사용자 인터
 
 image:./images/image09.png[]
 
-link:./08_java_operation_principle.adoc[다음: 동작 원리] +
+link:./08_java_operation_principle.adoc[이전: 동작 원리] +
 link:./10_jvm_language.adoc[다음: JVM 언어]

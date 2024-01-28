@@ -366,6 +366,9 @@ public static void main(String[] args) {
         String line = scanner.nextLine();
         int yearNum = Integer.parseInt(line);
       …
+    }
+    ...
+}
 ----
 +
 3.	try절 마지막 줄의 `scanner` 객체를 닫는 코드를 `finally`` 블록으로 이동합니다. 완성된 코드는 아래와 유사할 것입니다.
@@ -386,4 +389,5 @@ public static void main(String[] args) {
 4.	작업을 저장하고 프로그램을 컴파일합니다. 오류가 있으면 수정합니다. 프로그램을 실행하고 동작을 확인합니다.
 5.	실습이 종료되었습니다.
 
+link:./29_try_with_resource.adoc[이전: try-with-resource clause (try-with-resource 절)]
 link:./31_review.adoc[다음: 검토]

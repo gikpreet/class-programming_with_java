@@ -1,4 +1,4 @@
-= Cascading if 
+= Cascading if statement (Cascading if 문)
 
 [source, java]
 ----
@@ -102,6 +102,7 @@ if (percent >= 0 && percent <= 100) {
     if (percent > 50) {
         System.out.println("pass");
     }
+}
 else {
         System.out.println("Error: out of Range");
 }
@@ -109,4 +110,5 @@ else {
 
 `Cascading if` 문을 사용할 때는 적절한 들여쓰기를 사용하면 긴 `if` 문장을 빠르고 정확하게 읽을 수 있습니다.
 
-link:./08_switch.adoc[다음: switch statement]
+link:./06_if_statement.adoc[이전: if Statement (if 문)]
+link:./08_switch.adoc[다음: switch statement(switch 문)]

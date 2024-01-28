@@ -1,4 +1,4 @@
-= goto 문
+= goto statement (goto 문)
 
 * Java에서는 goto문을 사용하지 않음
 * Java Virtual Machine에서는 있었지만 제거됨
@@ -28,4 +28,5 @@ Java는 `goto` 문을 제공하지 않습니다. goto는 JVM에 구현되었지�
 
 `goto` 기능은 JVM에서 제거되었으나, 키워드로 지정되어 있어 변수 등의 이름으로 사용할 수 없습니다.
 
+link:./14_jump_statement.adoc[이전: Jump Statement (분기 문)]
 link:./16_break_continue.adoc[다음: break와 continue 문]

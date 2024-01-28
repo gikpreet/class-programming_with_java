@@ -1,4 +1,4 @@
-= throw 문
+= throw statement (throw 문)
 
 * 상황에 맞는 적절한 예외를 발생시킴
 * 예외에 의미 있는 메시지를 제공
@@ -72,4 +72,5 @@ catch (IOException e) {
 }
 ----
 
+link:./25_throw_exception.adoc[이전: 예외 발생시키기] +
 link:./27_exception_method.adoc[다음: 메소드에 예외 선언]

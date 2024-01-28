@@ -112,4 +112,5 @@ public static void main(String[] args) throws ClassNotFoundException {
 }
 ----
 
-link:./28_finally.adoc[다음: finally statement]
+link:./26_throw.adoc[이전: throw statement (throw 문)] +
+link:./28_finally.adoc[다음: finally statement (finally 문)]

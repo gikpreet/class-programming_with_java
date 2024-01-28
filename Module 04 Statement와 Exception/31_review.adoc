@@ -27,3 +27,5 @@ try
 catch (Exception) {...} 
 catch (IOException) {...}
 ----
+
+link:./30_lab4-2.adoc[이전: 예외 처리]

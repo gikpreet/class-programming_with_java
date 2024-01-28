@@ -1,4 +1,4 @@
-= while 문
+= while statement (while 문)
 
 * boolean 값을 기준으로 내부 문을 수행
 * 반복이 시작될 때 boolean 식을 평가, boolean 값이 true일 때 내부 문 실행
@@ -80,4 +80,5 @@ while (i <= 9) {
 }
 ----
 
+link:./09_iteration.adoc[이전: Iteration Statement (반복 문)] +
 link:./11_do.adoc[다음: do statement]

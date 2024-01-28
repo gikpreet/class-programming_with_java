@@ -1,11 +1,12 @@
-= 선택문(Selection Statement)
+= Selection Statement(선택 문)
 
 if 및 switch문은 선택문으로 분류됩니다. 식의 값에 따라 선택하고 그 선택에 따라 선택적으로 문을 실행합니다. 이 장에서는 Java에서 지원하는 선택문을 배웁니다.
 
 == Table of Contents
 
-1. if문
-2. cascading if문
-3. switch문
+1. if Statement (if 문)
+2. cascading if Statement (Cascading if 문)
+3. switch Statement (Statement 문)
 
-link:./06_if_statement.adoc[다음: if Statement]
+link:./04_statement.adoc[이전: Statement(문)의 종류] +
+link:./06_if_statement.adoc[다음: if Statement (if 문)]

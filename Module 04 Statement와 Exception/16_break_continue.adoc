@@ -1,4 +1,4 @@
-== break와 continue문
+== break와 continue statement(break 문과 continue 문)
 
 * break 문은 반복의 밖으로 분기함
 * continue 문은 다음 반복으로 분기함
@@ -59,4 +59,5 @@ while (true) {
 }
 ----
 
-link:./17_lab4-1.adoc[다음: 연도 일자를 월/일로 계산]
+link:./15_goto.adoc[이전: goto statement (goto 문)] +
+link:./17_lab4-1.adoc[다음: Lab 4-1: 연도 일자를 월/일로 계산]

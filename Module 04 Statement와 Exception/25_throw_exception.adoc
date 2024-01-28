@@ -9,4 +9,5 @@ Java에서는 프로그래머가 필요한 경우 예외를 발생시키고 적�
 3.	finally절
 4.	try-with-resource문
 
-link:./26_throw.adoc[다음: throw statement]
+link:./24_multiple_catch_block.adoc[이전: 다중 catch 블록] +
+link:./26_throw.adoc[다음: throw statement (throw 문)]

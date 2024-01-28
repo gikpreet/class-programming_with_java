@@ -8,6 +8,8 @@
 [source, java]
 ----
 for (int days: daysInMonth) {
+    ...
+}
 ----
 +
 3.	`foreach` 문에 블록을 작성하여 문을 추가합니다. 이 블록의 내용은 다양한 정수 리터럴 대신 `days`` 변수가 사용된다는 점을 제외하면 주석 처리된 `if` 문과 비슷합니다.
@@ -39,8 +41,10 @@ public static void main(String[] args) {
     System.out.printf("%s, %d ", monthName, date);
 }
 ----
++
 5.	작업을 저장합니다.
 6.	Whatday.java 프로그램을 컴파일하고 오류가 있으면 수정합니다. 성공적으로 컴파일되면 프로그램을 실행합니다. 코드가 줄었지만 프로그램은 동일하게 동작하는 것을 확인합니다.
 7.	1보다 작거나 365보다 큰 숫자를 입력하면 어떤 오류가 발생하는지 확인합니다.
 
+link:./18_exercise[이전: 연습문제] +
 link:./20_exceptions.adoc[다음: 기본 예외 처리]

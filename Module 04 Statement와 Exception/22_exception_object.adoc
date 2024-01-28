@@ -24,4 +24,5 @@ Java는 프로그램 동작 중에 발생할 수 있는 오류를 Checked 예외
 `ArrayIndexOutOfBoundsException`` – 범위를 벗어난 배열의 요소에 접근하고자 하는 경우 +
 `NullPointerException` – null인 객체를 참조하고자 하는 경우
 
-link:./23_try_catch_black.adoc[다음: try/catch 블록]
+link:./21_why_exceptions.adoc[이전: 예외를 왜 사용해야 하는가?] +
+link:./23_try_catch_block.adoc[다음: try/catch 블록]

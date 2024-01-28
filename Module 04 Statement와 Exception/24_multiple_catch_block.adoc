@@ -67,4 +67,5 @@ catch(java.lang.Exception e) { … }
 catch(ArithmeticException e) { … } // 컴파일 오류
 ----
 
+link:./23_try_catch_block.adoc[다음: try/catch 블록] +
 link:./25_throw_exception.adoc[다음: 예외 발생]

@@ -234,4 +234,5 @@ public class Whatday {
 6.	작업을 저장합니다.
 7.	Whatday.java 프로그램을 컴파일하고 오류가 있으면 수정합니다. 성공적으로 컴파일되면 프로그램을 실행합니다. 코드가 줄었지만 프로그램은 동일하게 동작하는 것을 확인합니다.
 
+link:./16_break_continue.adoc[이전: break와 continue statement(break 문과 continue 문)] +
 link:./18_exercise.adoc[다음: 연습문제]

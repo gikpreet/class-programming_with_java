@@ -1,4 +1,4 @@
-= foreach 문
+= foreach statement (foreach 문)
 
 * 반복되는 변수의 타입과 이름을 선택
 * Collection 클래스의 각 요소에 대해 포함된 구문 실행
@@ -82,4 +82,5 @@ for (int i : tableNumber) {
 }
 ----
 
-link:./14_jump_statement.adoc[다음: 분기문]
+link:./12_for.adoc[이전: for statement (for 문)] +
+link:./14_jump_statement.adoc[다음: Jump Statement (분기 문)]

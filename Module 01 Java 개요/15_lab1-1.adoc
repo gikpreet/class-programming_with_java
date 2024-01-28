@@ -1,6 +1,0 @@
-= Lab 1-2: 개발 환경 설치
-
-여기에서는 컴퓨터에 Java 개발 환경으로 Microsoft의 Visual Studio Code를 설치합니다. 아래 절차에 따릅니다.
-
-== Windows에서 Visual Studio Code 설치
-

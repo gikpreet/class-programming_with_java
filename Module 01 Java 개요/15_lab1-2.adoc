@@ -1,0 +1,44 @@
+= Lab 1-2: 개발 환경 설치
+
+여기에서는 컴퓨터에 Java 개발 환경으로 Microsoft의 Visual Studio Code를 설치합니다. 아래 절차에 따릅니다.
+
+== Windows에서 Visual Studio Code 설치
+
+1. 명령 프롬프트에서 아래 명령을 실행하여 설치 가능한 Visual Studio Code를 확인합니다.
++
+----
+> winget search Visual Studio Code
+이름                                      장치 ID                                 버전   원본
+------------------------------------------------------------------------------------------------
+Microsoft Visual Studio Code Insiders CLI Microsoft.VisualStudioCode.Insiders.CLI 1.86.0 winget
+Microsoft Visual Studio Code Insiders     Microsoft.VisualStudioCode.Insiders     1.86.0 winget
+Microsoft Visual Studio Code CLI          Microsoft.VisualStudioCode.CLI          1.85.2 winget
+Microsoft Visual Studio Code              Microsoft.VisualStudioCode              1.85.2 winget
+----
++
+2. 아래 명령을 실행하여 Visual Studio Code를 설치합니다.
++
+----
+> winget install -e Microsoft.VisialStudioCode
+----
+
+
+== macOS에서 Visual Studio Code 설치
+
+1. 아래 명령을 실행하여 brew에서 설치 가능한 Visual Studio Code를 확인합니다.
++
+----
+% brew search visual-studio-code
+----
++
+2. 아래 명령을 실행하여 Visual Studio Code를 설치합니다.
++
+----
+% brew install --cask visual-studio-code
+----
++
+3. 아래 명령을 실행하여 설치된 Vislau Studio Code를 확인합니다.
++
+----
+% brew list
+----

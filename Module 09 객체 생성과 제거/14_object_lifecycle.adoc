@@ -41,4 +41,5 @@ Finalizer를 통해 finalize가 실행된 상태로, 객체를 제거합니다.
 3.	Deallocated (메모리 해제) +
 메모리 반환이 끝나고 가비지 컬렉터의 동작이 마무리 됩니다.
 
+link:./13_object_and_memory.adoc[이전: 객체와 메모리] +
 link:./15_object_and_scope.adoc[다음: 객체와 범위]

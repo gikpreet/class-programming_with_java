@@ -58,4 +58,5 @@ class Example {
 •	더 긴 수명 +
 객체는 객체를 만드는 메소드에 연결되어 있지 않기 때문에 객체는 단일 메소드 호출이 끝나도 계속 남아 있을 수 있습니다.
 
+link:./14_object_lifecycle.adoc[이전: 객체 생명주기] +
 link:./16_garbage_collection.adoc[다음: 가비지 컬렉션]

@@ -90,4 +90,5 @@ Math 클래스를 private으로 선언하면 컴파일러가 기본 생성자를
 == Singleton 패턴
 Singleton 패턴의 목적은 클래스가 단 하나의 인스턴스만 가지도록 보장하고 이에 대한 전역 액세스 지점을 제공하는 것입니다. Singleton 패턴을 구현하기 위한 방법으로 `private` 생성자와 `static` 메소드를 사용하도록 클래스를 선언하는 것이 제안됩니다.
 
+link:./109_declare_constant.adoc[이전: 상수 선언] +
 link:./11_static_constructor.adoc[다음: static 생성자]

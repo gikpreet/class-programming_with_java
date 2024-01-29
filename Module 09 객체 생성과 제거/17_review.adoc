@@ -6,8 +6,10 @@
 
 ---
 
-Quiz
+== Quiz
 
 1.	Time 클래스를 선언하고 hour, minute, second 세 파라미터를 가지는 생성자를 가지는 코드를 작성하세요.
 2.	컴파일러는 Time 클래스의 기본 생성자를 생성합니까?
 3.	try-with-resource문의 목적은 무엇입니까?
+
+link:./16_garbage_collection.adoc[이전: 가비지 컬렉션]

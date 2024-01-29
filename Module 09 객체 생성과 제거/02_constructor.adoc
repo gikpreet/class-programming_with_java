@@ -9,4 +9,5 @@
 3.	생성자 오버라이딩
 4.	생성자 오버로딩
 
+link:./01_object_creation_destroy.adoc[이전: 객체 생성과 제거] +
 link:./03_object_creation.adoc[다음: 객체 생성]

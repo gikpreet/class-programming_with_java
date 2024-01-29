@@ -35,4 +35,5 @@ static int[3] createArray(int size) { 	// 컴파일시 오류
 }
 ----
 
+link:./18_method_of_array.adoc[이전: 배열 메소드]
 link:./20_array_as_parameter.adoc[다음: 배열을 파라미터로 전달]

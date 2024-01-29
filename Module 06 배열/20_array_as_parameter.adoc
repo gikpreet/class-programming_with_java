@@ -50,4 +50,5 @@ public static void main(String[] args) {
 }
 ----
 
+link:./19_return_array.adpc[이전: 메소드에서 배열 return] +
 link:./21_command_argument.adoc[다음: 명령줄 인자]

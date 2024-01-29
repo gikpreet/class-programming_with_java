@@ -17,4 +17,5 @@ Java에서 다차원 배열을 선언하는 것은 대괄호의 개수에 따라
 
 배열 변수 선언시에는 각 차원의 길이를 포함하지 않아야 합니다.
 
+link:./04_array_in_java.adoc[이전: Java에서 배열 표기법] +
 link:./06_array_element_access.adoc[다음: 배열 요소에 접근]

@@ -11,4 +11,5 @@
 5.	배열 경계 검사
 6.	배열과 컬렉션 비교
 
+link:./01_array.adoc[이전: 배열] +
 link:./03_whatisarray.adoc[다음: 배열이란?]

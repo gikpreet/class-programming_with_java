@@ -11,4 +11,5 @@ image:./images/image01.png[]
 
 배열은 임의 접근(Random Access)를 허용합니다. 이는 프로그램의 배열의 요소에 순서와 관계없이 빠르게 액세스 할 수 있음을 의미합니다.
 
+link:./02_overview_array.adoc[이전: 배열 개요] +
 link:./04_array_in_java.adoc[다음: Java에서 배열 표기법]

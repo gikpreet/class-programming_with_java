@@ -32,4 +32,5 @@ data2 = new int[] {5,6,7,8};		// 허용
 data2 = {9,10,11,12};			    // 허용되지 않음
 ----
 
+link:./10_create_array_instance.adoc[이전: 배열 인스턴스 생성] +
 link:./12_initiate_mutiple_dimension.adoc[다음: 다차원 배열 요소 초기화]

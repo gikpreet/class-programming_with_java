@@ -33,4 +33,5 @@ type arrayName[]
 type[3] arrayName; 	// 허용되지 않음
 ----
 
+link:./03_whatisarray.adoc[이전: 배열이란?]
 link:./05_dimension.adoc[다음: 배열의 차원]

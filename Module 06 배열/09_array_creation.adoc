@@ -11,4 +11,5 @@
 5.	계산된 크기를 가진 배열 생성
 6.	배열 요소 복사
 
+link:./08_array_colleciton.adoc[이전: 배열과 컬렉션 비교] +
 link:./10_create_array_instance.adoc[다음: 배열 인스턴스 생성]

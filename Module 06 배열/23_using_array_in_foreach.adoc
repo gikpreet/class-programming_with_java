@@ -50,4 +50,5 @@ for (int[] innerArray: array) {
 }
 ----
 
+link:./22_demo_using_commandline_argument.adoc[이전: 데모: 명령줄 인자 사용] +
 link:./24_lab_6-1.adoc[다음: 배열의 생성과 사용]

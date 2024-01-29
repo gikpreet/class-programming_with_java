@@ -80,4 +80,5 @@ Hello
 World
 ----
 
+link:./21_command_argument.adoc[이전: 명령줄 인자]
 link:./23_using_array_in_foreach.adoc[다음: foreach 문에서 배열 사용]

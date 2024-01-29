@@ -35,4 +35,5 @@ int[][][] cube = new int[][][] {
 };
 ----
 
+link:./11_initate_element.adoc[이전: 배열 요소 초기화] +
 link:./13_jagged_array.adoc[다음: 가변 길이 배열]

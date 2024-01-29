@@ -139,4 +139,5 @@ static void summerize(char[] contents) {
 줄 수: 19
 ----
 
+link:./23_using_array_in_foreach.adoc[이전: foreach 문에서 배열 사용] +
 link:./25_review.adoc[다음: 검토]

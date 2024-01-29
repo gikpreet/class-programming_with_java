@@ -49,4 +49,5 @@ IDCard idCard = new IDCard();
 idCard.getName();	// “Product”
 ----
 
+link:./08_method_overriding.adoc[이전: 메소드 오버라이딩] +
 link:./10_final_class.adoc[다음: final 클래스]

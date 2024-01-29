@@ -1,4 +1,4 @@
-= 인터페이스
+= 인터페이스(Interface)
 
 * 인터페이스는 구현이 없는 operation의 이름만 포함
 
@@ -14,4 +14,5 @@ UML에서 인터페이스는 « » 사이에 interface를 써서 표시합니다
 
 인터페이스는 클래스 계층 구조의 제일 위에 배치됩니다. 인터페이스는 operation만들 표시하고, 인터페이스에서 파생되는 클래스가 인터페이스에 선언된 operation들만을 사용하는 경우 프로그램은 파생된 클래스에 대해 종속성을 가지지 않습니다. 인터페이스를 기준으로 프로그래밍 하면 인터페이스에서 파생된 모든 클래스는 인터페이스 타입으로 동작할 수 있으며, 파생된 클래스에서의 변경이 영향을 프로그램에 영향을 미치지 않게 됩니다.
 
-link:./27_early_late_binding.adoc[다음 이른/늦은 바인딩]
+link:./25_abstract_class.adoc[이전: 추상 클래스(Abstract Class)]
+link:./27_early_late_binding.adoc[다음: 이른/늦은 바인딩(Early/Late Binding)]

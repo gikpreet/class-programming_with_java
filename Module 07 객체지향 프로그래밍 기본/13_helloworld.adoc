@@ -131,4 +131,5 @@ Example example = new Example();
 example.main();
 ----
 
+link:./12_java_and_OOP.adoc[이전: Java와 객체지향] +
 link:./14_simple_class_definition.adoc[다음: 단순한 클래스 정의]

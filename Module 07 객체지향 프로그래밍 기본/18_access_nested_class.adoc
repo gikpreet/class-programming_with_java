@@ -1,4 +1,4 @@
-== 포함된 클래스에 접근
+== ㅍ
 
 * 포함된 클래스는 public 또는 private으로 선언될 수 있음
 
@@ -72,4 +72,5 @@ class Bank
 
 이 코드에서 `Account.setup` 메소드는 `NumberSetter` 클래스에 액세스할 수 있습니다. `NumberSetter` 클래스는 `private` 클래스이지만 `Account` 내에 선언되었고 `setup` 메소드는 `account` 의 메소드이기 때문입니다.
 
+link:./17_nested_class.adoc[이전: 포함된 클래스 생성] +
 link:./19_lab_7-1.adoc[다음: Lab 7-1 클래스를 만들고 사용]

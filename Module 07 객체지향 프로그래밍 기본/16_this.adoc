@@ -96,4 +96,5 @@ class Register {
 ----
 |===
 
+link:./15_instance.adoc[이전: 새 객체 인스턴스화] +
 link:./17_nested_class.adoc[다음: 포함된 클래스 생성]

@@ -429,4 +429,5 @@ public static void main(String[] args) {
 5.	BankAccount.java 파일을 컴파일 하고 오류가 있으면 수정합니다.
 6.	실행을 확인합니다.
 
+link:./18_access_nested_class.adoc[이전: 포함된 클래스에 접근] +
 link:./20_oo_system.adoc[다음: 객체지향 시스템 정의]

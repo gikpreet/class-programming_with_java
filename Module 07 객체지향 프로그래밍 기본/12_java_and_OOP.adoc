@@ -11,4 +11,5 @@
 5.	내부 클래스 정의
 6.	내부 클래스에 액세스
 
+link:./11_using_static_data.adoc[이전: 정적 메소드(Static Method) 사용] +
 link:./13_helloworld.adoc[다음: Hello, World Revisited]

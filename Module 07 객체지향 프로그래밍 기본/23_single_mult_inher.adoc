@@ -13,4 +13,5 @@ image:./images/image11.png[]
 
 모든 형태의 상속, 특히 다중 상속은 동일한 객체에 대해 여러 수준에서의 행위를 제공합니다. `Violin` 개체는 `Violin` 클래스 수준에서 사용할 수 있지만 `StringedInstrument` 수준에서도 동작합니다.
 
-link:./24_polymorphism.adoc[다음: 다형성]
+link:./22_hier.adoc[이전: 클래스 계층구조] +
+link:./24_polymorphism.adoc[다음: 다형성(Polymorphism)]

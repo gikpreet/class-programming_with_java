@@ -66,4 +66,5 @@ public class Program {
 }
 ----
 
+link:./14_simple_class_definition.adoc[이전: 단순한 클래스 정의] +
 link:./16_this.adoc[다음: this 키워드]

@@ -91,4 +91,5 @@ catch (Exception e) {
 }
 ----
 
-link:./33_instanceof.adoc[다음: instanceof 연산자]
+link:./32_boxing_unboxing.adoc[이전: Boxing과 Unboxing] +
+link:./34_instanceof.adoc[다음: instanceof 연산자]

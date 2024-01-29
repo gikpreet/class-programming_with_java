@@ -68,4 +68,5 @@ class Test {
 }
 ----
 
+link:./09_enum.adoc[이전: enum 타입] +
 link:./11_enum_value_compare.adoc[다음: enum 값 비교]

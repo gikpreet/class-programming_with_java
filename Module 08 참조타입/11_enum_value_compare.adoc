@@ -33,5 +33,5 @@ suit1.equals(suit3);	// false
 
 enum 간에는 <, >, <=, >= 등의 비교를 사용할 수 없습니다.
 
-
+link:./10_declare_enum.adoc[이전: enum 타입 선언] +
 link:./12_enum_method.adoc[다음: enum 타입 메소드]

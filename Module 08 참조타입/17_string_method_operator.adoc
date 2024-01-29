@@ -83,4 +83,5 @@ System.out.println(upperCaseTitle);
 System.out.println(lowerCaseTitle);
 ----
 
-link:./17_string_compariaion.adoc[다음: String 값 비교]
+link:./16_string_class[이전: String 클래스] +
+link:./18_string_compariaion.adoc[다음: String 값 비교]

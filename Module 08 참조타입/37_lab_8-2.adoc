@@ -134,4 +134,5 @@ E.	작업을 저장합니다.
 Greetings
 ----
 
-link:./37_review.adoc[다음: 검토]
+link:./36_interface_casting.adoc[이전: 인터페이스 타입 변환] +
+link:./38_review.adoc[다음: 검토]

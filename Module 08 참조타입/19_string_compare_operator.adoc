@@ -46,4 +46,5 @@ image:./images/image09.png[string, 400]
 
 new 연산자를 이용해서 String 객체를 생성하면 다른 객체의 경우와 동일하게 Heap 영역에 할당됩니다. 이 경우는 두 String 타입 변수는 각자의 객체 위치(주소 값)을 가지게 됩니다. 따라서 연산자 ==로 비교하면 false를 반환합니다.
 
-link:./19_object_hier.adoc[다음: 객체 계층 구조]
+link:./18_string_compariaion.adoc[이전: String 값 비교] +
+link:./20_object_hier.adoc[다음: 객체 계층 구조]

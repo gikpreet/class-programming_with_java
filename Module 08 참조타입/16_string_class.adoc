@@ -22,4 +22,5 @@ C/C++에서는 문자열 처리를 위해 `char` 배열을 사용하지만, Java
 
 `java.lang` 패키지에 포함된 `String` 클래스는 문자열 조작을 위한 유용한 메소드들을 포함하고 있습니다. 
 
-link:./16_string_method_operator.adoc[다음: String 클래스 메소드, 연산자]
+link:./15_exception_class[이전: Exception 클래스] +
+link:./17_string_method_operator.adoc[다음: String 클래스 메소드, 연산자]

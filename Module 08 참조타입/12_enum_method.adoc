@@ -81,4 +81,5 @@ for (Suit suit: suits) {
 }
 ----
 
-link:./12_enum_more.adoc[다음: enum 생성자]
+link:./11_enum_value_compare[이전: enum 값 비교] +
+link:./13_enum_constructor.adoc[다음: enum 생성자]

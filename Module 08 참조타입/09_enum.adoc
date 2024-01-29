@@ -8,4 +8,5 @@
 2.	enum 값 비교
 3.	enum 타입 메소드
 
+link:./08_ref_as_parameter.adoc[이전: 메소드 파라미터에 참조 타입 사용] +
 link:./10_declare_enum.adoc[다음: enum 타입 선언]

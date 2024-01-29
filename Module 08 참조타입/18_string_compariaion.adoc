@@ -44,4 +44,5 @@ s1.compareTo(s2);
 * compareToIgnoreCase 메소드 +
 `compareTo()` 메소드와 동일하게 동작하지만 대소문자를 구분하지 않습니다.
 
-link:./18_string_compare_operator.adoc[다음: String 비교 연산자]
+link:./17_string_method_operator.adoc[이전: String 클래스 메소드, 연산자] +
+link:./19_string_compare_operator.adoc[다음: String 비교 연산자]

@@ -32,4 +32,5 @@ Java는 int, long, byte와 같은 기본 데이터 타입(primitive data type)�
 
 앞에서 사용했던 String, 배열, 예외는 모두 Java가 기본적으로 제공하는 참조 타입에 해당합니다. 실습에서 알 수 있듯이 Java에서는 사용자 정의 클래스를 만들어 인스턴스화 하여 객체로 사용할 수 있고, 이런 종류의 객체는 모두 참조 타입으로 동작합니다.
 
+link:./02_reference.adoc[이전: 참조 타입] +
 link:./04_declare_release.adoc[다음: 참조 타입 변수의 선언과 해제]

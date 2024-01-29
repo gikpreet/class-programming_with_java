@@ -17,4 +17,5 @@
 * 수학 관련 연산을 위한 Math 클래스
 * Thread와 관련된 클래스
 
-link:./25_java_util_package.adoc[다음: java.util 패키지]
+link:./24_overview_java_package.adoc[이전: Java 패키지] +
+link:./26_java_util_package.adoc[다음: java.util 패키지]

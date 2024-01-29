@@ -53,4 +53,5 @@ wrappertype.equals(wrapperType2);
 
 Wrapper 클래스는 산술 연산을 위해 정의된 클래스가 아니므로, 인스턴스에 저장된 값을 변경할 수 없습니다.
 
-link:./31_boxing_unboxing.adoc[다음: Boxing과 Unboxing]
+link:./30_type_casting.adoc[이전: 타입 변환] +
+link:./32_boxing_unboxing.adoc[다음: Boxing과 Unboxing]

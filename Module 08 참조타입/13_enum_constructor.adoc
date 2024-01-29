@@ -32,4 +32,5 @@ public enum Season {
 
 ---
 
-link:./13_common_ref_type.adoc[다음: 공통 참조 타입]
+link:./12_enum_method.adoc[이전: enum 메소드] +
+link:./14_common_ref_type.adoc[다음: 공통 참조 타입]

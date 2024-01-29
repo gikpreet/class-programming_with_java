@@ -36,4 +36,5 @@ object = (Object)ironMan;
 ironMan instanceof Object;	// true
 ----
 
-link:./35_interface_casting.adoc[다음: 인터페이스 타입 변환]
+link:./34_instanceof.adoc[이전: instanceof 연산자] +
+link:./36_interface_casting.adoc[다음: 인터페이스 타입 변환]

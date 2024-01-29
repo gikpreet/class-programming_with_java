@@ -10,4 +10,5 @@ Java는 많은 참조 타입 클래스를 미리 만들어 가지고 있습니�
 4.	String 비교
 5.	String 비교 연산자
 
-link:./14_exception_class.adoc[다음: exception 클래스]
+link:./13_enum_constructor.adoc[이전: enum 생성자] +
+link:./15_exception_class.adoc[다음: exception 클래스]

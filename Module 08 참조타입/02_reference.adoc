@@ -11,4 +11,5 @@
 5.	같은 객체에 대한 여러 변수의 참조
 6.	메소드 파라미터에 대한 참조 타입 사용
 
+link:./01_reference_type.adoc[이전: 참조타입] +
 link:./03_comparision.adoc[다음: 값 타입과 참조타입 비교]

@@ -13,4 +13,5 @@
 
 java.io 패키지는 파일이나 통신, 입 출력 등에 관련된 작업을 처리하는 클래스가 포함되어 있습니다. 
 
-link:./27_other_package.adoc[다음: 기타 유용한 패키지]
+link:./26_java_util_package.adoc[이전: java.util 패키지] +
+link:./28_other_package.adoc[다음: 기타 유용한 패키지]

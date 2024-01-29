@@ -9,4 +9,5 @@ Java의 패키지는 비슷한 성격의 클래스들을 모아 놓은 디렉토
 3.	java.io 패키지
 4.	기타 유용한 패키지
 
-link:./23_overview_java-package.adoc[다음: Java 패키지 개요]
+link:./22_common_method.adoc[이전: 공통 메소드] +
+link:./24_overview_java_package.adoc[다음: Java 패키지 개요]

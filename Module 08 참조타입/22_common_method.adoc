@@ -45,4 +45,5 @@ System.out.println(account1.equals(account1));
 * finalize 메소드 +
 해당 객체의 사용이 끝난 경우(아무도 참조하지 않는 경우) Garbage Collector가 객체의 리소스를 정리할 것을 표시합니다.
 
-link:./22_java_package.adoc[다음: Java 패키지]
+link:./21_object_type.adoc[이전: Object 타입] +
+link:./23_java_package.adoc[다음: Java 패키지]

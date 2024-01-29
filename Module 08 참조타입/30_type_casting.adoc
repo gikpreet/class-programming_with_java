@@ -11,4 +11,5 @@
 5.	Object 타입 변환
 6.	인터페이스 타입 변환
 
-link:./30_wrapper_class.adoc[다음: Wrapper 클래스]
+link:./29_lab_8-1.adoc[이전: 8-1: 참조 타입 변수를 선언하고 사용] +
+link:./31_wrapper_class.adoc[다음: Wrapper 클래스]

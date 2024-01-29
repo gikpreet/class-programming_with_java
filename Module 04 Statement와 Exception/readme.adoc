@@ -1,33 +1,34 @@
 = Module 04 Statement와 Exception
 
-link:./01_statement_and_exception.adoc[Module 04: Statement와 Exception] + 
-link:./02_statement_overview.adoc[- Chapter 1: Statement 개요] + 
-link:./03_block.adoc[-- Statement Block(문 블록)] + 
-link:./04_statemend.adoc[-- Statement(문)의 종류] + 
-link:./05_selection_statement.adoc[Chapter 2: 선택문] + 
-link:./06_if_statement.adoc[-- if Statement (if 문)] + 
-link:./07_cascading_if.adoc[-- Cascading if statement (Cascading if 문)] + 
-link:./08_switch.adoc[-- switch statement(switch 문)] + 
-link:./09_iteration.adoc[- Chapter 2: Iteration Statement(반복 문)] + 
-link:./10_while.adoc[-- while statement (while 문)] + 
-link:./11_do.adoc[-- do statement (do 문)] + 
-link:./12_for.adoc[-- for statement (for 문)] + 
-link:./13_foreach.adoc[-- foreach statement(foreach 문)] + 
-link:./14_jump_statement.adoc[- Chapter 3: Jump Statement (분기 문)] + 
-link:./15_goto.adoc[-- goto statement (goto 문)] + 
-link:./16_break_continue.adoc[-- break와 continue statement(break 문과 continue 문)] + 
-link:./17_lab4-1.adoc[- Lab 4-1 연도 일자를 월/일로 계산] + 
-link:./18_exercise.adoc[- 연습문제] + 
-link:./19_lab4-1.adoc[- Lab 4-1: 연도 일자를 월/일로 계산] + 
-link:./20_exceptions.adoc[Chapter 4: 기본 예외 처리] + 
-link:./21_why_exceptions.adoc[-- 예외를 왜 사용해야 하는가?] + 
-link:./22_exception_object.adoc[-- 예외 객체] + 
-link:./23_try_catch_black.adoc[-- try/catch 블록] + 
-link:./24_multiple_catch_black.adoc[-- 다중 catch 블록] + 
-link:./25_throw_exception.adoc[- Chapter 5: 예외 발생시키기] + 
-link:./26_throw.adoc[-- throw statement (throw 문)] + 
-link:./27_exception_method.adoc[-- 메소드에 예외 선언] + 
-link:./28_finally.adoc[-- finally statement (finally 문)] + 
-link:./29_try_with_resource.adoc[-- try-with-resource clause (try-with-resource 절)] + 
-link:./30_lab4-2.adoc[- Lab 4-2 예외 처리] + 
-link:./31_review.adoc[- 검토]
+link:./01_statement_and_exception.adoc[Module 04: Statement와 Exception]
+
+* link:./02_statement_overview.adoc[Chapter 1: Statement 개요]
+** link:./03_block.adoc[Statement Block(문 블록)]
+** link:./04_statemend.adoc[Statement(문)의 종류]
+* link:./05_selection_statement.adoc[Chapter 2: Selection Statement(선택 문)]
+** link:./06_if_statement.adoc[if Statement (if 문)]
+** link:./07_cascading_if.adoc[Cascading if statement (Cascading if 문)]
+** link:./08_switch.adoc[switch statement(switch 문)]
+* link:./09_iteration.adoc[Chapter 3: Iteration Statement(반복 문)]
+** link:./10_while.adoc[while statement (while 문)]
+** link:./11_do.adoc[do statement (do 문)]
+** link:./12_for.adoc[for statement (for 문)]
+** link:./13_foreach.adoc[foreach statement(foreach 문)]
+* link:./14_jump_statement.adoc[Chapter 4: Jump Statement (분기 문)]
+** link:./15_goto.adoc[goto statement (goto 문)]
+** link:./16_break_continue.adoc[break와 continue statement(break 문과 continue 문)]
+* link:./17_lab4-1.adoc[Lab 4-1 연도 일자를 월/일로 계산]
+* link:./18_exercise.adoc[연습문제]
+* link:./19_lab4-1.adoc[Lab 4-1: 연도 일자를 월/일로 계산]
+* link:./20_exceptions.adoc[Chapter 5: 기본 예외 처리]
+** link:./21_why_exceptions.adoc[예외를 왜 사용해야 하는가?]
+** link:./22_exception_object.adoc[예외 객체]
+** link:./23_try_catch_black.adoc[try/catch 블록]
+** link:./24_multiple_catch_black.adoc[다중 catch 블록]
+* link:./25_throw_exception.adoc[Chapter 6: 예외 발생시키기]
+** link:./26_throw.adoc[throw statement (throw 문)]
+** link:./27_exception_method.adoc[메소드에 예외 선언]
+** link:./28_finally.adoc[finally statement (finally 문)]
+** link:./29_try_with_resource.adoc[try-with-resource clause (try-with-resource 절)]
+* link:./30_lab4-2.adoc[Lab 4-2 예외 처리]
+* link:./31_review.adoc[검토]

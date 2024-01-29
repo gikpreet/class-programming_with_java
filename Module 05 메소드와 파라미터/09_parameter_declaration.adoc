@@ -45,4 +45,5 @@ String message = “Hello World!”;
 defineParaemetersIntoMethod(value, message);
 ----
 
+link:./08_parameter.adoc[이전: 파라미터] + 
 link:./10_parameter_passing.adoc[다음: 파라미터 전달 메커니즘]

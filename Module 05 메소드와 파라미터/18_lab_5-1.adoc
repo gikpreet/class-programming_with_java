@@ -145,4 +145,5 @@ swap 메소드 호출 전: i: 1, J: 2
 swap 메소드 호출 후: i: 1, J: 2
 ----
 
+link:./17_using_overloaded_method.adoc[다음: 오버로드된 메소드 사용]
 link:./19_lab_5-2.adoc[다음: Lab 5-2 메소드 오버로딩]

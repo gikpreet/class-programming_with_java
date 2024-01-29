@@ -56,4 +56,5 @@ static int doSomething (int j) {
 }
 ----
 
+link:./15_definition.adoc[이전: 메소드 오버로딩 정의] +
 link:./17_using_overloaded_method.adoc[다음: 오버로드된 메소드 사용]

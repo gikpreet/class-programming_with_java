@@ -10,4 +10,5 @@
 4.	가변 길이 목록 파라미터 사용
 5.	재귀 메소드(Recursive Method) 사용
 
+link:./07_value_return.adoc[이전: 값 return] +
 link:./09_parameter_declaration.adoc[다음: 파라미터 선언과 호출]

@@ -77,4 +77,5 @@ public class MyClass {
 }
 ----
 
+link:./02_method.adoc[이전: 메소드] +
 link:./04_method_invocation.adoc[다음: 메소드 호출]

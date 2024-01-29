@@ -12,4 +12,5 @@
 4.	지역 변수
 5.	값 변환
 
+link:./01_method_parameter.adoc[이전: 메소드와 파라미터] +
 link:./03_method_declareation.adoc[다음: 메소드 선언]

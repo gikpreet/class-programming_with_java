@@ -106,4 +106,5 @@ x -> { x * x * x;}
 
 image:./images/image06.png[]
 
+link:./06_introduct_lambda.adoc[이전: Lambda Expression] +
 link:./08_method_reference.adoc[다음: 메소드 참조]

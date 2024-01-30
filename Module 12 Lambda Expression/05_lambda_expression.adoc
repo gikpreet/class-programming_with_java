@@ -51,4 +51,5 @@ RunSomething run2 = () -> {
 };
 ----
 
-link:./06_introduct_lambda.adoc[다음: Lambda Expression]
+link:./04_anonymous_class.adoc[이전: Anonymous Class] +
+link:./06_introduct_lambda.adoc[다음: Lambda Expression 사용]

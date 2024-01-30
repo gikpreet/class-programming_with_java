@@ -183,5 +183,6 @@ reason: cannot infer type-variable(s) T
   (argument mismatch; java.util.List<java.lang.Integer> cannot be converted to java.util.List<? super java.lang.Number>)
 ----
 
+link:./18_inheritance_subtype.adoc[이전: 상속 및 서브타입] +
 link:./20_type_deletion.adoc[다음: 타입 삭제]
 

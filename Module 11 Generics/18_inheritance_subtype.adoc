@@ -78,5 +78,6 @@ public class ChildProduct<T, M, C> extends Product<T, M> {
 }
 ----
 
+link:./17_type_prohibition.adoc[이전: 타입 제한] +
 link:./19_wildcard.adoc[다음: 와일드 카드]
 

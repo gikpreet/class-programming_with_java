@@ -7,5 +7,6 @@ Generics에서 타입 파라미터는 컴파일 타임에만 사용되고, 컴�
 1. Generic 타입에서 타입 삭제
 2. Generic 메소드에서 타입 삭제
 
+link:./19_wildcard.adoc[이전: 와일드 카드] +
 link:./21_type_deletion_in_generics.adoc[다음: Generics에서의 타입 삭제]
 

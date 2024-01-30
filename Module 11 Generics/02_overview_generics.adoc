@@ -9,6 +9,7 @@ Generics는 Generic이라는 단어가 주는 의미처럼, 다양한 타입에 
 3. 형 변환 감소
 4. 일반 알고리즘의 구현
 
+link:./01_generics[이전: Generics] +
 link:./03_generics_overview.adoc[다음: Generics 개요]
 
 

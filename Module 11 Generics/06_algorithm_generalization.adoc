@@ -66,5 +66,6 @@ public class BubbleSortExample {
 정렬 후 : [Jacob, James, John, Liam, Michael, Noah, Robert, William]
 ----
 
-link:./07_generic_type.adoc[다음: 지네릭 타입]
+link:./05_reduce_type_check.adoc[이전: 타입 변환 감소] +
+link:./07_generic_type.adoc[다음: Generic 타입]
 

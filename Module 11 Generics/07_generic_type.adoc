@@ -7,5 +7,6 @@ Generic 타입은 클래스 또는 인터페이스에 선언하며, 타입 파�
 1. Generic 타입 선언
 2. 객체 생성
 
-link:./08_declare_generic_type.adoc[다음: 지네릭 타입 선언]
+link:./06_algorithm_generalization.adoc[이전: 알고리즘 일반화] +
+link:./08_declare_generic_type.adoc[다음: Generic 타입 선언]
 

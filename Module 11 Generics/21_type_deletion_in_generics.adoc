@@ -111,6 +111,7 @@ public class Node {
 }
 ----
 
+link:./20_type_deletion.adoc[이전: 타입 삭제] +
 link:./22_type_deletion_in_genericmerthod.adoc[다음: Generics 메소드에서의 타입 삭제]
 
 

@@ -81,5 +81,6 @@ TypeSafetyGenericsExample.java:16: error: incompatible types: String cannot be c
 
 Generic의 적용은 타입 검사를 통해 런타임에 발생할 수 있는 타입 오류를 컴파일시에 찾아 줌으로써 오류 발생 지연을 방지하는 기능을 수행할 수 있습니다.
 
+link:./03_generics_overview.adoc[이전: Generics 개요] +
 link:./05_reduce_type_check.adoc[다음: 타입 변환 감소]
 

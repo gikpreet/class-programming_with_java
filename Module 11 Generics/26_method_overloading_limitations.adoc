@@ -25,4 +25,5 @@ public class Example {
 }
 ----
 
-link:./27_lab_11-1.adoc[다음: Generics를 이용한 응용 프로그램 작성]
+link:./25_generic_type_limitations.adoc[이전: Generic 타입 제약] +
+link:./27_lab_11-1.adoc[다음: Lab 11-1 Generics를 이용한 응용 프로그램 작성]

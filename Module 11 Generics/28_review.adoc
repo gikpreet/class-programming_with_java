@@ -1,0 +1,5 @@
+= 검토
+
+* Generics
+* Generic 타입
+* Generic 메소드

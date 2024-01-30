@@ -31,5 +31,6 @@ public static <E> void append(List<E> list, Class<E> cls) {
 
 static 필드는 객체와 다른 영역에 할당되는 공유 수준 변수이고, 클래스가 로드 될 때 생성됩니다. 타입 파라미터 인자가 달라질 수 있으므로, 특정 타입으로 생성되어야 하는 static으로 선언될 수 없습니다.
 
+link:./23_generics_limitations.adoc[이전: Generics 제약] +
 link:./25_generic_type_limitations.adoc[다음: Generic 타입 제약]
 

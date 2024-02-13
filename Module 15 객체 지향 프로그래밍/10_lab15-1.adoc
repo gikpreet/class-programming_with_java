@@ -1,0 +1,191 @@
+= Lab 15-1: BankAccount클래스 리팩토링
+
+이 연습에서는 앞에서 작성했던 BankAccount 클래스를 예제로 SRP 원칙을 적용해 봅니다.
+
+1. Visual Studio Code를 실행합니다.
+2. 파일 메뉴에서 폴더 열기를 클릭하고 c:\Labs\Lab15-1\Starter 폴더를 엽니다.
+3. 작성자 신뢰 경고 창에서, 예, 작성자를 신뢰합니다 버튼을 클릭합니다.
+4. BankAccount.java 파일을 열고 코드를 확인합니다.
++
+[source, java]
+----
+import java.math.BigDecimal;
+
+public class BankAccount {
+    private String accountNumber;
+    private String ownerName;
+    private BigDecimal balance;
+
+    private static String nextAccountNumber = “0”;
+
+    public BankAccount(String ownerName, BigDecimal balance) {
+        this.accountNumber = createAccountNumber();
+        this.ownerName = ownerName;
+        this.balance = balance;
+    }
+
+    private static String createAccountNumber() {
+        int accountNumber = Integer.parseInt(nextAccountNumber);
+        nextAccountNumber = Integer.toString(++accountNumber);
+        return nextAccountNumber;
+    }
+
+    public BigDecimal deposit(BigDecimal amount) {
+        this.balance = this.balance.add(amount);
+        return this.balance;
+    }
+
+    public boolean withDraw(BigDecimal amount) {
+        if (amount.compareTo(this.balance) == 1 || amount.compareTo(this.balance) == 0) {
+            return false;
+        } else {
+            balance = balance.subtract(amount);
+            return true;
+        }
+    }
+
+    public void printAccount() {
+        System.out.println("Account Number: " + this.accountNumber);
+        System.out.println("Owner Name: " + this.ownerName);
+        System.out.println("Balance: " + this.balance.toString());
+    }
+}
+----
++
+5. Test.java 파일을 열고 코드를 확인합니다.
++
+[source, java]
+----
+import java.math.BigDecimal;
+
+class Test {
+    public static void main(String[] args) {
+        BankAccount account = new BankAccount("Jason", new BigDecimal(100));
+        account.printAccount();
+        BankAccount account2 = new BankAccount("James", new BigDecimal(1000));
+        account2.printAccount();
+    }
+}
+----
+
+위 BankAccount 클래스는 크게 세 가지 책임을 가지고 있습니다.
+
+1.	계좌 번호를 생성한다. +
+위 코드에서 계좌번호는 단순히 공유 static 변수를 증가시켜 새 계좌번호를 생성합니다. 이는 얼마든지 변경될 수 있습니다.
+2.	계좌에서 돈을 입금하고 출금한다. +
+위 코드에는 단순히 withDraw, deposit 두 메소드의 값을 balance 변수에 더하거나 뺍니다. 이 방식은 변경될 수 있습니다.
+3.	계좌 정보를 출력한다. +
+계좌의 정보를 출력하는 방법은 언제든 변경될 수 있습니다.
+
+마틴 파울러가 정리한 리팩토링 규칙에서, Extract Class 방법은 Move Method, Move Field 두 가지 방법을 사용합니다. BankAccount 클래스에서 책임을 추출하기 위해 Move Method 방법을 사용합니다.
+
+Move Method 방법은 다른 클래스로 메소드를 옮기는 방법이지만, 여기서는 새 클래스를 만들어 옮기는 작업을 절차대로 수행합니다. 여기서는 계좌 번호를 생성하는 책임을 분리합니다. 아래 절차에 따릅니다.
+
+1. 옮길 대상이 되는 메소드에 의해 사용되는 부분을 모두 조사한다: +
+계좌 번호를 생성하는 동작을 수행하는 메소드는 createAccount 메소드입니다. 이 메소드는 nextAccountNumber 정적 변수와 함께 동작합니다.
+2. 소스 클래스의 서브 클래스나 슈퍼 클래스에서 옮기려고 하는 메소드에 대한 다른 선언이 있는지 확인한다: +
+BankAccount 클래스는 java.lang.Object 이외의 다른 클래스와 상속 관계로 연관되어 있지 않습니다.
+3. 타겟 클래스에 메소드를 정의한다: +
+이 예제에서는 타겟 클래스가 없으므로 CreateAccount라는 새 클래스(CreateAccount.java)를 생성합니다.
+a. Visual Studio Code 탐색기에서, 새 파일 아이콘을 클릭합니다.
+b. 파일 이름에 CreateAccount.java라고 입력합니다.
+4. 소스 메소드에서 타겟 메소드로 코드를 복사한다. 그리고 그 메소드가 타겟 클래스에서 동작하도록 적절히 수정한다:
+BankAccount 클래스에서 createAccount 메소드와 nextAccountNumber 정적 변수를 복사하여 CreateAccount 클래스로 이동합니다. createAccountNumber 메소드를 외부에서 접근 가능하도록 접근 제한자를 public으로 변경합니다.
++
+완성된 코드는 아래와 유사할 것입니다:
++
+[source, java]
+----
+public class CreateAccount {
+        private static String nextAccountNumber = "0";
+
+        public static String createAccountNumber() {
+            int accountNumber = Integer.parseInt(nextAccountNumber);
+            nextAccountNumber = Integer.toString(++accountNumber);
+            return nextAccountNumber;
+        }
+}
+----
++
+5. 타겟 클래스를 컴파일 한다:+
+새로 생성한 CreateAccount.java 파일을 컴파일 합니다.
++
+----
+$ javac CreateAccount.java
+----
++
+6. 소스 클래스에서 적절한 타겟 객체를 참조하는 방법을 결정한다: +
+BankAccount 클래스는 생성자에서 createAccountNumber 메소드를 호출합니다. 생성자에서 새로 생성한 CreateAccount 클래스의 createAccountNumber 메소드를 호출하도록 합니다.
+7. 소스 메소드를 위임 메소드로 바꾼다: +
+코드를 수정합니다. 완성된 코드는 아래와 유사할 것입니다:
++
+[source, java]
+----
+public BankAccount(String ownerName, BigDecimal balance) {
+    this.accountNumber = CreateAccount.createAccountNumber();
+    this.ownerName = ownerName;
+    this.balance = balance;
+}
+----
++
+8. 컴파일, 테스트를 한다.
+BankAccount.java 파일을 컴파일 합니다. 이때 CreateAccount와 Test 클래스는 컴파일 하지 않습니다. 컴파일에 성공하면 수정하지 않은 Test 클래스를 실행하여 결과를 확인합니다.
++
+Extract Class 리팩토링이 적용된 후의 BankAccount 클래스는 아래와 같습니다.
++
+[source, java]
+----
+import java.math.BigDecimal;
+
+public class BankAccount {
+    private String accountNumber;
+    private String ownerName;
+    private BigDecimal balance;
+
+    public BankAccount(String ownerName, BigDecimal balance) {
+        this.accountNumber = CreateAccount.createAccountNumber();
+        this.ownerName = ownerName;
+        this.balance = balance;
+    }
+
+    public BigDecimal deposit(BigDecimal amount) {
+        this.balance = this.balance.add(amount);
+        return this.balance;
+    }
+
+    public boolean withDraw(BigDecimal amount) {
+        if (amount.compareTo(this.balance) == 1 || amount.compareTo(this.balance) == 0) {
+            return false;
+        } else {
+            balance = balance.subtract(amount);
+            return true;
+        }
+    }
+
+    public void printAccount() {
+        System.out.println("Account Number: " + this.accountNumber);
+        System.out.println("Owner Name: " + this.ownerName);
+        System.out.println("Balance: " + this.balance.toString());
+    }
+}
+----
+
+여기서 꼭 기억해야 할 것은 Test 클래스의 코드는 전혀 변경되지 않았다는 것입니다. SRP는 책임을 캡슐화해야 하며, 예제에서 계좌번호를 생성하는 책임은 완전히 캡슐화 되었습니다. 따라서, 계좌번호를 생성하는 방법이 변경되어도 BankAccount 클래스나 Test 클래스는 영향을 받지 않습니다.
+
+예를 들어, 만약 계좌번호를 생성하는 규칙이 변경되어 계좌 번호가 단순히 숫자가 아니고 “0000-1”의 형태로 변경되었다고 하면, CreateAccount 클래스의 createAccountNumber 메소드만 변경하고 해당 클래스만 컴파일 하면 됩니다.
+
+[source, java]
+----
+public class CreateAccount {
+    private static String nextAccountNumber = "0";
+
+    public static String createAccountNumber() {
+        int accountNumber = Integer.parseInt(nextAccountNumber);
+        nextAccountNumber = Integer.toString(++accountNumber);
+        return "0000-" + nextAccountNumber;
+    }
+}
+----
+
+link:./09_srp.adoc[이전: 단일 책임 원칙] +
+link:./11_example.adoc[다음: 연습문제]

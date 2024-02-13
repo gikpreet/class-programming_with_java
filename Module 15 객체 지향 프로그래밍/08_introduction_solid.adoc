@@ -1,0 +1,28 @@
+= 객체지향 디자인 원칙: SOLID
+
+* Robert Martin이 명명한 객체지향 프로그래밍 설계의 다섯가지 원칙
+* 시간이 지나도 유지보수와 확장이 쉬운 시스템을 설계하고자 할 때 적용할 수 있는 원칙
+** **S**ingle Responsibility Principle – SRP, 단일 책임 원칙
+** **O**pen Close Principle – OCP, 개방 폐쇄 원칙
+** **L**iskov Substitution Principle – LSP, 리스코프 치환 원칙
+** **I**nterface Segregation Principle – ISP, 인터페이스 분리 원칙
+** **D**ependency Inversion Principle – DIP, 의존성 역전 원칙
+
+---
+
+객체지향 프로그래밍 및 설계의 다섯가지 기본 원칙이라 불리는 SOLID 원칙은 2002년 로버트 마틴이 Agile Software Development footnote:[<Agile Software Development, Patterns and Practices>, Robert Martin, Person Education, 2002] 에서 정리했습니다. 이 원칙들은 객체지향의 장점인 재사용성과 확장성이 뛰어난 프로그램을 설계하는데 있으며, 이런 프로그램은 유지보수가 쉽고 관리 비용이 적게 듭니다.
+SOLID 원칙은 소프트웨어 작업에서 리팩토링을 통하여 코드를 개선하기 위한 작업시에도 적용될 수 있는 객체지향 프로그래밍의 원칙입니다.
+
+* 단일 책임 원칙(**S**ingle **R**esponsibility **P**rinciple) +
+한 클래스는 하나의 책임만 가져야 합니다.
+* 개방 폐쇄 원칙(**O**pen **C**lose **P**rinciple) +
+소프트웨어 요소는 확장에는 열려 있으나 변경에는 닫혀 있어야 합니다.
+* 리스코프 치환 원칙(**L**iskov **S**ubstitution **P**rinciple) +
+객체는 프로그램의 정확성에 영향을 주지 않으면서 하위 타입의 인스턴스로 치환될 수 있어야 합니다.
+* 인터페이스 분리 원칙(**I**nterface **S**egregation **P**rinciple) +
+인터페이스를 구체적이고 작은 단위로 분리하여 꼭 필요한 인터페이스만 상속해야 합니다.
+* 의존성 역전 원칙(**D**ependency **I**nversion **P**rinciple) +
+상위 모듈은 하위 모듈에 의존하면 안되며, Abstraction에 의존해야 합니다.
+
+link:./07_ooad_design_principle.adoc[이전: 객체지향 디자인 원칙] +
+link:./09_srp.adoc[다음: 단일 책임 원칙]

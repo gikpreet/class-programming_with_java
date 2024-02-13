@@ -1,0 +1,339 @@
+= Lab 15-2 : Bank 예제 프로그램에 계정 타입 추가
+
+앞장에서 연습했던 은행 예제 프로그램은 하나의 입출금 전용의 하나의 계정 타입을 가지고 있습니다. 은행의 요구사항이 변화함에 따라 계정 타입은 추가될 수 있습니다.
+
+만약 은행에서 이자가 높은 대신 예금에 한계가 있는 상품을 개발했을 때를 가정해 봅시다. 이 계좌는 이자가 높은 대신 잔고가 5000만원이 넘으면 안됩니다. 이 경우 위 예제에서 개발한 BankAccount 계좌에 예금 한도치를 설정하고 계좌 한도를 넘는 입금은 제한하는 등 구현은 여러가지 방법이 있을 수 있지만, 프로그램의 재 사용을 높이기 위해 Bank Account를 수정하지 않고 클래스를 확장하는 방법으로 구현하는 것이 유리합니다.
+
+== 연습 1: IAccount 타입을 정의하고 LimitedBankAccount 클래스 추가
+
+이 연습에서는 BankAccount 예제를 확장하여 LimitedBankAccount가 동작하는 예제를 만듭니다.
+
+=== LimitedBankAccount 클래스 추가
+
+1. Visual Studio Code를 실행합니다.
+2. 파일 메뉴에서 폴더 열기를 클릭하고 c:\Labs\Lab15-2\Starter 폴더를 엽니다.
+3. 작성자 신뢰 경고 창에서, 예, 작성자를 신뢰합니다 버튼을 클릭합니다.
+4. BankAccount.java 파일을 열고 코드를 확인합니다.
+5. `BankAccount` 클래스에서, `accountNumber`, `ownerName`, `balance` 세 전역 변수의 접근 제한자를 protected로 변경합니다.
++
+[source, java]
+----
+protected String accountNumber;
+protected String ownerName;
+protected BigDecimal balance;
+----
++
+6. Visual Studio 탐색기에서, LimitedBankAccount.java 파일을 엽니다.
+7. `LimitedBankAccount` 클래스를 `BankAccount` 클래스에서 파생되는 `BankAccount` 클래스의 서브 클래스로 정의합니다.
+8. `LimitedBankAccount` 클래스의 생성자를 `BankAccount` 클래스와 같이 정의합니다.
+9. 완성한 코드는 아래와 유사할 것입니다.
++
+[source, java]
+----
+import java.math.BigDecimal;
+
+public class LimitedBankAccount extends BankAccount {
+    public LimitedBankAccount(String ownerName, BigDecimal balance) {
+        super(ownerName, balance);
+    }
+}
+----
++
+10.	Visual Studio 탐색기에서 Test.java 파일을 엽니다.
+11.	두 번째로 생성되는 `BankAccount` 객체를 `BankAccount`가 아닌 `LimitedBankAccount`로 수정합니다.
+12.	완성된 코드는 아래와 유사할 것입니다.
++
+[source, java]
+----
+import java.math.BigDecimal;
+
+class Test {
+    public static void main(String[] args) {
+        BankAccount account = new BankAccount("Jason", new BigDecimal(100));
+        account.printAccount();
+        BankAccount account2 = new LimitedBankAccount("James", new BigDecimal(1000));
+        account2.printAccount();
+    }
+}
+----
++
+13.	아래 명령어를 수행하여 BankAccount 프로그램을 컴파일합니다. 오류가 있으면 수정합니다.
++
+----
+$ javac *.java
+----
++
+14.	아래 명령어를 수행하여 프로그램을 실행합니다.
++
+----
+$ java Test
+Account Number: 0000-1
+Owner Name: Jason
+Balance: 100
+Account Number: 0000-2
+Owner Name: James
+Balance: 1000
+----
+
+=== LimitedBankAccount에 전역 변수를 추가하고 생성자, 메소드 오버라이드
+
+1. Visual Studio Code 탐색기에서 LimitedBankAccount.java 파일을 엽니다.
+2. `BigDecimal` 타입의 `balanceLimit` 전역 변수를 추가합니다.
+3. `LimitedBankAccount` 클래스에서 `balanceLimit` 값을 생성자 파라미터 인자로 받아 `balanceLimit` 전역 변수에 할당하도록 생성자를 오버라이드 합니다.
+4. `LimitedBankAccount` 클래스의 두 생성자 중 두 개의 파라미터를 가지는 생성자를 삭제합니다.
+5. `balance` 의 값이 `limitedBalance` 값보다 클 수 없도록 `deposit` 메소드를 오버라이드 합니다.
+6. `balanceLimit` 전역 변수의 `getter` 메소드 `getBalanceLimit` 를 작성합니다.
+7. 완성된 코드는 아래와 유사할 것입니다.
++
+[source, java]
+----
+import java.math.BigDecimal;
+
+public class LimitedBankAccount extends BankAccount {
+    private BigDecimal balanceLimit;
+
+    public LimitedBankAccount(String ownerName, BigDecimal balance, BigDecimal balanceLimit) {
+        super(ownerName, balance);
+        this.balanceLimit = balanceLimit;
+    }
+
+    public BigDecimal deposit(BigDecimal amount) {
+        if (this.balance.add(amount).compareTo(this.balanceLimit) == 1) {
+            System.out.println("balance limit exceeded");
+            return this.balance;
+        }
+        else {
+            return this.balance = this.balance.add(amount);
+        }
+    }
+
+        public BigDecimal getBalanceLimit() {
+            return this.balanceLimit;
+        }
+}
+----
++
+8. Test.java 파일을 열고 `account2` 객체를 파라미터 3개를 사용해서 생성하도록 수정합니다.
+9. 완성된 코드는 아래와 유사할 것입니다.
++
+[source, java]
+----
+import java.math.BigDecimal;
+
+class Test {
+    public static void main(String[] args) {
+        BankAccount account = new BankAccount("Jason", new BigDecimal(100));
+        account.printAccount();
+        BankAccount account2 = new LimitedBankAccount("James", new BigDecimal(1000), new BigDecimal(1000));
+        account2.printAccount();
+    }
+}
+----
++
+10.	작업을 저장합니다.
+
+=== IAccount 인터페이스를 추가하여 타입 정의
+
+1. Visual Studio Code 탐색기에서 IAccount.java 파일을 엽니다.
+2. IAccount 인터페이스에 아래 메소드들을 추가합니다.
+    * `BigDecimal` 타입을 반환하고 BigDecimal 타입 `amount` 를 파라미터로 가지는 `deposit` 메소드
+    * boolean 타입을 반환하고 `BigDecimal` 타입 `amount` 를 파라미터로 가지는 `withDraw` 메소드
+3. 완성된 코드는 아래와 유사할 것입니다:
++
+[source, java]
+----
+import java.math.BigDecimal;
+
+public interface IAccount {
+    BigDecimal deposit(BigDecimal amount);
+    boolean withDraw(BigDecimal amount);
+}
+----
++
+4. Visual Studio Code 탐색기에서 BankAccount.java 파일을 엽니다.
+5. `BankAccount` 클래스가 `IAccount` 인터페이스를 구현하도록 수정합니다.
+6. 완성된 코드는 아래와 유사할 것입니다.
++
+[source, java]
+----
+public class BankAccount implements IAccount {
+    …
+}
+----
++
+7. Visual Studio Code 탐색기에서 Test.java 파일을 엽니다.
+8. `account` 객체의 타입을 `IAccount` 타입으로 변경합니다.
+9. 계좌 정보를 출력하는 코드를 삭제합니다.
+10. 완성된 코드는 아래와 유사할 것입니다.
++
+[source, java]
+----
+import java.math.BigDecimal;
+
+class Test {
+    public static void main(String[] args) {
+        IAccount account = new BankAccount("Jason", new BigDecimal(100));
+        IAccount account2 = new LimitedBankAccount("James", new BigDecimal(1000), new BigDecimal(1000));
+    }
+}
+----
++
+11.	터미널을 열고 아래 명령을 수행하여 BankAccount 프로그램을 컴파일 합니다. 오류가 있으면 수정합니다.
++
+----
+$ javac *.java
+----
++
+12.	아래 명령을 수행하여 응용 프로그램을 실행합니다. 계좌 정보를 출력하지 않습니다.
+----
+> java Test
+----
+
+== 연습 2 계좌 정보 출력을 위한 타입을 추가하고 구현
+
+이 연습에서는 계좌 정보 출력을 위한 타입을 추가하고 계좌의 종류에 따라 다른 출력 방법을 가지는 클래스들을 구현합니다.
+
+=== 계좌 정보를 출력하는 IPrint 타입 추가
+
+1. Visual Studio Code 탐색기에서 새 파일 아이콘을 클릭하고 IPrint.java 파일을 추가합니다.
+2. IPrint.java 파일에 IPrint 인터페이스를 추가하고 아래 메소드를 추가합니다.
+    * void 타입을 반환하고 IAccount 타입 account를 파라미터로 가지는 printAccount 메소드
+3.	완성된 코드는 아래와 같을 것입니다.
++
+[source, java]
+----
+public interface IPrint {
+    void printAccount(IAccount account);
+}
+----
+
+=== PrintAccount 클래스가 BankAccount 클래스를 출력하도록 수정
+
+1. `PrintAccount` 클래스가 `IPrint` 인터페이스를 구현하도록 수정합니다.
+2. PrintAccount 클래스의 printAccount 메소드를 static이 아닌 동적 메소드로 변경하고, IPrint 타입을 파라미터로 갖도록 수정합니다.
+3. `printAccount` 메소드에서 BankAccount 타입의 `printAccount` 지역 변수를 선언하고 인자로 받은 `account` 를 BankAccount로 타입 변환하여 할당합니다.
+4. `printAccount` 에서 계좌 정보를 출력하는 코드를 `printAccount` 인스턴스의 `getter` 메소드들을 호출하도록 변경합니다.
+5. 완성된 코드는 아래와 유사할 것입니다.
++
+[source, java]
+----
+public class PrintAccount implements IPrint {
+    public void printAccount(IAccount account) {
+        BankAccount printAccount = (BankAccount)account;
+        System.out.println("Account Number: " + printAccount.getAccountNumber());
+        System.out.println("Owner Name: " + printAccount.getOwnerName());
+        System.out.println("Balance: " + printAccount.getBalance().toString());
+    }
+}
+----
++
+6. Visual Studio Code 탐색기에서 Test.java 파일을 엽니다.
+7. `BankAccount` 타입의 `account` 객체를 생성하는 코드 아래에 PrintAccount 타입의 `printAccount` 객체를 생성합니다.
+8. `printAccount` 객체의 `printAccount` 메소드를 `account` 객체를 인자로 호출합니다.
+9.	완성된 코드는 아래와 유사할 것입니다.
++
+[source, java]
+----
+import java.math.BigDecimal;
+
+class Test {
+    public static void main(String[] args) {
+        IAccount account = new BankAccount("Jason", new BigDecimal(100));
+        PrintAccount printAccount = new PrintAccount();
+        printAccount.printAccount(account);
+
+        IAccount account2 = new LimitedBankAccount("James", new BigDecimal(100), new BigDecimal(1000));
+    }
+}
+----
++
+10.	Visual Studio Code 탐색기에서 BankAccount.java 파일을 열고 `printAccount` 메소드를 삭제합니다.
+11.	작업을 저장합니다.
+12.	아래 명령을 수행하여 프로그램을 컴파일 합니다. 오류가 있으면 수정합니다.
++
+----
+> javac *.java
+----
++
+13.	아래 명령을 수행하여 프로그램을 실행합니다.
++
+----
+> java Test
+Account Number: 0000-1
+Owner Name: Jason
+Balance: 100
+----
+
+=== LimitedBankAccount를 출력하는 PrintLimitedBankAccount 클래스 작성
+
+1. Visual Studio Code 탐색기에서 새 파일 아이콘을 클릭하고 PrintLimitedBankAccount.java 파일을 생성합니다.
+2. PrintLimitedBankAccount 클래스를 작성하고 IPrint 인터페이스를 구현하도록 선언합니다.
+3. IAccount 타입 `account` 를 파라미터로 갖는 `printAccount` 메소드를 구현합니다.
+4. LimitedBankAccount 타입 변수 `bankAccount` 를 선언하고 메소드의 인자로 전달받은 `account` 를 LimitedBankAccount 타입으로 변환하여 할당합니다.
+5. LimitedBankAccount의 계좌 정보를 출력하는 코드를 작성합니다. 계좌 번호, 계좌 소유자 이름, 잔고, 잔고 한계를 출력합니다.
+6. 완성된 코드는 아래와 유사할 것입니다.
++
+[source, java]
+----
+public class PrintLimitedBankAccount implements IPrint {
+    public void printAccount(IAccount account) {
+        LimitedBankAccount bankAccount = (LimitedBankAccount)account;
+        System.out.println("Account Number: " + bankAccount.getAccountNumber());
+        System.out.println("Owner Name: " + bankAccount.getOwnerName());
+        System.out.println("Balance: " + bankAccount.getBalance());
+        System.out.println("Balance Limited: " + bankAccount.getBalanceLimit());
+    }
+}
+----
++
+7. 코드를 저장합니다.
+8. 터미널에서 다음 명령을 수행하여 PrintLimitedBankAccount.java 파일을 컴파일합니다. 오류가 있으면 수정합니다.
++
+----
+> javac PrintLimitedBankAccount.java
+----
++
+9.	Visual Studio Code 탐색기에서 Test.java 파일을 엽니다.
+10.	LimitedBankAccount 타입의 `account2` 객체를 생성하는 코드 아래에 PrintLimitedAccount 타입의 `printLimitedAccount` 객체를 생성합니다.
+11.	`account2` 객체를 인자로 `printLimitedAccount` 객체의 `printAccount` 메소드를 호출합니다.
+12.	완성된 코드는 아래와 유사할 것입니다.
++
+[source, java]
+----
+import java.math.BigDecimal;
+
+class Test {
+    public static void main(String[] args) {
+        IAccount account = new BankAccount("Jason", new BigDecimal(100));
+        PrintAccount printAccount = new PrintAccount();
+        printAccount.printAccount(account);
+
+        IAccount account2 = new LimitedBankAccount("James", new BigDecimal(1000), new BigDecimal(1000));
+        PrintLimitedBankAccount printLimitedAccount = new PrintLimitedAccount();
+        printLimitedAccount.printAccount(account2);
+    }
+}
+----
++
+13.	코드를 저장합니다.
+14.	터미널에서 다음 명령을 수행하여 Test.java 파일을 컴파일합니다. 오류가 있으면 수정합니다.
++
+----
+$ javac Test.java
+----
++
+15.	다음 명령을 수행하여 프로그램을 실행합니다.
++
+----
+$ java Test
+Account Number: 0000-1
+Owner Name: Jason
+Balance: 100
+Account Number: 0000-2
+Owner Name: James
+Balance: 100
+Balance Limit: 1000
+----
+
+link:./12_ocp.adoc[이전: 개방 폐쇄 원칙] +
+link:./14_example2.adoc[다음: 연습문제]

@@ -1,0 +1,15 @@
+= 객체지향 디자인 원칙
+
+객체지향 디자인의 원리들을 알면 보다 더 유지보수하기 쉽고, 확장이 쉬운 소프트웨어들을 만들 수 있습니다. 이 장에서는 객체지향 개발 5대 원리를 학습합니다.
+
+== Table of Contents
+
+1.	객체지향 디자인 원칙: SOLID
+2.	SRP, Single Responsibility Principle, 단일 책임 원칙
+3.	OCP. Open Close Principle, 개방 폐쇄 원칙
+4.	LSP, Liskov Substitution Principle, 리스코프 치환 원칙
+5.	ISP, Interface Segregation Principle, 인터페이스 분리 원칙
+6.	DIP, Dependency Inversion Principle, 의존성 역전 원칙
+
+link:./06_kind_of_abstraction.adoc[이전: 추상화의 종류] +
+link:./08_introduction_solid.adoc[다음: 객체지향 디자인 원칙 개요]

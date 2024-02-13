@@ -18,7 +18,8 @@ classDiagram
 
 Rectangle의 서브 타입인 Square는 Rectangle을 완전히 대체할 수 없습니다. 직사각형과 정사각형은 서로 사각형의 특징을 가지고 있기는 하지만, 행동(Behavior) 측면에서 볼 때 다른 동작을 합니다. 따라서, 두 객체는 상속 관계를 가져서는 안됩니다. 타입은 행동으로 결정되어야 하고, 이 경우 Rectangle과 Square는 상속관계가 아니어야 합니다. 따라서, 아래와 같이 설계되어야 합니다.
 
-```mermaid
+[source, mermaid]
+----
 classDiagram
     Shape <|-- Rectangle
     Shape <|-- Square
@@ -33,7 +34,7 @@ classDiagram
     class Square {
         +length
     }
-```
+----
 
 **Shape 인터페이스 선언**
 1. Visual Studio Code를 엽니다.

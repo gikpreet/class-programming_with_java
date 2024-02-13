@@ -1,11 +1,11 @@
 = Module 12 Lambda Expression
 
-link:./01_Lambda.adoc[Module 12: Lambda Expression]
+link:./contents/01_Lambda.adoc[Module 12: Lambda Expression]
 
-* link:./02_overview_lambda.adoc[Chapter 1: Lambda Expression 개요]
-** link:./03_functional_interface.adoc[Functional Interface]
-** link:./04_anonymous_class.adoc[Anonymous Class]
-** link:./05_lambda_expression.adoc[Lambda Expression]
-* link:./06_introduct_lambda.adoc[Chapter 2: Lambda Expression]
-** link:./07_form_lambda.adoc[Lambda Expression 형식]
-** link:./08_method_reference.adoc[메소드 참조]
+* link:./contents/02_overview_lambda.adoc[Chapter 1: Lambda Expression 개요]
+** link:./contents/03_functional_interface.adoc[Functional Interface]
+** link:./contents/04_anonymous_class.adoc[Anonymous Class]
+** link:./contents/05_lambda_expression.adoc[Lambda Expression]
+* link:./contents/06_introduct_lambda.adoc[Chapter 2: Lambda Expression]
+** link:./contents/07_form_lambda.adoc[Lambda Expression 형식]
+** link:./contents/08_method_reference.adoc[메소드 참조]

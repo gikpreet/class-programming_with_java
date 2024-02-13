@@ -10,4 +10,4 @@ Abstraction은 객체지향 디자인에서 가장 중요한 도구입니다. �
 4. 명세에 의한 Abstration
 5. Abstration의 유형
 
-link:./02_decomposition_abstraction.adoc[다음: Decomposition과 Absrtraction]
+link:./02_decomposition_abstraction.adoc[다음: 분해와 추상화]

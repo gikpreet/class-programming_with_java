@@ -48,4 +48,5 @@ RunSomething run = new RunSomething() {
 };
 ----
 
+link:./03_functional_interface.adoc[이전: Functional Interface] +
 link:./05_lambda_expression.adoc[다음: Lambda Expression]

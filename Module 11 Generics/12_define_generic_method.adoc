@@ -47,5 +47,6 @@ List<Integer> list = GenericMethod.<Integer>arrayToList(array);
 
 타입 파라미터는 Generic 타입에서와 마찬가지로 두 개 이상 사용할 수 있습니다.
 
+link:./11_generic_method.adoc[이전: Generic 메소드] +
 link:./13_type_influence.adoc[다음: 타입 추론]
 

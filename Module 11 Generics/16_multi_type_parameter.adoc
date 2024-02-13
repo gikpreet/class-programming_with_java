@@ -65,5 +65,6 @@ Pair<String, Integer> p1 = new OrderedPair("Even", 8);
 Pair<String, String> p2 = new OrderedPair("hello", "world");
 ----
 
+link:./15_type_parameter_naming.adoc[이전: 타입 파라미터 명명 규칙] +
 link:./17_type_prohibition.adoc[다음: 타입 제한]
 

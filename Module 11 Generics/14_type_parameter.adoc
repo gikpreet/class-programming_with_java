@@ -8,5 +8,6 @@ Generic 타입은 타입 파라미터가 필요합니다. 타입 파라미터에
 2. 다중 타입 파라미터
 3. 타입 제한
 
+link:./14_type_parameter.adoc[이전: 타입 파라미터] +
 link:./15_type_parameter_naming.adoc[다음: 타입 파라미터 명명 규칙]
 

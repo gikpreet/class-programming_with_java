@@ -45,4 +45,5 @@ Box<Integer> box = new Box<>("Hello");	// 컴파일 오류
 Box<Integer> box = new Box("Hello");	// 오류 가능성 경고
 ----
 
+link:./09_generic_constructor.adoc[이전: Generic 타입 생성자] +
 link:./11_generic_method.adoc[다음: Generic 메소드]

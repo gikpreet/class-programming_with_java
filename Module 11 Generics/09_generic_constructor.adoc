@@ -35,6 +35,7 @@ class Box<T> {
 Box<Integer> box = new Box<Integer>(1);
 ----
 
+link:./08_declare_generic_type.adoc[이전: Generic 타입 선언] +
 link:./10_create_generic_object.adoc[다음: Generic 객체 생성]
 
 

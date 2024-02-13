@@ -7,5 +7,6 @@ Generic 메소드는 Generic 타입과 같이 타입 파라미터를 적용해 �
 1. Generic 메소드 선언
 2. 타입 추론
 
+link:./10_create_generic_object.adoc[이전: Generic 객체 생성] +
 link:./12_define_generic_method.adoc[다음: Generic 메소드 선언]
 

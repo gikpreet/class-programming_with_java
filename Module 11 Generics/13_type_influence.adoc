@@ -80,5 +80,6 @@ fromArrayToCollection(numberArray, stringCollection);
 
 Generic 메소드에 실제 타입 파라미터를 전달할 필요는 없습니다. 컴파일러에서는 주어진 파라미터의 타입에서 실제 타입 인자를 추론할 수 있고, 단일 타입으로 추론이 어려운 경우 오류가 발생합니다.
 
+link:./12_define_generic_method.adoc[이전: Generic 메소드 선언] +
 link:./14_type_parameter.adoc[다음: 타입 파라미터]
 

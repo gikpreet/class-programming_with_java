@@ -93,5 +93,6 @@ public static class Box<T> {
 }
 ----
 
+link:./07_generic_type.adoc[이전: Generic 타입] +
 link:./09_generic_constructor.adoc[다음: Generic 타입 생성자]
 

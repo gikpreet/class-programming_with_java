@@ -49,4 +49,5 @@ Functional Interface는 Java에서 함수를 객체처럼 다룰 수 있도록 �
 * 다른 함수의 인자(Argument)로 전달받습니다.
 * 다른 함수의 결과로서 return 될 수 있습니다.
 
+link:./02_overview_lambda.adoc[이전: Lambda Expression 개요] +
 link:./04_anonymous_class.adoc[다음: Anonymous Class]

@@ -80,5 +80,6 @@ public static <T extends Shape> void draw(T shape) { ... }
 public static void draw(Shape shape) { ... }
 ----
 
+link:./21_type_deletion_in_generics.adoc[이전: Generics에서의 타입 삭제] +
 link:./23_generics_limitations.adoc[다음: Generics 제약]
 

@@ -88,8 +88,9 @@ Generic 클래스는 Throwable 타입을 직접 또는 간접적으로 확장할
 // 직접적으로 Exception 클래스 확장
 class MathException<T> extends Exception { /* ... */ } // 컴파일시 오류 
 // Throwable 직접적으로 확장
-class QueueFullException<T> extends Throwable { /* ... */ // 컴파일시 오류
+class QueueFullException<T> extends Throwable { /* ... */ } // 컴파일시 오류
 ----
 
+link:./24_type_parameter_limitation.adoc[이전: 타입 파라미터 제약] +
 link:./26_method_overloading_limitations.adoc[다음: 메소드 오버로딩 제약]
 

@@ -618,3 +618,6 @@ $ java BubbleSortExample
 7회 순환 후 : [Jacob, James, John, Liam, Michael, Noah, Robert, William]
 정렬 후 : [Jacob, James, John, Liam, Michael, Noah, Robert, William]
 ----
+
+link:./26_method_overloading_limitations.adoc[이전: 메소드 오버로딩 제약] +
+link:./28_review.adoc[다음: 검토]

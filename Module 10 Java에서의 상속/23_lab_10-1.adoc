@@ -167,4 +167,5 @@ public class Algorithm {
 3678800
 ----
 
+link:./22_implements_abstract.adoc[이전: Module 10 Java에서의 상속/22_implements_abstract.adoc] +
 link:./24_review.adoc[다음: 검토]

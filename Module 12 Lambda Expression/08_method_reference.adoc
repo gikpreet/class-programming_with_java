@@ -36,3 +36,5 @@ class Test {
 메소드 참조(Method Reference)는 Lambda Expression이 단 하나의 메소드만을 호출하는 경우에 해당 Lambda Expression에서 불필요한 parameter를 제거하고 사용할 수 있도록 해 줍니다.
 
 메소드 참조를 사용하면 불필요한 파라미터를 제거하고 `::` 를 사용하여 표현할 수 있습니다.
+
+link:./07_form_lambda.adoc[이전: Lambda Expression 형식]

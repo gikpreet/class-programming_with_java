@@ -12,4 +12,4 @@
 3. 구조 패턴
 4. 행위 패턴
 
-<a href="./Design_Pattern/01_Design_Pattern_개요.md">다음 장</a>
+<a href="./contents/01_Design_Pattern_개요.md">다음 장</a>

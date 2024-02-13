@@ -1,7 +1,8 @@
-## 디자인 패턴 개요
+= 디자인 패턴 개요
 이 단원에서는 디자인 패턴이란 무엇이고 어떻게 사용하며, 패턴에 필요한 요소와 어떻게 활용되는지를 배웁니다.
 
-#### Table of Contents
+== Table of Contents
+
 1. 디자인 패턴
 2. 디자인 패턴의 요소
 3. 디자인 패턴 분류
@@ -9,4 +10,4 @@
 5. 구조 패턴(Structural Patterns)
 6. 행위 패턴(Behavioral Patterns)
 
-<a href="./02_디자인_패턴.md">다음 장: 디자인 패턴</a>
+link:./02_introduction_design_pattern.adoc[다음: 디자인 패턴 개요]

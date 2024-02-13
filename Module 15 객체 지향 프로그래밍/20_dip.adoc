@@ -1,6 +1,6 @@
 = DIP, Dependency Inversion Principle
 
-* 의존 관계 역전 원칙
+* 의존성 역전 원칙
 * 프로그래머는 추상화에 의존해야 하며, 구체화에 의존하면 안된다
 ** 상위 모듈은 하위 모듈에 의존해서는 안된다
 ** Abstraction은 세부 사항에 의존해서는 안되며, 세부 사항이 Abstractopm에 의존해야 한다
@@ -24,4 +24,4 @@ DIP를 이해하기 위해서는 IoC(Inversion of Control)이라는 용어를 �
 
 
 link:./19_lab15-5.adoc[이전: Lab 15-5] +
-link:./20_lab15-6.adoc[다음: Lab 15-6]
+link:./21_lab15-6.adoc[다음: Lab 15-6]

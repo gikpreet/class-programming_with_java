@@ -1,0 +1,4 @@
+= Lab 15-6
+
+link:./20_dip.adoc[이전: 의존성 역전 원칙] +
+link:./22_review.adoc[다음: 검토]

@@ -9,4 +9,4 @@
 4.	import 지시문과 java.lang 패키지
 
 link:./01_Java_language.adoc[이전: Java 프로그래밍 언어 개요] +
-link:./03_Hello_world.adoc[다음: Hello, World!]
+link:./03_hello_world.adoc[다음: Hello, World!]

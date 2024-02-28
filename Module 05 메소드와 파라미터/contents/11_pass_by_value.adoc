@@ -42,5 +42,5 @@ public static void main(String[] args) {
 }
 ----
 
-link:./10_parameter_passing.adoc[이전: 파라미터 전달 매커니즘]
+link:./10_parameter_passing.adoc[이전: 파라미터 전달 매커니즘] +
 link:./12_variant_parameter.adoc[다음: 가변 길이 목록 파라미터 사용]

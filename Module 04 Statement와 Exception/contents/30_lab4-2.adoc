@@ -389,5 +389,5 @@ public static void main(String[] args) {
 4.	작업을 저장하고 프로그램을 컴파일합니다. 오류가 있으면 수정합니다. 프로그램을 실행하고 동작을 확인합니다.
 5.	실습이 종료되었습니다.
 
-link:./29_try_with_resource.adoc[이전: try-with-resource clause (try-with-resource 절)]
+link:./29_try_with_resource.adoc[이전: try-with-resource clause (try-with-resource 절)] +
 link:./31_review.adoc[다음: 검토]

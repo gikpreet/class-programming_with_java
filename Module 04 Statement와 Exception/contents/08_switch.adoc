@@ -83,5 +83,5 @@ break 절이 있는 switch 문은 아래와 같이 동작합니다.
  
 image:./images/image02.png[swith, 310]
 
-link:./07_cascading_if.adoc[다음: Cascading if statement (Cascading if 문)]
+link:./07_cascading_if.adoc[다음: Cascading if statement (Cascading if 문)] +
 link:./09_iteration.adoc[다음: Iteration Statement(반복 문)]

@@ -30,7 +30,7 @@ void openDocument() { }
 
 [source, java]
 ----
-class ProductFactory
+class ProductFactory { }
 ----
 
 link:./07_naming_rule.adoc[이전: 변수 명명 규칙] +

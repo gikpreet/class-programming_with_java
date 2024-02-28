@@ -1,1 +1,4 @@
 = Lab 10-2 ArrayList와 LinkedList 구현
+
+link:./23_lab_10-1.adoc[이전: Lab 10-1: 상속을 사용하여 인터페이스 구현] +
+link:./25_lab_10-3.adoc[다음: Lab 10-3: ArrayList와 LinkedList의 Iterator 구현]

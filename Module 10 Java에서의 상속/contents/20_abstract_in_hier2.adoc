@@ -52,5 +52,5 @@ public class Guitar extends StringInstrument implements Instrument {
 * `Guitar` 와 `Violin` 클래스는 `name` 과 `numberOfString` 필드를 `StringInstrument` 클래스에서 상속합니다.
 * `Guitar` 와 `Violin` 클래스는 `Instrument` 인터페이스의 `play`, `tune` 두 메소드를 구현해야 합니다.
 
-link:./19_abstract_in_hier2.adoc[이전: 클래스 계층구조에서 추상 클래스 사용]
+link:./19_abstract_in_hier.adoc[이전: 클래스 계층구조에서 추상 클래스 사용] +
 link:./21_abstract_interface.adoc[다음: 추상 클래스와 인터페이스]

@@ -307,5 +307,5 @@ public class Algorithm {
 * 컴파일러에 의해 지원되는 정적인 기능
 * 파라미터의 타입과 개수에 의해 컴파일러가 적절한 메소드를 선택함
 
-link:./18_lab_5-1.adoc[이전: Lab 5-1 메소드 생성과 사용]
+link:./18_lab_5-1.adoc[이전: Lab 5-1 메소드 생성과 사용] +
 link:./20_review.adoc[다음: 검토]

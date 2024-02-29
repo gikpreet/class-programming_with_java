@@ -19,7 +19,7 @@ BinaryOp binder = new BinaryOp() {
 
 ---
 
-Anomymous Method는 단 한번만 사용할 수 있고, 하나의 객체만을 생성할 수 있는 일회용 클래스입니다. Functional Interface는 익명, 내부 클래스를 사용하여 일회성을 생성하여 사용할 수 있습니다.
+Anomymous Method는 단 한번만 사용할 수 있고, 하나의 객체만을 생성할 수 있는 일회용 클래스입니다. Functional Interface는 익명, 내부 클래스를 사용하여 일회성으로 생성하여 사용할 수 있습니다.
 
 [source, java]
 ----

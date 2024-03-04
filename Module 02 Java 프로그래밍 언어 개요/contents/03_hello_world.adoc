@@ -22,7 +22,7 @@ Hello, World!
 
 == Hello World 예제
 
-Hello, World 예제는 C언어의 창시자인 브라이언 커닝헌과 데니스 리치가 “The C Programming Language ”에서 Hello, World!를 출력하는 예제를 첫 번째 예제로 소개한 이후 프로그래밍 언어를 배우는 첫 번째 단계로 일종의 암묵적인 규칙이 되었습니다.
+Hello, World 예제는 C언어의 창시자인 브라이언 커닝헌과 데니스 리치가 "The C Programming Language"footnote:["The C Programming Language, Brian W. Lerninghan, Dennis M. Ritchie, Practice Hall, 1978] 에서 Hello, World!를 출력하는 예제를 첫 번째 예제로 소개한 이후 프로그래밍 언어를 배우는 첫 번째 단계로 일종의 암묵적인 규칙이 되었습니다.
 
 === C Language
 

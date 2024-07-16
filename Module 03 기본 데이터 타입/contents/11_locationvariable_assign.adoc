@@ -1,0 +1,114 @@
+= 지역 변수 선언과 값 할당
+
+* 일반적으로 변수는 아래와 같이 선언하고 값을 할당함
++
+[code, java]
+----
+int customerCount;
+customerCount = 0;
+----
++
+* 선언과 할당을 동시에 할 수 있음
++
+[code, java]
+----
+int customerCount = 0;
+----
++
+* 여러 변수를 한 번에 선언하고 할당할 수 있음
++
+[code, java]
+----
+int customerCount, productNumber;
+----
++
+[code, java]
+----
+int customerCount = 1, productNumber = 2;
+----
++
+[code, java]
+----
+int customerCount, 
+    productNumber;
+int customerCount = 1, 
+    productNumber = 2;
+----
++
+
+---
+
+블록 내부에 선언된 변수를 지역 변수 또는 로컬 변수라고 합니다.
+
+*변수 선언*
+
+일반적으로 지역 변수는 다음과 같이 선언합니다.
+
+[code, java]
+----
+int customerCount;
+----
+
+쉼표를 구분자로 사용하여 여러 개의 변수를 한 번에 선언할 수 있습니다.
+
+[code, java]
+----
+int customerCount, productNumber;
+----
+
+읽기 편하도록 줄을 바꿔서 선언할 수 있습니다.
+
+[code, java]
+----
+
+int customerCount,
+    productNumber;
+----
+
+*변수에 값 할당*
+
+선언된 변수에는 아래와 같이 할당 연산자( = )를 사용하여 값을 할당할 수 있습니다.
+
+[code, java]
+----
+customerCount = 1;
+----
+
+변수 선언과 값 할당을 동시에 할 수 있습니다.
+
+[code, java]
+----
+int customerCount = 1;
+----
+
+쉼표를 구분자로 사용하여, 여러 변수 선언과 값 할당을 동시에 할 수 있습니다.
+
+[code, java]
+----
+int customerCount = 1, productNumber = 2;
+----
+
+*char 타입 변수에 값 할당*
+
+char 타입에는 ‘ 기호를 사용하여 값을 할당합니다.
+
+[code, java]
+----
+char initial = 'k';
+----
+
+*초기화 되지 않은 변수 사용*
+
+Java에서는 명시적으로 초기화되지 않은 지역 변수는 사용할 수 없습니다. 아래의 코드는 customerCount 지역 변수에 초기 값이 할당되기 전에 사용되었기 때문에 컴파일 오류가 발생합니다.
+
+[code, java]
+----
+int customerCount;
+
+System.out.println(customerCount);
+HelloWorld.java:6: error: variable customerCount might not have been initialized
+        System.out.println(customerCount);
+----
+
+link:./10_using_primitive_types.adoc[이전: 기본 데이터 타입 사용] +
+link:./12_compoundassignment.adoc[다음: 합성 할당]

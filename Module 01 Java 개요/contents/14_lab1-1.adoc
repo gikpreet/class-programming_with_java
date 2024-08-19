@@ -180,9 +180,9 @@ OpenJDK 64-Bit Server VM Temurin-11.0.15+10 (build 11.0.15+10, mixed mode)
 +
 ----
 % java --version
-openjdk 17.0.2 2024-01-16 LTS
-OpenJDK Runtime Environment Temurin-17.0.2+13 (build 17.0.2+13-LTS)
-OpenJDK 64-Bit Server VM Temurin-17.0.2+13 (build 17.0.2+13-LTS, mixed mode)
+openjdk version "17.0.9" 2023-10-17
+OpenJDK Runtime Environment Temurin-17.0.9+9 (build 17.0.9+9)
+OpenJDK 64-Bit Server VM Temurin-17.0.9+9 (build 17.0.9+9, mixed mode, sharing)
 ----
 +
 3. 아래 명령을 실행하여 설정된 JAVA_HOME 환경 변수를 확인합니다.

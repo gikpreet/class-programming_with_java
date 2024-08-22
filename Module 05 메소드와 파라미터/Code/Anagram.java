@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 public class Anagram {
     public static char[] toCharArray(String value) {
         char[] result = new char[value.length()];

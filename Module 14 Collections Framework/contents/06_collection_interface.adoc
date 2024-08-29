@@ -34,8 +34,8 @@ class Collection {
 + removeAll (c: Collection): boolean 
 + retainAll (c: Collection): boolean 
 + size(): int 
-+ toArray(): Object[ ] 
-+ toArray (a: T[ ]): T[ ] }
++ toArray(): Object[] 
++ toArray (a: T[]): T[] }
 ....
 
 Collection 인터페이스는 타입 파라미터로 E를 가집니다. E는 선언에서 Integer나 String과 같은 실제 클래스로 대체됩니다. Collection 인터페이스를 구현하는 클래스 중의 하나인 ArrayList는 아래와 같이 선언될 수 있습니다.
@@ -58,3 +58,5 @@ list.add(“Hello”);
 ----
 list.remove(“Hello”);
 ----
+
+link:./07_collection_interface_methods.adoc[다음: Collection 인터페이스 메소드]

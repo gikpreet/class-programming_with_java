@@ -15,7 +15,7 @@ image:../images/image02.png[]
 Collection 인터페이스는 Java에서 Collection이 구현해야 할 공통적인 메소드를 가지고 있습니다. Collection 인터페이스를 UML 표기법으로 나타내면 아래와 같이 됩니다.
 
 [source, mermaid]
-----
+....
 classDiagram
 class Collection
 <<interface>> Collection
@@ -36,7 +36,7 @@ class Collection {
 + size(): int 
 + toArray(): Object[ ] 
 + toArray (a: T[ ]): T[ ]
-----
+....
 
 Collection 인터페이스는 타입 파라미터로 E를 가집니다. E는 선언에서 Integer나 String과 같은 실제 클래스로 대체됩니다. Collection 인터페이스를 구현하는 클래스 중의 하나인 ArrayList는 아래와 같이 선언될 수 있습니다.
 

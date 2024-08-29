@@ -1,8 +1,8 @@
-Module 14 Collections Framework
+link:./contents/00_collections_framework.adoc[Module 14 Collections Framework]
 
-* Chapter 1: Collections Framework
-** Collection 개요
-** Java Collections Framework
+* link:./contents/01_collections_framework.adoc[Chapter 1: Collections Framework]
+** link:./contents/02_introduction_collection.adoc[Collection 개요]
+** link:./contents/03_java_collections_framework.adoc[Java Collections Framework]
 ** Collection 클래스의 저장 구조
 ** Java Collections Framework 구성
 ** Collection 인터페이스

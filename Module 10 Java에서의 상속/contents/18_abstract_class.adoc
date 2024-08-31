@@ -9,5 +9,5 @@
 3.	추상 클래스와 인터페이스
 4.	추상 클래스 구현
 
-link:./16_static_method_in_interface.adoc[이전: 인터페이스에서 static 메소드 구현] +
-link:./18_declare_abstract_class.adoc[다음: 추상 클래스 선언]
+link:./17_static_method_in_interface.adoc[이전: 인터페이스에서 static 메소드 구현] +
+link:./19_declare_abstract_class.adoc[다음: 추상 클래스 선언]

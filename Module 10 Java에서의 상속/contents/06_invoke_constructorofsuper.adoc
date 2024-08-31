@@ -133,5 +133,5 @@ class SubClass extends SuperClass {
 }
 ----
 
-link:./04_access_to_supermembers.adoc[이전: 슈퍼 클래스 멤버에 액세스] +
-link:./06_method_implementation.adoc[다음: 메소드 구현]
+link:./05_access_to_supermembers.adoc[이전: 슈퍼 클래스 멤버에 액세스] +
+link:./07_method_implementation.adoc[다음: 메소드 구현]

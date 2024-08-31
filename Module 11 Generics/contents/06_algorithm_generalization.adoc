@@ -2,22 +2,23 @@
 
 * Generics는 알고리즘 일반화를 구현할 수 있도록 함
 ** 다양한 타입의 객체들을 다루는 메소드나 컬렉션 클래스에 컴파일 시 타입 체크를 가능하도록 함
-
++
 [source, java]
 ----
-public static <T extends Comparable<T>> void bubbleSort(T[] items) {
-    for(int i = items.length - 1 ; i > 0 ; i--) {
-        for(int j = 0 ; j < i ; j++)  {
-            if (items[j].compareTo(items[j+1]) > 0) {
-                T item = items[j];
-                items[j] = items[j+1];
-                items[j+1] = item;
+public static <T extends Comparable<T>> void bubbleSort(T[] array) {
+    int n = array.length;
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            if (array[j].compareTo(array[j + 1]) > 0) {
+                T temp = array[j];
+                array[j] = array[j + 1];
+                array[j + 1] = temp;
             }
         }
     }
 }
 ----
-
++
 * 타입 파라미터가 Compatable의 서브 타입이면 정렬 가능하도록 정의
 * 비교 가능한 아이템의 경우 정렬이 가능하도록 선언하며, 특정 데이터 타입에 국한되지 않는 일반적인 알고리즘의 구현이 가능
 
@@ -30,13 +31,14 @@ Generics는 모듈이나 알고리즘을 구현한 후 다양한 타입에 적�
 [source, java]
 ----
 public class BubbleSortExample {
-    public static <T extends Comparable<T>> void bubbleSort(T[] items) {
-        for(int i = items.length - 1 ; i > 0 ; i--) {
-            for(int j = 0 ; j < i; j++)  {
-                if (items[j].compareTo(items[j+1]) > 0) {
-                    T item = items[j];
-                    items[j] = items[j+1];
-                    items[j+1] = item;
+    public static <T extends Comparable<T>> void bubbleSort(T[] array) {
+        int n = array.length;
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                if (array[j].compareTo(array[j + 1]) > 0) {
+                    T temp = array[j];
+                    array[j] = array[j + 1];
+                    array[j + 1] = temp;
                 }
             }
         }

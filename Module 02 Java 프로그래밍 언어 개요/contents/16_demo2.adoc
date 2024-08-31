@@ -1,6 +1,6 @@
 = Demo: JavaDoc을 사용한 HTML 문서 생성
 
-여기에서는 javaDoc을 사용하여 java 소스 파일의 주석을 사용하여 졍돈된 HTML 문서를 생성하는 것을 보여줍니다.
+여기에서는 javaDoc을 사용하여, java 소스 파일에 정리된 주석으로 정돈된 HTML 문서를 생성하는 것을 보여줍니다.
 
 1. 이전 Demo에서 작성했던 HelloWorldJavaDoc.java 파일을 열고 소스를 살펴봅니다.
 +

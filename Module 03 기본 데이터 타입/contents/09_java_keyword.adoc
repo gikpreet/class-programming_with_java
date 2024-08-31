@@ -1,14 +1,14 @@
 = Java 키워드
 
 * 키워드는 예약된 식별자로, 지정된 용도 이외에는 사용할 수 없음
-
-abstract, super, boolean, default, if, finally, class, interface...
-
++
+`abstract`, `super`, `boolean`, `default`, `if`, `finally`, `class`, `interface`...
++
 * 키워드는 변수 이름으로 사용할 수 없음
 * 키워드를 대소문자만 바꾸어 쓰지 않을 것을 권장함
-
++
 int INT;		// 권장하지 않음
-
++
 ---
 
 Java에서는 다른 대부분의 언어와 마찬가지로 키워드를 변수 이름으로 사용할 수 없습니다. 키워드를 변수 이름으로 사용하면 컴파일시에 오류가 발생합니다.

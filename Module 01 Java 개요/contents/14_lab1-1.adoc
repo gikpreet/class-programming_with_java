@@ -163,7 +163,7 @@ OpenJDK 64-Bit Server VM Temurin-11.0.15+10 (build 11.0.15+10, mixed mode)
 1. 아래 명령을 실행하여 최신 버전의 Temurin Java 버전을 설치합니다.
 +
 ----
-% brew install --cask temurin
+% brew install --cask temurin@17
 ----
 +
 2. 터미널을 종료합니다.
@@ -180,16 +180,16 @@ OpenJDK 64-Bit Server VM Temurin-11.0.15+10 (build 11.0.15+10, mixed mode)
 +
 ----
 % java --version
-openjdk 21.0.2 2024-01-16 LTS
-OpenJDK Runtime Environment Temurin-21.0.2+13 (build 21.0.2+13-LTS)
-OpenJDK 64-Bit Server VM Temurin-21.0.2+13 (build 21.0.2+13-LTS, mixed mode)
+openjdk version "17.0.9" 2023-10-17
+OpenJDK Runtime Environment Temurin-17.0.9+9 (build 17.0.9+9)
+OpenJDK 64-Bit Server VM Temurin-17.0.9+9 (build 17.0.9+9, mixed mode, sharing)
 ----
 +
 3. 아래 명령을 실행하여 설정된 JAVA_HOME 환경 변수를 확인합니다.
 +
 ----
 % echo $JAVA_HOME
-/Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home
+/Library/Java/JavaVirtualMachines/temurin-17.jdk/Contents/Home
 ----
 
 link:./13_jdk_provider.adoc[이전: JDK 공급자] +

@@ -8,12 +8,12 @@ link:./contents/00_collections_framework.adoc[Module 14 Collections Framework]
 ** link:./contents/06_collection_interface.adoc[Collection 인터페이스]
 ** link:./contents/07_collection_interface_methods.adoc[Collection 인터페이스의 주요 메소드]
 
-* Chapter 2: Iterator, Comparable, Comparator
-** Iterable과 Iterator
-** Comparable
-** Comparator
+* link:./contents/08_iterator_comparable_comparator.adoc[Chapter 2: Iterator, Comparable, Comparator]
+** link:./contents/09_iterable_iterator.adoc[Iterable과 Iterator]
+** link:./contents/10_comparable.adoc[Comparable]
+** link:./contents/11_comparator.adoc[Comparator]
 
-* Lab 14-1: Collection 인터페이스를 구현하는 클래스 구현
+* link:./contents/12_lab14-1.adoc[Lab 14-1: Collection 인터페이스를 구현하는 클래스 구현]
 
 * Chapter 3: List
 ** List 인터페이스

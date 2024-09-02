@@ -13,7 +13,7 @@
 
 Iterable 인터페이스는 for-each 반복의 대상이 될 수 있는 타입의 추상적 동작을 정의합니다. Iterable 인터페이스는 Iterator() 추상 메소드와 forEach, Spliterator 두 Default 메소드를 가지고 있습니다.
 
-[cols="1a, 3" options="header"]
+[cols="2a, 2" options="header"]
 |===
 |Method|설명
 |Iterator iterator()|T 타입을 요소로 가지는 Iterator 객체를 반환합니다.
@@ -126,4 +126,6 @@ while (iterator.hasNext()) {
     System.out.println(str);
 }
 ----
+
+link:./10_comparable.adoc[다음: Comparable 인터페이스]
 

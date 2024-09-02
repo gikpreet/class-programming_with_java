@@ -26,4 +26,4 @@ String[] names = new String[5];
 
 Collection은 요소의 저장 방식을 추상화합니다. Collection에 요소를 추가하고 삭제하는 등 내부의 모든 요소에 적용되는 방식을 미리 제공합니다.
 
-link:./java_collections_framework.adoc[다음: Java Collections Framework]
+link:./03_java_collections_framework.adoc[다음: Java Collections Framework]

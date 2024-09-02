@@ -70,5 +70,5 @@ while(iterator.hasNext()) {
 ----
 
 link:./18_vector.adoc[이전: Vector] +
-link:./20_set_interface.adoc[다음: Set 인터페이스]
+link:./20_set.adoc[다음: Set]
 

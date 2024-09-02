@@ -8,4 +8,4 @@ Set은 수학에서 말하는 집합과 유사한 자료구조를 표현합니�
 3. TreeSet
 
 link:./19_stack.adoc[이전: Stack] +
-link:./21_set_interface.adoc[이전: Set 인터페이스]
+link:./21_set_interface.adoc[다음: Set 인터페이스]

@@ -8,4 +8,5 @@ Java는 JDK 1.2 부터 Collection 클래스와 인터페이스를 포함하는 C
 2. Collection 인터페이스
 3. 주요 메소드
 
+link:./00_collections_framework.adoc[이전: Module 11 Collections Framework] +
 link:./02_introduction_collection.adoc[다음: Collection 개요]

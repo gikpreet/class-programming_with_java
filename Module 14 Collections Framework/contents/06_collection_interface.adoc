@@ -59,4 +59,5 @@ list.add(“Hello”);
 list.remove(“Hello”);
 ----
 
+link:./05_java_collections_framework_org.adoc[이전: Java Collections Framework 구성] +
 link:./07_collection_interface_methods.adoc[다음: Collection 인터페이스 메소드]

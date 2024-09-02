@@ -19,4 +19,5 @@ Collections클래스의 인스턴스는 일반적으로 Collection의 요소수�
 
 Collection 프레임워크의 개체들은 저장 구조와 저장 구조에 따른 메소드의 동작등 구체적인 방식은 캡슐화합니다. Collection 클래스의 저장 구조와 액세스 방식은 추상화되어 필드에 의존하지 않습니다. 사용자는 저장 구조를 알고 응용 프로그램에 알맞은 구조를 가지는 클래스를 사용할 수 있습니다.
 
+link:./03_java_collections_framework.adoc[이전: Java Collections Framework] +
 link:./05_java_collections_framework_org.adoc[다음: Java Collections Framework 구성]

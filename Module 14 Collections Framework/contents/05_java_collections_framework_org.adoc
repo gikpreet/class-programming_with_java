@@ -1,6 +1,5 @@
 = Java Collections Framework 구성
 
-
 * Java Collections Framework는 철저히 테스트된 다양한 인터페이스와 클래스로 구성
 ** 클래스는 널리 사용되는 데이터 구조 및 알고리즘을 나타냄
 *** Collection이 필요한 대부분의 응용 프로그램에 대해 프레임워크는 적절한 클래스를 제공
@@ -24,7 +23,7 @@ image:../images/image01.png[]
 ----
 public class ArrayList<E> extends AbstractList<E>
         implements List<E>, RandomAccess, Cloneable, java.io.Serializable
-{
+{ ... }
 ----
 
 ArrayList 클래스의 인스턴스는 아래와 같은 방법으로 생성할 수 있습니다.
@@ -34,4 +33,5 @@ ArrayList 클래스의 인스턴스는 아래와 같은 방법으로 생성할 �
 AbstractList<String> list = new ArrayList<>();
 ----
 
+link:./04_collection_stored_structure.adoc[이전: Collection 클래스의 저장 구조] +
 link:./06_collection_interface.adoc[다음: Collection 인터페이스]

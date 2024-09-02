@@ -286,4 +286,5 @@ User {userNo=4, userName='User 4', userAge=20}
 User {userNo=5, userName='User 5', userAge=30}
 ----
 
-link:./comparable.adoc[이전: Comparable 인터페이스]
+link:./11_comparator.adoc[이전: Comparable 인터페이스] +
+link:./13_list.adoc[다음: List]

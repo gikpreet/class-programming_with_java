@@ -35,7 +35,8 @@ LinkedList는 노드에 인덱스를 사용하는 방식으로 직접 접근할 
 Serializable 인터페이스를 구현하여 쓰레드에 안전하며, Cloneable 인터페이스를 구현하여 복제 가능하고, Deque 인터페이스를 구현하여 처음과 끝 양쪽에서 데이터의 삽입과 삭제를 수행할 수 있습니다.
 
 *주요 메소드*
-[%header cols="1,3"]
+
+[cols="1,3" options="header"]
 |===
 |Method|설명
 |public void addFirst(E e)|첫번째 요소로 추가 합니다.

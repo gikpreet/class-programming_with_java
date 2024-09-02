@@ -45,6 +45,6 @@ class DescendingOrder implements Comparator<User> {
 ----
 
 link:./10_comparable.adoc[이전: Comparable 인터페이스] +
-link:./11_comparator.adoc[다음: Lab 14-1 Collection 인터페이스를 구현하는 클래스 구현]
+link:./12_lab14-1.adoc[다음: Lab 14-1 Collection 인터페이스를 구현하는 클래스 구현]
 
 

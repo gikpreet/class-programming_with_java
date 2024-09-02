@@ -31,4 +31,5 @@ boolean removeAll(Collection<?> c)|객체를 삭제하거나  지정된 Collecti
 |default boolean removeIf(Predicate<? super E> filter)|Collection에서 Predicate<? super E> filter 조건에 해당하는 객체를 삭제합니다. java 1.8에 추가되었습니다.
 |===
 
+link:./06_collection_interface.adoc[이전: Collection 인터페이스] +
 link:./08_iterator_comparable_comparator.adoc[다음: Iterator, Comparable, Comparator]

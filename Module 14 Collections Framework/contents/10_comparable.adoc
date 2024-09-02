@@ -49,3 +49,6 @@ public static <T extends Comparable<T>> void bubbleSort(T[] array) {
 }
 ----
 
+link:./09_iterable_iterator.adoc[이전: Iterable과 Iterator] +
+link:./11_comparator.adoc[다음: Comparator 인터페이스]
+

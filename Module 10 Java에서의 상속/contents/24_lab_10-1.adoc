@@ -167,5 +167,5 @@ public class Algorithm {
 3678800
 ----
 
-link:./22_implements_abstract.adoc[이전: 추상 메소드 구현] +
-link:./24_lab_10-2.adoc[다음: Lab 10-2 ArrayList와 LinkedList 구현]
+link:./23_implements_abstract.adoc[이전: 추상 메소드 구현] +
+link:./25_lab_10-2.adoc[다음: Lab 10-2 ArrayList와 LinkedList 구현]

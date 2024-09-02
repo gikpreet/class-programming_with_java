@@ -33,4 +33,4 @@ interface BinaryOp {
 Java 8에서 `Interface` 에 `default` 를 사용하여 모든 타입의 기본 구현을 정의할 수 있는 방법이 추가되었고, `static` 메서드 또한 추가되었습니다. 그러나 구현을 가질 수 없는 인터페이스의 메소드는 객체지향 다형성 구현을 위해 가장 중요한 기능입니다.
 
 link:./12_interface.adoc[이전: 인터페이스] +
-link:./13_multiple_interface_implemenatation.adoc[다음: 인터페이스의 default와 static 메소드]
+link:./14_multiple_interface_implemenatation.adoc[다음: 인터페이스의 default와 static 메소드]

@@ -126,5 +126,5 @@ public interface SportsCar {
 }
 ----
 
-link:./14_implement_interface_method.adoc[이전: 인터페이스 메소드 구현] +
-link:./16_static_method_in_interface.adoc[다음: 인터페이스에서 static 메소드 구현]
+link:./15_implement_interface_method.adoc[이전: 인터페이스 메소드 구현] +
+link:./17_static_method_in_interface.adoc[다음: 인터페이스에서 static 메소드 구현]

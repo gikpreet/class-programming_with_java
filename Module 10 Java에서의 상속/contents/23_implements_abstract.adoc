@@ -49,5 +49,5 @@ abstract class StringInstrument {
 }
 ----
 
-link:./21_abstract_interface.adoc[이전: 추상 클래스와 인터페이스] +
-link:./23_lab_10-1.adoc[다음: Lab 10-1 상속을 사용하여 인터페이스 구현]
+link:./22_abstract_interface.adoc[이전: 추상 클래스와 인터페이스] +
+link:./24_lab_10-1.adoc[다음: Lab 10-1 상속을 사용하여 인터페이스 구현]

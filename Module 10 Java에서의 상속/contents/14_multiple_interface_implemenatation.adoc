@@ -65,5 +65,5 @@ class Soldier implements Attackable { … }
 
 직, 간접적으로 인터페이스를 구현하는 모든 클래스는 관련된 인터페이스의 모든 추상 메소드를 구현해야 합니다. 
 
-link:./12_define_interface.adoc[이전: 인터페이스 선언] +
-link:./14_implement_interface_method.adoc[다음: 인터페이스 메소드 구현]
+link:./13_define_interface.adoc[이전: 인터페이스 선언] +
+link:./15_implement_interface_method.adoc[다음: 인터페이스 메소드 구현]

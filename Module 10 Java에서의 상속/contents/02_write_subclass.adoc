@@ -9,4 +9,4 @@
 3.	슈퍼 클래스 생성자 호출
 
 link:./01_inheritance_in_java.adoc[이전: Java에서의 상속] +
-link:./03_class_extension.adoc[다음: 클래스 확장]
+link:./03_access_control_in_java.adoc[다음: Java에서의 접근 제어]

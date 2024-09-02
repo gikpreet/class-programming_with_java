@@ -64,5 +64,5 @@ public class IDCard extends Product {
 }
 ----
 
-link:./07_virtual_method.adoc[이전: 가상 메소드(Virtual Method)] +
-link:./09_final_method.adoc[다음: final 메소드]
+link:./08_virtual_method.adoc[이전: 가상 메소드(Virtual Method)] +
+link:./10_final_method.adoc[다음: final 메소드]

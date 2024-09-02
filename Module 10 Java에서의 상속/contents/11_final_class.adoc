@@ -23,5 +23,5 @@ class IDCard extends Product {	// 컴파일시 오류
 }
 ----
 
-link:./09_final_method.adoc[이전: final 메소드] +
-link:./11_interface.adoc[다음: 인터페이스]
+link:./10_final_method.adoc[이전: final 메소드] +
+link:./12_interface.adoc[다음: 인터페이스]

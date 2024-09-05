@@ -25,7 +25,7 @@ ProtoType 레지스트리를 만들고, 객체를 PrototypeRegistry에 등록한
 
 == 제출 방법
 
-* main 메소드가 포함된 클래스를 public으로 선언하고 팀이름_Poker 로 작성한다.
-* 프로그램 동작에 필요한 모든 소스파일을 팀이름_Poker.zip 으로 압축한다.
-* 팀이름_Poker.zip 파일을 제출한다.
+* main 메소드가 포함된 클래스를 public으로 선언하고 팀이름_ProtoType 로 작성한다.
+* 프로그램 동작에 필요한 모든 소스파일을 팀이름_ProtoType.zip 으로 압축한다.
+* 팀이름_ProtoType.zip 파일을 제출한다.
 * 전체 팀원의 이름을 반드시 기록한다.

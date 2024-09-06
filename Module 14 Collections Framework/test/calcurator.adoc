@@ -38,6 +38,7 @@ System.out.println(generateAST(expression));
 ----
 +
 * 프로그램은 계산 결과를 반환하는 evaluation() 함수를 가지고 있어야 합니다.
++
 [source, java]
 ----
 int evaluation(Node ast)

@@ -1,3 +1,4 @@
+////
 = Singleton과 Prototpye 리포지토리
 
 GoF 디자인 패턴 중, 생성 패턴에 속하는 ProtoType 패턴은 코드를 클래스들에 의존시키지 않고 기존 객체들을 복사할 수 있도록 하는 패턴입니다.
@@ -29,3 +30,4 @@ ProtoType 레지스트리를 만들고, 객체를 PrototypeRegistry에 등록한
 * 프로그램 동작에 필요한 모든 소스파일을 팀이름_ProtoType.zip 으로 압축한다.
 * 팀이름_ProtoType.zip 파일을 제출한다.
 * 전체 팀원의 이름을 반드시 기록한다.
+ ////

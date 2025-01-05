@@ -7,13 +7,15 @@
 1. 명령 프롬프트에서 아래 명령을 실행하여 설치 가능한 Visual Studio Code를 확인합니다.
 +
 ----
-> winget search Visual Studio Code
+> winget search "Visual Studio Code"
 이름                                      장치 ID                                 버전   원본
 ------------------------------------------------------------------------------------------------
-Microsoft Visual Studio Code Insiders CLI Microsoft.VisualStudioCode.Insiders.CLI 1.86.0 winget
-Microsoft Visual Studio Code Insiders     Microsoft.VisualStudioCode.Insiders     1.86.0 winget
-Microsoft Visual Studio Code CLI          Microsoft.VisualStudioCode.CLI          1.85.2 winget
-Microsoft Visual Studio Code              Microsoft.VisualStudioCode              1.85.2 winget
+Visual Studio Code - Insiders             XP8LFCZM790F6B                          Unknown msstore
+Visual Studio Code                        XP9KHM4BK9FZ7Q                          Unknown msstore
+Microsoft Visual Studio Code              Microsoft.VisualStudioCode              1.96.2  winget
+Microsoft Visual Studio Code CLI          Microsoft.VisualStudioCode.CLI          1.96.2  winget
+Microsoft Visual Studio Code Insiders     Microsoft.VisualStudioCode.Insiders     1.97.0  winget
+Microsoft Visual Studio Code Insiders CLI Microsoft.VisualStudioCode.Insiders.CLI 1.97.0  winget
 ----
 +
 2. 아래 명령을 실행하여 Visual Studio Code를 설치합니다.

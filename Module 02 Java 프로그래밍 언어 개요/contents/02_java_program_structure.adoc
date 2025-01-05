@@ -3,10 +3,10 @@
 
 == Table of Contents
 
-1.	Hello, World
-2.	클래스
-3.	main 메소드
-4.	import 지시문과 java.lang 패키지
+1.	link:./03_hello_world.adoc[Hello, World]
+2.	link:./04_class.adoc[클래스]
+3.	link:./05_main_method.adoc[main 메소드]
+4.	link:./06_java_langa_package.adoc[import 지시문과 java.lang 패키지]
 
 link:./01_Java_language.adoc[이전: Java 프로그래밍 언어 개요] +
 link:./03_hello_world.adoc[다음: Hello, World!]

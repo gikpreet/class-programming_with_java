@@ -4,10 +4,10 @@ Java 가상 머신은 Java 바이트코드를 실행하는 실행하는 가상 �
 
 == Table of Contents
 
-1. Java 가상 머신
-2. Java 동작 원리
-3. JDK와 JRE
-4. JVM 언어
+1. link:./07_overview_java_virtual_machine.adoc[Java 가상 머신]
+2. link:./08_java_operation_principle.adoc[Java 동작 원리]
+3. link:./09_jdk_jre.adoc[JDK와 JRE]
+4. link:./10_jvm_language.adoc[JVM 언어]
 
 link:./05_write_once_run_anywher.adoc[이전: Write Once Run Anywhere] +
 link:./07_overview_java_virtual_machine.adoc[다음: Java 가상 머신 개요]

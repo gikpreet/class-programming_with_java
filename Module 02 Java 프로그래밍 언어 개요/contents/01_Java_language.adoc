@@ -12,12 +12,12 @@
 
 == Table of Contents
 
-1.	Java 프로그램 구조
-2.	기초적인 입/출력 동작
-3.	권장사항
-4.	컴파일, 디버깅, 실행
-5.	Lab 2-1: 간단한 Java 프로그램 작성
-6.	Lab 2-2: 디버깅
-7.	Lab 2-3: 예외 처리
+1.	link:./02_java_program_structure.adoc[Java 프로그램 구조]
+2.	link:./08_basic_inputout.adoc[기초적인 입/출력 동작]
+3.	link:./12_recommandations.adoc[권장사항]
+4.	link:./17_compile_run_debug.adoc[컴파일, 디버깅, 실행]
+5.	link:./22_lab2-1.adoc[Lab 2-1: 간단한 Java 프로그램 작성]
+6.	link:./23_lab2-2.adoc[Lab 2-2: 디버깅]
+7.	link:./24_lab2-3.adoc[Lab 2-3: 예외 처리]
 
 link:./02_java_program_structure.adoc[다음: Java 프로그램 구조]

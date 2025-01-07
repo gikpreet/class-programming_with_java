@@ -41,10 +41,10 @@ switch 문은 아래와 같이 실행됩니다.
 String monthName = "February";
 int monthDays = 0;
 switch (monthName) {
-case "February":
+    case "February":
         monthDays = 28;
         break;
-case "April":
+    case "April":
     case "June":
     case "September":
     case "November":
@@ -63,13 +63,35 @@ case "April":
 [source, java]
 ----
 switch (trumps) {
-    case “Clubs”:
-    case “Clubs”:	// Error: 중복된 레이블
+    case "Clubs":
+    case "Clubs":	// Error: 중복된 레이블
         ...
     default:
     default:		// Error: 중복된 레이블
 }
 ----
+
+Java 14 버전부터, 아래와 같은 방법으로 상수를 그룹화 할 수 있습니다.
+
+[source, java]
+----
+String club = "February";
+int monthDays = 0;
+
+switch(club) {
+    case "February":
+        monthDays = 28;
+        break;
+    case "April", "June", "September", "November":
+        monthDays = 30;
+        break;
+    default:
+        monthDays = 31;
+        break;
+}
+----
+
+
 
 == switch 문에서 break 사용
 

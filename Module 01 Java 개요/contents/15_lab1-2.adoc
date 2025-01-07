@@ -19,7 +19,7 @@ Microsoft Visual Studio Code              Microsoft.VisualStudioCode            
 2. 아래 명령을 실행하여 Visual Studio Code를 설치합니다.
 +
 ----
-> winget install -e Microsoft.VisialStudioCode
+> winget install -e Microsoft.VisualStudioCode
 ----
 
 

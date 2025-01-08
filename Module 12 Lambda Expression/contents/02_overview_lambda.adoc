@@ -4,8 +4,11 @@ Anonymous Method 형식으로 동작하는 Lambda Expression은 파라미터를 
 
 == Table of Contents
 
-1. Funcational Interface
-2. Lambda Expression
+1. Lambad Expression 개요
+2. Java의 함수형 프로그래밍 개념
+3. Lambda Expression의 필요성
+4. 함수형 프로그래밍
+5. Lambda Expression의 장점
 
 link:./01_Lambda.adoc[이전: Lambda Expression] +
 link:./03_functional_interface.adoc[다음: Functional Interface]

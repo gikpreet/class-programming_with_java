@@ -1,0 +1,134 @@
+= Java Lambda Expression의 기본 구조
+
+* 기본 구조
+** parameter -> 실행할 코드
+** parameter와 실행할 코드 사이에 화살표 연산자(->) 사용
+* 구성 요소
+* Parameter
+** 함수에 전달되는 입력값.
+** 여러 개의 매개변수를 가질 수 있으며, 타입은 컴파일러가 자동으로 추론.
+** 예: (a, b), x, ()
+* 화살표 연산자 (->)
+** 매개변수와 실행할 코드 블록을 구분하는 역할.
+* 실행할 코드 (Body)
+** Lambda 함수가 실행하는 동작.
+** 코드가 한 줄일 경우 중괄호 생략 가능, 여러 줄일 경우 중괄호 필요.
+* 람다 표현식의 타입
+** Functional Interface에 의해 타입 결정.
+** Functional Interface는 단 하나의 추상 메서드를 가짐.
+
+---
+
+Lambda Expression은 자바 8에서 도입된 기능으로, 간결하게 함수를 표현할 수 있는 구문입니다. Lambda Expression은 기본적으로 **익명 함수(Anonymous Function)**로, 매개변수와 실행할 코드 블록으로 구성됩니다. 
+
+== 기본 구조
+
+람다 표현식은 크게 매개변수, 화살표 연산자, 실행할 코드의 세 가지 주요 요소로 구성됩니다.
+
+[source, java]
+----
+(parameter1, parameter2, ...) -> { 실행할 코드 }
+----
+
+* Parameter
+** Lambda Expression 에서 전달되는 값들입니다. 하나 이상의 파라미터를 가질 수 있으며, 파라미터의 타입은 자바 컴파일러가 자동으로 추론합니다.
+** 예: (a, b)는 두 개의 매개변수를 의미합니다.
+* 화살표 연산자 (->)
+** 파라미터와 실행할 코드 블록을 구분하는 역할을 합니다.
+* 실행할 코드(Body)
+** Lambda 함수가 수행하는 동작입니다. 코드 블록 {} 안에 해당 동작이 포함됩니다.
+** 한 줄의 실행 코드일 경우 {}를 생략할 수 있습니다.
+
+== Lambda Expression의 요소
+
+1. Parameter
+* Lambda Expression은 함수처럼 파라미터를 가질 수 있습니다.
+* 하나 이상의 매개변수를 괄호 () 안에 나열하며, 타입을 명시하지 않으면 컴파일러가 자동으로 타입을 추론합니다.
++
+[source, java]
+----
+(int a, int b) -> a + b  // 파라미터 두 개
+----
++
+[source, java]
+----
+x -> x * x  // 파라미터 한 개
+----
++
+[source, java]
+----
+() -> System.out.println("Hello, World!")  // 파라미터 없음
+----
++
+파라미터의 타입은 명시적으로 정의할 수도 있고, 생략할 수 있습니다.
+
+2. 화살표 연산자 (->)
++
+* **->**는 Lambda Expression에서 파라미터와 실행할 코드 블록을 구분합니다.
+* 예: (a, b) -> a + b에서 ->는 파라미터 (a, b)와 실행할 코드 a + b를 구분합니다.
+
+3. 실행할 코드 (Body)
+
+* Lambda Expression의 실행할 코드는 람다 함수가 수행하는 실제 작업입니다.
+* 코드가 한 줄인 경우, 중괄호 {}를 생략할 수 있습니다. 여러 줄인 경우 중괄호를 사용하여 코드 블록을 감싸야 합니다.
++
+[source, java]
+----
+(a, b) -> a + b  // 한 줄 코드
+----
++
+[source, java]
+----
+(a, b) -> {
+    int sum = a + b;
+    return sum;
+}  // 여러 줄 코드
+----
+
+== 예
+
+=== 두 숫자의 덧셈
+
+[source, java]
+----
+BinaryOperator<Integer> add = (a, b) -> a + b;
+System.out.println(add.apply(3, 4));  // 출력: 7
+----
+* (a, b)는 파라미터, a + b는 실행할 코드입니다.
+
+=== 하나의 파라미터로 제곱 계산
+
+[source, java]
+----
+UnaryOperator<Integer> square = x -> x * x;
+System.out.println(square.apply(5));  // 출력: 25
+----
+x -> x * x는 하나의 매개변수 x를 받아서 x의 제곱을 반환합니다.
+
+=== 파라미터 없는 출력
+
+[source, java]
+----
+Runnable r = () -> System.out.println("Hello, World!");
+r.run();  // 출력: Hello, World!
+----
+
+() -> System.out.println("Hello, World!")는 매개변수가 없고, 출력만 수행하는 람다입니다.
+
+== Lambda Expression의 타입
+
+Lambda Expression은 **함수형 인터페이스(Functional Interface)**에 의해 정의됩니다. 함수형 인터페이스는 단 하나의 추상 메서드를 가진 인터페이스로, 람다 표현식의 타입을 결정하는 데 사용됩니다.
+
+[source, java]
+----
+@FunctionalInterface
+interface MyFunction {
+    int apply(int a, int b);
+}
+
+MyFunction add = (a, b) -> a + b;
+----
+
+MyFunction은 하나의 추상 메서드 apply(int a, int b)를 가진 함수형 인터페이스이며, add는 이 인터페이스를 구현하는 람다 표현식입니다.
+
+람다 표현식의 기본 구조는 매개변수 -> 실행할 코드의 형태로, 매개변수, 화살표 연산자, 실행할 코드로 나뉩니다. 자바에서 람다 표현식은 간결하고 직관적인 코드 작성을 가능하게 하며, 함수형 인터페이스와 결합하여 고차 함수 및 순수 함수 구현을 지원합니다.

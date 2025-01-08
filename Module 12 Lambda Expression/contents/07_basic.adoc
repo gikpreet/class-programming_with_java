@@ -1,0 +1,9 @@
+= Lambda Expression 기본
+
+람다 표현식은 코드 간결성, 가독성, 병렬 처리 효율성 등 많은 이점을 제공하며, 자바에서 함수형 프로그래밍을 지원하는 강력한 도구입니다. 이 단원에서는 Lambda Expression을 사용하는 기본적인 방법에 대해 알아봅니다.
+
+== Table of Contents
+
+1. Java Lambda Expression 기본 문법
+2. Java Lambda Expression의 기본 구조
+3. Functional Interface

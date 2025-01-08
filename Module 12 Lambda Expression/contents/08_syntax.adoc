@@ -1,0 +1,143 @@
+= Java Lambda Expression 기본 문법
+
+* 파라미터 목록과 표현 식의 블록으로 선언
+
+[source, java]
+----
+(int i, int j, ...) -> (int x = i + j; ...)
+----
+
+* 파라미터 타입은 생략 가능
+
+[source, java]
+----
+(a, b, …) -> { int x = a + b; … }
+----
+
+* 파라미터가 하나인 경우, 괄호 생략 가능
+
+[source, java]
+----
+a -> { int x = a + b; … }
+----
+
+* 수행문이 하나이고, 지역 변수 선언 또는 return이 없는 경우 { } 생략 가능
+
+[source, java]
+----
+(Task task) -> task.run()
+----
+
+* 괄호가 생략된 수행문에 return 키워드가 포함되어 있을 경우 return 생략 가능
+
+[source, java]
+----
+(a, b) -> a + b
+----
+
+* 가장 단순한 형태
+
+[source, java]
+----
+x -> x
+----
+
+---
+
+Lambda Expression은 간단한 구문으로 익명 함수를 정의할 수 있게 해주는 자바의 기능입니다. 기본 문법은 아래와 같습니다.
+
+== 기본 문법 구조
+
+Java Lambda Expression의 기본 문법 구조는 아래와 같습니다.
+
+[source, java]
+----
+(parameter1, parameter2, ...) -> { 실행할 코드 }
+----
+
+* parameter: 함수에 전달되는 입력값입니다. 하나 이상의 parameter를 괄호 안에 작성합니다.
+* 화살표 연산자 (->): 매개변수와 실행할 코드 블록을 구분합니다.
+* 실행할 코드 블록: 함수가 수행할 동작을 {}로 감쌉니다. 실행할 코드가 한 줄이면 중괄호를 생략할 수도 있습니다.
+
+== 파라미터가 없는 경우
+
+파라미터가 없는 경우, 괄호안에 파라미터를 쓰지 않습니다. 아래 Lambda Expression은 출력만 수행합니다.
+
+[source, java]
+----
+() -> System.out.println("Hello, World!");
+----
+
+== 파라미터가 있는 경우
+
+괄호에 파라미터를 지정합니다. 파라미터의 타입이 명확한 경우 타입을 생략할 수 있습니다.
+
+[source, java]
+----
+(x, y) -> x + y
+----
+
+== 단일 파라미터
+
+파라미터가 하나인 경우, 괄호를 생략할 수 있습니다. 아래 Lambda Expression은 하나의 파라미터 X를 받아 제곱을 return 합니다. 파라미터의 타입을 생략하면 컴파일러가 자동으로 타입을 추론합니다.
+
+[source, java]
+----
+x -> x * x
+----
+
+== 실행할 코드 블록이 여러 줄인 경우
+
+실행할 코드 블록이 여러 줄인 경우, 코드 블록을 지정합니다.
+
+[source, java]
+----
+(x, y) -> {
+    int sum = x + y;
+    return sum;
+}
+----
+
+== 타입 추론(type inference)
+
+Lambda Expression에서는 파라미터의 타입을 명시하지 않아도 Java 컴파일러가 자동으로 타입을 추론합니다.
+
+[source, java]
+----
+(a, b) -> a + b // 'a'와 'b'는 'int' 타입으로 추론됩니다.
+----
+
+== 값 return
+
+단일 수행문이면서 결과를 return 해야 할 경우, 괄호와 return문을 생략할 수 있습니다.
+
+[source, java]
+----
+x -> x * x * x () -> Math.random()
+----
+
+코드 블록이 여러 줄인 경우, 값을 return 하기 위해 return 문을 사용해야 합니다.
+
+[source, python]
+----
+(x, y) -> {
+    int result = x * y;
+    return result;
+}
+----
+
+return을 생략할 경우, return 값이 없는 수행문으로 처리됩니다.
+
+[source, java]
+----
+x -> { x * x * x;}
+----
+
+== 가장 단순한 형태
+
+가장 단순한 형태의 Lambda Expression은 아래와 같은 형식으로 표현될 수 있습니다.
+
+[source, java]
+----
+x -> x
+----

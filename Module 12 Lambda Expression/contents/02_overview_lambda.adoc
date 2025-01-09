@@ -10,5 +10,7 @@ Anonymous Method 형식으로 동작하는 Lambda Expression은 파라미터를 
 4. 함수형 프로그래밍
 5. Lambda Expression의 장점
 
+---
+
 link:./01_Lambda.adoc[이전: Lambda Expression] +
-link:./03_functional_interface.adoc[다음: Functional Interface]
+link:./03_overview.adoc[다음: Lambda Expression 개요]

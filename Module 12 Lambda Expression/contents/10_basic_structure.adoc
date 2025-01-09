@@ -132,3 +132,8 @@ MyFunction add = (a, b) -> a + b;
 MyFunction은 하나의 추상 메서드 apply(int a, int b)를 가진 함수형 인터페이스이며, add는 이 인터페이스를 구현하는 람다 표현식입니다.
 
 람다 표현식의 기본 구조는 매개변수 -> 실행할 코드의 형태로, 매개변수, 화살표 연산자, 실행할 코드로 나뉩니다. 자바에서 람다 표현식은 간결하고 직관적인 코드 작성을 가능하게 하며, 함수형 인터페이스와 결합하여 고차 함수 및 순수 함수 구현을 지원합니다.
+
+---
+
+link:./09_syntax.adoc[이전: Java Lambda Expression 기본 문법] +
+link:./11_functional_interface.adoc[다음: Functional Interface]

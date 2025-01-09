@@ -1,0 +1,85 @@
+= 기타 중요한 Functional Interface
+
+* UnaryOperator : T apply(T t)
+** 동일한 타입의 값을 변환
+* 성능을 위한 기본 데이터 타입 전용 Functional Interface
+
+---
+
+java.util.function 패키지에는 기본 Functional 인터페이스와 Bi-functional 인터페이스 외에 단항 연산(Unary Operation)을 위한 인터페이스 및 성능을 위해 제공되는 기본 데이터 타입 전용 Functional Interface들을 제공합니다.
+
+== UnaryOperator
+
+동일한 타입의 값을 입력받아 동일한 타입의 결과를 return 합니다. Function의 특수화 된 버전입니다.
+
+* 추상 메서드
++
+[source, java]
+----
+T apply(T t)
+----
+
+[source, java]
+----
+UnaryOperator<Integer> square = n -> n * n;
+System.out.println(square.apply(5));  // 출력: 25
+----
+
+== 기본 데이터 타입용 인터페이스 (Primitive Specialized)
+
+자바는 성능 최적화를 위해 기본 데이터 타입(primitive types)에 대해 특수화된 함수형 인터페이스도 제공합니다.
+
+=== IntPredicate / LongPredicate / DoublePredicate
+
+기본 데이터 타입 중 `int`, `long`, `double` 에 대해 조건을 테스트합니다.
+
+[source, java]
+----
+IntPredicate isPositive = n -> n > 0;
+System.out.println(isPositive.test(10));  // 출력: true
+----
+
+=== IntFunction / LongFunction / DoubleFunction
+
+기본 데이터 타입 중 `int`, `long`, `double` 값을 입력받아 변환 후 return 합니다.
+
+[source, java]
+----
+IntFunction<String> intToString = n -> "Value: " + n;
+System.out.println(intToString.apply(42));  // 출력: Value: 42
+----
+
+=== IntSupplier / LongSupplier / DoubleSupplier
+
+각각 `int`, `long`, `double` 값을 공급합니다.
+
+[source, java]
+----
+IntSupplier randomInt = () -> (int) (Math.random() * 100);
+System.out.println(randomInt.getAsInt());  // 랜덤 값 출력
+----
+
+=== IntUnaryOperator / LongUnaryOperator / DoubleUnaryOperator
+
+각각 `int`, `long`, `double` 에 대해 동일한 기본 데이터 타입 값을 return 합니다.
+
+[source, java]
+----
+IntUnaryOperator doubleValue = n -> n * 2;
+System.out.println(doubleValue.applyAsInt(5));  // 출력: 10
+----
+
+=== IntBinaryOperator / LongBinaryOperator / DoubleBinaryOperator
+
+각각 `int`, `long`, `double` 에 대해 동일한 기본 데이터 타입의 두 값을 return 합니다.
+
+[source, java]
+----
+IntBinaryOperator multiply = (a, b) -> a * b;
+System.out.println(multiply.applyAsInt(3, 4));  // 출력: 12
+----
+
+---
+
+link:./15_bi_functional.adoc[이전: Bi-Functional 인터페이스] +
+link:./17_usage.adoc[다음: Lambda Expression의 활용]

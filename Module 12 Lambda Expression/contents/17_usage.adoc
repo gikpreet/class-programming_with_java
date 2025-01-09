@@ -1,0 +1,14 @@
+= Lambda Expression의 활용
+
+Lambda Expression(람다 표현식)은 자바에서 간결하고 효율적인 코드 작성을 가능하게 하며, 다양한 영역에서 유용하게 사용됩니다. 이 단원에서는 Lambda Expression의 주요 활용 사례에 대해 알아봅니다.
+
+== Table of Contents
+
+1. 컬렉션과 스트림 API에서 Lambda 사용
+2. 메서드 참조와 생성자 참조
+3. Custom Functional Interface 구현
+
+---
+
+link:./16_other_functional.adoc[이전: 기타 중요한 Functional Interface] +
+link:./18_collection_stream.adoc[다음: Collection과 Stream API에서 Lambda 사용]

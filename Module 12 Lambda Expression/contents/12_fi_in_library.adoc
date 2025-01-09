@@ -7,3 +7,7 @@
 1. java.util.function 패키지 개요
 2. 주요 Functional Interface
 
+---
+
+link:./11_functional_interface.adoc[이전: Functional Interface] +
+link:./13_java_util_function.adoc[다음: java.util.function 패키지 개요]

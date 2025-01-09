@@ -1,0 +1,98 @@
+= 주요 Functional Interface
+
+* Predicate : boolean test(T t)
+** 조건을 테스트하여 true 또는 false 리턴
+* Function : R apply(T t)
+** 입력값을 변환하여 결과 리턴
+* Consumer : void accept(T t)
+** 값을 소비(사용)하며 리턴값 없음
+* Supplier : T get()
+** 값을 공급하며 매개변수 없이 결과 리턴
+
+---
+
+Java 8에서는 함수형 프로그래밍을 지원하기 위해 다양한 내장 함수형 인터페이스를 제공하고 있습니다. 이들은 모두 java.util.function 패키지에 포함되어 있으며, 주로 람다 표현식과 함께 사용됩니다.
+
+== Predicate
+
+조건을 테스트하고 true 또는 false를 반환하는 Functional Interface 입니다.
+
+* 추상 메서드
++
+[source, java]
+----
+boolean test(T t)
+----
++
+* 주요 메소드
+** `and()`: 두 조건을 AND 연산으로 결합합니다.
+** `or()`: 두 조건을 OR 연산으로 결합합니다.
+** `negate()`: 조건의 결과를 반전합니다.
+
+[source, java]
+----
+Predicate<Integer> isEven = n -> n % 2 == 0;
+System.out.println(isEven.test(4));  // 출력: true
+System.out.println(isEven.test(5));  // 출력: false
+----
+
+== Function
+
+입력값을 특정 변환 후 결과를 return 합니다.
+
+* 추상 메서드
++
+[source, java]
+----
+R apply(T t)
+----
+* 주요 메소드
+** `andThen()`: 결과를 다른 Function에 전달합니다.
+** `compose()`: 다른 Function의 결과를 입력값으로 사용합니다.
++
+[source, java]
+----
+Function<Integer, String> intToString = n -> "Number: " + n;
+System.out.println(intToString.apply(5));  // 출력: Number: 5
+----
+
+== Consumer
+
+값을 소비(사용)하며, 아무 값도 return 하지 않습니다.
+
+* 추상 메서드
++
+[source, java]
+----
+void accept(T t)
+----
+* 주요 메소드
+** `andThen()` 연속적으로 다른 Consumer를 실행합니다.
+
+[source, java]
+----
+Consumer<String> print = s -> System.out.println(s);
+print.accept("Hello, World!");  // 출력: Hello, World!
+----
+
+== Supplier
+
+값을 공급하며 매개변수 없이 결과를 return 합니다.
+
+* 추상 메서드
++
+[source, java]
+----
+T get()
+----
+
+[source, java]
+----
+Supplier<Double> randomValue = () -> Math.random();
+System.out.println(randomValue.get());  // 랜덤 값 출력
+----
+
+---
+
+link:./13_java_util_function.adoc[이전: java.util.function 패키지 개요] +
+link:./15_bi_functional.adoc[다음: Bi-Functional 인터페이스]

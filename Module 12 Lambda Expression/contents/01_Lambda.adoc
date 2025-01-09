@@ -11,6 +11,8 @@ Lambda Expression은 메소드를 하나의 식(expresson)으로 표현할 수 �
 2. Lambda Expression 형식
 3. Lambda Expression 활용
 
+---
+
 link:./02_overview_lambda.adoc[다음: Lambda Expression 개요]
 
 ////
@@ -33,6 +35,7 @@ Function
 Consumer
 Supplier
 3.3 Bi-Functional Interface (BiPredicate, BiFunction, BiConsumer)
+
 4. Lambda Expression의 활용
 4.1 컬렉션과 스트림 API에서 Lambda 사용
 4.2 메서드 참조와 생성자 참조

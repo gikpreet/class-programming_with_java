@@ -1,0 +1,122 @@
+= Collection과 Stream API에서 Lambda 사용
+
+* Collection과 Lambda
+** Collection Framework의 클래스 객체들이 지원하는 Functional Interface를 Lambda Expression을 사용하여 처리
+** 정렬, 필터링 등의 작업을 간결하게 처리
+* Stream API와 Lambda
+** 데이터를 순차적 또는 병렬로 처리하는 API. Lambda로 간결하게 표현
+** filter, map, sorted, reduce 등의 작업을 간결하게 처리
+
+---
+
+Java의 Stream API는 컬렉션 데이터를 처리하고 변환하는 강력한 도구로, Lambda Expression과 결합하여 코드를 간결하고 직관적으로 작성할 수 있습니다. 이는 Java 8에서 도입된 함수형 프로그래밍의 핵심 기능 중 하나입니다.
+
+== Collection에서 Lambda 사용
+
+Lambda Expression을 사용하면 Collection 데이터를 처리하는 정렬, 필터링 등의 작업을 간단하게 구현할 수 있습니다.
+
+=== Collection 정렬
+
+Comparator 인터페이스를 Lambda로 간결하게 구현할 수 있습니다.
+
+[source, java]
+----
+List<String> names = Arrays.asList("Alice", "Bob", "Charlie");
+
+// 이름을 알파벳 순으로 정렬
+names.sort((a, b) -> a.compareToIgnoreCase(b));
+System.out.println(names); // 출력: [Alice, Bob, Charlie]
+
+// 이름 길이로 정렬
+names.sort((a, b) -> Integer.compare(a.length(), b.length()));
+System.out.println(names); // 출력: [Bob, Alice, Charlie]
+----
+
+=== Collection 필터링
+
+Collection에서 특정 조건에 맞는 데이터를 필터링 할 때 Lambda를 사용하여 간결하게 구현할 수 있습니다.
+
+[source, java]
+----
+List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6);
+
+// 홀수만 필터링
+List<Integer> oddNumbers = numbers.stream()
+    .filter(n -> n % 2 != 0)
+    .toList();
+System.out.println(oddNumbers); // 출력: [1, 3, 5]
+----
+
+== Stream API와 Lambda
+
+스트림 API는 **데이터 소스(컬렉션, 배열 등)**에서 데이터를 순차적 또는 병렬적으로 처리할 수 있는 기능을 제공합니다. Lambda 표현식과 함께 사용하여 필터링, 매핑, 집계 등의 작업을 간결하게 수행할 수 있습니다.
+
+아래와 같이 생성된 Stream이 있다고 할 때,
+
+[source, java]
+----
+List<String> items = List.of("apple", "banana", "cherry");
+Stream<String> stream = items.stream();
+----
+
+아래와 같은 작업들을 수행할 때 Lambda를 사용하면 간결하게 수행할 수 있습니다.
+
+=== 필터링(filtering)
+
+[source, java]
+----
+List<String> items = List.of("apple", "banana", "cherry");
+Stream<String> stream = items.stream();
+----
+
+=== 매핑(mapping)
+
+데이터를 변환하여 새 Stream을 생성하는 작업입니다. 아래 코드는 메소드 참조를 사용합니다.
+
+[source, java]
+----
+List<Integer> lengths = items.stream()
+    .map(String::length)
+    .toList();
+System.out.println(lengths); // 출력: [5, 6, 6]
+----
+
+=== 정렬(sort)
+
+[source, java]
+----
+List<String> sorted = items.stream()
+    .sorted()
+    .toList();
+System.out.println(sorted); // 출력: [apple, banana, cherry]
+----
+
+=== 집계(reduce)
+
+Stream 데이터를 하나의 값으로 결합하는 작업입니다.
+
+[source, java]
+----
+Optional<String> concatenated = items.stream()
+    .reduce((a, b) -> a + ", " + b);
+concatenated.ifPresent(System.out::println); // 출력: apple, banana, cherry
+----
+
+== 병렬 처리
+
+Stream을 병렬로 처리하여 성능을 향상 시킵니다.
+
+[source, java]
+----
+List<Integer> largeNumbers = IntStream.range(1, 1000000).boxed().toList();
+
+long count = largeNumbers.parallelStream()
+    .filter(n -> n % 3 == 0)
+    .count();
+System.out.println("Count: " + count); // 출력: 333333
+----
+
+---
+
+link:./17_usage.adoc[이전: Lambda Expression의 활용] +
+link:./19_method_ctor.adoc[다음: 메서드 참조와 생성자 참조]

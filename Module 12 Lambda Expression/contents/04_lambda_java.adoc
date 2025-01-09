@@ -134,3 +134,8 @@ names.forEach(System.out::println); // System.out의 println 메서드를 참조
 Function<Integer, Integer> square = x -> x * x;
 System.out.println(square.apply(5)); // 출력: 25
 ----
+
+---
+
+link:./03_overview.adoc[이전: Lambda Expression 개요] +
+link:./05_why_lambda.adoc[다음: Lambda Expression의 필요성]

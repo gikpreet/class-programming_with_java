@@ -7,3 +7,8 @@
 1. Java Lambda Expression 기본 문법
 2. Java Lambda Expression의 기본 구조
 3. Functional Interface
+
+---
+
+link:./07_benefit.adoc[이전: Java에서 Lambda Expression의 장점] +
+link:./09_syntax.adoc[다음: Java Lambda Expression 기본 문법]

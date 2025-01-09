@@ -141,3 +141,8 @@ x -> { x * x * x;}
 ----
 x -> x
 ----
+
+---
+
+link:./08_basic.adoc[이전: Lambda Expression 기본] +
+link:./10_basic_structure.adoc[다음: Java Lambda Expression의 기본 구조]

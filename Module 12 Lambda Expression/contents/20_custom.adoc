@@ -1,0 +1,1 @@
+= Custom Functional Interface 구현

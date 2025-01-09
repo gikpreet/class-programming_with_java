@@ -118,3 +118,8 @@ button.setOnAction(event -> System.out.println("Button clicked!"));
 ----
 
 Lambda Expression은 기존의 장황한 익명 클래스 코드를 간소화하고, 함수형 프로그래밍을 Java에 통합하여, 병렬 처리 및 데이터 처리와 같은 모던한 요구를 효과적으로 지우너합니다. 이를 통해 개발자는 생산성과 가독성을 동시에 높일 수 있습니다.
+
+---
+
+link:./04_lambda_java.adoc[이전: Java의 함수형 프로그래밍 개념] +
+link:./06_functional_programming.adoc[다음: 함수형 프로그래밍(Functional Programming)]

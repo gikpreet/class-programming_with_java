@@ -1,0 +1,68 @@
+= Bi-Functional 인터페이스
+
+* BinaryOperator : T apply(T t1, T t2)
+** 동일한 타입의 두 값을 받아 변환 결과 리턴
+* BiFunction : T apply(T t1, T t2)
+** 두 개의 입력값을 받아 변환 후 결과 반환.
+* BiConsumer : void accept(T t, U u)
+** 두 개의 입력값을 받아 소비하며 반환값 없음
+
+---
+
+Bi-Functional Interface는 두 개의 입력 매개변수를 받아 작업을 수행하는 함수형 인터페이스입니다. 자바에서 제공하는 기본 Bi-Functional Interface는 다음과 같습니다:
+
+== BinaryOperator
+
+동일한 타입의 두 값을 받아 동일한 타입의의 결과를 return 합니다. 
+
+* 추상 메서드
++
+[source, java]
+----
+T apply(T t1, T t2)
+----
+
+[source, java]
+----
+BinaryOperator<Integer> add = (a, b) -> a + b;
+System.out.println(add.apply(3, 4));  // 출력: 7
+----
+
+== BiFunction
+
+두 개의 입력값을 받아 변환 후 결과를 return 합니다.
+
+* 추상 메서드
++
+[source, java]
+----
+R apply(T t, U u)
+----
+
+[source, java]
+----
+BiFunction<Integer, Integer, String> sumToString = (a, b) -> "Sum: " + (a + b);
+System.out.println(sumToString.apply(3, 4));  // 출력: Sum: 7
+----
+
+== BiConsumer
+
+두 개의 입력값을 받아 소비하며, return 값은 없습니다.
+
+* 추상 메서드
++
+[source, java]
+----
+void accept(T t, U u)
+----
+
+[source, java]
+----
+BiConsumer<String, Integer> printDetails = (name, age) -> System.out.println(name + " is " + age + " years old.");
+printDetails.accept("Alice", 25);  // 출력: Alice is 25 years old.
+----
+
+---
+
+link:./14_built_in_fi.adoc[이전: 주요 Functional Interface] +
+link:./16_other_functional.adoc[다음: 기타 중요한 Functional Interface]

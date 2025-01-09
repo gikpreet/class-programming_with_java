@@ -1,0 +1,129 @@
+= 메서드 참조와 생성자 참조
+
+* 메소드 참조
+** 이미 존재하는 메소드를 참조하여 Lambda Expression을 간결하게 대체
+** 정적 메소드 참조: `ClassName::staticMethod`
+** 특정 객체의 인스턴스 메소드 참조: `instance::instanceMethod`
+** 클래스의 임의 객체의 인스턴스 메소드 참조: `ClassName::instanceMethod`
+** 배열 생성 메소드 참조: `Type[]::new`
+* 생성자 참조
+** 클래스의 생성자를 참조하여 람다 표현식을 간결하게 대체
+** `ClassName::new`
+
+---
+
+메소드 참조와 생성자 참조는 Java 8에서 도입된 함수형 프로그래밍의 한 요소로, Lambda Expression을 더 간결하게 작성할 수 있도록 지원합니다.
+
+Lambda Expression이 이미 존재하는 메소드나 생성자를 호출하기 위한 경우, 이를 메소드 참조나 생성자 참조로 치환하여 더욱 깔끔하게 표현할 수 있습니다.
+
+== 메소드 참조(Method Reference)
+
+메소드 참조는 이미 존재하는 메소드를 참조하여 Lambda Expression을 간결하게 사용하는 방법이며, `::` 연산자를 사용하여 참조합니다.
+
+[source, java]
+----
+ClassName::methodName
+----
+
+=== 정적 메소드(static method) 참조
+
+정적으로 선언된 메소드를 참조할 수 있습니다. 문법은 아래와 같습니다.
+
+`ClassName::staticMethod`
+
+[source, java]
+----
+Function<String, Integer> parseInt = Integer::parseInt;
+System.out.println(parseInt.apply("123")); // 출력: 123
+----
+
+=== 특정 객체 인스턴스 메소드 참조
+
+특정 객체의 메소드를 참조할 수 있습니다. 문법은 아래와 같습니다.
+
+`instance::instanceMethod`
+
+[source, java]
+----
+List<String> names = Arrays.asList("Alice", "Bob", "Charlie");
+names.forEach(System.out::println); // 각 이름을 출력
+----
+
+=== 임의의 객체 인스턴스 참조
+
+임의의 객체에서 호출 가능한 인스턴스 메소드를 참조할 수 있습니다. 문법은 아래와 같습니다.
+
+`ClassName::instanceMethod`
+
+[source, java]
+----
+List<String> names = Arrays.asList("Alice", "Bob", "Charlie");
+names.forEach(System.out::println); // 각 이름을 출력
+----
+
+=== 배열 생성 메소드 참조
+
+배열의 생성자를 참조할 수 있습니다. 문법은 아래와 같습니다.
+
+`Type[]::new`
+
+[source, java]
+----
+Function<Integer, String[]> arrayCreator = String[]::new;
+String[] strings = arrayCreator.apply(5);
+System.out.println(strings.length); // 출력: 5
+----
+
+== 생성자 참조(Constructor Reference)
+
+클래스의 생성자를 참조하여 Lambda Expression을 대체할 수 있습니다. 문법은 아래와 같습니다.
+
+`ClassName::new`
+
+=== 기본 생성자 참조
+
+생성자 파라미터가 없는 기본 생성자를 참조할 수 있습니다.
+
+[source, java]
+----
+Supplier<List<String>> listSupplier = ArrayList::new;
+List<String> list = listSupplier.get();
+System.out.println(list.isEmpty()); // 출력: true
+----
+
+=== 파라미터가 있는 생성자 참조
+
+파라미터가 있는 오버라이드 된 생성자를 참조할 수 있습니다.
+
+[source, java]
+----
+Function<String, User> userCreator = User::new;
+User user = userCreator.apply("Alice");
+System.out.println(user.getName()); // 출력: Alice
+----
+
+=== 배열 생성자 참조
+
+배열 생성자를 참조할 수 있습니다.
+
+[source, java]
+----
+Function<Integer, int[]> arrayCreator = int[]::new;
+int[] array = arrayCreator.apply(10);
+System.out.println(array.length); // 출력: 10
+----
+
+== 메소드 참조와 Lambda Expression 비교
+
+[%header, cols=2]
+|===
+|람다 표현식|메소드 참조
+|(x) -> Integer.parseInt(x)|Integer::parseInt
+|(str) -> str.toUpperCase()|String::toUpperCase
+|(name) -> new User(name)|User::new
+|===
+
+---
+
+link:./18_collection_stream.adoc[이전: Collection과 Stream API에서 Lambda 사용] +
+link:./20_custom.adoc[다음: Custom Functional Interface 구현]

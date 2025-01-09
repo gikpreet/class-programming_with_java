@@ -109,3 +109,8 @@ public class LambdaExample {
     }
 }
 ----
+
+---
+
+link:./10_basic_structure.adoc[이전: Java Lambda Expression의 기본 구조] +
+link:./12_fi_in_library.adoc[다음: Java 내장 Functional Interface]

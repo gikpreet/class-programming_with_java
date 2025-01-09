@@ -40,3 +40,8 @@ Lambda는 상태 변경을 하지 않는 순수 함수를 표현하기 적합합
 Function<Integer, Integer> doubleValue = x -> x * 2;
 System.out.println(doubleValue.apply(4)); // 출력: 8
 ----
+
+---
+
+link:./02_overview_lambda.adoc[이전: Lambda Expression 개요] +
+link:./04_lambda_java.adoc[다음: Java의 함수형 프로그래밍 개념]

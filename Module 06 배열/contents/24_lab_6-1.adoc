@@ -28,6 +28,7 @@ public class FileDetails {
 8.	FileDetails.java 프로그램을 컴파일 합니다. 오류가 있으면 수정합니다.
 
 === 텍스트 파일을 읽어 배열에 저장
+
 1.	File 클래스 선언부터 catch문까지 코드의 주석을 해제합니다.
 2.	try문 블록에 char 타입 배열 contents를 정의하고 텍스트 파일의 크기와 같은 크기의 새 배열 인스턴스로 초기화합니다.
 3.	try문 블록에 for문을 선언하고 contents 배열의 요소를 반복하면서 stream에서 읽은 단일 문자를 순서대로 할당하는 코드를 작성합니다.
@@ -72,6 +73,7 @@ public static void main(String[] args) {
 7.	foreach문을 주석처리 합니다.
 
 == 연습 2: 파일의 정보표시
+
 1.	`FileDetails` 클래스에 `summerize` 라는 `static` 메소드를 선언합니다. 이 메소드는 값을 반환하지 않으며 `char` 타입 배열이 필요합니다. 그리고 `main` 메소드의 `try` 블록에 `contents` 배열을 파라미터 인자로 전달하며 `summarize` 메소드를 호출하는 코드를 작성합니다.
 2.	`summarize` 메소드에 foreach문을 추가하고 파라미터로 전달받은 배열의 문자를 검사합니다. 모음(Vowel), 자음(consonant), 줄 바꿈(new line) 문자를 세고 결과를 별도의 변수에 저장합니다.
 +
@@ -138,6 +140,8 @@ static void summerize(char[] contents) {
 자음 수: 299
 줄 수: 19
 ----
+
+---
 
 link:./23_using_array_in_foreach.adoc[이전: foreach 문에서 배열 사용] +
 link:./25_review.adoc[다음: 검토]

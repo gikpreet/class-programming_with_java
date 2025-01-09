@@ -34,5 +34,7 @@ for (int i = 0; i < grid.length; i++) {
 }
 ----
 
+---
+
 link:./06_array_element_access.adoc[이전: 배열 요소에 접근] +
 link:./08_array_collection.adoc[다음: 배열과 컬렉션 비교]

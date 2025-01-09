@@ -45,5 +45,7 @@ String[] args = {
 }
 ----
 
+---
+
 link:./20_array_as_parameter.adoc[이전: 배열을 파라미터로 전달] +
 link:./22_demo_using_commandline_argument.adoc[다음: 데모 - 명령줄 인자 사용]

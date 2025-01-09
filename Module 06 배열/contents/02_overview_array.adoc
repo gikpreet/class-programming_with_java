@@ -4,12 +4,14 @@
 
 == Table of Contents
 
-1.	배열이란?
-2.	Java에서 배열 표기법
-3.	배열의 차원
-4.	배열 요소에 액세스
-5.	배열 경계 검사
-6.	배열과 컬렉션 비교
+1.	link:./03_whatisarray.adoc[배열이란?]
+2.	link:./04_array_in_java.adoc[Java에서 배열 표기법]
+3.	link:./05_dimension.adoc[배열의 차원]
+4.	link:./06_array_element_access.adoc[배열 요소에 액세스]
+5.	link:./07_array_boundary.adoc[배열 경계 검사]
+6.	link:./08_array_collection.adoc[배열과 컬렉션 비교]
+
+---
 
 link:./01_array.adoc[이전: 배열] +
 link:./03_whatisarray.adoc[다음: 배열이란?]

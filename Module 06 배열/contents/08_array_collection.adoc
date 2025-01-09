@@ -64,5 +64,7 @@ catch (UnsupportedOperationException e) {
 }
 ----
 
+---
+
 link:./07_array_boundary.adoc[이전: 배열과 컬렉션 비교] +
 link:./09_array_creation.adoc[다음: 배열 생성]

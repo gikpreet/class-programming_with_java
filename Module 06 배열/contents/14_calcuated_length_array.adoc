@@ -42,5 +42,7 @@ int rowCount = Integer.parseInt(scanner.nextLine());
 int[][] grid = new int[rowCount][3];
 ----
 
+---
+
 link:./13_jagged_array.adoc[이전: 가변 길이 배열] +
 link:./15_copy_array_elements.adoc[다음: 배열 요소 복사]

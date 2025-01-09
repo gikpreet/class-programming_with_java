@@ -36,5 +36,7 @@ grid2[1] = new int[] {5,6,7};
 grid2[2] = new int[] {8,9,10,11,12};
 ----
 
+---
+
 link:./12_initate_multiple_dimension.adoc[이전: 다차원 배열 요소 초기화] +
 link:./14_calcuated_length_array.adoc[다음: 계산된 크기를 가진 배열 생성]

@@ -12,8 +12,10 @@
 
 == Table of Contents
 
-1.	배열 개요
-2.	배열 생성
-3.	배열 사용
+1.	link:./02_overview_array.adoc[배열 개요]
+2.	link:./09_array_creation.adoc[배열 생성]
+3.	link:./16_using_array.adoc[배열 사용]
+
+---
 
 link:./02_overview_array.adoc[다음: 배열 개요]

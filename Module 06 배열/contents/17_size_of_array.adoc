@@ -17,5 +17,7 @@ int[][] matrix = new int[2][3];
 
 `matrix` 배열은 요소로 두 개의 정수 타입 배열을 가집니다. 따라서 `matrix` 의 `length` 는 2가 됩니다. matrix 배열이 포함하고 있는 두 배열, `matrix[0]` 과 `matrix[1]` 은 각각 3개의 요소를 가집니다. 따라서 `matrix[0]` 과 `matrix[1]` 배열의 `length` 는 3이 됩니다.
 
+---
+
 link:./16_using_array.adoc[이전: 배열 사용] +
 link:./18_method_of_array.adoc[다음: 배열 메소드]

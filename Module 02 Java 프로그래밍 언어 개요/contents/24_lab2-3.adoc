@@ -152,4 +152,6 @@ public static void main(String[] args) {
 +
 image:./images/image31.png[]
 
+---
+
 link:./23_lab2-2.adoc[이전: ab 2-2: 디버깅]

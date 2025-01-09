@@ -36,5 +36,7 @@ Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: Index 0 out
 
 예외 처리에 대해서는 이후에 자세히 알아봅니다.
 
+---
+
 link:./14_javadoc.adoc[이전: javadoc] +
 link:./16_demo2.adoc[다음: Demo - JavaDoc을 사용한 HTML 문서 생성]

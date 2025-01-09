@@ -55,5 +55,7 @@ HelloWorld.java:3: error: ';' expected
 1 error
 ----
 
+---
+
 link:./17_compile_run_debug.adoc[이전: 컴파일, 실행, 디버깅] +
 link:./19_run_java_program.adoc[다음: Java 프로그램 실행]

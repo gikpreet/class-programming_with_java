@@ -63,5 +63,7 @@ public class Hello {
 }
 ----
 
+---
+
 link:./02_java_program_structure.adoc[다음: Java 프로그램 구조] +
 link:./04_class.adoc[다음: Class]

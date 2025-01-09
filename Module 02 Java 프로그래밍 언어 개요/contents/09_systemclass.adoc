@@ -47,5 +47,7 @@ System 클래스는 표준 입/출력 이외에도 객체 복사, 현재 시간 
 |static String getProperty(String key, String def)	|프로그램 환경 변수를 설정합니다
 |===
 
+---
+
 link:./08_basic_inputout.adoc[이전: 기초적인 입/출력 동작] +
 link:./10_standard_output.adoc[다음: 표준 출력]

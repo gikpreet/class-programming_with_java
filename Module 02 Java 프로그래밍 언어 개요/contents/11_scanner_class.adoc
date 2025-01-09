@@ -30,5 +30,7 @@ String input = scanner.nextLine();
 System.out.println(input);
 ----
 
+---
+
 link:./10_standard_output.adoc[이전: 표준 출력] +
 link:./12_recommandations.adoc[다음: 권장 사항]

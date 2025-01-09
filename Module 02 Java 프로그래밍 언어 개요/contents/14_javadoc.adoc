@@ -55,5 +55,7 @@ public class Hello {
 $ javadoc -d [출력 디렉토리] [대상 파일]
 ----
 
+---
+
 link:./13_comments.adoc[이전: 주석] +
 link:./15_exception.adoc[다음: 예외 처리]

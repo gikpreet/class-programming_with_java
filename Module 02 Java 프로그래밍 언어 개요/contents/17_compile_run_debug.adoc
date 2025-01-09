@@ -9,5 +9,7 @@
 3.	link:./20_debugging.adoc[디버깅]
 4.	link:./21_jdk_tools.adoc[JDK 도구]
 
+---
+
 link:./16_demo2.adoc[이전: Demo - JavaDoc을 사용한 HTML 문서 생성] +
 link:./18_invoking_compiler.adoc[다음: 컴파일러 호출]

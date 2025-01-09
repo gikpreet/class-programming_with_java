@@ -20,5 +20,7 @@ Java 프로그램에는 여러 클래스가 있을 수 있지만 프로그램이
 
 Java 프로그램은 `main` 이 끝까지 실행되거나 `return` 문이 실행될 때까지 실행됩니다.
 
+---
+
 link:./04_class.adoc[이전: Class] +
 link:./06_java_langa_package.adoc[다음: import 지시문과 java.lang 패키지]

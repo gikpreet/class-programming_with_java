@@ -8,6 +8,7 @@
 2.	link:./10_standard_output.adoc[표준 출력]
 3.	link:./11_scanner_class.adoc[Scanner 클래스]
 
+---
 
 link:./07_demo.adoc[이전: 데모 - Java 프로그램 컴파일 및 실행] + 
 link:./09_systemclass.adoc[다음: 시스템 클래스]

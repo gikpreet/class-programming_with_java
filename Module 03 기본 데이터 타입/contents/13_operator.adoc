@@ -97,5 +97,7 @@ Java 프로그래밍 언어에서 제공하는 일반 연산자는 아래와 같
 |+=	|변수에 값을 더하며 할당하는 합성 할당 연산자입니다
 |===
 
+---
+
 link:./12_compoundassignment.adoc[이전: 합성 할당] +
 link:./14_incrementoperation.adoc[다음: 증가/감소 연산]

@@ -75,5 +75,7 @@ float floatValue = 10000000000.0F;
 int intValue = (int)floatValue;  // int의 표현 범위를 넘으므로 2147483647로 변환됨
 ----
 
+---
+
 link:./18_implicit_casting.adoc[이전: 암시적 타입 변환] +
 link:./20_typecasting.adoc[다음: 연산시 타입 변환]

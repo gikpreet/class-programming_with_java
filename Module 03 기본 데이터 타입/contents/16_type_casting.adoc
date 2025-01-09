@@ -8,5 +8,7 @@ Java 에서는 두 가지 형태의 데이터 타입 변환이 있습니다. 이
 3. link:./19_explicit_casting.adoc[명시적 형 변환(Explicit data type conversion)]
 4. link:./20_typecasting.adoc[연산 시 타입 변환]
 
+---
+
 link:./15_priority.adoc[이전: 기본 데이터 타입 사용] +
 link:./17_type_casting_rule.adoc[다음: 기본 데이터 타입 변환 규칙]

@@ -25,5 +25,7 @@ Java는 8개의 기본 데이터 타입을 제공합니다.
 |boolean|	true와 false 두 가지 값만 사용할 수 있는 타입으로, 조건식과 논리 계산에 사용됩니다.	|false
 |===
 
+---
+
 link:./04_java_primitive_data_type.adoc[이전: Java 데이터 타입] +
 link:./06_variable_naming.adoc[다음: 변수 이름 붙이기]

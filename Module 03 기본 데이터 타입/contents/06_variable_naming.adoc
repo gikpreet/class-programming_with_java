@@ -9,5 +9,7 @@
 2.	link:./08_naming_recommandation.adoc[권장되는 변수 이름 짓기]
 3.	link:./09_java_keyword.adoc[Java 키워드]
 
+---
+
 link:./05_primitive_data_type.adoc[이전: 기본 데이터 타입] +
 link:./07_naming_rule.adoc[다음: 변수 명명 규칙]

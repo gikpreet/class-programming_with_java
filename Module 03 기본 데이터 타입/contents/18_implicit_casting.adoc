@@ -66,5 +66,7 @@ long longValue = 123;
 double doubleValue = longValue;
 ----
 
+---
+
 link:./17_type_casting_rule.adoc[이전: 기본 데이터 타입 변환 규칙] +
 link:./19_explicit_casting.adoc[다음: 명시적 타입 변환]

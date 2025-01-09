@@ -10,5 +10,7 @@
 2. link:./04_java_primitive_data_type.adoc[Java 데이터 타입]
 3. link:./05_primitive_data_type.adoc[기본 데이터 타입]
 
+---
+
 link:./01_Primitive_data_type.adoc[이전: 기본 데이터 타입 타입] +
 link:./03_valuetype_reftype.adoc[다음: 값 타입과 참조 타입]

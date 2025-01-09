@@ -20,7 +20,7 @@ customerCount += 10;
 
 ---
 
-*변수에 값을 더하는 연산은 자주 사용됩니다.*
+== 변수에 값을 더하는 연산은 자주 사용됩니다.
 
 아래 코드는 존재하는 int형 변수에 값을 더하는 연산입니다. 아래 연산은 1로 초기화된 변수에 20을 더해 21로 만듭니다.
 
@@ -31,7 +31,7 @@ customerCount = 1;
 customerCount = customerCount + 20;
 ----
 
-*합성 할당 연산자를 사용할 수 있습니다*
+== 합성 할당 연산자를 사용할 수 있습니다
 
 위와 같이 변수에 값을 더하는 코드는 읽기 어려울 수 있고, 쓰기 번거롭습니다. 복잡한 식을 사용하는 경우 코드를 읽기 어렵고 까다롭습니다.
 
@@ -57,6 +57,8 @@ variable *= expression; // variable = variable * expression;
 variable /= expression; // variable = variable / expression;
 variable %= expression; // variable = variable % expression;
 ----
+
+---
 
 link:./11_locationvariable_assign.adoc[이전: 지역 변수 선언과 값 할당] +
 link:./13_operator.adoc[다음: 일반 연산자]

@@ -8,5 +8,7 @@ Java는 단순히 프로그래밍 언어의 이름으로 사용되는 경우가 
 2. link:./04_java_programming_language.adoc[Java 프로그래밍 언어 소개]
 3. link:./05_write_once_run_anywhere.adoc[Write Once Run Anywhere]
 
+---
+
 link:./01_overview_java.adoc[이전: Java 개요] +
 link:./03_java_software_platform.adoc[다음: Java 소프트웨어 플랫폼]

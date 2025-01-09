@@ -8,5 +8,7 @@ image:./images/image06.png[]
 
 Java 프로그래밍 언어로 작성된 소스코드는 Java 컴파일러를 통해 `Java 바이트코드(.class)` 컴파일되며, 바이트코드는 Java 가상 머신 상에서 실행됩니다. 이런 구조가 Write Once Run Anywhere를 가능하도록 만듭니다.
 
+---
+
 link:./04_java_programming_language.adoc[이전: Java 프로그래밍 언어] +
 link:./06_java_virtual_machine.adoc[다음: Java 가상 머신]

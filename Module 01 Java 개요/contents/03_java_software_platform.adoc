@@ -40,5 +40,7 @@ Java 플랫폼은 Java 프로그래밍 언어로 프로그램을 개발하고 �
 |Jakarta EE (Jakarta Enterprise Edition)	|이전의 Java EE(Enterprise Edition)이며, Java를 이용한 서버 개발을 위한 플랫폼입니다. Java EE는 데스크톱 등에서 동작하는 표준 플랫폼인 Java SE에 웹 애플리케이션 서버에서 동작하는 장애 복구 미 분산 아키텍처를 제공하는 기능을 추가한 서버를 위한 플랫폼입니다.
 |===
 
+---
+
 link:./02_introduction_java_platform.adoc[다음: Java 소프트웨어 플랫폼 소개] +
 link:./04_java_programming_language.adoc[다음: Java 프로그래밍 언어]

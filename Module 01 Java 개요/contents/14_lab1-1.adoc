@@ -196,5 +196,7 @@ OpenJDK 64-Bit Server VM Temurin-17.0.9+9 (build 17.0.9+9, mixed mode, sharing)
 /Library/Java/JavaVirtualMachines/temurin-17.jdk/Contents/Home
 ----
 
+---
+
 link:./13_jdk_provider.adoc[이전: JDK 공급자] +
 link:./15_lab1-2.adoc[다음: Lab 1-2 개발 환경 설치]

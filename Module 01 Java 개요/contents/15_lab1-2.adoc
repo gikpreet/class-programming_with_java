@@ -72,3 +72,7 @@ $ code -v
 8b3775030ed1a69b13e4f4c628c612102e30a681
 arm64
 ----
+
+---
+
+link:./14_lab1-1.adoc[이전: Lab 1-1: Java 실행 환경 구성]

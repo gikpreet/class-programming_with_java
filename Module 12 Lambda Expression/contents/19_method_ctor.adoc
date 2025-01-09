@@ -125,5 +125,5 @@ System.out.println(array.length); // 출력: 10
 
 ---
 
-link:./18_collection_stream.adoc[이전: Collection과 Stream API에서 Lambda 사용] +
-link:./20_custom.adoc[다음: Custom Functional Interface 구현]
+link:./18_collection_stream.adoc[이전: [Collection과 Stream API에서 Lambda 사용]] +
+link:./20_custom.adoc[다음: [Custom Functional Interface 구현]]

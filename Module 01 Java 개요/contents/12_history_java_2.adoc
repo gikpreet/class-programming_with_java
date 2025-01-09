@@ -50,5 +50,7 @@ Java는 많은 버전 업이 있었으며 버전이 변경될 때 마다 추가�
 |Java SE 17	|2021	|의사 난수 생성기 API 추가, Java Applet이 deprecate 처리됨
 |===
 
+---
+
 link:./11_history_java.adoc[이전: Java의 역사] +
 link:./13_jdk_provider.adoc[다음: JDK 공급자]

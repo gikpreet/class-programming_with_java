@@ -1,1 +1,111 @@
 = Functional Interface
+
+* 하나의 abstract method를 가지고 있는 인터페이스
+** SAM(Single Abstract Method) 인터페이스
+* @FunctionalInterface 어노테이션이 적용될 수 있는 Target 인터페이스
+* Java에서 함수를 객체처럼 다를 수 있도록 함
+
+[source, java]
+----
+@FunctionalInterface
+public interface BinaryOp {
+    public int apply(int right, int left);
+}
+----
+
+---
+
+**함수형 인터페이스(Functional Interface)**는 단 하나의 추상 메서드만을 가진 인터페이스를 의미합니다. 자바 8에서 도입된 Lambda Expression과 함께 사용되며, Lambda Expression을 인터페이스 구현의 대안으로 제공합니다. 함수형 인터페이스는 Lambda Expression과 메서드 참조를 통해 구현됩니다.
+
+== Functional Interface
+
+Functional Interface는 단 하나의 추상 메소드만을 포함하는 인터페이스를 말합니다. @FunctionalInterface 어노테이션을 사용하여 명시적으로 Functional Interface를 정의할 수 있습니다. @FunctionalInterface 선언은 생략할 수 있으며, 선언하였으면 Functional Interface가 규칙을 위반할 경우 컴파일러가 오류를 알려줍니다.
+
+[source, java]
+----
+@FunctionalInterface
+interface MyFunction {
+    int add(int a, int b);  // 추상 메서드
+
+    // 아래 메서드는 기본 메서드, 추가적으로 정의할 수 있습니다.
+    default void printMessage() {
+        System.out.println("This is a default method.");
+    }
+
+    // 아래 메서드는 static 메서드, 추가적으로 정의할 수 있습니다.
+    static void printStaticMessage() {
+        System.out.println("This is a static method.");
+    }
+}
+----
+
+위 코드에서, add()는 MyFunction 인터페이스에 선언된 유일한 추상 메소드이며, 작성된 default 메소드와 static 메소드는 추상 메소드가 아니므로 Functional Interface의 정의에 영향을 미치지 않습니다.
+
+== 특징
+
+Functional Interface의 특징은 다음과 같습니다.
+
+1. 단 하나의 추상 메소드를 가짐
+2. Lambda Expresion이나 메소드 참조로 쉽게 구현할 수 있음
+3. default 메소드, static 메소드를 추가적으로 선언할 수 있음
+4. @FunctionalInterface 어노테이션으로 명시적으로 선언할 수 있음
+
+== Java 라이브러리에서 제공되는 Functional Interface
+
+java.util.function 패키지에 다양한 기본 제공 함수형 인터페이스들이 포함되어 있습니다. 주요 함수형 인터페이스들은 다음과 같습니다.
+
+* Predicate<T>: 매개변수로 주어진 값을 검사하고, boolean 값을 반환.
++
+[source, java]
+----
+Predicate<Integer> isEven = n -> n % 2 == 0;
+System.out.println(isEven.test(4));  // 출력: true
+----
+* Function<T, R>: 매개변수로 주어진 값을 변환하여 다른 값을 반환.
++
+[source, java]
+----
+Function<Integer, String> intToString = n -> "Number: " + n;
+System.out.println(intToString.apply(5));  // 출력: Number: 5
+----
+* Consumer<T>: 매개변수로 주어진 값을 소비(즉, 사용)하는 동작을 정의.
++
+[source, java]
+----
+Consumer<String> print = s -> System.out.println(s);
+print.accept("Hello, World!");  // 출력: Hello, World!
+----
+* Supplier<T>: 매개변수 없이 값을 공급하는 동작을 정의.
++
+[source, java]
+----
+Supplier<Double> randomValue = () -> Math.random();
+System.out.println(randomValue.get());  // 랜덤 값 출력
+----
+* BinaryOperator<T>: 두 개의 동일한 타입의 값을 받아서 동일한 타입으로 결과를 반환.
++
+[source, java]
+----
+BinaryOperator<Integer> add = (a, b) -> a + b;
+System.out.println(add.apply(2, 3));  // 출력: 5
+----
+
+== Lambda Expression과 Functional Interface
+
+Functional Interface는 Lambda Expression을 사용해서 구현됩니다. Lambda Expression은 Functional Interface의 추상 메소드를 구현하는 간결한 방법을 제공합니다. 위 예시에서 Greet 인터페이스는 단 하나의 추상 메서드인 sayHello()를 가지고 있으며,Lambda Expression으로 간결하게 구현되었습니다.
+
+[source, java]
+----
+@FunctionalInterface
+interface Greet {
+    void sayHello(String name);
+}
+
+public class LambdaExample {
+    public static void main(String[] args) {
+        // 람다 표현식 사용
+        Greet greet = name -> System.out.println("Hello, " + name);
+        greet.sayHello("Alice");  // 출력: Hello, Alice
+    }
+}
+----

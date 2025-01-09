@@ -19,4 +19,6 @@
 3.	link:./10_using_primitive_types.adoc[기본 데이터 타입 사용]
 4.	link:./16_type_casting.adoc[데이터 타입 변환]
 
+---
+
 link:./02_value_ref.adoc[다음: 값 타입과 참조 타입]

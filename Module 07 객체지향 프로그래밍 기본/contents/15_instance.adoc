@@ -9,7 +9,7 @@ class Program {
     public static void main(String[] args) {
         int age = 27;
         BankAccount account = new BankAccount();
-        Account.deposit(2200);
+        account.deposit(2200);
     }
 }
 ----

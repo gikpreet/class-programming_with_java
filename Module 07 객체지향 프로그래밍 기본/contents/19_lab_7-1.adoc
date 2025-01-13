@@ -79,7 +79,7 @@ public static BankAccount createNewBankAccount(String accountNumber, String owne
 +
 3.	`BankAccount` 의 멤버에 데이터를 할당하는 코드는 데이터 멤버가 `private` 이기 때문에 실패합니다. `BankAccount` 클래스 내의 메소드만 `BankAccount` 데이터 멤버에 액세스 할 수 있습니다. `BankAccount` 클래스의 멤버에 값을 할당하려면 `public` 메소드를 `BankAccount` 클래스에 작성해야 합니다. 다음 단계를 수행합니다.
 A.	`BankAccount` 에 `SetData` 라는 `public` 메소드를 작성합니다.
-B.	`SetData` 메소드의 반환 타입은 `void` 이며 `String` 타입의 `accountNumber`, `String` 타입의 `ownerName`, `BigDecimal` 타입의 `balance` 를 파라미터로 가집니다.
+B.	`SetData` 메소드의 반환 타입은 `void` 이며 `long` 타입의 `accountNumber`, `String` 타입의 `ownerName`, `BigDecimal` 타입의 `balance` 를 파라미터로 가집니다.
 C.	메소드의 바디 블록에는 각 파라미터를 각 클래스 변수에 할당합니다.
 +
 완성된 코드는 아래와 유사할 것입니다:
@@ -372,7 +372,7 @@ Balance: 35.0
 
 === BankAccount 클래스에 withDraw 메소드 추가
 
-1.	아래 코드와 같이 `BankAccount`` 클래스에 `withDraw`` 메소드를 작성합니다. 이 메소드는 `BigDecimal` 파라미터를 전달받아 잔고보다 적은지를 확인한 후, 값이 잔고보다 크거나 같으면(즉, 출금이 불가능하면) `false` 를 반환하고 값이 잔고보다 적으면 잔고에서 요청한 값을 뺀 후 `true` 를 반환합니다. 코드는 아래와 같습니다:
+1.	아래 코드와 같이 `BankAccount` 클래스에 `withDraw` 메소드를 작성합니다. 이 메소드는 `BigDecimal` 파라미터를 전달받아 잔고보다 적은지를 확인한 후, 값이 잔고보다 크거나 같으면(즉, 출금이 불가능하면) `false` 를 반환하고 값이 잔고보다 적으면 잔고에서 요청한 값을 뺀 후 `true` 를 반환합니다. 코드는 아래와 같습니다:
 +
 [source, java]
 ----

@@ -7,7 +7,7 @@
 1.	Wrapper 클래스
 2.	Boxing과 Unboxing
 3.	슈퍼 클래스/서브 클래스 변환
-4.	InstanceOf 연산자
+4.	Instanceof 연산자
 5.	Object 타입 변환
 6.	인터페이스 타입 변환
 

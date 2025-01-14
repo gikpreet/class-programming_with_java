@@ -1,1 +1,91 @@
 = Custom Functional Interface 구현
+
+* 특정 요구에 맞는 작업을 위해 사용자가 직접 정의해서 사용
+* 인터페이스에 하나의 추상 메소드를 선언
+* @FunctionalInterface 어노테이션 사용
+* Java에서 제공하는 Functional Interface로 적당하지 않은 작업을 위해 직접 선언하여 사용
+* 특정 로직을 캡슐화하고 람다 표현식이나 메소드 참조로 구현하여 코드의 간결성과 유연성을 높임
+
+---
+
+Java에서는 사용자 정의 함수형 인터페이스를 만들어 특정 작업을 수행하는 람다 표현식을 정의할 수 있습니다. 함수형 인터페이스는 단 하나의 추상 메소드를 가지는 인터페이스입니다.
+
+== Functional Interface 
+
+Java에서 Functional Interface(함수형 인터페이스)는 단 하나의 추상 메소드를 가진 인터페이스를 말합니다. @FunctionalInterface 어노테이션을 사용하여 Functional Interface임을 명시할 수 있습니다. 인터페이스에 @FunctionalInterface 어노테이션을 사용하면 컴파일시에 인터페이스에 단 하나의 추상메소드만이 존재하는지 확인합니다. 어노테이션을 사용하지 않아도 되지만, 사용하는 것을 권장합니다.
+
+[source, java]
+----
+@FunctionalInterface
+interface InterfaceName {
+    ReturnType methodName(Parameters);
+}
+----
+
+아래와 같은 Functional Interface를 선언하면,
+
+[source, java]
+----
+@FunctionalInterface
+interface Greeting {
+    void sayHello(String name);
+}
+----
+
+아래와 같이 사용할 수 있습니다.
+
+[source, java]
+----
+public class Main {
+    public static void main(String[] args) {
+        Greeting greeting = name -> System.out.println("Hello, " + name + "!");
+        greeting.sayHello("Alice");
+    }
+}
+----
+
+return 값이 있는 Functional Interface는 아래와 같이 정의됩니다.
+
+[source, java]
+----
+@FunctionalInterface
+interface Calculator {
+    int calculate(int a, int b);
+}
+----
+
+위와 같이 return 값이 있는 Functional Interface 아래와 같이 사용할 수 있습니다.
+
+[source, java]
+----
+public class Main {
+    public static void main(String[] args) {
+        // 람다 표현식으로 구현
+        Calculator addition = (a, b) -> a + b;
+        Calculator multiplication = (a, b) -> a * b;
+
+        System.out.println(addition.calculate(5, 3)); // 출력: 8
+        System.out.println(multiplication.calculate(5, 3)); // 출력: 15
+    }
+}
+----
+
+파라미터가 없는 Functional Interface는 아래와 같이 정의됩니다.
+
+[source, java]
+----
+@FunctionalInterface
+interface Supplier {
+    String supply();
+}
+----
+
+[source, java]
+----
+public class Main {
+    public static void main(String[] args) {
+        Supplier messageSupplier = () -> "This is a supplied message.";
+        System.out.println(messageSupplier.supply()); // 출력: This is a supplied message.
+    }
+}
+----

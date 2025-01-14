@@ -20,3 +20,72 @@
 link:./02_overview_generics.adoc[다음: Generics 개요]
 
 
+////
+Java Generics 책 목차
+1. Java Generics 개요
+Generics란 무엇인가?
+Generics 도입 배경과 필요성
+Generics의 장점과 단점
+Java Collections Framework와 Generics의 관계
+
+2. Generics의 기본
+Generics 문법 이해
+타입 파라미터 선언 및 사용법
+다중 타입 파라미터
+제네릭 클래스 정의
+제네릭 메소드 정의
+제한된 타입 파라미터
+extends 키워드
+다중 제한 (Multiple Bounds)
+3. Generics와 타입 안정성
+컴파일 타임 타입 체크
+타입 캐스팅 제거
+Raw Type(비제네릭 타입)의 이해와 사용 지양
+타입 안정성과 코드 품질 향상
+4. Generics의 고급 주제
+와일드카드(?) 이해
+? extends T와 공변성(Covariance)
+? super T와 반공변성(Contravariance)
+무제한 와일드카드(?)
+Generics와 타입 소거(Type Erasure)
+컴파일러가 Generics를 처리하는 방식
+타입 소거의 이점과 한계
+상속과 Generics
+제네릭 클래스 상속
+제네릭 메소드 오버라이딩
+5. Java Collections와 Generics
+Generics를 활용한 컬렉션 프레임워크
+List, Set, Map 등
+제네릭 알고리즘
+제네릭 타입을 사용한 스트림 API
+6. Generics와 메소드 참조
+제네릭 타입과 람다식
+메소드 참조에서 제네릭 활용
+7. 제네릭과 배열
+왜 제네릭 배열을 생성할 수 없는가?
+제네릭 배열의 우회적 사용 방법
+제네릭 배열과 리플렉션
+8. 제네릭 타입의 한계와 주의사항
+타입 소거의 제한
+런타임 시 타입 정보 부족 문제
+오토박싱/언박싱과 Generics의 관계
+제네릭 클래스와 타입 비교 문제
+9. Generics와 리플렉션
+리플렉션을 활용한 제네릭 타입 정보 추출
+리플렉션으로 제네릭 클래스 동적 생성
+10. 커스텀 제네릭 타입 구현
+사용자 정의 제네릭 클래스
+사용자 정의 제네릭 메소드
+커스텀 제네릭 인터페이스
+11. Java Generics와 병렬 프로그래밍
+Concurrent Collections와 Generics
+제네릭 타입을 활용한 멀티스레드 환경 설계
+12. Generics와 실무
+코드 재사용성을 높이는 제네릭 활용 사례
+제네릭을 활용한 API 설계
+Generics 기반의 타입 안전성 강화
+13. Generics의 한계와 Kotlin/Scala의 제네릭 비교
+Java Generics의 단점
+Kotlin/Scala의 Generics와 Java Generics 비교
+Kotlin의 Variance와 Java 와일드카드의 차이
+////

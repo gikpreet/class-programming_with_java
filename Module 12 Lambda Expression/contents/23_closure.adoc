@@ -1,0 +1,76 @@
+= Closure
+
+* 함수가 자신이 정의된 환경의 변수를 캡처하고 유지하는 능력.
+* Java에서는 람다 표현식과 익명 클래스를 통해 클로저를 구현.
+* 캡처된 변수는 `final` 또는 `effectively final` 이어야 함.
+
+[source, java]
+----
+int number = 10; // effectively final
+Runnable task = () -> System.out.println("Number: " + number);
+task.run(); // 출력: Number: 10
+----
+
+---
+
+클로저(Closure)는 함수가 자신이 정의된 환경(Scope)에 있는 변수들을 캡처하고 유지하는 능력을 의미합니다. Java는 Lambda Expression과 익명 클래스를 통해 클로저 개념을 지원합니다.
+
+클로저는 Lambda Expression 외부의 지역 변수나 상태를 Lambda 내부에서 사용할 수 있도록 캡처합니다. 캡처된 변수는 final 또는 effectively final 이어야 합니다.
+
+* `Final`: 변수의 값이 선언 후 변경되지 않는 경우.
+* `Effectively final`: 명시적으로 final로 선언되지 않았지만, 값이 한 번만 초기화되고 변경되지 않는 변수.
+
+== 기본적인 사용
+
+아래 코드에서, number는 Lambda Expression이 선언된 환경의 지역 변수입니다. Runnable 람다 식에서 number를 캡처하여 사용할 수 있습니다.
+
+[source, java]
+----
+public class ClosureExample {
+    public static void main(String[] args) {
+        int number = 10; // effectively final
+        Runnable task = () -> System.out.println("Number: " + number);
+        task.run(); // 출력: Number: 10
+    }
+}
+----
+
+위 코드에서 number는 effectively final 이므로 값이 변경되지 않아야 합니다.
+
+[source, java]
+----
+public class ClosureErrorExample {
+    public static void main(String[] args) {
+        int number = 10;
+        Runnable task = () -> {
+            // number++; // 컴파일 에러: effectively final이 아니므로 수정 불가
+            System.out.println("Number: " + number);
+        };
+        task.run();
+    }
+}
+----
+
+캡처된 변수는 변경할 수 없습니다. 이는 멀티 스레드 환경에서 안정성을 보장하기 위함입니다.
+
+== 메소드에서 클로저 사용
+
+클로저를 사용하여 메소드 내부 상태를 Lambda Expression에서 사용할 수 있습니다. 아래 코드에서 배열은 변경 가능한 객체이므로 Lambda Expression에서 상태를 유지할 수 있습니다. counter 배열은 클로저에 의해 캡처되어 Lambda Expression 내에서 값이 변경됩니다.
+
+[source, java]
+----
+import java.util.function.Supplier;
+
+public class ClosureExample {
+    public static Supplier<Integer> createCounter() {
+        int[] counter = {0}; // 배열로 상태를 저장
+        return () -> ++counter[0];
+    }
+
+    public static void main(String[] args) {
+        Supplier<Integer> counter = createCounter();
+        System.out.println(counter.get()); // 출력: 1
+        System.out.println(counter.get()); // 출력: 2
+    }
+}
+----

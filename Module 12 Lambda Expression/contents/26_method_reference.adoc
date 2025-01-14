@@ -1,0 +1,97 @@
+= 메소드 참조와 결합
+
+* Lambda Expression을 더 간결하고 직관적으로 표현할 수 있는 방법입
+** 반복적인 람다식을 대체하여 코드를 간단하게 표현.
+**  코드가 직관적으로 읽히며 의도를 명확히 전달.
+**  기존 메소드를 함수형 프로그래밍에서 직접 활용 가능.
+* 제한
+** 메소드 참조는 특정 조건에서만 사용 가능(메소드 시그니처가 함수형 인터페이스와 일치해야 함).
+** 모든 람다식을 메소드 참조로 대체할 수는 없음
+
+---
+
+Lambda Expression의 **메소드 참조(Method Reference)**는 Lambda Expression을 더 간결하고 직관적으로 표현할 수 있는 방법입니다. 메소드 참조는 Lambda Expression이 단순히 특정 메소드를 호출하는 경우에 사용할 수 있으며, 함수형 인터페이스와 결합하여 유용하게 활용됩니다.
+
+매소드 참조는 Lambda Expression의 축약형으로, 클래스나 객체의 메소드를 직접 참조하여 사용할 수 있도록 제공되는 Expression입니다. 메소드 참조는 Lambda Expression과 호환되며, 함수형 인터페이스와 결합하여 다양한 방식으로 활용됩니다.
+
+== Collection과 메소드 참조
+
+Collection Framework의 객체들은 파라미터로 함수형 인터페이스를 사용하여 동작에 Lambda Expression이 많이 사용됩니다. Collection Framework 객체들의 다양한 메소드에 메소드 참조를 사용하여 더 간결하고 직관적인 방법으로 호출할 수 있습니다.
+
+아래 코드는 리스트의 모든 요소를 메소드 참조를 사용하여 출력합니다.
+
+[source, java]
+----
+import java.util.Arrays;
+import java.util.List;
+
+public class MethodReferenceExample {
+    public static void main(String[] args) {
+        List<String> names = Arrays.asList("Alice", "Bob", "Charlie");
+        names.forEach(System.out::println); // 출력: Alice, Bob, Charlie
+    }
+}
+----
+
+== Stream API와 메소드 참조
+
+Stream API 역시 함수형 인터페이스를 많이 사용하며, Lambda Expression이 유용하게 사용됩니다. 이 다양한 함수형 인터페이스에 메소드 참조를 사용할 수 있습니다.
+
+아래 코드는 Stream API 중 map 함수에 메소드 참조를 사용하여 Stream의 모든 요소의 값을 대문자로 변환합니다.
+
+[source, java]
+----
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class MethodReferenceExample {
+    public static void main(String[] args) {
+        List<String> names = Arrays.asList("alice", "bob", "charlie");
+        List<String> upperCaseNames = names.stream()
+                                           .map(String::toUpperCase)
+                                           .collect(Collectors.toList());
+        System.out.println(upperCaseNames); // 출력: [ALICE, BOB, CHARLIE]
+    }
+}
+----
+
+== 사용자 정의 함수형 인터페이스에 메소드 참조 사용
+
+아래 코드는 사용자 정의된 함수형 인터페이스에 메소드 참조를 사용합니다.
+
+[source, java]
+----
+@FunctionalInterface
+interface StringPrinter {
+    void print(String message);
+}
+
+public class MethodReferenceExample {
+    public static void main(String[] args) {
+        StringPrinter printer = System.out::println;
+        printer.print("Hello, World!"); // 출력: Hello, World!
+    }
+}
+----
+
+== 메소드 참조를 고차 함수로 전달
+
+메소드 참조를 고차 함수에 전달할 수 있습니다.
+
+[source, java]
+----
+import java.util.function.Function;
+
+public class MethodReferenceExample {
+    public static void main(String[] args) {
+        Function<String, Integer> parseFunction = Integer::parseInt;
+        int result = applyFunction("42", Integer::parseInt);
+        System.out.println(result); // 출력: 42
+    }
+
+    static <T, R> R applyFunction(T input, Function<T, R> function) {
+        return function.apply(input);
+    }
+}
+----

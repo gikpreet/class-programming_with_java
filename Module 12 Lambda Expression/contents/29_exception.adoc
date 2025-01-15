@@ -1,0 +1,176 @@
+= Lambda Expression에서 예외 처리
+
+* 예외 처리를 람다식 내부에 포함할 수 있어 코드가 더욱 독립적이고 모듈화됨.
+* 간결한 예외 처리 로직 작성 가능.
+
+* 람다식 내부에 try-catch를 추가하면 가독성이 떨어질 수 있음.
+* 체크 예외를 다룰 때 추가적인 복잡성이 발생.
+
+---
+
+Lambda Expression은 함수형 프로그래밍의 일환으로 간결하고 가독성 높은 코드를 작성할 수 있게 해줍니다. 그러나 람다식 내부에서 예외를 처리할 때는 몇 가지 주의할 점이 있습니다. 특히, Lambda Expression은 일반적으로 함수형 인터페이스를 구현하며, 대부분의 함수형 인터페이스 메소드는 **체크 예외(Checked Exception)**를 처리하도록 설계되어 있지 않습니다.
+
+Lambda Expression은 함수형 인터페이스의 구현으로 동작합니다. 함수형 인터페이스의 메소드 서명에는 체크 예외를 선언하지 않는 경우가 많기 때문에, 체크 예외를 직접 Lambda Expression 내부에서 처리해야 하는 문제가 발생합니다.
+
+아래 코드에서는 Files.lines() 메소드가 체크 예외를 발생시킬 가능성이 있지만, 람다식 내부에서 이를 처리하지 않으면 컴파일 에러가 발생합니다.
+
+[source, java]
+----
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.stream.Stream;
+
+public class LambdaExceptionExample {
+    public static void main(String[] args) {
+        try (Stream<String> lines = Files.lines(Paths.get("nonexistent.txt"))) {
+            lines.forEach(line -> {
+                // IOException이 발생할 가능성 있음
+                System.out.println(line);
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+----
+
+== Lambda Expression에서 예외 처리 
+
+Lambda Expression 내부에서 try-catch 블록을 사용하여 예외를 처리할 수 있습니다.
+
+[source, java]
+----
+import java.util.Arrays;
+import java.util.List;
+
+public class LambdaExceptionHandling {
+    public static void main(String[] args) {
+        List<String> numbers = Arrays.asList("1", "2", "a", "4");
+
+        numbers.forEach(number -> {
+            try {
+                int result = Integer.parseInt(number);
+                System.out.println("Parsed number: " + result);
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid number: " + number);
+            }
+        });
+    }
+}
+----
+
+Helper 클래스를 사용하여 Lambda Expression 내부에서 예외를 처리할 수 있습니다.
+
+[source, java]
+----
+import java.util.function.Consumer;
+
+public class LambdaExceptionHelper {
+    public static void main(String[] args) {
+        Consumer<String> safeConsumer = wrapConsumer(s -> {
+            int result = Integer.parseInt(s);
+            System.out.println("Parsed number: " + result);
+        });
+
+        safeConsumer.accept("123");
+        safeConsumer.accept("abc"); // Invalid number 예외 처리
+    }
+
+    // 헬퍼 메소드
+    public static <T> Consumer<T> wrapConsumer(ConsumerWithException<T> consumer) {
+        return t -> {
+            try {
+                consumer.accept(t);
+            } catch (Exception e) {
+                System.err.println("Exception caught: " + e.getMessage());
+            }
+        };
+    }
+
+    @FunctionalInterface
+    public interface ConsumerWithException<T> {
+        void accept(T t) throws Exception;
+    }
+}
+----
+
+체크 예외를 언체크 예외로 변환하여 처리할 수 있습니다.
+
+[source, java]
+----
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+public class LambdaUncheckedException {
+    public static void main(String[] args) {
+        try {
+            Files.lines(Paths.get("nonexistent.txt"))
+                 .forEach(LambdaUncheckedException::handleLine);
+        } catch (RuntimeException e) {
+            System.err.println("Runtime exception: " + e.getCause());
+        }
+    }
+
+    private static void handleLine(String line) {
+        try {
+            System.out.println(line);
+        } catch (Exception e) {
+            throw new RuntimeException(e); // 체크 예외를 언체크 예외로 변환
+        }
+    }
+}
+----
+
+== Stream과 예외 처리
+
+예외 발싱시 특정 조건을 사용해 필터링 할 수 있습니다.
+
+[source, java]
+----
+import java.util.Arrays;
+import java.util.List;
+
+public class StreamExceptionHandling {
+    public static void main(String[] args) {
+        List<String> numbers = Arrays.asList("1", "2", "a", "4");
+
+        numbers.stream()
+               .filter(number -> {
+                   try {
+                       Integer.parseInt(number);
+                       return true;
+                   } catch (NumberFormatException e) {
+                       return false;
+                   }
+               })
+               .forEach(System.out::println); // 유효한 숫자만 출력
+    }
+}
+----
+
+Stream의 map 연산에서 예외가 발생할 가능성이 있는 경우, 아래와 같은 방법으로 예외를 처리할 수 있습니다.
+
+[source, java]
+----
+import java.util.Arrays;
+import java.util.List;
+
+public class StreamMapExceptionHandling {
+    public static void main(String[] args) {
+        List<String> numbers = Arrays.asList("1", "2", "a", "4");
+
+        numbers.stream()
+               .map(number -> {
+                   try {
+                       return Integer.parseInt(number);
+                   } catch (NumberFormatException e) {
+                       return -1; // 잘못된 입력에 대한 기본값
+                   }
+               })
+               .forEach(System.out::println);
+    }
+}
+----
+
+람다식은 간결한 코드 작성을 가능하게 하지만, 예외 처리 시에는 몇 가지 특수한 문제를 해결해야 합니다. 람다식 내부에서 try-catch를 직접 사용하거나, 별도의 헬퍼 메소드를 정의하여 예외를 처리하는 방식이 일반적입니다. 상황에 따라 예외를 런타임 예외로 변환하거나 스트림의 필터링 및 매핑 연산과 결합하여 효율적으로 처리할 수 있습니다.

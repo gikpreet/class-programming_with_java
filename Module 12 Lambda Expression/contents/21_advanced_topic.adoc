@@ -1,6 +1,6 @@
 = Advanced Topics
 
-
+Java Lambda Expression의 고급 주제는 더욱 강력한 함수형 프로그래밍을 가능하게 하며, 효율적이고 직관적인 코드를 작성할 수 있는 도구를 제공합니다. 이 단원에서는 Lambda Expression의 고급 주제에 대해 알아봅니다.
 
 == Table of Contents
 
@@ -8,4 +8,7 @@
 2. Closer
 3. Currying
 4. 재귀 람다식
-5. 
+5. 메소드 참조와 결합
+6. 성능 최적화
+7. Composition
+8. 예외 처리

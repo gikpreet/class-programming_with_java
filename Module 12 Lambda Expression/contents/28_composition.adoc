@@ -1,0 +1,144 @@
+= Lambda Expression Composition
+
+---
+
+Lambda Expression Composition(합성)은 여러 람다식을 결합하여 하나의 새로운 람다식을 생성하는 기법을 말합니다. 이는 함수형 프로그래밍의 핵심 개념 중 하나로, 작은 단위의 함수를 조합하여 더 복잡한 연산을 표현하거나 처리할 수 있게 합니다.
+
+Java에서는 java.util.function 패키지에 포함된 기본 함수형 인터페이스(Function, Predicate, 등)가 람다식 합성을 지원하는 메소드를 제공합니다.
+
+Lambda Expression Composition은 두 개 이상의 함수를 결합하여 하나의 함수로 만드는 과정으로, 아래와 같은 장점을 가집니다.
+
+* 작은 단위의 함수를 재사용 가능.
+* 복잡한 로직을 단계별로 분리하여 가독성을 향상.
+* 유지보수가 쉬운 코드를 작성 가능.
+
+== 주요 함수형 인터페이스와 Composition 메소드
+
+Java에서 기본으로 제공되는 주요 함수형 인터페이스는 추상 메소드외에 함수 합성을 위한 Default 메소드들을 제공합니다.
+
+=== Function 인터페이스
+
+인터페이스 Function<T, R>은 T 타입을 입력으로 받아 R 타입을 retrurn 하는 함수형 인터페이스로, 아래와 같은 합성을 위한 Default 메소드들을 가지고 있습니다.
+
+* `andThen(Function after)` 현재 함수 실행 후 after 함수 실행.
+* `compose(Function before)` before 함수 실행 후 현재 함수 실행.
+
+[source, java]
+----
+import java.util.function.Function;
+
+public class LambdaCompositionExample {
+    public static void main(String[] args) {
+        Function<Integer, Integer> multiplyBy2 = x -> x * 2;
+        Function<Integer, Integer> add3 = x -> x + 3;
+
+        // Compose: 먼저 add3, 그 후 multiplyBy2
+        Function<Integer, Integer> composed = multiplyBy2.compose(add3);
+        System.out.println(composed.apply(5)); // 출력: 16 (5 + 3 = 8, 8 * 2 = 16)
+
+        // AndThen: 먼저 multiplyBy2, 그 후 add3
+        Function<Integer, Integer> andThen = multiplyBy2.andThen(add3);
+        System.out.println(andThen.apply(5)); // 출력: 13 (5 * 2 = 10, 10 + 3 = 13)
+    }
+}
+----
+
+== Predicate 인터페이스
+
+인터페이스 Predicate<T>는 T 타입을 입력으로 받아 boolean 타입의 결과를 return 하는 인터페이스로, 아래와 같은 합성을 위한 Default 메소드들을 가지고 있습니다.
+
+* `and(Predicate other)` 현재 조건과 other 조건을 모두 만족해야 true.
+* `or(Predicate other)` 현재 조건이나 other 조건 중 하나라도 만족하면 true.
+* `negate()` 현재 조건을 반대로 만듦.
+
+[source, java]
+----
+import java.util.function.Predicate;
+
+public class PredicateCompositionExample {
+    public static void main(String[] args) {
+        Predicate<String> isNotEmpty = s -> !s.isEmpty();
+        Predicate<String> startsWithA = s -> s.startsWith("A");
+
+        // Combine with AND
+        Predicate<String> isNotEmptyAndStartsWithA = isNotEmpty.and(startsWithA);
+        System.out.println(isNotEmptyAndStartsWithA.test("Apple")); // 출력: true
+        System.out.println(isNotEmptyAndStartsWithA.test("")); // 출력: false
+
+        // Combine with OR
+        Predicate<String> isNotEmptyOrStartsWithA = isNotEmpty.or(startsWithA);
+        System.out.println(isNotEmptyOrStartsWithA.test("")); // 출력: false
+        System.out.println(isNotEmptyOrStartsWithA.test("Apple")); // 출력: true
+    }
+}
+----
+
+== Consumer 인터페이스
+
+인터페이스 Consumer<T> 인터페이스는 T 타입을 입력으로 받아 소비하는(return 값이 없는) 인터페이스로, 아래와 같은 합성을 위한 Default 메소드들을 가지고 있습니다.
+
+* andThen(Consumer after): 현재 소비 작업 실행 후 after 작업 실행.
+
+[source, java]
+----
+import java.util.function.Consumer;
+
+public class ConsumerCompositionExample {
+    public static void main(String[] args) {
+        Consumer<String> print = System.out::println;
+        Consumer<String> printWithExclamation = s -> System.out.println(s + "!");
+
+        // Combine Consumers
+        Consumer<String> combinedConsumer = print.andThen(printWithExclamation);
+        combinedConsumer.accept("Hello"); 
+        // 출력:
+        // Hello
+        // Hello!
+    }
+}
+----
+
+== 실제 활용
+
+아래 예제들은 Lambda Expression Composition이 실제 활용되는 예를 보여줍니다.
+
+=== 데이터 변환
+
+아래 코드는 여러 변환 작업을 순차적으로 적용합니다.
+
+[source, java]
+----
+import java.util.function.Function;
+
+public class DataTransformationExample {
+    public static void main(String[] args) {
+        Function<String, String> trim = String::trim;
+        Function<String, String> toUpperCase = String::toUpperCase;
+
+        Function<String, String> cleanAndFormat = trim.andThen(toUpperCase);
+        System.out.println(cleanAndFormat.apply("   hello world   ")); // 출력: "HELLO WORLD"
+    }
+}
+----
+
+=== 조건 검증
+
+아래 코드는 여러 조건을 조합하여 데이터의 유효성을 검사합니다.
+
+[source, java]
+----
+import java.util.function.Predicate;
+
+public class ValidationExample {
+    public static void main(String[] args) {
+        Predicate<Integer> isPositive = x -> x > 0;
+        Predicate<Integer> isEven = x -> x % 2 == 0;
+
+        Predicate<Integer> isPositiveAndEven = isPositive.and(isEven);
+        System.out.println(isPositiveAndEven.test(4)); // 출력: true
+        System.out.println(isPositiveAndEven.test(-4)); // 출력: false
+    }
+}
+----
+
+

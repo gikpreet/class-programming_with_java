@@ -150,7 +150,12 @@ remove 메소드는 정수형 index 파라미터를 가지며, elements 배열�
 +
 [source, java]
 ----
-
+public void remove(int index) {
+    for (int i = index; i < this.index; i++) {
+        this.elements[i] = this.elements[i + 1];
+    }
+    this.index--;
+}
 ----
 
 ==== size 메소드 구현

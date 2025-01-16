@@ -1,0 +1,161 @@
+= Generic 클래스 정의
+
+[source, java]
+----
+class 클래스이름<T> {
+    // 필드와 메서드에서 T를 타입으로 사용
+}
+----
+
+---
+
+Generic 클래스는 클래스 설계 시 타입을 미리 지정하지 않고, 클래스의 인스턴스를 생성할 때 구체적인 타입을 지정할 수 있도록 하는 클래스입니다. 이는 클래스가 다양한 데이터 타입을 유연하게 처리할 수 있도록 설계되며, 타입 안정성, 코드 재사용성, 가독성을 향상시킵니다.
+
+== Generic 클래스 정의
+
+[source, java]
+----
+class 클래스이름<T> {
+    // 필드와 메서드에서 T를 타입으로 사용
+}
+----
+
+* `T`: 타입 파라미터(Type Parameter)로, 사용자가 지정할 데이터 타입을 나타냅니다.
+* 여러 개의 타입 파라미터를 사용할 경우 쉼표(,)로 구분합니다. 예: `<T, U, V>`
+
+Example: 단일 타입 파라미터
+
+[source, java]
+----
+class Box<T> {
+    private T item; // T를 타입으로 사용하는 필드
+
+    public void setItem(T item) { // T를 매개변수로 사용
+        this.item = item;
+    }
+
+    public T getItem() { // T를 반환 타입으로 사용
+        return item;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Box<String> stringBox = new Box<>();
+        stringBox.setItem("Hello");
+        System.out.println("String Box: " + stringBox.getItem());
+
+        Box<Integer> intBox = new Box<>();
+        intBox.setItem(123);
+        System.out.println("Integer Box: " + intBox.getItem());
+    }
+}
+----
+
+== 다중 타입 파라미터를 사용하는 Generic 클래스
+
+[source, java]
+----
+class 클래스이름<T1, T2> {
+    // 여러 타입 파라미터 사용
+}
+----
+
+Example: 다중 타입 파라미터
+
+[source, java]
+----
+class Pair<K, V> {
+    private K key;
+    private V value;
+
+    public Pair(K key, V value) {
+        this.key = key;
+        this.value = value;
+    }
+
+    public K getKey() {
+        return key;
+    }
+
+    public V getValue() {
+        return value;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Pair<String, Integer> pair = new Pair<>("Age", 30);
+        System.out.println("Key: " + pair.getKey());
+        System.out.println("Value: " + pair.getValue());
+    }
+}
+----
+
+== 타입 제한을 사용하는 Generic 클래스
+
+**타입 제한(Type Bound)**은 타입 파라미터가 특정 클래스나 인터페이스를 상속받거나 구현해야 한다는 조건을 설정합니다.
+
+[source, java]
+----
+class 클래스이름<T extends 상위클래스> {
+    // T는 상위클래스의 서브클래스만 허용
+}
+----
+
+Example: 상한 제한
+
+[source, java]
+----
+class NumberBox<T extends Number> {
+    private T number;
+
+    public void setNumber(T number) {
+        this.number = number;
+    }
+
+    public double getDoubleValue() {
+        return number.doubleValue();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        NumberBox<Integer> intBox = new NumberBox<>();
+        intBox.setNumber(10);
+        System.out.println("Double Value: " + intBox.getDoubleValue());
+
+        NumberBox<Double> doubleBox = new NumberBox<>();
+        doubleBox.setNumber(10.5);
+        System.out.println("Double Value: " + doubleBox.getDoubleValue());
+    }
+}
+----
+
+Example: 다중 제한
+
+[source, java]
+----
+class MultiBound<T extends Number & Comparable<T>> {
+    private T value;
+
+    public MultiBound(T value) {
+        this.value = value;
+    }
+
+    public boolean isGreater(T other) {
+        return value.compareTo(other) > 0;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MultiBound<Integer> multiBound = new MultiBound<>(10);
+        System.out.println(multiBound.isGreater(5)); // true
+    }
+}
+----
+
+---
+
+link:./10_multiple_type.adoc[이전: 다중 타입 파라미터] +

@@ -1,0 +1,300 @@
+= Generics 문법
+
+* `<>` 안에 **타입 매개변수(Type Parameter)**를 사용하여 정의
+* Generics 클래스
++
+[source, java]
+----
+class 클래스명<T> { ... }
+----
++
+* Generics 메서드
++
+[source, java]
+----
+public <T> 반환타입 메서드명(T 매개변수) { ... }
+----
++
+* Generic 인터페이스
++
+[source, java]
+----
+interface 인터페이스명<T> { ... }
+----
++
+* 타입 제한
++
+[source, java]
+----
+<T extends 클래스>
+<T super 클래스>
+<T extends 클래스 & 인터페이스>
+----
++
+* 와일드 카드
++
+[source, java]
+----
+<? extends T>
+<? super T>
+----
+
+---
+
+Java Generics는 컴파일 시점에 데이터 타입을 지정하여 타입 안정성과 코드 재사용성을 높이는 기능입니다. Generics는 주로 클래스, 메서드, 인터페이스와 함께 사용되며, 다양한 문법 요소를 포함합니다.
+
+== 기본 Generics 문법
+
+Generics는 <> 안에 **타입 매개변수(Type Parameter)**를 사용하여 정의됩니다.
+
+* T (Type): 임의의 타입을 의미하며 일반적으로 클래스나 메서드에서 사용됩니다.
+* 관례상 자주 사용되는 매개변수 이름:
+** T: Type
+** E: Element (주로 컬렉션에서 사용)
+** K: Key
+** V: Value
+** N: Number
+
+== Generics 클래스
+
+Generics는 클래스 선언 시 정의할 수 있습니다. 클래스에서 타입 매개변수를 사용하여 특정 타입에 종속되지 않는 코드를 작성할 수 있습니다.
+
+[source, java]
+----
+class 클래스명<T> {
+    private T 필드명;
+
+    public void 메서드명(T 매개변수) {
+        // 메서드 구현
+    }
+
+    public T 메서드명() {
+        return 필드명;
+    }
+}
+----
+
+Example:
+
+[source, java]
+----
+class Box<T> {
+    private T value;
+
+    public void setValue(T value) {
+        this.value = value;
+    }
+
+    public T getValue() {
+        return value;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Box<String> stringBox = new Box<>();
+        stringBox.setValue("Hello");
+        System.out.println(stringBox.getValue());
+
+        Box<Integer> intBox = new Box<>();
+        intBox.setValue(100);
+        System.out.println(intBox.getValue());
+    }
+}
+----
+
+== Generics 메소드
+
+Generics 메서드는 메서드에 타입 매개변수를 선언하여 다양한 타입에 대해 동작하도록 설계할 수 있습니다.
+
+[source, java]
+----
+public <T> 반환타입 메서드명(T 매개변수) {
+    // 메서드 구현
+}
+----
+
+Example:
+
+[source, java]
+----
+public class GenericMethod {
+    public static <T> void printArray(T[] array) {
+        for (T element : array) {
+            System.out.print(element + " ");
+        }
+        System.out.println();
+    }
+
+    public static void main(String[] args) {
+        String[] stringArray = {"A", "B", "C"};
+        Integer[] intArray = {1, 2, 3};
+
+        printArray(stringArray);
+        printArray(intArray);
+    }
+}
+----
+
+== Generic 인터페이스
+
+Generics는 인터페이스에서도 사용할 수 있습니다.
+
+[source, java]
+----
+interface 인터페이스명<T> {
+    T 메서드명();
+    void 메서드명(T 매개변수);
+}
+----
+
+Example:
+
+[source, java]
+----
+interface Pair<K, V> {
+    K getKey();
+    V getValue();
+}
+
+class KeyValue<K, V> implements Pair<K, V> {
+    private K key;
+    private V value;
+
+    public KeyValue(K key, V value) {
+        this.key = key;
+        this.value = value;
+    }
+
+    public K getKey() {
+        return key;
+    }
+
+    public V getValue() {
+        return value;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Pair<String, Integer> pair = new KeyValue<>("Age", 25);
+        System.out.println("Key: " + pair.getKey());
+        System.out.println("Value: " + pair.getValue());
+    }
+}
+----
+
+== 와일드 카드 문법
+
+Generics에서 와일드카드(`?`)는 불특정 타입을 나타냅니다. 주로 타입 제한이나 유연한 코드 작성에 사용됩니다.
+
+=== 기본 와일드 카드
+
+`?` 는 모든 타입을 나타냅니다.
+
+[source, java]
+----
+public static void printList(List<?> list) {
+    for (Object obj : list) {
+        System.out.println(obj);
+    }
+}
+----
+
+=== 상한 제한 와일드 카드
+
+`<? extends T>` T와 T의 하위 클래스만 허용합니다.
+
+[source, java]
+----
+public static void printNumbers(List<? extends Number> list) {
+    for (Number num : list) {
+        System.out.println(num);
+    }
+}
+----
+
+=== 하한 제한 와일드카드
+
+`<? super T>` T와 T의 상위 클래스만 허용합니다.
+
+[source, java]
+----
+public static void addNumbers(List<? super Integer> list) {
+    list.add(10); // Integer 추가 가능
+}
+----
+
+== Generics 타입 제한
+
+Generics에 특정 타입을 제한할 수 있습니다.
+
+=== 상한 제한
+
+`<T extends 클래스>` 특정 클래스 또는 인터페이스를 상속받는 타입만 허용합니다.
+
+[source, java]
+----
+class Box<T extends Number> {
+    private T value;
+
+    public void setValue(T value) {
+        this.value = value;
+    }
+
+    public T getValue() {
+        return value;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Box<Integer> intBox = new Box<>();
+        intBox.setValue(10);
+
+        Box<Double> doubleBox = new Box<>();
+        doubleBox.setValue(20.5);
+    }
+}
+----
+
+=== 하한 제한
+
+`<T super 클래스>` 클래스와 클래스의 상위 클래스만 허용합니다
+
+=== 다중 제한
+
+`<T extends 클래스 & 인터페이스>` 여러 제한을 동시에 적용합니다.
+
+[source, java]
+----
+class Box<T extends Number & Comparable<T>> {
+    private T value;
+
+    public void setValue(T value) {
+        this.value = value;
+    }
+
+    public T getValue() {
+        return value;
+    }
+}
+----
+
+== 요약
+
+[%header, cols="2"]
+|===
+|Generics 문법 요소|설명
+|<T>|타입 매개변수
+|<T extends 클래스>|특정 클래스 또는 그 하위 클래스만 허용
+|<T extends 클래스 & 인터페이스>|여러 타입 제한 적용
+|<?>|모든 타입 허용 (와일드카드)
+|<? extends T>|특정 클래스 T와 그 하위 클래스만 허용
+|<? super T>|특정 클래스 T와 그 상위 클래스만 허용
+|===
+
+---
+
+link:./07_basic.adoc[이전: Generics 기본] +
+link:./09_type_parameter.adoc[다음: 타입 파라미터 선언 및 사용]

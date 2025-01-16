@@ -3,6 +3,7 @@
 이 모듈에서는 Java에서 파라미터를 이용한 다형성을 구현할 수 이는 Generics에 대해 알아보고, Generics를 이용해 메소드 또는 클래스를 사용하여 보다 폭 넓은 방식의 객체를 구현하여 얻을 수 있는 이점에 대해 학습합니다.
 
 이 모듈을 마치면, 다음과 같은 것들을 할 수 있게 됩니다:
+
 * Generics에 대해 이해하고, 설명할 수 있습니다.
 * Generics를 이용해 타입과 메소드를 정의할 수 있습니다.
 * Generics를 이용해 런타임에서 발생할 오류를 컴파일 타임에 찾아 수정할 수 있습니다.
@@ -10,12 +11,14 @@
 
 == Table of Contents
 
-1. Generics 개요
-2. Generic 타입
+1. link:./02_overview_generics.adoc[Generics 개요]
+2. link:./07_basic.adoc[Generics 기본]
 3. Generic 메소드
 4. 타입 파라미터
 5. 타입 삭제
 6. 제한 사항
+
+---
 
 link:./02_overview_generics.adoc[다음: Generics 개요]
 
@@ -37,11 +40,14 @@ Generics 문법 이해
 제한된 타입 파라미터
 extends 키워드
 다중 제한 (Multiple Bounds)
+
+
 3. Generics와 타입 안정성
 컴파일 타임 타입 체크
 타입 캐스팅 제거
 Raw Type(비제네릭 타입)의 이해와 사용 지양
 타입 안정성과 코드 품질 향상
+
 4. Generics의 고급 주제
 와일드카드(?) 이해
 ? extends T와 공변성(Covariance)
@@ -53,23 +59,28 @@ Generics와 타입 소거(Type Erasure)
 상속과 Generics
 제네릭 클래스 상속
 제네릭 메소드 오버라이딩
+
 5. Java Collections와 Generics
 Generics를 활용한 컬렉션 프레임워크
 List, Set, Map 등
 제네릭 알고리즘
 제네릭 타입을 사용한 스트림 API
+
 6. Generics와 메소드 참조
 제네릭 타입과 람다식
 메소드 참조에서 제네릭 활용
+
 7. 제네릭과 배열
 왜 제네릭 배열을 생성할 수 없는가?
 제네릭 배열의 우회적 사용 방법
 제네릭 배열과 리플렉션
+
 8. 제네릭 타입의 한계와 주의사항
 타입 소거의 제한
 런타임 시 타입 정보 부족 문제
 오토박싱/언박싱과 Generics의 관계
 제네릭 클래스와 타입 비교 문제
+
 9. Generics와 리플렉션
 리플렉션을 활용한 제네릭 타입 정보 추출
 리플렉션으로 제네릭 클래스 동적 생성

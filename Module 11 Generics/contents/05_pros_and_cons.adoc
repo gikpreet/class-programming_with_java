@@ -1,0 +1,149 @@
+= Generics의 장점과 단점
+
+* 장점
+** 타임 안정성 제공
+** 형 변환 불필요
+** 코드 재사용성 향상
+** 코드 가독성 향상
+** 런타임 성능 향상
+* 단점
+** 기본 데이터 타입(Primitive Data Type) 사용 불가
+** 타입 소거(Type Erasure)
+** 정적 컨텍스트(static)에서 타입 파라미터 사용 불가
+** 인스턴스 및 배열 생성 불가
+** 코드가 복잡해 짐
+
+---
+
+Generics는 Java에서 타입 안정성과 코드 재사용성을 높이는 강력한 도구입니다. 그러나 모든 기술이 그렇듯, Generics도 장점과 단점을 함께 가지고 있습니다.
+
+== 장점
+
+=== 타입 안정성 제공
+
+Generics는 컴파일 시 타입을 검사하므로, 잘못된 타입의 데이터를 처리하려는 시도를 사전에 방지할 수 있습니다. 이는 런타임 오류(대표적으로 ClassCastException)을 줄이고 안정성을 높입니다.
+
+[source, java]
+----
+List<String> stringList = new ArrayList<>();
+stringList.add("Hello");
+// stringList.add(123); // 컴파일 오류 발생
+----
+
+=== 형 변환 불필요
+
+Generics를 사용하면 명시적 형 변환(Type casting)이 필요하지 않습니다. 이는 코드를 간결하게 하고 런타임 오류 가능성을 줄입니다.
+
+사용 전
+[source, java]
+----
+List list = new ArrayList();
+list.add("Hello");
+String str = (String)list.get(0); // 형변환 필요
+----
+
+사용 후
+[source, java]
+----
+List<String> list = new ArrayList<>();
+list.add("Hello");
+String str = list.get(0); // 형변환 불필요
+----
+
+=== 코드 재사용성 향상
+
+Generics를 사용하면 하나의 클래스나 메소드로 다양한 데이터 타입을 처리할 수 있습니자. 이는 중복 코드를 줄이고 유지보수를 쉽도록 합니다.
+
+[source, java]
+----
+class Box<T> {
+    private T value;
+
+    public void setValue(T value) {
+        this.value = value;
+    }
+
+    public T getValue() {
+        return value;
+    }
+}
+----
+
+=== 코드 가독성 향상
+
+Generics를 사용하면 타입 정보를 명시적으로 선언할 수 있어 코드가 직관적이고 이해하기 쉽도록 만듭니다.
+
+=== 런타임 성능 향상
+
+Generics는 컴파일러가 타입 정보를 알고 있으므로 불필요한 형 변환 작업을 줄여 성능을 향상시킵니다.
+
+== 단점
+
+=== 기본 데이터 타입(Primitive Data Type) 사용 불가
+
+Generics는 래퍼 클래스(`Integer`, `Double` 등)만 사용할 수 있으며, 기본 데이터 타입(`int`, `double` 등)은 사용할 수 없습니다. 이는 박싱(Boxing)과 언박싱(Unboxing) 작업을 추가로 요구하여 성능 저하를 초래할 수 있습니다.
+
+[source, java]
+----
+List<int> list = new ArrayList<>(); // 컴파일 오류
+List<Integer> list = new ArrayList<>(); // 래퍼 클래스를 사용해야 함
+----
+
+=== 타입 소거(Type Erasure)
+
+Generics는 **타입 소거(Type Erasure)**를 사용하여 구현됩니다. 컴파일 이후 Generics 정보가 제거되고, 모든 타입이 Object로 변환되는 방식입니다. 결과적으로, 런타임에 Generics 타입 정보를 사용할 수 없습니다.
+
+[source, java]
+----
+List<String> stringList = new ArrayList<>();
+List<Integer> integerList = new ArrayList<>();
+System.out.println(stringList.getClass() == integerList.getClass()); // true
+----
+
+이는 런타임에 Generics 타입 정보를 알 수 없기 때문에 String과 Integer를 구분하지 못합니다.
+
+=== Generics 제약 조건
+
+Generics는 아래와 같은 제약 조건을 가집니다.
+
+* 정적 컨텍스트에서 타입 매개변수 사용 불가 +
+예: 정적 변수나 정적 메서드에서 Generics 타입을 사용할 수 없습니다.
+* 인스턴스 생성 불가 +
+예: `new T()` 와 같은 작업은 허용되지 않습니다.
+* 배열 생성 불가 +
+예: `T[] array = new T[10];` 는 허용되지 않습니다.
+
+=== 코드 복잡성
+
+Generics를 과도하게 사용하거나 잘못 사용하면 코드가 지나치게 복잡해질 수 있습니다. 특히, 제네릭 클래스와 메서드, 와일드카드(`? extends T`, `? super T`) 등을 조합하면 초보자에게는 이해하기 어려울 수 있습니다.
+
+=== 가독성 저하 가능성
+
+와일드카드나 제한된 타입(`? extends T`, `? super T`)을 사용하면 가독성이 떨어질 수 있습니다.
+
+[source, java]
+----
+public <T extends Comparable<? super T>> T findMax(List<? extends T> list) {
+    // 복잡한 제네릭 선언
+    return null;
+}
+----
+
+== 요약
+
+[%header, cols="2"]
+|===
+|장점|단점
+|타입 안정성을 제공하여 컴파일 시 오류 예방|기본 데이터 타입을 직접 사용할 수 없음
+|형변환 불필요로 코드 간결화 및 안정성 증가|타입 소거로 인해 런타임에 Generics 타입 정보 손실
+|코드 재사용성을 높여 유지보수성 향상|정적 컨텍스트, 인스턴스 생성, 배열 생성 등의 제약
+|코드 가독성 향상|복잡한 사용법이 가독성을 떨어뜨릴 가능성
+|런타임 성능 향상|박싱/언박싱으로 성능 저하 발생 가능
+|===
+
+Generics는 타입 안정성과 재사용성을 제공하며, 대부분의 경우 코드 품질을 높이는 데 유용하지만, 제약과 복잡성을 동반합니다. 이를 적절히 사용하면 Java 코드의 품질과 생산성을 크게 향상시킬 수 있습니다.
+
+---
+
+link:./04_background.adoc[이전: Generics 도입 배경] +
+link:./06_generics_collections.adoc[다음: Java Collections Framework와 Generics]

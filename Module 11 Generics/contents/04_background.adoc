@@ -1,0 +1,147 @@
+= Generics 도입 배경
+
+* 타입 안정성과 코드 재사용성 문제를 해결하기 위해 도입됨
+* Generics 도입 이전에는 컬렉션에 저장되는 객체가 Object 타입으로 처리됨
+** 컴파일 시 타입 검사가 불가능함
+** 런타임시 ClassCaseException과 같은 문제가 자주 발생
+* 특정 데이터 타입에 종속된 클래스를 만들어야 하는 경우 코드가 중복됨
+** 데이터 타입 마다 종속된 클래스를 작성해야 함
+** 같은 로직을 가진 여러 클래스를 중복 작성해야 함
+* 형 변환 코드가 많아짐
+** 코드의 가독성이 떨어짐
+** 개발자가 의도한 데이터 타입을 명확히 이해하기 힘듦
+
+---
+
+Java의 Generics는 타입 안정성과 코드 재사용성 문제를 해결하기 위해 도입되었습니다. Generics가 등장하기 전에는 주로 컬렉션과 같은 자료구조를 사용할 때 타입 안정성과 관련된 여러 문제가 있었습니다. 아래에서 Generics 도입의 배경과 필요성을 설명합니다.
+
+== Generics 도입 이전의 문제
+
+=== 타입 안정성 부족
+
+Generics가 없었던 Java 1.4 이하에서는 컬렉션에 저장되는 객체는 모두 `Object` 타입으로 처리되었습니다. 이는 컴파일 시 타입 검사가 불가능하고, 런타임 시 ClassCastException과 같은 문제가 자주 발생하는 원인이 되었습니다.
+
+[source, java]
+----
+import java.util.ArrayList;
+
+public class NonGenericExample {
+    public static void main(String[] args) {
+        ArrayList list = new ArrayList();   // 타입 제한 없음
+        list.add("Hello");
+        list.add(100);                      // 다른 타입의 객체 추가 가능
+
+        // 런타임에서 형변환 필요
+        for (Object obj : list) {
+            String str = (String) obj;      // ClassCastException 발생 가능
+            System.out.println(str);
+        }
+    }
+}
+----
+
+위 코드에서는 모든 객체가 Object로 처리되므로 데이터 타입을 명확히 알 수 없습니다. 또한, 데이터를 처리하기 위해 형 변환(Type casting)을 해야하고, 이 과정에서 오류가 발생할 가능성이 있습니다.
+
+=== 코드 재사용성의 한계
+
+특정 자료형에 종속된 클래스를 만들어야 하는 경우, 같은 로직을 가진 여러 클래스를 중복 작성해야 했습니다.
+
+[source, java]
+----
+class IntegerBox {
+    private Integer value;
+
+    public void setValue(Integer value) {
+        this.value = value;
+    }
+
+    public Integer getValue() {
+        return value;
+    }
+}
+
+class StringBox {
+    private String value;
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
+    public String getValue() {
+        return value;
+    }
+}
+----
+
+위 코드에서는 데이터 타입마다 별도의 클래스를 작성하므로 코드가 중복되고, 유지 보수성이 낮아집니다.
+
+=== 가독성 저하
+
+형 변환 코드가 많아지면서 코드의 가독성이 떨어지고, 개발자가 의도함 데이터 타입을 명확히 이해하기 어렵습니다.
+
+== Generics 도입의 필요성
+
+Generics는 위와 같은 문제를 해결하기 위해 다음과 같은 기능들을 제공합니다.
+
+=== 타입 안정성 제공
+
+Generics를 사용하면 컴파일 시 데이터 타입을 검사할 수 있습니다. 잘못된 타입의 데이터를 저장하거나 읽으려 할 경우 컴파일 오류가 발생하므로, 런타임 오류를 예방할 수 있습니다.
+
+[source, java]
+----
+import java.util.ArrayList;
+
+public class GenericsExample {
+    public static void main(String[] args) {
+        ArrayList<String> list = new ArrayList<>();     // String으로 타입 제한
+        list.add("Hello");
+        list.add(100); // 컴파일 오류 발생
+
+        for (String str : list) { // 형변환 불필요
+            System.out.println(str.toUpperCase());
+        }
+    }
+}
+----
+
+=== 코드 재사용성 향상
+
+Generics를 사용하면 하나의 클래스나 메소드로 여러 데이터 타입을 처리할 수 있습니다. 이런 코드는 중복 코드를 줄이고 유지 보수를 쉽게 할 수 있도록 합니다.
+
+[source, java]
+----
+class Box<T> {
+    private T value;
+
+    public void setValue(T value) {
+        this.value = value;
+    }
+
+    public T getValue() {
+        return value;
+    }
+}
+
+public class GenericsExample {
+    public static void main(String[] args) {
+        Box<Integer> intBox = new Box<>();
+        intBox.setValue(100);
+        System.out.println(intBox.getValue());
+
+        Box<String> strBox = new Box<>();
+        strBox.setValue("Generics");
+        System.out.println(strBox.getValue());
+    }
+}
+----
+
+=== 코드 가독성과 유지보수성 향상
+
+Generics를 사용하면 명시적인 타입 선언으로 코드가 더 직관적이로 읽기 쉬워집니다. 또한, 코드 변경시 모든 데이터를 처리할 필요 없이 타입 파라미터만 변경하면 됩니다.
+
+Generics는 Java 언어의 강력한 기능 중 하나로, 타입 안정성, 코드 재사용성, 가독성의 문제를 해결하여 더 안전하고 효율적인 프로그래밍을 가능하게 합니다. Generics의 도입은 특히 대규모 프로젝트에서 런타임 오류를 줄이고, 유지보수성을 높이는 데 크게 기여했습니다.
+
+---
+
+link:./03_generics_overview.adoc[이전: Generics 개요] +
+link:./05_pros_and_cons.adoc[다음: Generics의 장점과 단점]

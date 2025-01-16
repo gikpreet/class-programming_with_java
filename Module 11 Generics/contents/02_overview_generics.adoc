@@ -4,13 +4,12 @@ Generics는 Generic이라는 단어가 주는 의미처럼, 다양한 타입에 
 
 == Table of Contents
 
-1. Generics 개요
-2. 강력한 타입 검사
-3. 형 변환 감소
-4. 일반 알고리즘의 구현
+1. link:./03_generics_overview.adoc[Generics 개요]
+2. link:./04_background.adoc[Generics 도입 배경]
+3. link:./05_pros_and_cons.adoc[Generics의 장점과 단점]
+4. link:./06_generics_collections.adoc[Java Collections Framework와 Generics]
+
+---
 
 link:./01_generics[이전: Generics] +
 link:./03_generics_overview.adoc[다음: Generics 개요]
-
-
-

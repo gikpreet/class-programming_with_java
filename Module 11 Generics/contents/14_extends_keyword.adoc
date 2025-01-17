@@ -1,0 +1,186 @@
+= extends 키워드
+
+* Generic 클래스나 타입 파라미터를 제한하는데 사용
+* 타입 파라미터가 상위 클래스의 메소드나 속성을 사용할 수 있도록 보장
+
+[source, java]
+----
+<T extends 클래스>
+----
+
+---
+
+`extends` 는 Generic 클래스나 메서드에서 타입 파라미터를 제한하는 데 사용됩니다. 이를 통해 타입 파라미터가 상위 클래스의 메서드나 속성을 사용할 수 있도록  아래와 같은 기능들을 보장합니다.
+
+* 타입 안전성 +
+잘못된 타입을 사용하는 것을 방지합니다.
+* 제약 조건 설정 +
+타입 파라미터가 특정 클래스나 인터페이스를 상속받거나 구현하도록 제한합니다.
+* 상위 클래스의 멤버 사용 가능 +
+타입 파라미터를 제한하면, 해당 클래스나 인터페이스의 멤버(메서드, 필드)를 사용할 수 있습니다.
+
+== Syntax
+
+=== 단일 제한
+
+[source, java]
+----
+<T extends 클래스>
+----
+
+`T` 는 특정 클래스 또는 그 하위 클래스만 허용합니다.
+
+=== 다중 제한
+
+[source, java]
+----
+<T extends 클래스 & 인터페이스1 & 인터페이스2>
+----
+
+`T` 는 특정 클래스와 여러 인터페이스를 구현해야 합니다. 다중 제한 시 클래스는 하나만 지정 가능하며, 인터페이스는 여러 개 나열할 수 있습니다.
+
+== Example
+
+=== 단일 제한
+
+Number를 상속한 타입만 허용
+
+[source, java]
+----
+class Box<T extends Number> {
+    private T number;
+
+    public Box(T number) {
+        this.number = number;
+    }
+
+    public double getDoubleValue() {
+        return number.doubleValue(); // Number 클래스의 메서드 사용 가능
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Box<Integer> intBox = new Box<>(10);  // Integer는 Number의 하위 클래스
+        System.out.println("Double Value: " + intBox.getDoubleValue());
+
+        Box<Double> doubleBox = new Box<>(15.5); // Double도 Number의 하위 클래스
+        System.out.println("Double Value: " + doubleBox.getDoubleValue());
+
+        // Box<String> stringBox = new Box<>("Test"); // 컴파일 오류
+    }
+}
+----
+
+=== 다중 제한
+
+Class와 인터페이스를 동시에 재한
+
+[source, java]
+----
+interface Printable {
+    void print();
+}
+
+class NumberPrinter<T extends Number & Printable> {
+    private T item;
+
+    public NumberPrinter(T item) {
+        this.item = item;
+    }
+
+    public void display() {
+        item.print();                // Printable 인터페이스의 메서드
+        System.out.println(item.doubleValue()); // Number 클래스의 메서드
+    }
+}
+
+class PrintableNumber extends Number implements Printable {
+    private double value;
+
+    public PrintableNumber(double value) {
+        this.value = value;
+    }
+
+    @Override
+    public void print() {
+        System.out.println("Value: " + value);
+    }
+
+    @Override
+    public int intValue() { return (int) value; }
+
+    @Override
+    public long longValue() { return (long) value; }
+
+    @Override
+    public float floatValue() { return (float) value; }
+
+    @Override
+    public double doubleValue() { return value; }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        PrintableNumber number = new PrintableNumber(42.5);
+        NumberPrinter<PrintableNumber> printer = new NumberPrinter<>(number);
+        printer.display();
+    }
+}
+----
+
+== wildcard에서 extends 키워드 사용
+
+`extends` 는 **와일드카드(`?`)**와 함께 사용할 수도 있습니다. 와일드카드를 사용하면 메서드의 입력 매개변수나 반환 타입에서 상한 제한을 설정할 수 있습니다.
+
+Example
+
+[source, java]
+----
+class Util {
+    public static void printNumbers(Box<? extends Number> box) {
+        System.out.println("Number: " + box.getValue());
+    }
+}
+
+class Box<T> {
+    private T value;
+
+    public Box(T value) {
+        this.value = value;
+    }
+
+    public T getValue() {
+        return value;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Box<Integer> intBox = new Box<>(100);
+        Box<Double> doubleBox = new Box<>(25.5);
+
+        Util.printNumbers(intBox);   // Integer는 Number의 하위 클래스
+        Util.printNumbers(doubleBox); // Double은 Number의 하위 클래스
+    }
+}
+----
+
+== 요약
+
+[%header, cols="1,3"]
+|===
+|특징|설명
+|extends 키워드 사용|타입 파라미터를 특정 클래스 또는 인터페이스로 제한.
+|단일 제한|`<T extends Class>` - 특정 클래스와 그 하위 클래스만 허용.
+|다중 제한|`<T extends Class & Interface1 & Interface2>` - 클래스와 여러 인터페이스 제한.
+|와일드카드와 사용|`? extends Class` - 메서드 매개변수나 반환 타입에서 상한 제한 설정.
+|장점|타입 안정성, 코드 재사용성, 상위 클래스 멤버 활용, 의도 명확성 제공.
+|제한사항|기본 타입 사용 불가, 타입 소거로 인해 런타임에 타입 정보 확인 불가.
+|===
+
+`extends` 는 Java Generics의 핵심적인 기능으로, 안전하고 유연한 코드를 작성할 수 있도록 돕습니다. 제한된 타입 파라미터는 특히 코드 재사용성과 안정성을 동시에 높이는 데 매우 유용합니다.
+
+---
+
+link:./13_bordered_type.adoc[이전: 제한된 타입 파라미터] +

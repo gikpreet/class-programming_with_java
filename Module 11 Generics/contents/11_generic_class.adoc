@@ -159,3 +159,4 @@ public class Main {
 ---
 
 link:./10_multiple_type.adoc[이전: 다중 타입 파라미터] +
+link:./12_generic_method.adoc[다음: Generic 메소드 선언]

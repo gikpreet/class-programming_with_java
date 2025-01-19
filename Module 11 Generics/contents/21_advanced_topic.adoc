@@ -4,8 +4,8 @@ Generics는 Java에서 타입 안정성과 코드 재사용성을 높이기 위�
 
 == Table of Contents
 
-1. 와일드카드(?) 이해
-2. ? extends T와 공변성(Covariance)
+1. link:./22_wild_card.adoc[와일드카드(?)]
+2. link:./23_covariance.adoc[? extends T와 공변성(Covariance)]
 3. ? super T와 반공변성(Contravariance)
 4. 무제한 와일드카드(?)
 5. Generics와 타입 소거(Type Erasure)
@@ -14,3 +14,8 @@ Generics는 Java에서 타입 안정성과 코드 재사용성을 높이기 위�
 8. 상속과 Generics
 9. 제네릭 클래스 상속
 10. 제네릭 메소드 오버라이딩
+
+---
+
+link:./20_code_quality_improvement.adoc[이전: Generics와 코드 품질 향상] +
+link:./22_wild_card.adoc[다음: 와일드 카드]

@@ -184,3 +184,4 @@ public class Main {
 ---
 
 link:./13_bordered_type.adoc[이전: 제한된 타입 파라미터] +
+link:./15_multiple_bounds.adoc[다음: 다중 제한]

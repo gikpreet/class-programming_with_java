@@ -6,11 +6,11 @@ Java Generics는 컴파일 시점에 타입을 지정할 수 있는 기능으로
 
 == Table of Contents
 
-1. Generics 문법 이해
-2. 타입 파라미터 선언 및 사용법
-3. 다중 타입 파라미터
-4. 제네릭 클래스 정의
-5. 제네릭 메소드 정의
-6. 제한된 타입 파라미터
-7. extends 키워드
-8. 다중 제한 (Multiple Bounds)
+1. link:./08_syntax.adoc[Generics 문법 이해]
+2. link:./09_type_parameter.adoc[타입 파라미터 선언 및 사용법]
+3. link:./10_multiple_type.adoc[다중 타입 파라미터]
+4. link:./11_generic_class.adoc[Generic 클래스 정의]
+5. link:./12_generic_method.adoc[Generic 메소드 정의]
+6. link:./13_bordered_type.adoc[제한된 타입 파라미터]
+7. link:./14_extends_keyword.adoc[extends 키워드]
+8. link:./15_multiple_bounds.adoc[다중 제한 (Multiple Bounds)]

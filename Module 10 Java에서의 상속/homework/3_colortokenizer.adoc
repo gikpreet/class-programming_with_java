@@ -132,9 +132,9 @@ public class Chef {
 +
 [source, java]
 ----
-public class NoodleVisitor {
-    public void visit(Chef chef) {
-        System.out.println(chef.getStuff() + "로 자장면을 만듭니다");
+class Restaurant {
+    public void serve(Chef chef, Visitor visitor) {
+        chef.accept(new NoodleVisitor());
     }
 }
 ----

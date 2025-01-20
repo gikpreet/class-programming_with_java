@@ -179,7 +179,7 @@ public class Sample {
 아래와 같이 실행할 수 있어야 합니다.
 +
 ----
-% java colortokenizer.java Sample.java
+% java colortokenizer Sample.java
 ----
 +
 프로그램이 위와 같은 형식으로 실행되면 Sample.html 파일이 생성되어야 하며, 파일의 내용은 아래와 같은 "형태"여야 합니다.

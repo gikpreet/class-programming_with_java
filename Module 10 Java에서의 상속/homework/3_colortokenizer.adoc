@@ -166,7 +166,7 @@ Java 소스 파일을 입력으로 하여 소스 파일의 요소들이 색을 �
 +
 6. 문제
 +
-위의 요리사 예제에서 연급된 방법을 사용하여 Java 소스 파일을 입력으로 하여 Syntax Coloring된 HTML 파일을 출력하는 ColorTokenizer 프로그램을 작성하세요.
+위의 요리사 예제에서 언급된 방법을 사용하여 Java 소스 파일을 입력으로 하여 Syntax Coloring된 HTML 파일을 출력하는 ColorTokenizer 프로그램을 작성하세요.
 입력 파일의 이름이 Sample.java이고 아래와 같은 경우,
 +
 [source, java]

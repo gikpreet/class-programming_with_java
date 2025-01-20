@@ -1,4 +1,4 @@
-= Singleton과 Prototpye 리포지토리
+= Singleton과 Prototype 리포지토리
 
 Comming soon!
 

@@ -167,7 +167,7 @@ Java 소스 파일을 입력으로 하여 소스 파일의 요소들이 색을 �
 6. 문제
 +
 위의 요리사 예제에서 연급된 방법을 사용하여 Java 소스 파일을 입력으로 하여 Syntax Coloring된 HTML 파일을 출력하는 ColorTokenizer 프로그램을 작성하세요.
-입력 파일이 아래와 같은 경우,
+입력 파일의 이름이 Sample.java이고 아래와 같은 경우,
 +
 [source, java]
 ----
@@ -176,8 +176,20 @@ public class Sample {
 }
 ----
 +
-출력 파일은 아래와 같은 형태여야 합니다.
+아래와 같이 실행할 수 있어야 합니다.
 +
 ----
-<span style=”color:blue”>public<span> <span style=”color:blue”>class</span> Sample {<br> &nbsp;&nbsp;&nbsp;&nbsp; <span style=”color:blue”>int</span>i = 5; <br>}<br>
+% java colortokenizer.java Sample.java
 ----
++
+프로그램이 위와 같은 형식으로 실행되면 Sample.html 파일이 생성되어야 하며, 파일의 내용은 아래와 같은 "형태"여야 합니다.
++
+----
+<span style=”color:blue”>public</span> <span style=”color:blue”>class</span> Sample {<br> &nbsp;&nbsp;&nbsp;&nbsp; <span style=”color:blue”>int</span>i = 5; <br>}<br>
+----
+
+== 제출 방법
+
+1. main 메소드가 포함된 클래스를 public으로 선언하고 학번_colortokenizer 로 작성한다.
+2. 프로그램 동작에 필요한 모든 소스파일을 학번_colortokenizer.zip 으로 압축한다.
+3. 학번_colortokenizer.zip 파일을 제출한다.

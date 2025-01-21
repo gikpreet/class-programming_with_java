@@ -94,4 +94,5 @@ Integer integer = (Integer) list.get(0); // 타입 캐스팅 필요
 
 ---
 
-link:./22_wild_card.adoc[이전: 와일드카드]
+link:./22_wild_card.adoc[이전: 와일드카드] +
+link:./24_contravariance.adoc[다음: ? super T와 반공변성(Contravariance)]

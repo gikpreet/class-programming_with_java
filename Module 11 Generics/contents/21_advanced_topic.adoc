@@ -6,7 +6,7 @@ Generics는 Java에서 타입 안정성과 코드 재사용성을 높이기 위�
 
 1. link:./22_wild_card.adoc[와일드카드(?)]
 2. link:./23_covariance.adoc[? extends T와 공변성(Covariance)]
-3. ? super T와 반공변성(Contravariance)
+3. link:./24_contravariance.adoc[? super T와 반공변성(Contravariance)]
 4. 무제한 와일드카드(?)
 5. Generics와 타입 소거(Type Erasure)
 6. 컴파일러가 Generics를 처리하는 방식

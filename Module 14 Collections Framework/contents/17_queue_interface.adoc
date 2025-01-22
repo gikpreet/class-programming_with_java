@@ -31,11 +31,11 @@ image:../images/image06.png[]
 |===
 |Method|설명
 |public boolean add(E e)|element를 Queue에 추가합니다. 성공하면 true를 반환 합니다.저장공간이 부족하다면 IllegalStateException 발생합니다.
-|public boolean remove(Object o)|Queue에서 Object를 제거합니다.
-|public E element()|삭제없이 요소를 반환합니다. peek과는 달리 Queue가 비어있다면 NoSuchElementException 발생합니다.
-|public boolean offer(E e)|Queue에 객체를 저장 합니다. 성공하면 true, 실패하면 false를 반환합니다.
-|public E poll()|Queue에 객체를 꺼내서 반환합니다. 비어있다면 null을 반환합니다.
-|public E peek()|Queue에서 객체를 꺼내서 반환 합니다. 비어있으면 null을 반환합니다.
+|public boolean offer(E e)|Queue에 객체를 저장 합니다. 성공하면 true, 실패하면 false를 return합니다.
+|public boolean remove(Object o)|Queue에서 Object를 제거합니다. 비어있는 Queue이면 NoSuchElementException이 발생합니다.
+|public E poll()|Queue에 객체를 꺼내서 return합니다. 비어있다면 null을 return합니다.
+|public E element()|삭제없이 요소를 return합니다. peek과는 달리 Queue가 비어있다면 NoSuchElementException 발생합니다.
+|public E peek()|Queue에서 객체를 꺼내서 return 합니다. 비어있으면 null을 반환합니다.
 |===
 
 *생성 및 데이터 삽입*

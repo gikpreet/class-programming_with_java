@@ -1,5 +1,21 @@
 = 집계
 
+* 스트림 데이터를 처리하여 합계, 평균, 카운트, 최대값, 최소값 등과 같은 요약 정보를 생성하는 작업
+* 최종 연산을 수행
+
+[%header, cols="1,3"]
+|===
+|count()| 요소의 개수를 반환.
+|min() / max()| 최소값 또는 최대값 반환.
+|sum()| 합계 반환 (특화 스트림에서 사용).
+|average()| 평균 반환 (특화 스트림에서 사용).
+|Collectors.summingInt()| 합계
+|Collectors.averagingInt()| 평균
+|Collectors.counting()| 개수
+|Collectors.groupingBy()| 그룹화
+|Collectors.partitioningBy()| 조건에 따른 분할.
+|===
+
 ---
 
 Java Stream API의 **집계(Aggregation)**는 스트림 데이터를 처리하여 합계, 평균, 카운트, 최대값, 최소값 등과 같은 요약 정보를 생성하는 작업을 의미합니다. 집계는 주로 **최종 연산(Terminal Operation)**으로 수행됩니다.
@@ -18,7 +34,7 @@ Stream API는 데이터를 집계하기 위해 몇 가지 기본 메서드를 �
 
 === `count()`
 
-스트림의 요소 개수를 반환합니다.
+스트림의 요소 개수를 반환합니다. 
 
 [source, java]
 ----

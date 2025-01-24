@@ -1,0 +1,14 @@
+= 최종 연산
+
+**Java Stream의 최종 연산(Terminal Operations)**은 스트림의 데이터를 처리한 결과를 반환하거나 실행을 완료하는 작업입니다. 
+
+이 단원에서는 Stream API의 최종 연산에 대해 알아봅니다.
+
+== Table of Contents
+
+1. 최종 연산 개요
+2. 데이터 소비: forEach()
+3. 집계: reduce(), count(), max(), min()
+4. 컬렉션 변환: collect()와 Collectors
+5. 매칭: anyMatch(), allMatch(), noneMatch()
+6. 요소 찾기: findFirst()와 findAny()

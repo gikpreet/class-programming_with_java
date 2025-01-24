@@ -107,4 +107,5 @@ Java Stream은 데이터 소스를 효율적으로 처리하기 위해 설계된
 
 ---
 
-link:./12_stream_builder.adod[이전: Stream.builder()] +
+link:./12_stream_builder.adoc[이전: Stream.builder()] +
+link:./14_stream_lifecycle.adoc[다음: Stream 라이프사이클]

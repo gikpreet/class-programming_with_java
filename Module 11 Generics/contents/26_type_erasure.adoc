@@ -1,0 +1,103 @@
+= 타입 소거
+
+* 컴파일 타임에 타입 안전성을 제공하기 위해 도입된 기능
+* 컴파일러가 Generic 코드를 컴파일할 때, Generic 타입 정보를 제거(소거)하고 **원시 타입(raw type)**으로 대체하는 과정
+* 기존의 코드와 호환성을 유지함
+** Java 5 이전의 코드는 Generic을 지원하지 않음
+** 기존의 코드와의 호환성을 유지하기 위해 런타임에 Generic 정보를 제거
+
+---
+
+Java에서 **제네릭(Generics)**는 컴파일 타임에 타입 안전성을 제공하기 위해 도입된 기능입니다. 그러나 Generic은 런타임에는 존재하지 않습니다. **타입 소거(Type Erasure)**란 컴파일러가 Generic 코드를 컴파일할 때, Generic 타입 정보를 제거(소거)하고 **원시 타입(raw type)**으로 대체하는 과정입니다.
+
+Java의 Generic은 호환성을 유지하도록 설계되었습니다. Java 5 이전의 코드는 Generic을 지원하지 않았기 때문에, 기존 코드와의 호환성을 유지하기 위해 런타임에 Generic 정보를 제거하여 Java 바이트 코드가 Generic을 지원하지 않는 JVM에서도 동작할 수 동작할 수 있도록 합니다.
+
+== Generics 타입 변환
+
+컴파일 시, Generic 타입은 적절한 바운드로 변환됩니다. 
+
+=== Generic 타입에 바운드가 없는 경우: Object로 변환
+
+[source, java]
+----
+List<String> list = new ArrayList<>();
+----
+
+컴파일 후:
+
+[source, java]
+----
+List list = new ArrayList(); // 타입 정보 소거
+----
+
+=== Generic 타입에 바운드가 있는 경우 (예: `<T extends Number>`)
+
+[source, java]
+----
+public class Box<T extends Number> {
+    private T value;
+}
+----
+
+컴파일 후:
+
+[source, java]
+----
+public class Box {
+    private Number value;
+}
+----
+
+== 타입 안정성 검사
+
+컴파일러는 Generic 코드에서 타입 안정성을 보장하기 위해 타입 체크와 캐스팅을 삽입합니다. 따라서 컴파일 오류로 인해 잘못된 타입 사용을 방지합니다.
+
+[source, java]
+----
+List<String> list = new ArrayList<>();
+list.add("Hello");
+String value = list.get(0);
+----
+
+컴파일 후:
+
+[source, java]
+----
+List list = new ArrayList();
+list.add("Hello");
+String value = (String) list.get(0); // 타입 캐스팅 추가
+----
+
+== 단점 및 제한
+
+Generic 타입 정보는 컴파일 시 제거되므로, 런타임에 타입을 확인할 수 없습니다.
+
+[source, java]
+----
+List<String> stringList = new ArrayList<>();
+List<Integer> intList = new ArrayList<>();
+if (stringList.getClass() == intList.getClass()) {
+    System.out.println("같은 타입입니다."); // 항상 true
+}
+----
+----
+같은 타입입니다.
+----
+
+위 코드는 런타임에 List 타입(Raw 타입)으로 변환되므로, 런타임에 타입을 확인할 수 없습니다.
+
+또한, 런타임에 Generic 타입 정보를 유지하지 않기 때문에, Generic 배열은 생성이 불가합니다.
+
+[source, java]
+----
+List<String>[] array = new List<String>[10]; // 컴파일 오류
+----
+
+Generics는 잘못된 타입 캐스팅으로 런타임에 ClassCastException이 발생할 수 있으며, 리플렉션을 사용할 때도 Generic 타입 정보를 활용하기 어렵습니다.
+
+Java의 Generic 타입 소거는 Generic을 컴파일 타임에서만 유효하게 하여 하위 호환성과 간소화된 런타임 환경을 제공하지만, 런타임 타입 정보 손실로 인해 제약이 따릅니다. 이를 보완하기 위해 필요에 따라 와일드카드 (`? extends`, `? super`)나 리플렉션 API 등을 활용할 수 있습니다.
+
+---
+
+link:./25_limited_wildcard.adoc[이전: 무제한 와일드카드] +
+link:./27_generics_compile.adoc[다음: 컴파일러가 Generics를 처리하는 방식]

@@ -1,0 +1,227 @@
+== 상속과 Generics
+
+---
+
+Java에서 상속과 **제네릭(Generics)**은 객체 지향 프로그래밍과 타입 안전성을 제공하기 위한 두 가지 강력한 기능입니다. 이 두 개념은 독립적으로도 유용하지만, 함께 사용할 때 여러 주의사항과 설계 원칙을 따릅니다. 이를 구체적으로 살펴보겠습니다.
+
+== 상속과 Generic의 기본 개념
+
+=== 상속(Inheritance)
+
+상속은 기존 클래스(부모 클래스 또는 상위 클래스)의 속성과 메서드를 새로운 클래스(자식 클래스 또는 하위 클래스)가 재사용할 수 있게 해주는 객체 지향 프로그래밍의 핵심 기능입니다.
+
+[source, java]
+----
+class Parent {
+    void show() {
+        System.out.println("Parent class");
+    }
+}
+
+class Child extends Parent {
+    void display() {
+        System.out.println("Child class");
+    }
+}
+----
+
+=== 제네릭(Generics)
+
+Generic은 클래스, 인터페이스, 메서드에서 사용할 데이터 타입을 파라미터화하여 타입 안정성을 높이는 기능입니다.
+컴파일 타임에 타입을 체크하고, 런타임에 불필요한 타입 변환을 줄입니다.
+
+[source, java]
+----
+class Box<T> {
+    private T value;
+
+    public void setValue(T value) {
+        this.value = value;
+    }
+
+    public T getValue() {
+        return value;
+    }
+}
+----
+
+== 상속과 Generic의 결합
+
+=== Generic 클래스의 상속
+
+Generic 클래스는 다른 Generic 클래스나 비 Generic 클래스를 상속할 수 있습니다. 하위 클래스에서 부모 클래스의 타입 파라미터를 그대로 유지하거나, 특정 타입으로 고정할 수 있습니다.
+
+==== 부모의 Generic 타입 유지
+
+[source, java]
+----
+class GenericParent<T> {
+    T value;
+
+    public T getValue() {
+        return value;
+    }
+}
+
+class GenericChild<T> extends GenericParent<T> {
+    void showType() {
+        System.out.println("Type: " + value.getClass().getName());
+    }
+}
+----
+
+==== 부모의 Generic 타입 고정
+
+[source, java]
+----
+class GenericChildFixed extends GenericParent<String> {
+    // T는 항상 String으로 고정
+}
+----
+
+
+=== Generic 인터페이스의 구현
+
+Generic 인터페이스를 구현하는 클래스는 인터페이스의 타입 파라미터를 유지하거나, 특정 타입으로 고정할 수 있습니다.
+
+[source, java]
+----
+interface GenericInterface<T> {
+    void perform(T t);
+}
+
+class GenericImpl<T> implements GenericInterface<T> {
+    @Override
+    public void perform(T t) {
+        System.out.println(t);
+    }
+}
+----
+
+예제: 인터페이스 타입 고정
+
+[source, java]
+----
+class StringImpl implements GenericInterface<String> {
+    @Override
+    public void perform(String s) {
+        System.out.println(s.toUpperCase());
+    }
+}
+----
+
+=== 와일드카드와 상속
+
+**와일드카드(?)**를 사용하면 상속 관계에서 다양한 타입을 허용할 수 있습니다.
+
+==== `? extends`
+
+아래 코드는 특정 타입의 하위 클래스만 허용하며, 읽기 전용으로 사용됩니다.
+
+[source, java]
+----
+public void processList(List<? extends Number> list) {
+    for (Number num : list) {
+        System.out.println(num);
+    }
+}
+----
+
+==== `? super`
+
+아래 코드는 특정 타입의 상위 클래스만 허용하며, 쓰기 가능합니다.
+
+[source, java]
+----
+public void addElements(List<? super Integer> list) {
+    list.add(10);
+    list.add(20);
+}
+----
+
+== 상속과 Generic 사용 시 주의사항
+
+=== 타입 소거로 인한 제한
+
+Generic은 컴파일 시점에만 타입 정보를 유지하며, 런타임에는 타입 소거가 적용됩니다.
+따라서, Generic 타입의 상속 관계를 런타임에 확인할 수 없습니다.
+
+[source, java]
+----
+List<String> stringList = new ArrayList<>();
+List<Integer> intList = new ArrayList<>();
+
+System.out.println(stringList.getClass() == intList.getClass()); // true
+----
+
+런타임에는 List<String>과 List<Integer>가 동일한 List 타입으로 간주됩니다.
+
+=== 배열과 Generic 상속의 제약
+
+Generic 배열을 생성할 수 없습니다.
+따라서, Generic 타입의 배열을 사용하는 경우 경고를 억제하거나 List를 사용해야 합니다.
+
+[source, java]
+----
+// 컴파일 오류: Generic 배열 생성 불가
+List<String>[] array = new ArrayList<String>[10];
+----
+
+=== 공변성(Covariance)과 반공변성(Contravariance)
+
+Generic은 기본적으로 **공변성(covariance)**을 지원하지 않습니다. 즉, List<Child>는 List<Parent>의 하위 타입이 아닙니다.
+
+[source, java]
+----
+List<Parent> parentList = new ArrayList<Child>(); // 컴파일 오류
+----
+
+이를 해결하려면 와일드카드를 사용해야 합니다.
+
+[source, java]
+----
+List<? extends Parent> parentList = new ArrayList<Child>(); // 가능
+----
+
+=== 오버라이딩과 Generic
+
+자식 클래스에서 메서드를 오버라이딩할 때, 부모의 Generic 메서드를 올바르게 구현해야 합니다.
+
+[source, java]
+----
+class Parent<T> {
+    public void print(T t) {
+        System.out.println(t);
+    }
+}
+
+class Child extends Parent<String> {
+    @Override
+    public void print(String t) {
+        System.out.println("String: " + t);
+    }
+}
+----
+
+== 장점과 한계
+
+=== 장점
+
+* 타입 안정성: 컴파일 타임에 타입 검사로 오류를 방지.
+* 코드 재사용성: Generic 클래스나 메서드는 다양한 타입으로 재사용 가능.
+* 가독성: 코드의 의도가 명확해지고, 캐스팅 코드 제거로 간결해짐.
+
+=== 한계
+
+* 런타임 타입 소거로 인해 타입 정보가 유지되지 않아 배열 생성이나 리플렉션 사용 시 제약.
+* Generic과 상속의 결합이 복잡해질 경우 설계 및 디버깅이 어려울 수 있음.
+* 공변성과 반공변성을 수동으로 처리해야 하는 번거로움.
+
+== 요약
+* Java에서 상속과 Generic은 서로 독립적으로 사용 가능하며, 함께 사용하면 코드 재사용성과 타입 안정성을 극대화할 수 있습니다.
+* 상속과 Generic을 결합할 때는 타입 소거, 와일드카드, 타입 바운드, 공변성/반공변성 등을 이해하고 설계해야 합니다.
+* 올바른 설계는 복잡성을 줄이고, 유지보수를 용이하게 만들어줍니다.
+
+---
+
+link:./27_generics_complie.adoc[이전: 컴파일러가 Generics를 처리하는 방식] +

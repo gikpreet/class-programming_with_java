@@ -1,0 +1,158 @@
+= 컴파일러가 Generics를 처리하는 방식
+
+---
+
+Java 컴파일러가 Generics를 처리하는 방식은 컴파일 타임에 타입 검사를 수행하고, **타입 소거(Type Erasure)**를 통해 Generic 정보를 제거하여 기존의 비Generic 코드와 호환되도록 만드는 과정으로 요약할 수 있습니다. 이를 단계별로 자세히 설명하면 다음과 같습니다:
+
+== 1. Generics 타입 체크 (컴파일 시점)
+
+Java 컴파일러는 Generic 코드를 분석하여 타입 안정성을 보장합니다.
+
+컴파일러는 Generic 타입을 기반으로 올바른 타입의 데이터만 허용하며, 잘못된 타입 사용이 발견되면 컴파일 오류를 발생시킵니다. 이 과정은 타입 체크와 타입 추론을 포함합니다.
+
+[source, java]
+----
+List<String> strings = new ArrayList<>();
+strings.add("Hello");
+strings.add(123); // 컴파일 오류: 123은 String이 아님
+----
+
+컴파일러는 strings.add(123) 호출 시 Generic 타입 <String>에 맞지 않는 데이터 타입이 사용되었음을 감지하여 오류를 발생시킵니다.
+
+== 2. Generics 타입 소거 (Type Erasure)
+
+컴파일러는 Generic 코드를 컴파일할 때 타입 정보를 제거(소거)하여 비 Generic 코드로 변환합니다.
+
+* 타입 매개변수는 컴파일 시점에 적절한 실제 타입으로 대체됩니다.
+* 바운드(`extends` 또는 `super`)가 없는 경우, `Object` 로 대체됩니다.
+* 타입 정보를 제거한 이후에도 런타임에 타입 캐스팅을 추가하여 타입 안전성을 유지합니다.
+
+[source, java]
+----
+// Generic 코드
+List<String> strings = new ArrayList<>();
+strings.add("Hello");
+String str = strings.get(0);
+----
+
+컴파일 후 (타입 소거된 코드):
+
+[source, java]
+----
+List strings = new ArrayList(); // Generic 타입 제거
+strings.add("Hello");
+String str = (String) strings.get(0); // 강제 캐스팅 추가
+----
+
+== 3. 타입 바운드 처리
+
+Generic에 타입 바운드가 명시된 경우(`<T extends SomeClass>`), 컴파일러는 타입 바운드를 기반으로 적절한 타입으로 변환합니다.
+
+[source, java]
+----
+public class Box<T extends Number> {
+    private T value;
+
+    public void setValue(T value) {
+        this.value = value;
+    }
+
+    public T getValue() {
+        return value;
+    }
+}
+----
+
+컴파일 후:
+
+[source, java]
+----
+public class Box {
+    private Number value;
+
+    public void setValue(Number value) {
+        this.value = value;
+    }
+
+    public Number getValue() {
+        return value;
+    }
+}
+----
+
+타입 바운드가 있는 경우, Generic 타입은 `Number` 로 변환됩니다.
+
+== 4. 와일드카드 처리 (? extends / ? super)
+
+와일드카드는 런타임에 실제 타입 정보를 유지하지 않지만, 컴파일러는 타입 안전성을 보장하기 위해 와일드카드의 타입 제한을 엄격히 검증합니다.
+
+[source, java]
+----
+public static void printNumbers(List<? extends Number> numbers) {
+    for (Number number : numbers) {
+        System.out.println(number);
+    }
+}
+----
+
+컴파일 후:
+
+[source, java]
+----
+public static void printNumbers(List numbers) {
+    for (Object number : numbers) {
+        System.out.println((Number) number); // 런타임 타입 캐스팅 추가
+    }
+}
+----
+
+* `? extends`는 `Number` 의 하위 타입으로 제한되며, 읽기 전용으로 사용됩니다.
+* `? super` 는 특정 타입의 상위 타입으로 제한되며, 쓰기가 가능할 수 있습니다.
+
+== 5. 타입 캐스팅 추가
+
+컴파일된 Generic 코드는 런타임에 타입 캐스팅을 통해 타입 안정성을 보장합니다. 이는 Generic 타입 정보가 런타임에 사라지기 때문에 발생합니다.
+
+[source, java]
+----
+List<String> strings = new ArrayList<>();
+strings.add("Hello");
+String str = strings.get(0); // 런타임 타입 캐스팅 추가
+----
+
+컴파일 후:
+
+[source, java]
+----
+List strings = new ArrayList();
+strings.add("Hello");
+String str = (String) strings.get(0); // 강제 캐스팅
+----
+
+== 6. 리플렉션에서의 Generics 처리
+
+Generic은 런타임에 타입 정보를 유지하지 않기 때문에, 리플렉션 API를 사용할 때에도 제한이 있습니다.
+하지만, `Class` 객체를 통해 Generic 타입의 일부 정보를 얻을 수 있습니다.
+
+[source, java]
+----
+List<String> list = new ArrayList<>();
+System.out.println(list.getClass()); // class java.util.ArrayList
+----
+
+런타임에 `List<String>` 과 `List<Integer>` 는 같은 클래스로 취급됩니다(ArrayList).
+
+== 요약
+
+* 컴파일 시 타입 검사: Generic 타입을 기반으로 컴파일 타임에서 타입 안정성을 보장.
+* 타입 소거: Generic 타입 정보를 제거하고, 바운드가 없는 경우 Object로 대체.
+* 타입 캐스팅 추가: 런타임에 타입 안정성을 유지하기 위해 필요한 캐스팅을 삽입.
+* 바운드 처리: Generic 명시된 타입 바운드를 기반으로 변환.
+* 리플렉션 및 제한: 런타임에는 Generic 타입 정보가 소거되어 제약이 발생.
+
+이 과정 덕분에 Generic은 컴파일 타임에서만 동작하며, 런타임 오버헤드를 최소화하고 기존 코드와의 호환성을 유지할 수 있습니다.
+
+---
+
+link:./26_type_erasure.adoc[이전: 타입 소거] +
+link:./28_inhertance_generics.adoc[다음: Generics와 상속]

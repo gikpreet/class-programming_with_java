@@ -237,3 +237,18 @@ public class PartitioningByExample {
     }
 }
 ----
+
+== 주의 사항
+
+`min()`/`max()` 및 `reduce()` 는 null 값이 포함된 경우 처리에 주의해야 합니다.
+
+== 요약
+
+Java Stream API의 집계는 데이터의 합계, 평균, 개수, 최대/최소값 등을 손쉽게 계산하도록 도와줍니다.
+
+기본 제공 메서드로 간단한 집계를 수행할 수 있으며, `reduce()` 와 `Collectors` 클래스를 사용하면 사용자 정의 집계와 고급 집계 작업을 수행할 수 있습니다.
+
+---
+
+link:./23_consume.adoc[이전: 데이터 소비] +
+link:./25_collection_transfer.adoc[다음: 컬렉션 변환]

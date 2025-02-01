@@ -1,0 +1,235 @@
+= 컬렉션 변환
+
+* 스트림 데이터를 다양한 형태의 컬렉션으로 변환하는 작업
+* 변환된 데이터는 List, Set, Map 등 다양한 컬렉션 형태로 사용할 수 있음
+
+[%header, cols="1,3"]
+|===
+|메소드|설명
+|`toList()`|스트림 데이터를 List로 변환.
+|`toSet()`|스트림 데이터를 Set으로 변환.
+|`toMap()`|스트림 데이터를 Map으로 변환.
+|`collectingAndThen()`|변환 후 추가적인 작업 수행.
+|`toCollection()`|특정 타입의 컬렉션으로 변환.
+|===
+
+---
+
+Java Stream API의 컬렉션 변환 연산은 스트림 데이터를 다양한 형태의 컬렉션으로 변환하는 작업을 말합니다. 변환 연산은 **최종 연산(Terminal Operations)**을 통해 수행되며, 변환된 데이터는 List, Set, Map 등 다양한 컬렉션 형태로 사용할 수 있습니다. 이 작업은 주로 collect() 메서드와 함께 사용됩니다.
+
+== 컬렉션 변환 메소드
+
+=== `collect()` 메소드
+
+collect() 메소드를 사용합니다. 메소드는 스트림 데이터를 컬렉션으로 변환할 때 가장 많이 사용되는 최종 연산이며, Collectors 클래스와 함께 사용하여 다양한 방식으로 데이터를 변환하고 수집합니다.
+
+=== `Collectors` 클래스의 주요 메소드
+
+[%header, cols="1,3"]
+|===
+|메소드|설명
+|`toList()`|스트림 데이터를 List로 변환.
+|`toSet()`|스트림 데이터를 Set으로 변환.
+|`toMap()`|스트림 데이터를 Map으로 변환.
+|`collectingAndThen()`|변환 후 추가적인 작업 수행.
+|`toCollection()`|특정 타입의 컬렉션으로 변환.
+|===
+
+== 컬렉션 변환
+
+=== 스트림 데이터를 List로 변환
+
+[source, java]
+----
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+public class StreamToListExample {
+    public static void main(String[] args) {
+        Stream<String> names = Stream.of("Alice", "Bob", "Charlie");
+
+        // 스트림을 리스트로 변환
+        List<String> nameList = names.collect(Collectors.toList());
+
+        System.out.println(nameList); // 출력: [Alice, Bob, Charlie]
+    }
+}
+----
+
+=== 스트림 데이터를 Set으로 변환
+
+Set은 중복된 데이터를 허용하지 않으므로, 중복된 요소는 자동으로 제거됩니다.
+
+[source, java]
+----
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+public class StreamToSetExample {
+    public static void main(String[] args) {
+        Stream<Integer> numbers = Stream.of(1, 2, 2, 3, 3, 4);
+
+        // 스트림을 Set으로 변환
+        Set<Integer> numberSet = numbers.collect(Collectors.toSet());
+
+        System.out.println(numberSet); // 출력: [1, 2, 3, 4]
+    }
+}
+----
+
+=== 스트림 데이터를 Map으로 변환
+
+toMap() 메서드를 사용하여 스트림 데이터를 Map으로 변환하며, 키와 값을 각각 정의해야 합니다.
+
+아래 예제는  문자열 길이를 키로, 문자열을 값으로 하여 Map으로 변환합니다.
+
+[source, java]
+----
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+public class StreamToMapExample {
+    public static void main(String[] args) {
+        Stream<String> names = Stream.of("Alice", "Bob", "Charlie");
+
+        // 스트림을 Map으로 변환
+        Map<String, Integer> nameLengthMap = names.collect(
+            Collectors.toMap(name -> name, name -> name.length())
+        );
+
+        System.out.println(nameLengthMap); // 출력: {Alice=5, Bob=3, Charlie=7}
+    }
+}
+----
+
+`toMap()` 사용 시 키가 중복되면 예외가 발생합니다. 키가 중복될 가능성이 있다면 병합 함수(merge function)를 추가해야 합니다.
+
+[source, java]
+----
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+public class ToMapWithMergeExample {
+    public static void main(String[] args) {
+        Stream<String> items = Stream.of("apple", "banana", "apple");
+
+        // 병합 함수 사용
+        Map<String, Integer> itemCount = items.collect(
+            Collectors.toMap(item -> item, item -> 1, Integer::sum)
+        );
+
+        System.out.println(itemCount); // 출력: {banana=1, apple=2}
+    }
+}
+----
+
+=== 특정 컬렉션으로 변환
+
+toCollection()을 사용하여 원하는 컬렉션 타입으로 데이터를 변환할 수 있습니다.
+아래 예제는 Stream을 LinkedList로 변환합니다.
+
+[source, java]
+----
+import java.util.LinkedList;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+public class ToSpecificCollectionExample {
+    public static void main(String[] args) {
+        Stream<String> names = Stream.of("Alice", "Bob", "Charlie");
+
+        // LinkedList로 변환
+        LinkedList<String> nameList = names.collect(Collectors.toCollection(LinkedList::new));
+
+        System.out.println(nameList); // 출력: [Alice, Bob, Charlie]
+    }
+}
+----
+
+아래 예제는 Stream을 TreeSet으로 변환합니다.
+
+[source, java]
+----
+import java.util.TreeSet;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+public class ToTreeSetExample {
+    public static void main(String[] args) {
+        Stream<String> names = Stream.of("Charlie", "Alice", "Bob");
+
+        // TreeSet으로 변환 (정렬된 Set)
+        TreeSet<String> nameSet = names.collect(Collectors.toCollection(TreeSet::new));
+
+        System.out.println(nameSet); // 출력: [Alice, Bob, Charlie]
+    }
+}
+----
+
+=== 데이터 가공 후 컬렉션 변환
+
+collectingAndThen() 메서드를 사용하여 데이터 변환 후 추가 작업을 수행합니다.
+
+아래 예제는 리스트를 불변 리스트로 변환합니다.
+
+[source, java]
+----
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import java.util.Collections;
+
+public class CollectingAndThenExample {
+    public static void main(String[] args) {
+        Stream<String> names = Stream.of("Alice", "Bob", "Charlie");
+
+        // 리스트로 변환한 후 불변 리스트로 변환
+        List<String> immutableList = names.collect(Collectors.collectingAndThen(
+            Collectors.toList(),
+            Collections::unmodifiableList
+        ));
+
+        System.out.println(immutableList); // 출력: [Alice, Bob, Charlie]
+    }
+}
+----
+
+== 컬렉션 변환의 특징 및 주의점
+
+다양한 컬렉션 타입으로 스트림 데이터를 유연하게 변환 가능하며, 변환 과정에서 데이터를 필터링, 매핑 등으로 처리 가능합니다.
+아래 예제는 데이터를 필터링 및 매핑 후 리스트로 변환합니다.
+
+[source, java]
+----
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+public class FilterAndMapExample {
+    public static void main(String[] args) {
+        Stream<Integer> numbers = Stream.of(1, 2, 3, 4, 5);
+
+        // 짝수만 필터링하고, 제곱값으로 변환한 후 리스트로 수집
+        List<Integer> result = numbers.filter(n -> n % 2 == 0)
+                                      .map(n -> n * n)
+                                      .collect(Collectors.toList());
+
+        System.out.println(result); // 출력: [4, 16]
+    }
+}
+----
+
+== 요약
+Java Stream API의 컬렉션 변환 연산은 데이터를 효율적으로 가공하여 다양한 형태의 컬렉션으로 변환할 수 있도록 돕습니다.
+
+`collect()` 메서드와 `Collectors` 유틸리티를 활용하여 `List`, `Set`, `Map` 등으로 데이터를 쉽게 변환할 수 있습니다.
+특정 컬렉션 타입으로 변환하거나, 데이터를 추가적으로 가공한 뒤 수집하는 작업도 간단히 수행할 수 있습니다. 이를 통해 데이터 변환 및 가공 과정을 간결하고 직관적으로 처리할 수 있습니다.
+
+---
+
+link:./24_aggregation.adoc[이전: 집계] +
+link:./26_matching.adoc[다음: 메칭]

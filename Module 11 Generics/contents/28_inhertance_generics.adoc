@@ -49,9 +49,9 @@ class Box<T> {
 
 === Generic 클래스의 상속
 
-Generic 클래스는 다른 Generic 클래스나 비 Generic 클래스를 상속할 수 있습니다. 하위 클래스에서 부모 클래스의 타입 파라미터를 그대로 유지하거나, 특정 타입으로 고정할 수 있습니다.
+Generic 클래스는 다른 Generic 클래스나 비 Generic 클래스를 상속할 수 있습니다.서브 클래스에서 슈퍼 클래스의 타입 파라미터를 그대로 유지하거나, 특정 타입으로 고정할 수 있습니다.
 
-==== 부모의 Generic 타입 유지
+==== 슈퍼 클래스의 Generic 타입 유지
 
 [source, java]
 ----
@@ -70,7 +70,7 @@ class GenericChild<T> extends GenericParent<T> {
 }
 ----
 
-==== 부모의 Generic 타입 고정
+==== 슈퍼 클래스의 Generic 타입 고정
 
 [source, java]
 ----

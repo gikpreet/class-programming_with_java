@@ -1,0 +1,79 @@
+= Module 13: Annotation
+
+이 모듈에서는 프로그램의 동작에 직접적인 영향을 주지 않으면서 컴파일러나 런타임 환경, 외부 라이브러리, 프레임워크가 어노테이션을 읽고 특정 동작을 수행하거나 검증, 변환 등의 작업을 할 수 있게 만드는 Annotation에 대해 학습합니다.
+
+이 모듈을 마치면, 다음과 같은 것들을 할 수 있게 됩니다:
+
+* Annotation으로 빌드 과정에서의 오류나 불필요한 경고를 줄일 수 있습니다.
+* Annotation으로 도구에서 코드나 XML 파일을 자동 생성하게 할 수 있습니다.
+* Annotation으로 실행 시 특정 기능을 수행하도록 설정할 수 있습니다.
+
+== Table of Contents
+
+1. Annotation 기초
+2. 사용자 정의 Annotation
+3. 메타 Annotation
+4. Annotation 처리
+5. Annotation과 Reflection
+
+////
+Chapter 1: 어노테이션 기초
+1.1 어노테이션이란 무엇인가?
+1.2 어노테이션의 필요성과 활용 목적
+1.3 기본 어노테이션 소개 (@Override, @Deprecated, @SuppressWarnings 등)
+
+Chapter 2: 사용자 정의 어노테이션 (Custom Annotations)
+2.1 사용자 정의 어노테이션의 개념
+2.2 어노테이션 선언 방법
+2.3 어노테이션 요소(Element) 정의
+2.4 기본값 설정 및 사용법
+
+Chapter 3: 메타 어노테이션 (Meta-Annotations)
+3.1 @Target - 어노테이션 적용 대상 지정
+3.2 @Retention - 어노테이션 유지 정책
+3.3 @Documented - 문서화 처리
+3.4 @Inherited - 상속 가능 어노테이션
+3.5 @Repeatable - 반복 사용 가능한 어노테이션
+
+Chapter 4: 어노테이션 처리 (Annotation Processing)
+4.1 어노테이션 처리기(Annotation Processor) 개념
+4.2 리플렉션(Reflection)을 활용한 어노테이션 분석
+4.3 java.lang.reflect 패키지 활용 방법
+4.4 어노테이션 프로세서 API(javax.annotation.processing) 소개
+4.5 컴파일 타임 어노테이션 처리 (APT: Annotation Processing Tool)
+
+Chapter 5: 어노테이션과 리플렉션
+5.1 리플렉션을 이용한 어노테이션 정보 읽기
+5.2 런타임 어노테이션 처리 사례
+5.3 어노테이션과 리플렉션 성능 이슈 및 최적화 방안
+
+Chapter 6: 자바 표준 어노테이션 심화
+6.1 @FunctionalInterface - 함수형 인터페이스 지정
+6.2 @SafeVarargs - 제네릭과 가변인자 안전성
+6.3 @Native - 상수 필드 네이티브 코드 노출
+
+Chapter 7: 프레임워크에서의 어노테이션 활용
+7.1 Spring Framework의 어노테이션 기반 프로그래밍
+7.2 JPA(Java Persistence API) 어노테이션
+7.3 테스트 프레임워크(JUnit)에서의 어노테이션 사용
+7.4 Lombok 어노테이션을 통한 코드 간소화
+
+Chapter 8: 어노테이션 활용 실전 예제
+8.1 커스텀 검증 어노테이션 구현
+8.2 로깅 어노테이션과 AOP(Aspect-Oriented Programming)
+8.3 API 문서화 도구(Swagger)와 어노테이션
+8.4 보안 및 권한 관리 어노테이션 활용
+
+Chapter 9: 어노테이션의 한계와 고려사항
+9.1 어노테이션의 한계점
+9.2 과도한 어노테이션 사용의 위험성
+9.3 코드 가독성과 유지보수 관점에서의 어노테이션 관리
+
+Chapter 10: 최신 트렌드와 어노테이션의 발전 방향
+10.1 Java 버전별 어노테이션 변화
+10.2 어노테이션과 새로운 프로그래밍 패러다임
+10.3 어노테이션의 미래와 대안 기술
+
+이 목차를 기반으로 필요한 부분을 더 세부적으로 확장하거나, 특정 챕터를 집중적으로 다룰 수도 있습니다. 더 구체적으로 원하는 부분이 있으면 알려주세요!
+
+////

@@ -12,7 +12,7 @@ Generics는 Java에서 타입 안정성과 코드 재사용성을 높이기 위�
 6. link:./27_generics_compile.adoc[컴파일러가 Generics를 처리하는 방식]
 7. link:./28_inhertance_generics.adic[상속과 Generics]
 8. link:./29_generic_class_inheritance.adoc.adoc[제네릭 클래스 상속]
-9. Generic 메소드 오버라이딩
+9. link:./30_generic_method_overriding.adoc[Generic 메소드 오버라이딩]
 
 ---
 

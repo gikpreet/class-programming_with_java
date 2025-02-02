@@ -1,0 +1,122 @@
+== Annotation
+
+---
+
+어노테이션(Annotation)은 자바 5 (Java 1.5) 버전부터 도입된 메타데이터(metadata) 기능입니다. 메타데이터란 "데이터를 설명하는 데이터"를 의미하며, 어노테이션은 코드에 대한 추가 정보를 제공하기 위해 사용됩니다. 즉, 어노테이션은 자바 코드에 부가적인 정보를 붙여 컴파일러, 개발 도구, 프레임워크, 런타임 환경 등이 해당 정보를 처리하도록 돕는 역할을 합니다.
+
+Annotation 자체는 프로그램의 동작에 직접적인 영향을 주지 않습니다. 대신 컴파일러나 런타임 환경, 외부 라이브러리, 프레임워크가 어노테이션을 읽고 특정 동작을 수행하거나 검증, 변환 등의 작업을 진행하게 됩니다.
+
+== Annotation의 주요 특징
+
+* 메타데이터 제공: 코드에 대한 정보를 부가적으로 설명하는 역할.
+* 컴파일러 지시: 컴파일러에게 경고 억제, 오류 검사 강화 등의 지시 가능.
+* 프레임워크와의 통합: 스프링(Spring), JPA 등 다양한 프레임워크에서 필수적인 설정 도구로 사용.
+* 런타임 처리 가능: 리플렉션(Reflection)을 통해 런타임 시에도 어노테이션을 분석하고 활용 가능.
+
+== Annotation의 기본 구조
+
+Annotation은 @ 기호로 시작하며, 클래스, 메서드, 변수, 매개변수, 패키지 등 다양한 곳에 붙일 수 있습니다.
+
+[source, java]
+----
+@Override
+public String toString() {
+    return "Hello, World!";
+}
+----
+
+위 예제에서 @Override는 부모 클래스의 메서드를 올바르게 오버라이드했는지 컴파일러가 검증하도록 지시하는 Annotation입니다.
+
+== 자주 사용되는 기본 어노테이션
+
+=== @Override
+
+메서드가 부모 클래스의 메서드를 정확히 오버라이드했는지 검사하며, 잘못된 오버라이딩은 컴파일 에러를 발생시켜 오류를 방지합니다.
+
+[source, java]
+----
+@Override
+public String toString() {
+    return "Example";
+}
+----
+
+=== @Deprecated
+
+더 이상 사용되지 않는 메서드나 클래스에 표시하여, 향후 제거될 가능성이 있음을 알리며, 사용 시 컴파일 경고를 발생시킵니다.
+
+[source, java]
+----
+@Deprecated
+public void oldMethod() {
+    System.out.println("This method is deprecated.");
+}
+----
+
+=== @SuppressWarnings
+
+특정 컴파일 경고를 억제합니다.
+
+[source, java]
+----
+@SuppressWarnings("unchecked")
+List<String> list = new ArrayList();
+----
+
+== 사용자 정의 어노테이션 (Custom Annotation) 예제
+
+개발자는 자신만의 어노테이션을 정의할 수 있습니다.
+
+[source, java]
+----
+import java.lang.annotation.*;
+
+@Retention(RetentionPolicy.RUNTIME)  // 런타임에도 어노테이션 유지
+@Target(ElementType.METHOD)          // 메서드에만 적용 가능
+public @interface MyAnnotation {
+    String value();                  // 요소 선언
+    int count() default 1;           // 기본값 설정
+}
+----
+
+사용 예:
+
+[source, java]
+----
+public class Test {
+    @MyAnnotation(value = "Hello", count = 5)
+    public void doSomething() {
+        System.out.println("Doing something...");
+    }
+}
+----
+
+런타임에서 리플렉션으로 처리:
+
+[source, java]
+----
+Method method = Test.class.getMethod("doSomething");
+MyAnnotation annotation = method.getAnnotation(MyAnnotation.class);
+System.out.println(annotation.value());  // Hello
+System.out.println(annotation.count());  // 5
+----
+
+== 어노테이션의 활용 사례
+
+* 컴파일러 검증: @Override, @SuppressWarnings
+* 코드 문서화: @Documented
+* 런타임 처리: 스프링 DI(@Autowired), JPA 매핑(@Entity, @Table)
+* 테스트 프레임워크: JUnit의 @Test, @BeforeEach
+
+== 어노테이션의 중요성
+
+어노테이션은 단순한 코드 주석 이상의 기능을 제공합니다.
+
+* 프레임워크 기반 개발의 핵심 +
+스프링, 하이버네이트, JPA 등에서는 XML 설정을 대체하여 어노테이션으로 간결하고 명확한 설정이 가능.
+* 코드 유지보수성 향상 +
+코드의 의미를 명확히 하여 가독성을 높이고, 자동화된 검증 및 처리가 가능.
+* 개발 생산성 향상 +
+반복적인 설정 작업을 줄여 개발 효율성을 높여줍니다.
+
+어노테이션은 현대 자바 개발에서 필수적인 기능으로 자리 잡았습니다. 특히 스프링, JPA 같은 프레임워크에서 설정 및 의존성 주입, 트랜잭션 관리 등 핵심 기능을 담당합니다. 어노테이션을 제대로 이해하고 활용하면 코드의 가독성, 유지보수성, 생산성을 크게 향상시킬 수 있습니다.

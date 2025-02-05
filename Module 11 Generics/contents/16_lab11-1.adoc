@@ -105,7 +105,90 @@ Box.java:25: error: imcompatible types: String cannot be converted to int
     box.setValue("a bag");
 ----
 
-== Box 클래스를 Generic 클래스로 수정
+=== Box 클래스의 value를 Object 타입으로 수정
+
+여기에서는 Box 클래스의 value에 다양한 타입을 할당할 수 있도록 타입을 Object로 변경합니다. 아래 절차에 따릅니다.
+
+1. Box 클래스의 value 변수의 타입을 Object로 변경합니다.
+2. Box 클래스의 setValue 메소드의 파라미터 타입을 Object로 변경합니다.
+3. Box 클래스의 getValue 메소드의 return 타입을 Object로 변경합니다.
+4. 변경된 클래스는 아래와 같을 것입니다.
++
+[source, java]
+----
+public class Box {
+    private String name;
+    private Object value;
+
+    public Box(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public void setValue(Object value) {
+        this.value = value;
+    }
+
+    public Object getValue() {
+        return this.value;
+    }
+}
+----
+
+=== 컴파일 및 실행
+
+이 연습에서는 Object 변수에 값을 할당하고 사용할 때 발생할 수 있는 런타임 오류를 확인합니다. 아래 절차에 따릅니다.
+
+1. BoxTest 클래스의 main 메소드에서 box.serValue 메소드로 전달되는 파라미터를 1로 변경합니다.
++
+[source, java]
+----
+public static void main(String[] args) {
+    Box box = new Box("Celine");
+    box.setValue(1);
+
+    System.out.printf("%s has %d", box.getName(), box.getValue());
+}
+----
++
+2. 아래 명령을 실행하여 Box.java 파일을 컴파일 합니다.
++
+----
+$ javac Box.java
+----
++
+3. 아래 명령을 실행하여 프로그램을 실행합니다.
++
+----
+$ java BoxTest
+Celine has 1
+----
++
+4. BoxTest 클래스의 main 메소드에서 box.serValue 메소드로 전달되는 파라미터를 1에서 "a bag"으로 변경합니다.
+5. 아래 명령을 실행하여 box.java 파일을 컴파일합니다.
++
+----
+$ javac Box.java
+----
++
+6. 아래 명령을 실행하여 프로그램을 실행하고 런타임 오류를 확인합니다.
++
+----
+$ java BoxTest
+Celine has Exception in thread "main" java.util.IllegalFormatConversionException: d != java.lang.String
+        at java.base/java.util.Formatter$FormatSpecifier.failConversion(Formatter.java:4442)
+        at java.base/java.util.Formatter$FormatSpecifier.printInteger(Formatter.java:2963)
+        at java.base/java.util.Formatter$FormatSpecifier.print(Formatter.java:2918)
+        at java.base/java.util.Formatter.format(Formatter.java:2689)
+        at java.base/java.io.PrintStream.format(PrintStream.java:1209)
+        at java.base/java.io.PrintStream.printf(PrintStream.java:1105)
+        at BoxTest.main(Box.java:27)
+----
+
+=== Box 클래스를 Generic 클래스로 수정
 
 이 연습에서는 Box 클래스를 Generic 클래스로 수정합니다. 아래 절차에 따릅니다.
 

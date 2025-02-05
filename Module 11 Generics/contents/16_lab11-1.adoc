@@ -1,0 +1,106 @@
+= Lab 11-1: 기본적인 Generics 사용
+
+이 연습에서는 Java의 기본적인 Generics 사용법에 대해 연습합니다. 
+
+== 연습 1: Generic 클래스 작성
+
+이 연습애서는 가장 단순한 방법으로서의 Generic 클래스 작성을 연습합니다. 아래 절차에 따릅니다.
+
+=== 연습 환경 설정
+
+여기에서는 연습을 위한 파일을 다운로드하고 Visual Studio Code에서 로드합니다. 아래 절차에 따릅니다.
+
+1. 웹 브라우저를 실행하여 아래 웹 페이지로 이동합니다.
++
+https://github.com/gikpreet/class-programming_with_java/blob/master/Module%2011%20Generics/LabFile/Lab11-1.zip
++
+2. 오른쪽 위에서 RAW 파일 다운로드 링크를 클릭하여 Lab11-1.zip 파일을 다운로드합니다.
+3. 다운로드한 Lab11-1.zip 파일의 압축을 해제합니다.
+4. 압축을 해제한 폴더에서, Starter 폴더를 Visual Studio Code에서 엽니다.
++
+image:../images/image01.png[width:300]
+
+=== 코드 확인
+
+여기에서는 Generic 클래스로 작성하기 전의 Box 클래스를 확인합니다. 아래 절차에 따릅니다.
+
+1. Visual Studio Code 탐색기에서 Box.java 파일을 열고 Box 클래스의 코드를 확인합니다. 코드는 아래와 같습니다.
++
+[source, java]
+----
+public class Box {
+    private String name;
+    private int value;
+
+    public Box(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public void setValue(int value) {
+        this.value = value;
+    }
+
+    public int getValue() {
+        return this.value;
+    }
+}
+----
++
+2. BoxTest 클래스를 열고 코드를 확인합니다. 
+a. BoxTest 클래스에는 application entry point가 선언되고 작성되어 있습니다.
+b. Box 클래스의 인스턴스를 생성하고 setValue() 메소드를 호출하여 Box 객체의 value 변수에 값을 할당한 후, 출력합니다. 코드는 아래와 같습니다.
++
+[source, java]
+----
+class BoxTest {
+    public static void main(String[] args) {
+        Box box = new Box("Celine");
+        box.setValue(1);
+
+        System.out.printf("%s has %d", box.getName(), box.getValue());
+    }
+}
+----
++
+3. Visual Studio Code 에서 터미널을 열고, 아래 명령을 실행하여 Box.java 파일을 컴파일 합니다.
++
+----
+$ javac Box.java
+----
++
+4. 터미널에서 아래 명령을 실행하여 컴파일된 프로그램을 실행합니다.
++
+----
+$ java Box
+Celine has 1
+----
+
+=== 코드 수정 후 실행
+
+여기에서는 BoxTest 클래스의 main 메소드를 수정하여 Box 클래스의 value 변수에는 int 타입의 값만이 할당 될 수 있음을 확인합니다. 아래 절차에 따릅니다.
+
+1. BoxTest 클래스의 main 메소드에서, setValue 메소드 호출하면서 전달되는 파라미터를 문자열(String) 타입으로 변경합니다. 수정된 코드는 아래와 유사할 것입니다.
++
+[source, java]
+----
+class BoxTest {
+    public static void main(String[] args) {
+        Box box = new Box("Celine");
+        box.setValue("a laptop");
+
+        System.out.printf("%s has %d", box.getName(), box.getValue());
+    }
+}
+----
++
+2. 아래 명령을 수행하여 파일을 컴파일하고, 오류를 확인합니다.
++
+----
+$ javac Box.java
+Box.java:25: error: imcompatible types: String cannot be converted to int
+    box.setValue("a bag");
+----

@@ -128,5 +128,5 @@ public class Main {
 
 ---
 
-link:./14_extends_keywords.adoc[이전: extends 키워드]
-link:./06_type_safety.adoc[다음: Generics와 타입 안정성]
+link:./14_extends_keywords.adoc[이전: extends 키워드] +
+link:./16_lab11-1.adoc[다음: Lab 11-1 기본적인 Generics 사용]

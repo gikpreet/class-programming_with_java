@@ -257,3 +257,12 @@ Celine has 1
 === 타입에 맞지 않는 데이터 사용
 
 이 연습에서는 타입 파라미터가 Integer로 설정된 Generic 클래스에 String 타입의 파라미터를 사용하면 컴파일 타임에 오류가 검출되는 것을 확인합니다. 아래 절차에 따릅니다.
+
+1. BoxTest 클래스의 main 메소드에서 box.serValue 메소드로 전달되는 파라미터를 1에서 "a bag"으로 변경합니다.
+2. 아래 명령을 실행하여 box.java 파일을 컴파일하고, 오류를 확인합니다.
++
+----
+$ javac Box.java
+Box.java:25: error: incompatible types: String cannot be converted to Integer
+        box.setValue("a bag");
+----

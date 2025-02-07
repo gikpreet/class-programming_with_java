@@ -53,5 +53,7 @@ int[] array = new int[4] {1, 2, 3, 4};
 |**참고** C++에서는 메모리를 할당하고 초기화하는 작업을 분리할 수 있습니다. Java에서는 이런 식의 작업 분리가 불가능합니다.
 |===
 
+---
+
 link:./02_constructor.adoc[이전: 생성자] +
 link:./04_using_default_constructor.adoc[다음: 기본 생성자 사용]

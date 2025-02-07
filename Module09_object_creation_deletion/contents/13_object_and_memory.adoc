@@ -4,9 +4,11 @@
 
 == Table of Contents
 
-1.	객체 생명주기
-2.	객체와 범위
-3.	가비지 컬렉션
+1. link:./14_object_lifecycle.adoc[객체 생명주기]
+2. link:./15_object_and_scope.adoc[객체와 범위]
+3. link:./16_garbage_collection.adoc[가비지 컬렉션]
+
+---
 
 link:./12_lab_9-1.adoc[이전: Lab 9-1 객체 생성] +
 link:./14_object_lifecycle.adoc[다음: 객체 생명주기]

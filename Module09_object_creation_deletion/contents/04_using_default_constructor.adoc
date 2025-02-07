@@ -75,5 +75,7 @@ Date today = new Date();
 * `public` 접근 제한을 가집니다. +
 객체가 생성되는 것을 허용합니다.
 
+---
+
 link:./03_object_creation.adoc[이전: 객체생성] +
 link:./05_defailt_constructor_overriding.adoc[다음: 생성자 오버라이딩]

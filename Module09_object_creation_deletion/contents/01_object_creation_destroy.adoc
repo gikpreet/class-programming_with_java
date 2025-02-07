@@ -10,8 +10,10 @@
 
 == Table of contents
 
-1.	생성자
-2.	데이터 초기화
-3.	객체와 메모리
+1. link:./02_constructor.adoc[생성자]
+2. link:./08_initializer_list.adoc[데이터 초기화]
+3. link:./13_object_and_memory.adoc[객체와 메모리]
+
+---
 
 link:./02_constructor.adoc[다음: 생성자]

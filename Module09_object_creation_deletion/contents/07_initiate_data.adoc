@@ -4,10 +4,12 @@
 
 == Table of Contents
 
-1.	초기화 목록
-2.	상수 선언
-3.	private 생성자
-4.	static 생성자
+1. link:./08_initializer_list.adoc[초기화 목록]
+2. link:./09_declare_constant.adoc[상수 선언]
+3. link:./10_private_constructor.adoc[private 생성자]
+4. link:./11_static_constructor.adoc[static 생성자]
+
+---
 
 link:./06_constructor_overloadng.adoc[이전: 생성자 오버로딩] +
 link:./08_initializer_list.adoc[다음: 초기화 목록]

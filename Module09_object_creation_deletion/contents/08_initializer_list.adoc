@@ -129,5 +129,7 @@ class Date {
 }
 ----
 
+---
+
 link:./07_initiate_data.adoc[이전: 데이터 초기화] +
 link:./09_declare_constant.adoc[다음: 상수 선언]

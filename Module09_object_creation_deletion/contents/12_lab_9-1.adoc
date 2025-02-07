@@ -156,5 +156,7 @@ Account Type: Saving
 Balance: 500
 ----
 
+---
+
 link:./11_static_constructor.adoc[이전: static 생성자] +
 link:./13_object_and_memory.adoc[다음: 객체와 메모리]

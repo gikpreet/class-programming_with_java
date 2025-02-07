@@ -118,5 +118,7 @@ class Test {
 }
 ----
 
+---
+
 link:./05_default_constructor_overriding.adoc[이전: 기본 생성자 오버로딩] +
 link:./07_initiate_data.adoc[다음: 데이터 초기화]

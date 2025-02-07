@@ -61,7 +61,8 @@ class BoxTest {
         Box box = new Box("Celine");
         box.setValue(1);
 
-        System.out.printf("%s has %d", box.getName(), box.getValue());
+        int result = (int)box.getValue();
+        System.out.printf("%s has %s", box.getName(), result);
     }
 }
 ----
@@ -150,7 +151,8 @@ public static void main(String[] args) {
     Box box = new Box("Celine");
     box.setValue(1);
 
-    System.out.printf("%s has %d", box.getName(), box.getValue());
+    int result = (int)box.getValue();
+    System.out.printf("%s has %s", box.getName(), result);
 }
 ----
 +
@@ -168,23 +170,30 @@ Celine has 1
 ----
 +
 4. BoxTest 클래스의 main 메소드에서 box.serValue 메소드로 전달되는 파라미터를 1에서 "a bag"으로 변경합니다.
++
+[source, java]
+----
+public static void main(String[] args) {
+    Box box = new Box("Celine");
+    box.setValue("a bag");
+
+    int result = (int)box.getValue();
+    System.out.printf("%s has %s", box.getName(), result);
+}
+----
++
 5. 아래 명령을 실행하여 box.java 파일을 컴파일합니다.
 +
 ----
 $ javac Box.java
 ----
 +
-6. 아래 명령을 실행하여 프로그램을 실행하고 런타임 오류를 확인합니다.
+6. 오류 없이 컴파일 되는 것을 확인합니다.
+7. 아래 명령을 실행하여 프로그램을 실행하고 런타임 오류를 확인합니다.
 +
 ----
 $ java BoxTest
-Celine has Exception in thread "main" java.util.IllegalFormatConversionException: d != java.lang.String
-        at java.base/java.util.Formatter$FormatSpecifier.failConversion(Formatter.java:4442)
-        at java.base/java.util.Formatter$FormatSpecifier.printInteger(Formatter.java:2963)
-        at java.base/java.util.Formatter$FormatSpecifier.print(Formatter.java:2918)
-        at java.base/java.util.Formatter.format(Formatter.java:2689)
-        at java.base/java.io.PrintStream.format(PrintStream.java:1209)
-        at java.base/java.io.PrintStream.printf(PrintStream.java:1105)
+Exception in thread "main" java.lang.ClassCastException: class java.lang.String cannot be cast to class java.lang.Integer (java.lang.String and java.lang.Integer are in module java.base of loader 'bootstrap')
         at BoxTest.main(Box.java:27)
 ----
 
@@ -241,13 +250,51 @@ public class Box<T> {
 Box<Integer> box = new Box<Integer>("Celine");
 ----
 +
-2. 아래 명령을 수행하여 Box.java 파일을 컴파일합니다.
+2. BoxTest 클래스의 main 메소드에서 box.serValue 메소드로 전달되는 파라미터를 "a bag"에서 1로 변경합니다.
+3. box.getValue 메소드의 return 값을 정수형으로 타입 변환하는 코드를 삭제합니다.
+4. 수정 후의 전체 코드는 아래와 같을 것입니다.
++
+[source, java]
+----
+public class Box<T> {
+    private String name;
+    private T value;
+
+    public Box(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public void setValue(T value) {
+        this.value = value;
+    }
+
+    public T getValue() {
+        return this.value;
+    }
+}
+
+class BoxTest {
+    public static void main(String[] args) {
+        Box<Integer> box = new Box<Integer>("Celine");
+        box.setValue(1);
+
+        int result = box.getValue();
+        System.out.printf("%s has %s", box.getName(), result);
+    }
+}
+----
++
+5. 아래 명령을 수행하여 Box.java 파일을 컴파일합니다.
 +
 ----
 $ javac Box.java
 ----
 +
-3. 아래 명령을 수행하여 프로그램을 실행합니다.
+6. 아래 명령을 수행하여 프로그램을 실행합니다.
 +
 ----
 $ java BoxTest
@@ -259,10 +306,188 @@ Celine has 1
 이 연습에서는 타입 파라미터가 Integer로 설정된 Generic 클래스에 String 타입의 파라미터를 사용하면 컴파일 타임에 오류가 검출되는 것을 확인합니다. 아래 절차에 따릅니다.
 
 1. BoxTest 클래스의 main 메소드에서 box.serValue 메소드로 전달되는 파라미터를 1에서 "a bag"으로 변경합니다.
-2. 아래 명령을 실행하여 box.java 파일을 컴파일하고, 오류를 확인합니다.
+2. 아래 명령을 실행하여 box.java 파일을 컴파일하고, 오류를 확인합니다. +
+Generic 타입은 타입 변환과 관련된 오류를 컴파일 타임에 검출할 수 있도록 합니다.
 +
 ----
 $ javac Box.java
 Box.java:25: error: incompatible types: String cannot be converted to Integer
         box.setValue("a bag");
 ----
++
+3. BoxTest 클래스의 main 메소드에서 result 객체의 타입 파라미터를 String으로 변경합니다. 생성자에는 타입 파라미터를 명시하지 않습니다.
+4. result 변수의 타입을 String으로 변경합니다.
++
+[source, java]
+----
+public static void main(String[] args) {
+    Box<String> box = new Box<>("Celine");
+    box.setValue("a bag");
+
+    String result = box.getValue();
+    System.out.printf("%s has %s", box.getName(), result);
+}
+----
++
+5. 아래 명령을 수행하여 Box.java 파일을 컴파일합니다.
++
+----
+$ javac Box.java
+----
++
+6. 아래 명령을 수행하여 프로그램을 실행합니다.
++
+----
+$ java BoxTest
+Celine has a bag
+----
+
+== 연습 2 타입 제한
+
+Generis 타입에서 extends 키워드를 사용하면 타입 파라미터에 특정 클래스나 인터페이스를 상속받은 타입만 허용할 수 있습니다. 여기에서는 타입 파라미터에 extends 키워드를 사용하여 특정 클래스나 인터페이스의 서브 타입만 사용되도록 Generic 클래스를 작성합니다. 아래 절차에 따릅니다.
+
+=== 코드 확인
+
+여기에서는 Generic 클래스로 작성하기 전의 Box 클래스를 확인합니다. 아래 절차에 따릅니다.
+
+1. Visual Studio Code 탐색기에서 BoundedBox.java 파일을 열고 BoundedBox 클래스의 코드를 확인합니다. 코드는 아래와 같습니다.
++
+[source, java]
+----
+public class BoundedBox<T> {
+    String name;
+    T value;
+
+    BoundedBox(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return  this.name;
+    }
+
+    public void setValue(T value) {
+        this.value = value;
+    }
+
+    public T getValue() {
+        return  this.value;
+    }
+}
+----
++
+2. BoundBoxTest 클래스를 열고 코드를 확인합니다. 
+a. BoundBoxTest 클래스에는 application entry point가 선언되고 작성되어 있습니다.
+b. main 메소드에서 각각 Integer 타입과 String 타입을 타입 파라미터로 하는 box1, box2 타입 객체가 선언되어 있습니다.
+c. Integer 타입을 타입 파라미터로 사용하는 box1 객체의 value 변수에 1을 할당하는 코드가 작성되어 있습니다.
+d. String 타입을 타입 파라미터로 사용하는 box2 객체의 value 변수에 "Celine"을 할당하는 코드가 작성되어 있습니다.
+3. 코드는 아래와 같습니다.
++
+[source, java]
+----
+class BoundBoxTest {
+    public static void main(String[] args) {
+        BoundedBox<Integer> box1 = new BoundedBox<Integer>("box1");
+        BoundedBox<String> box2 = new BoundedBox<String>("box2");
+
+        box1.setValue(1);
+        box2.setValue("celine");
+
+        System.out.println("Box1 has " + box1.getValue());
+        System.out.println("Box2 has " + box2.getValue());
+    }
+}
+----
++
+4. 터미널에서 아래 명령을 실행하여 BoundedBox.java 파일을 컴파일합니다.
++
+----
+$ javac BoundedBox.java
+----
++
+5. 아래 명령을 실행하여 컴파일된 프로그램을 실행합니다.
++
+----
+$ java BoundedBoxTest
+Box1 has 1
+Box2 has celine
+----
+
+== BoundBox 클래스에 타입 제한 설정
+
+이 연습에서는 BoundedBox 클래스의 타입 파라미터를 Number의 서브 타입만 허용하도록 코드를 수정합니다. java.lang 패키지에서 제공되는 추상 클래스로, 알려진 서브 클래스는 다음과 같습니다:
+
+`AtomicInteger`, `AtomicLong`, `BigDecimal`, `BigInteger`, `Byte`, `Double`, `DoubleAccumulator`, `DoubleAdder`, `Float`, `Integer`, `Long`, `LongAccumulator`, `LongAdder`, `Short`
+
+아래 절차에 따릅니다.
+
+1. BoundedBox 클래스의 타입 파라미터에 extends 키워드를 사용해서 Number 클래스의 서브 타입으로 타입을 제한합니다.
++
+[source, java]
+----
+public class BoundedBox<T extends Number> {
+    ...
+}
+----
++
+2. 터미널에서 아래 명령을 실행하여 BoundedBox.java 파일을 컴파일합니다.
++
+----
+$ javac BoundedBox.java
+----
++
+3. 컴파일 오류를 확인합니다.
++
+----
+BoundedBox.java:25: error: type argument String is not within bounds of type-variable T
+        BoundedBox<String> box2 = new BoundedBox<String>("box2");
+                   ^
+  where T is a type-variable:
+    T extends Number declared in class BoundedBox
+BoundedBox.java:25: error: type argument String is not within bounds of type-variable T
+        BoundedBox<String> box2 = new BoundedBox<String>("box2");
+                                                 ^
+  where T is a type-variable:
+    T extends Number declared in class BoundedBox
+2 errors
+----
++
+4. box2 객체의 타입 파라미터를 Double로 수정하고, setValue 메소드의 파라미터를 2.0d 로 변경합니다.
+5. box1 객체와 box2 객체의 getValue 메소드를 호출하는 코드에서 intValue 메소드를 호출하고 결과를 정수형 변수에 할당하는 코드를 작성합니다.
+6. return 받은 값을 출력하도록 마지막 두 줄의 코드를 수정합니다.
+7. 수정된 코드는 아래와 유사할 것입니다.
++
+[source, java]
+----
+class BoundBoxTest {
+    public static void main(String[] args) {
+        BoundedBox<Integer> box1 = new BoundedBox<Integer>("box1");
+        BoundedBox<Double> box2 = new BoundedBox<Double>("box2");
+
+        box1.setValue(1);
+        box2.setValue(2.0d);
+
+        int valueFromBox1 = box1.getValue().intValue();
+        int valueFromBox2 = box2.getValue().intValue();
+
+        System.out.println("Box1 has " + valueFromBox1);
+        System.out.println("Box2 has " + valueFromBox2);
+    }
+}
+----
++
+8. 터미널에서 아래 명령을 실행하여 BoundedBox.java 파일을 컴파일합니다.
++
+----
+$ javac BoundedBox.java
+----
++
+9. 아래 명령을 실행하여 컴파일된 프로그램을 실행합니다.
++
+----
+$ java BoundedBoxTest
+Box1 has 1
+Box2 has 2
+----
+
+== 연습 3 다중 타입 파라미터

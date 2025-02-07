@@ -111,5 +111,7 @@ for (int i = 0, j = 0; ... ; i++, j++)
 ----
 for 문은 반복 횟수를 알고 있는 상황에 가장 적합합니다. 특히 배열의 각 요소를 수정하는데 특히 적합합니다.
 
+---
+
 link:./11_do.adoc[다음: do statement (do 문)] +
 link:./13_foreach.adoc[다음: foreach statement(foreach 문)]

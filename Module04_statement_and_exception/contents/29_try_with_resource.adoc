@@ -49,5 +49,7 @@ catch (ArithmeticException e) {
 
 `try-with-resource` 문에 사용될 수 있는 객체는 `AutoCloseable` 의 서브 타입이어야 합니다.
 
+---
+
 link:./28_finally.adoc[이전: finally statement (finally 문)] +
 link:./30_lab4-2.adoc[다음: Lab 4-2 예외 처리]

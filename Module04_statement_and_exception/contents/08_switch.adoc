@@ -91,8 +91,6 @@ switch(club) {
 }
 ----
 
-
-
 == switch 문에서 break 사용
 
 switch 문은 조건식을 먼저 계산한 다음, 그 결과와 일치하는 case 문으로 이동하여 이동한 case문 아래에 있는 문장들을 수행하며, break 문을 만나면 전체 switch문을 빠져나갑니다.
@@ -104,6 +102,8 @@ image:./images/image01.png[switdh, 300]
 break 절이 있는 switch 문은 아래와 같이 동작합니다.
  
 image:./images/image02.png[swith, 310]
+
+---
 
 link:./07_cascading_if.adoc[다음: Cascading if statement (Cascading if 문)] +
 link:./09_iteration.adoc[다음: Iteration Statement(반복 문)]

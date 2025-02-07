@@ -71,5 +71,7 @@ if (i < 1 || i >= 9) {
 scanner.close();
 ----
 
+---
+
 link:./10_while.adoc[이전: while statement (while 문)] +
 link:./12_for.adoc[다음: for statement (for 문)]

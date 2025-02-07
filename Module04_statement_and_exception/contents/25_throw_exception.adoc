@@ -4,10 +4,12 @@ Java에서는 프로그래머가 필요한 경우 예외를 발생시키고 적�
 
 == Table of Contents
 
-1.	throw 문
-2.	메소드에 예외 선언
-3.	finally절
-4.	try-with-resource문
+1. link:./26_throw.adoc[throw 문]
+2. link:./27_exception_method.adoc[메소드에 예외 선언]
+3. link:./28_finally.adoc[finally절]
+4. link:./29_try_with_resource.adoc[try-with-resource문]
+
+---
 
 link:./24_multiple_catch_block.adoc[이전: 다중 catch 블록] +
 link:./26_throw.adoc[다음: throw statement (throw 문)]

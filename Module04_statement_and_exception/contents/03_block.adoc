@@ -71,5 +71,7 @@ int i;
 
 문 블록의 어디에서나 변수를 선언할 수 있습니다. 변수는 블록을 선언할 때 블록의 상단에서 선언되는 것이 코드를 읽기 쉽게 합니다.
 
+---
+
 link:./02_statement_overview.adoc[이전: Statement(문) 개요] +
 link:./04_statement.adoc[다음: Statement(문)의 종류]

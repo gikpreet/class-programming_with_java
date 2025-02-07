@@ -4,10 +4,12 @@
 
 == Table of Contents
 
-1.	예외를 왜 사용해야 하는가?
-2.	예외 객체
-3.	try/catch 블록
-4.	다중 catch 블록
+1.	link:./21_why_exceptions.adoc[예외를 왜 사용해야 하는가?]
+2.	link:./22_exception_object.adoc[예외 객체]
+3.	link:./23_try_catch_block.adoc[try/catch 블록]
+4.	link:./24_multiple_catch_block.adoc[다중 catch 블록]
+
+---
 
 link:./19_lab4-1.adoc[이전: Lab 4-1: 연도 일자를 월/일로 계산] +
 link:./21_why_exceptions.adoc[다음: 예외를 왜 사용해야 하는가?]

@@ -4,10 +4,12 @@
 
 == Table of Contents
 
-1.	while statement (while 문)
-2.	do statement (do 문)
-3.	for statement (for 문)
-4.	foreach statement (foreach 문)
+1.	link:./10_while.adoc[while statement (while 문)]
+2.	link:./11_do.adoc[do statement (do 문)]
+3.	link:./12_for.adoc[for statement (for 문)]
+4.	link:./13_foreach.adoc[foreach statement (foreach 문)]
+
+---
 
 link:./08_switch.adoc[이전: switch statement (switch 문)] +
 link:./10_while.adoc[다음: while statement (while 문)]

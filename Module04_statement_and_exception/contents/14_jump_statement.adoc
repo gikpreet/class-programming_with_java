@@ -4,8 +4,10 @@
 
 == Table of Contents
 
-1.	goto문
-2.	break, continue문
+1.	link:./15_goto.adoc[goto문]
+2.	link:./16_break_continue.adoc[break, continue문]
+
+---
 
 link:./13_foreach.adoc[이전: foreach statement (foreach 문)] +
 link:./15_goto.adoc[다음: goto statement]

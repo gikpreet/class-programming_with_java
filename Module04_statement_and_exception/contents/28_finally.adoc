@@ -83,5 +83,7 @@ finally {
 }
 ----
 
+---
+
 link:./27_exception_method.adoc[이전: 메소드에 예외 선언] +
 link:./29_try_with_resource.adoc[다음: try-with-resource clause (try-with-resource 절)]

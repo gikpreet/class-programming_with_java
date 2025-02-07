@@ -59,5 +59,7 @@ while (true) {
 }
 ----
 
+---
+
 link:./15_goto.adoc[이전: goto statement (goto 문)] +
 link:./17_lab4-1.adoc[다음: Lab 4-1: 연도 일자를 월/일로 계산]

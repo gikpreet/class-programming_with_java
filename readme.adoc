@@ -8,4 +8,6 @@
 6. link:./Module06_array/contents/01_array.adoc[Module 06: 배열]
 7. link:./Module07_oop_basic/contents/01_OOP_basic.adoc[Module 07: 객체지향 프로그래밍 기본]
 8. link:./Module08_reference_type/contents/01_reference_type.adoc[Module 08: 참조 타입]
-9. link:./Module09_object_creation_deletion/contents/01_object_creation_destroy.adoc[Module 09: 객채 생성과 제거]
+9. link:./Module09_object_creation_deletion/contents/01_object_creation_destroy.adoc[Module 09: 객체 생성과 제거]
+10. link:./Module10_inheritance_in_java/contents/01_inheritance_in_java.adoc[Module 10: Java에서의 상속]
+11. link:./Module11_generics/contents/01_generics.adoc[Module 11: Generics]

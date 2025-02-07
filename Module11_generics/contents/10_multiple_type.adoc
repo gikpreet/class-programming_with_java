@@ -224,3 +224,4 @@ class Processor<T extends Number, U extends Comparable<U>> {
 ---
 
 link:./09_type_parameter.adoc[이전: 타입 파라미터 선언 및 사용] +
+link:./11_generic_class.adoc[다음: Generic 클래스 정의]

@@ -252,4 +252,4 @@ class MultiBound<T extends Number & Comparable<T>> {
 ---
 
 link:./08_syntax.adoc[이전: Generics 문법] +
-link:./10_multuple_type.adoc[다음: 다중 타입 파라미터]
+link:./10_multiple_type.adoc[다음: 다중 타입 파라미터]

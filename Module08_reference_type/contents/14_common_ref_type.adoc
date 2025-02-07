@@ -4,11 +4,13 @@ Java는 많은 참조 타입 클래스를 미리 만들어 가지고 있습니�
 
 == Table of Contents
 
-1.	Exception 클래스
-2.	String 클래스
-3.	String 클래스의 메소드, 연산자
-4.	String 비교
-5.	String 비교 연산자
+1. link:./15_exception_class.adoc[Exception 클래스]
+2. link:./16_string_class.adoc[String 클래스]
+3. link:./17_string_method_operator.adoc[String 클래스의 메소드, 연산자]
+4. link:./18_string_compariaion.adoc[String 비교]
+5. link:./19_string_compare_operator.adoc[String 비교 연산자]
+
+---
 
 link:./13_enum_constructor.adoc[이전: enum 생성자] +
 link:./15_exception_class.adoc[다음: exception 클래스]

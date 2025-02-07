@@ -61,5 +61,7 @@ Jason
 
 결과는 `account1` 변수를 변경한 값을 보여줍니다. `account1` 과 `account2` 두 변수는 같은 객체를 가리키고 있기 때문에, `account1` 을 통해 변경한 값은 `account2` 에도 당연히 영향을 미칩니다.
 
+---
+
 link:./06_comparision.adoc[이전: 값 타입의 비교와 참조 타입의 비교] +
 link:./08_ref_as_parameter.adoc[다음: 메소드 파라미터에 참조 타입 사용]

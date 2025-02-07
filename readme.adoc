@@ -7,3 +7,4 @@
 5. link:./Module05_method_parameter/contents/01_method_parameter.adoc[Module 05: 메소드와 파라미터]
 6. link:./Module06_array/contents/01_array.adoc[Module 06: 배열]
 7. link:./Module07_oop_basic/contents/01_OOP_basic.adoc[Module 07: 객체지향 프로그래밍 기본]
+8. link:./Module08_reference_type/contents/01_reference_type.adoc[Module 08: 참조 타입]

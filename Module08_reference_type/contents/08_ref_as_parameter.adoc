@@ -62,5 +62,7 @@ newAccount.ownerName = "James";
 BankAccount changedAccount = changeName(newAccount);
 ----
 
+---
+
 link:./07_same_ref.adoc[이전: 같은 객체에 대한 여러 변수의 참조] +
 link:./09_enum.adoc[다음: enum 타입]

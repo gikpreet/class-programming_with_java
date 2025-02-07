@@ -17,5 +17,7 @@ Exception 타입 객체만이 throw 문을 사용하여 예외로 던져질 수 
 * Exception 타입 +
 Exception은 프로그램의 일반적인 오류를 나타냅니다. Exception에서 파생된 특정한 상황에 대처할 수 있는 Exception 타입이 존재합니다. (예: ClassCastException)
 
+---
+
 link:./14_common_ref_type.adoc[이전: 공통 참조 타입] +
 link:./16_string_class.adoc[다음: String 클래스]

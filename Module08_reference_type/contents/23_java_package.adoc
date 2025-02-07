@@ -4,10 +4,13 @@ Java의 패키지는 비슷한 성격의 클래스들을 모아 놓은 디렉토
 
 == Table of Contents
 
-1.	java.lang 패키지
-2.	java.util 패키지
-3.	java.io 패키지
-4.	기타 유용한 패키지
+1. link:./24_overview_java_package.adoc[Java 패키지]
+2. link:./25_java_lang_package.adoc[java.lang 패키지]
+3. link:./26_java_util_package.adoc[java.util 패키지]
+4. link:./27_java_io_package.adoc[java.io 패키지]
+5. link:./28_other_package.adoc[기타 유용한 패키지]
+
+---
 
 link:./22_common_method.adoc[이전: 공통 메소드] +
 link:./24_overview_java_package.adoc[다음: Java 패키지 개요]

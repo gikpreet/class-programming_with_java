@@ -4,9 +4,11 @@
 
 == Table of Contents
 
-1.	enum 타입 선언
-2.	enum 값 비교
-3.	enum 타입 메소드
+1.	link:./10_declare_enum.adoc[enum 타입 선언]
+2.	link:./11_enum_value_compare.adoc[enum 값 비교]
+3.	link:./12_enum_method.adoc[enum 타입 메소드]
+
+---
 
 link:./08_ref_as_parameter.adoc[이전: 메소드 파라미터에 참조 타입 사용] +
 link:./10_declare_enum.adoc[다음: enum 타입 선언]

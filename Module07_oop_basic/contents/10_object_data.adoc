@@ -12,5 +12,7 @@ image:./images/image07.png[]
 
 객체 내의 데이터는 private으로 유지되며 객체의 메소드를 통해서만 액세스 할 수 있도록 하는 것이 좋습니다. 이 캡슐화는 객체가 효과적으로 추상화되어 동작한다는 것을 의미하기도 합니다.
 
+---
+
 link:./09_why_encapsulation.adoc[이전: 왜 캡슐화를 해야 하는가?] +
 link:./11_using_static_data.adoc[다음: 정적 데이터 사용]

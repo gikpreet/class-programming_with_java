@@ -12,5 +12,7 @@ image:./images/image10.png[]
 
 그림은 두 개의 병렬 클래스 계층 구조를 보여줍니다. 하나는 `Musician` 이며, 다른 하나는 `MusicalInstrument` 입니다. 클래스 계층 구조를 만드는 것은 쉽지 않습니다. 클래스는 기본 클래스로 설계되어야 합니다. 상속으로 만들 수 있는 클래스 계층구조는 프레임워크의 기초가 되는 기능이며, 이를 기반으로 확장할 수 있는 모델이 됩니다.
 
+---
+
 link:./21_inheritance.adoc[이전: 상속(Inheritance)] +
 link:./23_single_mult_inher.adoc[다음: 단일/다중 상속]

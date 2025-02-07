@@ -68,5 +68,7 @@ class BankAccount {
 
 만약 클래스 멤버를 선언할 때 접근 제한자를 쓰지 않으면 기본적으로 `default` 로 설정됩니다. `default` 는 가시성이 클래스로 제한되는 접근 제한자로, 같은 패키지 내에 있는 클래스에서는 액세스 할 수 있습니다. 이에 대해서는 이후에 다룹니다.
 
+---
+
 link:./13_helloworld.adoc[이전: Hello, World revisited] +
 link:./15_instance.adoc[다음: 새 객체 인스턴스화]

@@ -17,10 +17,8 @@
 2. link:./05_selection_statement.adoc[Selection Statement(선택문)]
 3. link:./09_iteration.adoc[Iteration Statement(반복문)]
 4. link:./14_jump_statement.adoc[Jump Statement(분기문)]
-5. link:./17_lab4-1.adoc[Lab 4-1: 연도 일자를 월/일로 계산하는 프로그램 작성]
-6. link:./20_exceptions.adoc[기본 예외 처리]
-7. link:./25_throw_exception.adoc[예외 발생시키기]
-8. link:./30_lab4-2.adoc[Lab 4-2: 예외 처리]
+5. link:./20_exceptions.adoc[기본 예외 처리]
+6. link:./25_throw_exception.adoc[예외 발생시키기]
 
 ---
 

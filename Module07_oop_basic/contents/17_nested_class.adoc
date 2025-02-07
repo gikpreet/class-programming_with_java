@@ -55,5 +55,7 @@ class Bank {
 * 추가적인 구조를 언어 문법으로 표현할 수 있습니다. `BankAccount` 보다는 `Bank.Account` 가 더 직관적입니다.
 * 전역 범위 또는 패키지에서 더 많은 이름을 제거할 수 있습니다.
 
+---
+
 link:./16_this.adoc[이전: this 키워드] +
 link:./18_access_nested_class.adoc[다음: 포함된 클래스에 접근]

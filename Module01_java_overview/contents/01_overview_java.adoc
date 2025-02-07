@@ -15,8 +15,6 @@
 1.	link:./02_introduction_java_platform.adoc[Java 소프트웨어 플랫폼 소개]
 2.	link:./06_java_virtual_machine.adoc[Java 가상 머신]
 3.	link:./11_history_java.adoc[Java의 역사]
-4.	link:./14_lab1-1.adoc[Lab 1-1: Java 실행 환경 구성]
-5.	link:./15_lab1-2.adoc[Lab 1-2: 개발 도구 구성]
 
 ---
 

@@ -15,7 +15,6 @@
 1. link:./02_overview_array.adoc[배열 개요]
 2. link:./09_array_creation.adoc[배열 생성]
 3. link:./16_using_array.adoc[배열 사용]
-4. link:./24_lab_6-1.adoc[Lab 6-1 : 배열의 생성과 사용]
 
 ---
 

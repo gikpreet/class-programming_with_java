@@ -27,5 +27,7 @@ class time {
 }
 ----
 
+---
+
 link:./10_object_data.adoc[이전: 객체 데이터] +
 link:./12_java_and_OOP.adoc[다음: Java와 객체지향]

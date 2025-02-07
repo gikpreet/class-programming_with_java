@@ -11,9 +11,11 @@ Java는 객체지향 언어입니다. Java 언어를 사용하면 추상화, 상
 
 == Table of Contents
 
-1.	클래스(class)와 객체(object)
-2.	캡슐화
-3.	Java와 객체지향
-4.	객체지향 시스템 정의
+1. link:./02_class_and_object.adoc[클래스(class)와 객체(object)]
+2. link:./06_encapsulation.adoc[캡슐화]
+3. link:./12_java_and_OOP.adoc[Java와 객체지향]
+4. link:./20_oo_system.adoc[객체지향 시스템 정의]
+
+---
 
 link:./02_class_and_object.adoc[다음: 클래스와 객체]

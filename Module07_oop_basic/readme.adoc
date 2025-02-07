@@ -1,6 +1,6 @@
 = 객체지향 프로그래밍 기본
 
-link:./contents/01_OOP_basoc.adoc[이전: 객체지향 프로그래밍 기본]
+link:./contents/01_OOP_basic.adoc[이전: 객체지향 프로그래밍 기본]
 
 * link:./contents/02_class_and_object.adoc[Chapter 1: 클래스(Class)와 객체(Object)]
 ** link:./contents/03_class.adoc[클래스(class)란?]
@@ -28,4 +28,4 @@ link:./contents/01_OOP_basoc.adoc[이전: 객체지향 프로그래밍 기본]
 ** link:./contents/25_abstract_class.adoc[추상 클래스(Abstract Class)]
 ** link:./contents/26_interface.adoc[인터페이스(Interace)]
 ** link:./contents/27_early_late_binding.adoc[이른/늦은 바인딩(Early/Late Binding)]
-** link:./contents/28_review.adoc[검토]
+* link:./contents/28_review.adoc[검토]

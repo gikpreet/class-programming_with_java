@@ -4,12 +4,13 @@
 
 == Table of Contents
 
-1.	데이터와 메소드의 결합
-2.	접근 가시성 제어
-3.	왜 캡슐화를 해야 하는가?
-4.	객체 데이터
-5.	정적 데이터 사용
-6.	정적 메소드 사용
+1. link:./07_data_method.adoc[데이터와 메소드의 결합]
+2. link:./08_visibility.adoc[접근 가시성 제어]
+3. link:./09_why_encapsulation.adoc[왜 캡슐화를 해야 하는가?]
+4. link:./10_object_data.adoc[객체 데이터]
+5. link:./11_using_static_data.adoc[정적 데이터 사용]
+
+---
 
 link:./05_abstraction.adoc[이전: 추상화(Abstraction)] +
 link:./07_data_method.adoc[다음: 데이터와 메소드의 결합]

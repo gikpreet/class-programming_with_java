@@ -12,5 +12,7 @@ image:./images/image13.png[]
 
 UML 디자인에서는 인스턴스화 될 수 없는 추상 클래스는 이름을 기울임체로 표시하거나 { abstract }를 사용해서 표시합니다. 추상 클래스가 아닌 일반 클래스는 « » 사이에 class 또는 concrete를 사용해서 인스턴스화 될 수 있는 클래스임을 표시합니다. 대부분의 객체지향 언어에는 인스턴스화 될 수 없는 클래스를 표시하는 문법이 있습니다. 
 
+---
+
 link:./24_polymorphism.adoc[이전: 다형성(Polymorphism] +
 link:./26_interface.adoc[다음: 인터페이스(Interace)]

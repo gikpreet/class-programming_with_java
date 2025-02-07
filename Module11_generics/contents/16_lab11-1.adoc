@@ -348,7 +348,7 @@ Generis 타입에서 extends 키워드를 사용하면 타입 파라미터에 �
 
 === 코드 확인
 
-여기에서는 Generic 클래스로 작성하기 전의 Box 클래스를 확인합니다. 아래 절차에 따릅니다.
+여기에서는 타입 제한이 있는 Generic 클래스로 작성하기 전의 BoundedBox 클래스를 확인합니다. 아래 절차에 따릅니다.
 
 1. Visual Studio Code 탐색기에서 BoundedBox.java 파일을 열고 BoundedBox 클래스의 코드를 확인합니다. 코드는 아래와 같습니다.
 +
@@ -491,3 +491,298 @@ Box2 has 2
 ----
 
 == 연습 3 다중 타입 파라미터
+
+Generic 타입은 하나 이상의 타입 파라미터를 사용하여 클래스를 구성할 수 있습니다. 이 연습에서는 여러개의 타입 파라미터를 사용하는 Generic 클래스를 작성합니다.
+
+=== 코드 확인
+
+여기에서는 다중 타입 Generic 클래스로 작성하기 전의 MultpeTypeBox 클래스를 확인합니다. 아래 절차에 따릅니다.
+
+1. Visual Studio Code 탐색기에서 MultpeTypeBox.java 파일을 열고 MultpeTypeBox 클래스의 코드를 확인합니다. 코드는 아래와 같습니다.
++
+[source, java]
+----
+public class MultpeTypeBox<T> {
+    String name;
+    T value;
+
+    public MultpeTypeBox(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public void setValue(T value) {
+        this.value = value;
+    }
+
+    public T getValue() {
+        return  this.value;
+    }
+}
+----
++
+2. MultpeTypeBoxTest 클래스를 열고 코드를 확인합니다. 
+a. Integer 타입 파리미터를 사용하는 MultpeTypeBox 타입의 box1 객체를 생성합니다.
+b. box1 객체의 생성자 파라미터로 box1을 할당합니다.
+c. box1 객체의 value 변수에 1을 할당하고 출력합니다.
+3. 코드는 아래와 같습니다.
++
+[source, java]
+----
+class MultpeTypeBoxTest {
+    public static void main(String[] args) {
+        MultpeTypeBox<Integer> box1 = new MultpeTypeBox<>("box1");
+
+        box1.setValue(1);
+        System.out.println(box1.getName() + " has " + box1.getValue());
+    }
+}
+----
+
+=== 다중 타입 Generic 클래스로 수정
+
+이 연습에서는 MultpeTypeBox 클래스를 두 개의 타입 파라미터를 가지는 다중 타입 클래스로 수정합니다. 아래 절차에 따릅니다.
+
+1. MultpeTypeBox 클래스의 타입 파라미터를 T, U 두 개로 수정합니다.
+2. MultpeTypeBox 클래스의 name 변수의 타입을 U로 변경합니다.
+3. MultpeTypeBox 클래스 생성자 파라미터를 U 타입으로 변경합니다.
+4. getName 메소드의 return 타입을 U 타입으로 변경합니다.
+5. 수정된 코드는 아래와 유사할 것입니다.
++
+[source, java]
+----
+public class MultpeTypeBox<T,U> {
+    U name;
+    T value;
+
+    public MultpeTypeBox(U name) {
+        this.name = name;
+    }
+
+    public U getName() {
+        return this.name;
+    }
+
+    public void setValue(T value) {
+        this.value = value;
+    }
+
+    public T getValue() {
+        return  this.value;
+    }
+}
+----
++
+6. MultpeTypeBoxTest 클래스의 main 메소드에서, box1 객체의 타입 파라미터를 Integer, String으로 변경합니다.
++
+[source, java]
+----
+public static void main(String[] args) {
+    MultpeTypeBox<Integer, String> box1 = new MultpeTypeBox<>("box1");
+
+    box1.setValue(1);
+    System.out.println(box1.getName() + " has " + box1.getValue());
+}
+----
++
+7. 아래 명령을 실행하여 MultpeTypeBox.java 파일을 컴파일합니다.
++
+----
+$ javac MultpeTypeBox.java
+----
++
+8. 아래 명령을 실행하여 컴파일된 프로그램을 실행합니다.
++
+----
+$ Java MultpeTypeBoxTest
+box1 has 1
+----
+
+=== 타입에 맞지 않는 데이터 사용
+
+여기에서는 객체 생성 시 주어진 타입 파라미터에 맞지 않는 파라미터 타입의 사용을 테스트합니다.
+
+1. MultpeTypeBoxTest 클래스의 main 메소드에서, box1 객체 생성자로 1.0을 전달하도록 코드를 수정합니다.
+2. 수정한 코드는 아래와 같을 것입니다.
++
+[source, java]
+----
+public static void main(String[] args) {
+    MultpeTypeBox<Integer, String> box1 = new MultpeTypeBox<>(1.0);
+
+    box1.setValue(1);
+    System.out.println(box1.getName() + " has " + box1.getValue());
+}
+----
++
+3. 아래 명령을 실행하여 MultpeTypeBox.java 파일을 컴파일합니다.
++
+----
+$ javac MultpeTypeBox.java
+----
++
+4. 오류를 확인합니다.
++
+----
+MultpeTypeBox.java:24: error: incompatible types: cannot infer type arguments for MultpeTypeBox<>
+        MultpeTypeBox<Integer, String> box1 = new MultpeTypeBox<>(1.0);
+                                                               ^
+    reason: inference variable U has incompatible bounds
+      equality constraints: String
+      lower bounds: Double
+  where U is a type-variable:
+    U extends Object declared in class MultpeTypeBox
+1 error
+----
+
+== 연습 4 Generic Method
+
+메소드에 타입 파라미터를 추가하여 다양한 데이터 타입을 처리할 수 있는 Generic 메소드를 작성할 수 있습니다. 이 연습에서는 다양한 종류의 데이터를 포함하는 배열을 정렬할 수 있는 Generic 메소드를 작성합니다.
+
+=== 코드 확인
+
+여기에서는 Generic 메소드로 작성하기 전의 bubbleSort 메소드를 확인합니다. 아래 절차에 따릅니다.
+
+1. Visual Studio Code 탐색기에서 GenericMethod.java 파일을 열고 GenericMethod 클래스의 코드를 확인합니다. 코드는 아래와 같습니다.
++
+[source, java]
+----
+public class GenericMethod {
+    public static void bubbleSort(Integer[] items) {
+        for(int i = items.length - 1; i > 0; i--) {
+            for(int j = 0 ; j < i ; j++) {
+                if (items[j] > items[j + 1]) {
+                    Integer item = items[j];
+                    items[j] = items[j + 1];
+                    items[j + 1] = item;
+                }
+            }
+        }
+    }
+}
+----
++
+2. 2. GenericMethodTest 클래스를 열고 코드를 확인합니다. 
+a. Integer 타입 배열 integerList가 선언되어 있습니다.
+b. String 타입 배열 stringList 선언되어 있습니다.
+c. GenericMethod.bubbleSort(integerList) 메소드를 호출하여 integerList 배열을 정렬합니다.
+3. 코드는 아래와 같습니다.
++
+[source, java]
+----
+class GenericMethodTest {
+    public static void main(String[] args) {
+        Integer[] integerList =  {1, 10, 7, 2, 5, 4, 9, 8, 3, 6};
+        String[] stringList =  {"Celine", "Jason", "Robert", "Adrian", "William"};
+
+        GenericMethod.bubbleSort(integerList);
+
+        for(int i: integerList) {
+            System.out.print(i + " ");
+        }
+    }
+}
+----
++
+4. 아래 명령을 실행하여 GenericMethod.java 파일을 컴파일합니다.
++
+----
+$ javac GenericMethod.java
+----
++
+5. 아래 명령을 실행하여 컴파일된 프로그램을 실행합니다.
++
+----
+$ java GenericMethodTest
+1 2 3 4 5 6 7 8 9 10
+----
+
+=== 파라미터와 맞지 않는 데이터 타입 배열 정렬
+
+여기에서는 String 타입 데이터가 포함된 데이터를 bubbleSort 메소드의 파라미터로 넘겨 정렬을 시도합니다. 아래 절차에 따릅니다.
+
+1. GenericMethodTest 클래스의 main 메소드에서, GenericMethod.bubbleSort 메소드의 파라미터로 stringList 배열을 지정합니다.
+2. 아래 명령을 실행하여 GenericMethod.java 파일을 컴파일합니다.
++
+----
+$ javac GenericMethod.java
+----
++
+3. 오류를 확인합니다.
++
+----
+javac GenericMethod.java
+GenericMethod.java:20: error: incompatible types: String[] cannot be converted to Integer[]
+        GenericMethod.bubbleSort(stringList);
+----
+
+=== GenericMethod 클래스의 bubbleSort 메소드를 Generic 메소드로 수정
+
+여기에서는 GenericMethod 클래스의 bubbleSort 메소드를 Generic 메소드로 수정합니다. 아래 절차에 따릅니다.
+
+1. GenericMethod 클래스의 bubbleSort 메소드를 T 타입을 타입 파라미터로 하는 Generic 메소드로 수정합니다. T 타입 파라미터는 Comparable 인터페이스의 서브 타입으로 제한합니다.
++
+[source, java]
+----
+public <T extends Comparable<T>> void bubbleSort(T[] items) {
+    ...
+}
+----
++
+2. bubbleSort 메소드의 if 절에서, 값의 비교를 compartTo 메소드를 사용하도록 변경합니다.
++
+[source, java]
+----
+if (items[j].compareTo(items[j + 1]) > 0) {
+    ...
+}
+----
++
+3. 수정된 bubbleSort 메소드의 코드는 아래와 유사할 것입니다.
++
+[source, java]
+----
+public static <T extends Comparable<T>> void bubbleSort(T[] items) {
+    for(int i = items.length - 1; i > 0; i--) {
+        for(int j = 0 ; j < i ; j++)  {
+            if (items[j].compareTo(items[j + 1]) > 0) {
+                T item = items[j];
+                items[j] = items[j + 1];
+                items[j + 1] = item;
+            }
+        }
+    }
+}
+----
++
+4. GenericMethodTest 클래스의 main 메소드에서, foreach 문을 stringList 배열을 대상으로 하도록 수정합니다.
++
+[source, java]
+----
+public static void main(String[] args) {
+    Integer[] integerList =  {1, 10, 7, 2, 5, 4, 9, 8, 3, 6};
+    String[] stringList =  {"Celine", "Jason", "Robert", "Adrian", "William"};
+
+    GenericMethod.bubbleSort(stringList);
+
+    for(String i: integerList) {
+        System.out.print(i + " ");
+    }
+}
+----
++
+5. 아래 명령을 실행하여 GenericMethod.java 파일을 컴파일합니다.
++
+----
+$ javac GenericMethod.java
+----
++
+6. 아래 명령을 실행하여 컴파일된 프로그램을 실행합니다.
++
+----
+$ java GenericMethodTest
+Adrian Celine Jason Robert William
+----

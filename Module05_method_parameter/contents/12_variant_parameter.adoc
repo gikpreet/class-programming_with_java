@@ -81,5 +81,7 @@ public static int sumOfParameters(int... values) {
 sumOfParameters(1,2,3,4,5);
 ----
 
+---
+
 link:./11_pass_by_value.adoc[이전: Pass by value] +
 link:./13_recursive.adoc[다음: 재귀 메소드 사용]

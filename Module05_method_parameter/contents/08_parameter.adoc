@@ -4,11 +4,13 @@
 
 == Table of Contents
 
-1.	파라미터 선언과 호출
-2.	파라미터 전달 메커니즘
-3.	Pass by Value
-4.	가변 길이 목록 파라미터 사용
-5.	재귀 메소드(Recursive Method) 사용
+1. link:./09_parameter_declaration.adoc[파라미터 선언과 호출]
+2. link:./10_parameter_passing.adoc[파라미터 전달 매커니즘]
+3. link:./11_pass_by_value.adoc[Pass by Value]
+4. link:./12_variant_parameter.adoc[가변 길이 목록 파라미터 사용]
+5. link:./13_recursive.adoc[재귀 메소드 사용]
+
+---
 
 link:./07_value_return.adoc[이전: 값 return] +
 link:./09_parameter_declaration.adoc[다음: 파라미터 선언과 호출]

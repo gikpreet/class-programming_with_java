@@ -94,5 +94,7 @@ public class Greetings {
 }
 ----
 
+---
+
 link:./16_method_signature.adoc[이전: 메소드 시그너처] +
 link:./18_lab_5-1.adoc[다음: Lab 5-1 메소드 생성과 사용]

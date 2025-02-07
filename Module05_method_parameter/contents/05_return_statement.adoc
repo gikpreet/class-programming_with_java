@@ -57,5 +57,7 @@ static void method1() {
 
 메소드가 `void` 가 아닌 다른 타입으로 정의된 경우 반환 메커니즘을 사용하여 호출자에게 값을 반환합니다.
 
+---
+
 link:./04_method_invocation[이전: 메소드 호출] +
 link:./06_local_variable.adoc[다음: 지역 변수]

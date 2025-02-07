@@ -31,5 +31,7 @@ static int factorial(int n) {
 
 재귀 메소드에는 추가 호출없이 return 하는 종료 조건이 있어야 합니다. factorial의 경우 n < 1이 종료 조건입니다.
 
+---
+
 link:./12_variant_parameter.adoc[이전: 가변 길이 목록 파라미터 사용] +
 link:./14_method_overloading.adoc[다음: 메소드 오버로딩]

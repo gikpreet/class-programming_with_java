@@ -97,5 +97,7 @@ public class Scope {
 }
 ----
 
+---
+
 link:./05_return_statement.adoc[이전: return statement] +
 link:./07_value_return.adoc[다음: 값 return]

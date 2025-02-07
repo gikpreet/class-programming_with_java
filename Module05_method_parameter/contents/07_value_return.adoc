@@ -59,5 +59,7 @@ public class Scope {
 
 `void` 가 아닌 형식으로 메소드를 선언하는 경우 반드시 return문을 선언하고 값을 반환해야 합니다. 컴파일러는 void가 아닌 모든 메소드가 값을 반환하는지 확인해야 합니다. 컴파일러는 void가 아닌 메소드가 값을 반환하지 않는 것을 감지하면 오류를 표시합니다.
 
+---
+
 link:./06_local_variable[이전: 지역 변수] +
 link:./08_parameter.adoc[다음: 파라미터]

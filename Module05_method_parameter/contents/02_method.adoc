@@ -6,11 +6,13 @@
 
 == Table of Contents
 
-1.	메소드 선언
-2.	메소드 호출
-3.	return 문
-4.	지역 변수
-5.	값 변환
+1. link:./03_method_declareation.adoc[메소드 선언]
+2. link:./04_method_invocation.adoc[메소드 호출]
+3. link:./05_return_statement.adoc[return statement]
+4. link:./06_local_variable.adoc[지역 변수]
+5. link:./07_value_return.adoc[값 return]
+
+---
 
 link:./01_method_parameter.adoc[이전: 메소드와 파라미터] +
 link:./03_method_declareation.adoc[다음: 메소드 선언]

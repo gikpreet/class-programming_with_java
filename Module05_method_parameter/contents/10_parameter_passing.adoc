@@ -123,5 +123,7 @@ process 함수에 할당된 Call Stack은 해제되고 할당되었던 모든 �
 
 Java는 &를 사용해서 주소 값을 전달하는 식의 Pass by Reference를 할 수 없습니다. Java에서 모든 값 타입 파라미터는 Pass by Value로 전달됩니다.
 
+---
+
 link:./09_parameter_declaration.adoc[이전: 파라미터 선언과 호출] +
 link:./11_pass_by_value.adoc[다음: Pass by Value]

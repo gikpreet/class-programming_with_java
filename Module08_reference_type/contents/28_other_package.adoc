@@ -26,5 +26,7 @@ TCP/IP 네트워크의 URL을 표현하고 다루는 클래스입니다.
 
 JavaFX는 Java 프로그래밍 언어로 데스크톱 응용 프로그램과 RIA(Rich Internet Application)를 개발하고 배포하기 위판 소프트웨어 플랫폼입니다 JavaFX는 Swing을 대체하기 위해 개발되었으며, Microsoft Windows, Linux, macOS에서 사용할 수 있습니다. JavaFX는 JDK에 포함되어 있지 않아 따로 설치해야 하며, javafx.* 패키지로 제공됩니다.
 
+---
+
 link:./27_java_io_package.adoc[이전: java.io 패키지] +
 link:./29_lab_8-1.adoc[다음: Lab 8-1 참조 타입 변수를 선언하고 사용]

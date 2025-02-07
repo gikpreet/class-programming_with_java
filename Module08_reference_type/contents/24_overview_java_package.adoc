@@ -51,5 +51,7 @@ String s1 = new String("Hello");
 java.lang.String s2 = new java.lang.String("Hello");
 ----
 
+--- 
+
 link:./23_java_package.adoc[이전: Java 패키지] +
 link:./25_java_lang_package.adoc[다음: java.lang 패키지]

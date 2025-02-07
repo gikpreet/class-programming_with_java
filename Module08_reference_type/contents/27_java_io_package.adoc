@@ -1,17 +1,19 @@
 = java.io 패키지
 
 * 파일이나 통신 등 정보의 입출력을 처리하는 클래스가 포함된 패키지
-** 파일 시스템의 파일 정보를 얻기 위한 File 클래스
-** 콘솔에서 문자를 입출력하기 위한 Console 클래스
-** InputStream, OutputStream 클래스 등 바이트 단위 입출력을 위한 스트림 추상 클래스
-** FileInputStream, FileOutputStream등 바이트 단위 입출력을 위한 스트림 클래스
-** Reader, Writer등 문자 단위 입출력을 위한 스트림 추상 클래스
-** FileReader, FileWriter 등 문자 단위 입출력을 위한 하위 스트림 클래스
+** 파일 시스템의 파일 정보를 얻기 위한 `File` 클래스
+** 콘솔에서 문자를 입출력하기 위한 `Console` 클래스
+** `InputStream`, `OutputStream` 클래스 등 바이트 단위 입출력을 위한 스트림 추상 클래스
+** `FileInputStream`, `FileOutputStream` 등 바이트 단위 입출력을 위한 스트림 클래스
+** `Reader`, `Writer` 등 문자 단위 입출력을 위한 스트림 추상 클래스
+** `FileReader`, `FileWriter` 등 문자 단위 입출력을 위한 하위 스트림 클래스
 ** 그 외 입출력을 위한 다양한 클래스 포함
 
 ---
 
 java.io 패키지는 파일이나 통신, 입 출력 등에 관련된 작업을 처리하는 클래스가 포함되어 있습니다. 
+
+---
 
 link:./26_java_util_package.adoc[이전: java.util 패키지] +
 link:./28_other_package.adoc[다음: 기타 유용한 패키지]

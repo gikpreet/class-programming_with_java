@@ -44,5 +44,7 @@ Hero h = new Hero();
 if (h instanceof IromMan)
 ----
 
+---
+
 link:./33_super_sub_casting.adoc[이전: 슈퍼 클래스/서브 클래스 변환] +
 link:./35_object_casting.adoc[다음: Object 타입 변환]

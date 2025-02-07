@@ -255,5 +255,7 @@ public class CopyFileLower {
 25.	Copy To에 yesterday_lower.txt를 입력합니다.
 26.	생성된 파일을 확인합니다.
 
+---
+
 link:./28_other_package.adoc[이전: 기타 유용한 패키지] +
 link:./30_type_casting.adoc[다음: 타입 변환]

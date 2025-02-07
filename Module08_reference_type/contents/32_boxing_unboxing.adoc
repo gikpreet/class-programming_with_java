@@ -29,5 +29,7 @@ Integer number = 1;
 int i = number;
 ----
 
+---
+
 link:./31_wrapper_class.adoc[이전: Wrapper 클래스] +
 link:./33_super_sub_casting.adoc[다음: 슈퍼클래스/서브클래스 변환]

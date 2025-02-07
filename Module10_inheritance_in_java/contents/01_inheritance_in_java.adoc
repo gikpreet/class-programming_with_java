@@ -16,9 +16,11 @@
 
 == Table of contents
 
-1.	서브 클래스 작성
-2.	메소드 구현
-3.	인터페이스
-4.	추상 클래스
+1.	link:./02_write_subclass.adoc[서브 클래스 작성]
+2.	link:./07_method_implementation.adoc[메소드 구현]
+3.	link:./12_interface.adoc[인터페이스]
+4.	link:./18_abstract_class.adoc[추상 클래스]
+
+---
 
 link:./02_write_subclass.adoc[다음: 서브 클래스 작성]

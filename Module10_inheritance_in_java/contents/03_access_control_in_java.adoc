@@ -43,5 +43,7 @@ image:./images/image04.png[width=500]
 |private|Y|N|N|N
 |===
 
+---
+
 link:./02_write_subclass.adoc[이전: 서브 클래스 작성] +
 link:./04_class_extension.adoc[다음: 클래스 확장]

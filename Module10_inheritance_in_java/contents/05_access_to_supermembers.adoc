@@ -53,5 +53,7 @@ class FurtherSubClass extends SubClass {
 }
 ----
 
+---
+
 link:./04_class_extension.adoc[이전: 클래스 확장] +
 link:./06_invoke_constructorofsuper.adoc[다음: 슈퍼 클래스 생성자 호출]

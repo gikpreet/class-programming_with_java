@@ -4,10 +4,12 @@
 
 == Table of Contents
 
-1.	가상 메소드(Virtual Method)
-2.	메소드 오버라이딩
-3.	final 메소드
-4.	final 클래스
+1. link:./08_virtual_method.adoc[가상 메소드(Virtual Method)]
+2. link:./09_method_overriding.adoc[메소드 오버라이딩]
+3. link:./10_final_method.adoc[final 메소드]
+4. link:./11_final_class.adoc[final 클래스]
+
+---
 
 link:./06_invoke_constructorofsuper.adoc[다음: 슈퍼 클래스 생성자 호출] +
 link:./08_virtual_method.adoc[다음: 가상 메소드(Virtal Method)]

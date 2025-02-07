@@ -4,9 +4,12 @@
 
 == Table of Contents
 
-1.	클래스 확장
-2.	슈퍼 클래스 멤버에 액세스
-3.	슈퍼 클래스 생성자 호출
+1. link:./03_access_control_in_java[Java에서의 접근 제어]
+2. link:./04_class_extension.adoc[클래스 확장]
+3. link:./05_access_to_supermembers.adoc[슈퍼 클래스 멤버에 액세스]
+4. link:./06_invoke_constructorofsuper.adoc[슈퍼 클래스 생성자 호출]
+
+---
 
 link:./01_inheritance_in_java.adoc[이전: Java에서의 상속] +
 link:./03_access_control_in_java.adoc[다음: Java에서의 접근 제어]

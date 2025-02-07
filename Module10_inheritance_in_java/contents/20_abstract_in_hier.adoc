@@ -56,5 +56,7 @@ class Tank extends Unit {
 }
 ----
 
+---
+
 link:./19_declare_abstract_class.adoc[이전: 추상 클래스 선언] +
 link:./21_abstract_in_hier2.adoc[다음: 클래스 계층 구조에서 추상 클래스 사용(2)]

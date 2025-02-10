@@ -12,7 +12,7 @@
 
 1. 웹 브라우저를 실행하여 아래 웹 페이지로 이동합니다.
 +
-https://github.com/gikpreet/class-programming_with_java/blob/master/Module%2011%20Generics/LabFile/Lab11-1.zip
+https://github.com/gikpreet/class-programming_with_java/blob/master/Module11_generics/LabFile/Lab11-1.zip
 +
 2. 오른쪽 위에서 RAW 파일 다운로드 링크를 클릭하여 Lab11-1.zip 파일을 다운로드합니다.
 3. 다운로드한 Lab11-1.zip 파일의 압축을 해제합니다.

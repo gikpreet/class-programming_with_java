@@ -6,12 +6,12 @@ Java에서, Generics를 사용하면 런타임에 발생할 수 있는 오류를
 
 == Table of Contents
 
-1. link:./17_type_check_compiletime.adoc[컴파일 타임 타입 체크]
-2. link:./18_avoiding_typecastring.adoc[타입 캐스팅 제거]
-3. link:./19_raw_type.adoc[Raw Type(비제네릭 타입)의 이해]
-4. link:./20_code_quality_improvement[타입 안정성과 코드 품질 향상]
+1. link:./18_type_check_compiletime.adoc[컴파일 타임 타입 체크]
+2. link:./19_avoiding_typecastring.adoc[타입 캐스팅 제거]
+3. link:./20_raw_type.adoc[Raw Type(비제네릭 타입)의 이해]
+4. link:./21_code_quality_improvement[타입 안정성과 코드 품질 향상]
 
 ---
 
-link:./15_multiple_bounds.adoc[이전: 다중 제한] +
-link:./17_type_check_compiletime.adoc[다음: 컴파일 타임 타입 체크]
+link:./16_lab11-1.adoc[이전: Lab 11-1 기본적인 Generics 사용] +
+link:./18_type_check_compiletime.adoc[다음: 컴파일 타임 타입 체크]

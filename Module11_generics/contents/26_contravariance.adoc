@@ -63,5 +63,5 @@ Integer num = list.get(0); // 컴파일 오류: 반환 타입이 정확히 Integ
 
 ---
 
-link:./23_covariance.adoc[이전: extends와 공변성] +
-link:./25_unlimited_wildcard.adoc[다음: 무제한 와일드카드]
+link:./25_covariance.adoc[이전: extends와 공변성] +
+link:./26_unlimited_wildcard.adoc[다음: 무제한 와일드카드]

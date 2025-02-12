@@ -196,5 +196,5 @@ Java Generics의 와일드카드는 타입 안전성과 유연성을 모두 제�
 
 ---
 
-link:./21_advanced_topic.adoc[이전: Generics 고급 주제] +
-link:./23_covariance.adoc[다음: extends와 공변성]
+link:./23_advanced_topic.adoc[이전: Generics 고급 주제] +
+link:./25_covariance.adoc[다음: extends와 공변성]

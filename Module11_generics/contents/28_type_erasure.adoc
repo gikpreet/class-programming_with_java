@@ -99,5 +99,5 @@ Java의 Generic 타입 소거는 Generic을 컴파일 타임에서만 유효하�
 
 ---
 
-link:./25_limited_wildcard.adoc[이전: 무제한 와일드카드] +
-link:./27_generics_compile.adoc[다음: 컴파일러가 Generics를 처리하는 방식]
+link:./28_limited_wildcard.adoc[이전: 무제한 와일드카드] +
+link:./29_generics_compile.adoc[다음: 컴파일러가 Generics를 처리하는 방식]

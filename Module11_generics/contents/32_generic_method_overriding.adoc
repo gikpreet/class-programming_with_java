@@ -124,4 +124,4 @@ public class Main {
 
 ---
 
-link:./29_generic_class_inheritance.adoc[이전: Generic 클래스 상속]
+link:./31_generic_class_inheritance.adoc[이전: Generic 클래스 상속]

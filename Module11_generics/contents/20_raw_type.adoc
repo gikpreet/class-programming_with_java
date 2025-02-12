@@ -33,5 +33,5 @@ Raw 타입에서는 컴파일러가 타입을 체크하지 않으므로, 잘못�
 
 ---
 
-link:./18_avoiding_typecastring.adoc[Generics에서 타입 캐스팅 제거] +
-link:./20_code_quality_improvement.adoc[]
+link:./19_avoiding_typecastring.adoc[이전: Generics에서 타입 캐스팅 제거] +
+link:./21_code_quality_improvement.adoc[다음: Generics와 코드 품질 향상]

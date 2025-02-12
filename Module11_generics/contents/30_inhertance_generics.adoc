@@ -224,4 +224,5 @@ class Child extends Parent<String> {
 
 ---
 
-link:./27_generics_complie.adoc[이전: 컴파일러가 Generics를 처리하는 방식] +
+link:./29_generics_compile.adoc[이전: 컴파일러가 Generics를 처리하는 방식] +
+link:./31_generic_class_inheritance.adoc[다음: Generic 클래스 상속]

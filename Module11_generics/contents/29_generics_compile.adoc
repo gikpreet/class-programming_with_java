@@ -154,5 +154,5 @@ System.out.println(list.getClass()); // class java.util.ArrayList
 
 ---
 
-link:./26_type_erasure.adoc[이전: 타입 소거] +
-link:./28_inhertance_generics.adoc[다음: Generics와 상속]
+link:./28_type_erasure.adoc[이전: 타입 소거] +
+link:./30_inhertance_generics.adoc[다음: Generics와 상속]

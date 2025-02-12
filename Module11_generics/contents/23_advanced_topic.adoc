@@ -4,17 +4,17 @@ Generics는 Java에서 타입 안정성과 코드 재사용성을 높이기 위�
 
 == Table of Contents
 
-1. link:./22_wild_card.adoc[와일드카드(?)]
-2. link:./23_covariance.adoc[? extends T와 공변성(Covariance)]
-3. link:./24_contravariance.adoc[? super T와 반공변성(Contravariance)]
-4. link:./25_unlimited_wildcard.adoc[무제한 와일드카드(?)]
-5. link:./26_type_erasure.adoc[Generics와 타입 소거(Type Erasure)]
-6. link:./27_generics_compile.adoc[컴파일러가 Generics를 처리하는 방식]
-7. link:./28_inhertance_generics.adic[상속과 Generics]
-8. link:./29_generic_class_inheritance.adoc.adoc[제네릭 클래스 상속]
-9. link:./30_generic_method_overriding.adoc[Generic 메소드 오버라이딩]
+1. link:./24_wild_card.adoc[와일드카드(?)]
+2. link:./25_covariance.adoc[? extends T와 공변성(Covariance)]
+3. link:./26_contravariance.adoc[? super T와 반공변성(Contravariance)]
+4. link:./27_unlimited_wildcard.adoc[무제한 와일드카드(?)]
+5. link:./28_type_erasure.adoc[Generics와 타입 소거(Type Erasure)]
+6. link:./29_generics_compile.adoc[컴파일러가 Generics를 처리하는 방식]
+7. link:./30_inhertance_generics.adic[상속과 Generics]
+8. link:./31_generic_class_inheritance.adoc.adoc[제네릭 클래스 상속]
+9. link:./32_generic_method_overriding.adoc[Generic 메소드 오버라이딩]
 
 ---
 
-link:./20_code_quality_improvement.adoc[이전: Generics와 코드 품질 향상] +
-link:./22_wild_card.adoc[다음: 와일드 카드]
+link:./22_lab11-2.adoc[이전: Lab 11-2 Generic Stack 작성] +
+link:./24_wild_card.adoc[다음: 와일드 카드]

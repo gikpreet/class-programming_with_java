@@ -14,6 +14,7 @@ Java Generics는 컴파일 시점에 타입을 지정할 수 있는 기능으로
 6. link:./13_bordered_type.adoc[제한된 타입 파라미터]
 7. link:./14_extends_keyword.adoc[extends 키워드]
 8. link:./15_multiple_bounds.adoc[다중 제한 (Multiple Bounds)]
+9. link:./16_lab11-1.adoc[Lab 11-1: 기본적인 Generics 사용]
 
 ---
 

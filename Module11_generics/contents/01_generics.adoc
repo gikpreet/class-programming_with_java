@@ -13,8 +13,8 @@
 
 1. link:./02_overview_generics.adoc[Generics 개요]
 2. link:./07_basic.adoc[Generics 기본]
-3. link:./16_type_safety.adoc[Generics와 타입 안정성]
-4. link:./21_advanced_topic.adoc[Generics 고급 주제]
+3. link:./17_type_safety.adoc[Generics와 타입 안정성]
+4. link:./23_advanced_topic.adoc[Generics 고급 주제]
 
 ---
 

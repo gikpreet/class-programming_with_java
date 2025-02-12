@@ -58,5 +58,5 @@ list.add(123); // 컴파일 에러: 타입 불일치
 
 ---
 
-link:./16_type_safety.adoc[이전: Generics와 타입 안정성] +
-link:./18_avoiding_typecastring.adoc[다음: Generics에서 타입 캐스팅 제거]
+link:./17_type_safety.adoc[이전: Generics와 타입 안정성] +
+link:./19_avoiding_typecastring.adoc[다음: Generics에서 타입 캐스팅 제거]

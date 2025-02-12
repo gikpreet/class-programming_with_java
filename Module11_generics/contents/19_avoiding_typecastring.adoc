@@ -109,5 +109,5 @@ public class Utility {
 
 ---
 
-link:./17_type_check_compiletime.adoc[이전: 컴파일 타임 타입 체크]
-link:./19_raw_type.adoc[Raw Type(비제네릭 타입)의 이해]
+link:./18_type_check_compiletime.adoc[이전: 컴파일 타임 타입 체크]
+link:./20_raw_type.adoc[Raw Type(비제네릭 타입)의 이해]

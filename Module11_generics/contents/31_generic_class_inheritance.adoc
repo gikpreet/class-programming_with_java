@@ -172,5 +172,5 @@ parent = new Parent<Object>("Hi");  // OK
 
 ---
 
-link:./28_inhertance_generics.adoc[이전: 상속과 Generics] +
-link:./30_generic_method_overrding.adoc[다음: Generic 메소드 오버라이딩]
+link:./30_inhertance_generics.adoc[이전: 상속과 Generics] +
+link:./32_generic_method_overriding.adoc[다음: Generic 메소드 오버라이딩]

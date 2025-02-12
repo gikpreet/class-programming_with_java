@@ -102,5 +102,5 @@ Generics는 안정성과 유연성을 모두 제공하여, 고품질 Java 코드
 
 ---
 
-link:./19_raw_type.adoc[이전: Raw Type(비제네릭 타입)의 이해] +
-link:./21_advanced_topic.adoc[다음: Generics 고급 주제]
+link:./20_raw_type.adoc[이전: Raw Type(비제네릭 타입)의 이해] +
+link:./22_lab11-2.adoc[다음: 연습 11-2 Generic Stack]

@@ -1,0 +1,13 @@
+= Chapter 2: Annotation Target
+
+Annotation은 기본적으로 선언에 적용될 수 있습니다. 클래스, 필드, 메소드 및 기타 프로그램 요소의 선언에 적용될 수 있으며, Java 8부터 일부 Annotation이 구현부에서 타입과 함께 사용될 수 있습니다. 이 단원에서는 Annotation의 Target에 대해 알아봅니다.
+
+== Table of Contents
+
+1. link:./08_decl.adoc[선언부 Annotation]
+2. link:./09_impl.adoc[구현부 Annotation]
+
+---
+
+link:./06_declare.adoc[이전: Annotation 선언] +
+link:./08_decl.adoc[다음: 선언부 Annotation]

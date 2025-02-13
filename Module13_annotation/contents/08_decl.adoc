@@ -1,0 +1,93 @@
+= 선언부 Annotation
+
+* 패키지
+* 클래스와 인터페이스
+* 메소드
+* 지역 변수
+* 예외 발생 가능 명시
+* 타입 파라미터
+
+---
+
+== 패키지(Packages)
+
+어노테이션은 패키지 선언 앞에 적용될 수 있습니다. 단, 패키지에 적용된 어노테이션은 소스 수준에서만 유지되므로 컴파일 과정에서 삭제되어 바이트코드에서는 확인할 수 없습니다.
+
+[source, java]
+----
+/**
+Package-level Javadoca
+*/
+@GPL(version="3")
+package com.horstmann.corejava;
+import org.gnu.GPL;
+----
+
+== 클래스(Class)
+
+클래스 선언에 적용할 수 있습니다. 하나 이상의 어노테이션이 올 수 있으며, 해당 클래스 전체에 영향을 미칩니다. 열거형(enum)도 동일하게 적용됩니다.
+
+[source, java]
+----
+@Documented
+@RetentionSource
+public class ClassA extends Base { ... }
+----
+
+== 인터페이스(Interface)
+
+인터페이스 선언 앞이나 선언하고자 하는 어노테이션 인터페이스 이름 앞에 적용할 수 있습니다. 어노테이션 인터페이스도 동일하게 적용됩니다
+
+[source, java]
+----
+@Retention(RetentionPolicy.SOURCE)
+@interface RetentionSource
+{
+   String value() default "RetentionPolicy.Source";
+}
+----
+
+== 메소드(Method)
+
+메소드 선언앞에 어노테이션을 선언하여 적용할 수 있습니다. 어노테이션의 적용 범위는 해당 메소드로 제한됩니다.
+
+[source, java]
+----
+@SuppressWarnings("deprecation")
+void useDeprecatedMethod() {
+    objectOne.deprecatedMethod();
+}
+----
+
+== 지역 변수(Local Variable)
+
+지역 변수에 어노테이션을 적용할 수 있으며, 어노테이션의 적용 범위는 해당 지역 변수로 제한됩니다.
+
+[source, java]
+----
+@SuppressWarnings("unchecked") List<User> users = ...;
+public User getUser(@Param("id") String userId)
+----
+
+== 예외 발생 가능 명시(throws) 
+
+예외 발생 가능 명시를 위한 어노테이션은 throws 키워드 뒤, 발생 가능한 예외 이름 앞에 위치합니다.
+
+[source, java]
+----
+void monitorTemperature() throws
+   @Critical TemperatureException { ... }
+----
+
+== 타입 파라미터(Type Parameter)
+
+타입 파라미터 타입 매개 변수를 위한 어노테이션은 타입 매개 변수 앞에 위치한다.
+
+[source, java]
+----
+public class Cache<@Immutable V> { . . . }
+----
+
+---
+
+link:./07_chapter2_target.adoc[이전: Annotation Target] +

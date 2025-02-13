@@ -1,0 +1,16 @@
+= Chapter 4: Meta Annotation
+
+Java에서 Annotation은 Class, Method, Instance등과 같은 프로그램 요소에 메타 데이터를 첨부하는데 사용됩니다. 일부 Annotation은 다른 Annotation에 주석을 다는데 사용됩니다. 이러한 유형의 Annotation을 Meta Annotation이라고 합니다. 이 단원에서는 주요 Meta Annotation에 대해 학습합니다.
+
+== Table of Contents
+
+1. link:./18_retention.adoc[@Retention]
+2. link:./19_documented.adoc[@Documented]
+3. link:./20_target.adoc[@Target]
+4. link:./21_inherited.adoc[@Inherited]
+5. link:./22_repeatable.adoc[@Repeatable]
+
+---
+
+link:./16_lab13-1.adoc[이전: Lab 13-1 Annotation 적용과 사용] +
+link:./18_retention.adoc[다음: @Retention]

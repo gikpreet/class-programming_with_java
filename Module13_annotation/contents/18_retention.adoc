@@ -1,0 +1,58 @@
+= @Retention
+* Java 컴파일러에게 해당 Annotation이 어느 시점까지 영향을 미치는지 알림
+* RetentionPolicy로 제한을 둠
+** SOURCE +
+소스 수준에서만 유효하며, 컴파일러에서 무시됨
+** CLASS +
+컴파일시에는 유효하지만, JVM에서는 무시됨
+** RUNTIME +
+런타임 환경에서 사용될 수 있도록 Reflection을 이용하여 JVM에서 유효함
+
+[source, java]
+----
+@Retention(RetentionPolicy.SOURCE)
+@interface RetentionSource
+{
+  String value() default "RetentionPolicy.Source";
+}
+----
+
+---
+
+@Retention은 일부 보존 정책과 함께 제공되는 메타 어노테이션입니다. 보존 정책은 어노테이션이 유지되는 기간, 즉 삭제 시점을 결정합니다. 보존 정책은 SOURCE, CLASS, RUNTIME 세 가지 중 하나를 지정할 수 있습니다.
+
+@Override, @SuppressWarning 어노테이션은 SOURCE 보존 정책에 해당합니다. 이런 종류의 어노테이션은 컴파일러 차원에서 유효합니다.
+
+[source, java]
+----
+@Retention(RetentionPolicy.SOURCE)
+@interface RetentionSource
+{
+    String value() default "RetentionPolicy.Source";
+}
+----
+
+CLASS 보존 정책은 컴파일러가 어노테이션의 정보를 클래스 파일에 지정하게는 하지만 클래스 파일이 JVM에 로딩될 때는 어노테이션 정보가 무시되어 실행시에는 어노테이션 정보를 얻을 수 없습니다.
+
+[source, java]
+----
+@Retention(RetentionPolicy.CLASS)
+@interface RetentionClass
+{
+    String value() default "RetentionPolicy.CLASS";
+}
+----
+
+RUNTIME 유지 정책은 실행시에 리플렉션을 이용하여 클래스 파일에 저장된 어노테이션의 정보를 읽어서 처리할 수 있도록 합니다. @FunctionalInterface 어노테이션은 유지 정책이 RUNTIME으로, 실행시에도 사용됩니다.
+
+[source, java]
+----
+@Retention(RetentionPolicy.RUNTIME)
+@interface RetentionRuntime
+{
+    String value() default "RetentionPolicy.RUNTIME";
+}
+----
+
+link:./17_meta_annotation.adoc[이전: Meta Annotation] +
+link:./19_documented.adoc[다음: @Documented]

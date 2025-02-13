@@ -1,0 +1,51 @@
+= 구현부 Annotation
+
+* 생성자
+* 타입 변환
+* instanceof
+* 배열
+
+---
+
+== 생성자
+
+인스턴스 생성자에 선언하여 객체 초기화를 어드바이스 할 수 있습니다.
+
+[source, java]
+----
+MyObject myObject= new @Interned MyObject();
+----
+
+== 타입 변환 
+
+타입 변환되는 변수 앞에 선언되어 타입 변환을 어드바이스 할 수 있습니다. 외부 도구를 위해 제공되며, 타입 변환 동작에는 영향을 주지 않습니다.
+
+[source, java]
+----
+myString = (@NonNull String)str;
+----
+
+== instanceof 
+
+instanceof 연산자에 제공되어 어드바이스 할 수 있으며, 외부 도구를 위해 제공되어 연산자에는 영향을 주지 않습니다.
+
+[source, java]
+----
+if (text instanceof @Localized String) {...}
+----
+
+== 배열 
+
+배열의 다양한 위치에서 제공되어 배열 생성과 사용을 어드바이스 할 수 있습니다.
+
+[source, java]
+----
+@NonNull String[][] words;	    // words[i][j]는 null이 아님
+String @NonNull [][] words;	    // words는 null이 아님
+String[] @NonNull [] words; 	// words[i]는 null이 아님
+----
+
+---
+
+link:./08_decl.adoc[이전: 선언부 Annotation] +
+link:./10_chapter3_standard.adoc[다음: 표준 Annotation]

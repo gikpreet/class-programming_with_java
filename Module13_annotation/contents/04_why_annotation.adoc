@@ -1,4 +1,9 @@
-== Annotation의 필요성과 활용 목적
+= Annotation의 필요성과 활용 목적
+
+* 코드의 가독성과 명확성 향상
+* 보일러플레이트 최소화 및 설정 간소화
+* 컴파일 타임 및 런타임 검증 지원
+* 프레임워크 및 라이브러리 통합을 쉽게 함
 
 ---
 
@@ -94,43 +99,55 @@ public class User {
 }
 ➡️ 목적: 보일러플레이트(반복) 코드 제거로 개발 생산성 향상
 
-2.3 런타임 처리 및 동적 동작 제어 (Runtime Processing)
+=== 런타임 처리 및 동적 동작 제어 (Runtime Processing)
+
 어노테이션은 리플렉션(reflection) 기술과 함께 사용되어 런타임에서 동적으로 처리됩니다.
 
-스프링에서는 @Autowired로 의존성 주입(Dependency Injection)을 수행.
-JUnit의 @Test 어노테이션은 테스트 메서드로 인식하여 자동 실행합니다.
-java
-복사
-편집
+스프링에서는 @Autowired로 의존성 주입(Dependency Injection)을 수행하며ㅡ JUnit의 @Test 어노테이션은 테스트 메서드로 인식하여 자동 실행합니다.
+
+[source, java]
+----
 @Test
 public void testAddition() {
     assertEquals(4, 2 + 2);
 }
+----
+
 ➡️ 목적: 런타임 동작 제어 및 자동화된 테스트 환경 구축
 
-2.4 API 문서화 (Documentation)
+=== API 문서화 (Documentation)
+
 @Documented 어노테이션은 API 문서(Javadoc)에 어노테이션 정보를 포함시킵니다.
 
 라이브러리 개발 시, 외부 개발자들이 API를 쉽게 이해할 수 있도록 도와줍니다.
-java
-복사
-편집
+
+[souece, java]
+----
 @Documented
 public @interface MyAnnotation {
     String value();
 }
+----
+
 ➡️ 목적: 코드 문서화를 통해 협업 효율성 및 API 가독성 향상
 
-2.5 보안 및 유효성 검증 (Security & Validation)
+=== 보안 및 유효성 검증 (Security & Validation)
+
 어노테이션은 보안 및 데이터 검증을 위한 도구로도 활용됩니다.
 
-Bean Validation(@NotNull, @Size)을 통해 데이터 유효성 검증
-스프링 시큐리티의 @Secured로 접근 제어 관리
-java
-복사
-편집
+Bean Validation(@NotNull, @Size)을 통해 데이터 유효성 검증, 스프링 시큐리티의 @Secured로 접근 제어 관리
+
+[source, java]
+----
 @Secured("ROLE_ADMIN")
 public void deleteUser(Long id) {
     // 관리자만 접근 가능
 }
+----
+
 ➡️ 목적: 보안 강화 및 데이터 무결성 유지
+
+---
+
+link:./03_whatis_annotation.adoc[이전: Annotation 개요] +
+link:./05_aop_annotation.adoc[다음: AOP와 Annotation]

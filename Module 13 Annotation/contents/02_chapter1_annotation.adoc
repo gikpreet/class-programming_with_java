@@ -1,7 +1,0 @@
-= Chapter 1: Annotation 기초
-
-== Table of Contents
-
-1. Annotation이란 무엇인가?
-2. Annotation의 필요성과 활용 목적
-3. 기본 Annotation

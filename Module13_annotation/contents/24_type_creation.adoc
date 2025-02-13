@@ -1,0 +1,77 @@
+= Annotation 타입 생성
+
+* 인터페이스 선언과 동일한 방법으로 선언
+** 필드를 파라미터 없는 메소드로 선언
+** default 키워드를 사용하여 기본 값 할당
+
+[source, java]
+----
+<Access Modifier> @interface <Type name> {
+    <Field Type> <Field Name>() [default <default value>];
+}
+----
+* Reflection을 이용해 접근
+
+---
+
+Annotation 타입을 생성하는 것은 인터페이스를 선언하는 방식과 동일합니다. @Interface 키워드를 사용하고 필드는 파라미터 없는 메소드로 선언됩니다. 필드에 기본 값을 할당하려면 default 키워드를 사용합니다.
+
+[source, java]
+----
+<Access Modifier> @Interface <Type Name> {
+    <Field Type> <FieldName>() [default <default value>];
+}
+----
+
+== Type Name
+
+일반적인 인터페이스의 이름을 지정하는 방법과 동일합니다.
+
+== Field Type 
+
+어노테이션을 구성하는 요소들의 타입으로 아래의 타입에서 선택 가능합니다.
+
+* 기본 데이터 타입(Primitive Data Type)
+* String
+* Class (Class <? extends MyClass>와 같은 선택적 타입 파라미터 사용)
+* Enum 타입
+* Annotation 타입
+* 위 타입들의 배열
+
+== Field Name 
+
+어노테이션을 구성하는 요소들의 이름입니다.
+
+== default value 
+
+어노테이션 구성요소들의 기본 값으로 Annotation 적용시 해당 요소에 대한 값이 주어지지 않을 때 사용합니다.
+
+== 예제 
+
+클래스의 정보를 Annotation으로 제공하기 위한 사용자 정보를 아래와 같이 구성할 수 있습니다. 아래의 DeviceAnnotation은 타입에만 적용할 수 있으며, 런타임 정보로 사용될 수 있고 해당 Annotation이 적용된 타겟 타입에서 파생된 하위 클래스에도 상속 됩니다.
+
+[source, java]
+----
+import java.lang.annotation.*;
+
+@Target({ElementType.TYPE})
+@Retention(RetentionPolicy.RUNTIME)
+@Inherited
+public @interface DeviceInformation {
+    boolean communicationSupport() default false;
+    String communicationInterface() default "None";
+    boolean batterySupport() default false;
+}
+----
+
+생성한 사용자 정의 Annotation은 아래와 같이 타입에 적용할 수 있습니다.
+
+[source, java]
+----
+@DeviceInformation({communication=”true”, communicationInterface=”5G”, 
+batterySupport=”true”})
+public class CellPhone { … }
+----
+
+link:./23_chapter5_define_type.adoc[이전: Chapter 5: Annotation 타입 정의] +
+link:./25_lab13-2.adoc[다음: Lab 13-2 사용자 정의 Annotation 타입 정의]

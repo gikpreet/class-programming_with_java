@@ -1,0 +1,57 @@
+= @Deprecated
+
+* 더 이상 지원되지 않거나 내포된 문제가 있을 수 있으므로 사용하지 않을 것을 권장
+* @Deprecated 명시와 상관없이 사용은 가능
+* 명시된 선언부 사용시 컴파일러에서 경고 생성
+* 경고에 대해 알고 있을 경우, @SupressWarning Annotation 사용
+* @Deprecated 표시된 요소는 Javadoc 태그 @Depececated를 이용해 사용하지 않도록 표시하는 것을 권장
+
+---
+
+Java는 버전이 올라감에 따라 일관성을 위해 메소드 이름이 바뀌고 새롭고 더 다은 클래스와 메소드가 추가되며 필드가 변경됩니다. 이런 변경은 발전된 기능을 제공하여 프로그래밍을 도와주고 일관된 방법을 사용할 수 있게 해 주지만, 이런 변화는 문제를 야기할 수 있습니다.
+
+== 사용 중단
+
+API를 설계할 때 이전 API를 대체하는지 여부를 신속하게 고려해야 합니다. 일반적으로 아래와 같은 경우 API를 대체합니다.
+
+* 안전하지 않거나 매우 비효율적
+* 다음 릴리스에서 사라질 예정
+* 나쁜 코딩 관행 조장
+
+사용 중단은 “이전 버전과의 호환성”은 유지하면서 개발자가 새 API로 변경하도록 권장하기 때문에 매우 중요합니다. 또한 사용 중단에 대한 설명은 개발자가 새 API로 이동할 시기를 결정하는데 도움이 되므로 사용 중단에 대한 기술적인 이유를 설명해야 합니다.
+
+== 사용 중단 통지 방법
+
+Java는 API가 불가피하게 변경되므로 변경되거나 삭제된 API에 대한 사용 중단을 표현하는 두 가지 방법을 제공합니다.
+
+* 주석 사용 및 Javadoc 태그
+* @Deprecated 어노테이션 사용
+
+== Javadoc 태그 사용
+
+javadoc에서 더 이상 사용되지 않는 프로그램 요소를 표시할 때 @deprecated 태그를 사용합니다. @deprecated 태그 뒤에는 공백이나 개행 문자가 와야 하고, 태그 다음 단락에서 항목이 더 이상 사용되지 않는 이유를 설명하고 대신 사용할 항목을 제안합니다.
+
+[source, java]
+----
+/**
+ * @deprecated  As of release 1.3, replaced by {@link #getPreferredSize()}
+ */
+@Deprecated public Dimension preferredSize() {
+return getPreferredSize();
+}
+----
+
+@Deprecated 어노테이션 적용 클래스, 메소드 또는 필드 선언 앞에 “@Deprecated”를 명시합니다. 컴파일러는 더 이상 사용하지 않을 것을 Warning 레벨로 경고합니다.
+
+[source, java]
+----
+@Deprecated 
+public synchronized void delItems(int start, int end) {
+...
+}
+----
+
+---
+
+link:./10_chapter3_standard.adoc[이전: 표준 Annotation] +
+link:./12_override.adoc[다음: @Override]

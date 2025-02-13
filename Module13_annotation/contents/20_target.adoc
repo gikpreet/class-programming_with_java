@@ -1,0 +1,39 @@
+= @Target
+
+* 해당 사용자 정의 Annotation이 적용될 수 있는 대상을 지정
+* 메소드, 생성자, 필드, 지역 변수 등 Annotation이 지정될 대상 지정
+* 적용 대상은 ElementType에 정의됨
+
+[soyrce, java]
+----
+@Target(ElementType.METHOD)
+@interface CustomAnnotation {
+   String value();
+}
+----
+
+---
+
+@Target 어노테이션은 사용자 정의 애노테이션이 적용될 수 있는 대상을 지정합니다. 대상은 메소드, 생성자, 필드, 지역 변수 등이 될 수 있으며, 대상은 ElementType에 정의되어 있습니다.
+
+[%header, cols="1,3"]
+|===
+|대상|	설명
+|ANNOTATION_TYPE|	어노테이션 타입
+|CONSTRUCTOR|	생성자
+|FIELD|	필드
+|LOCAL_VARIABLE|	지역 변수
+|METHOD|	메소드
+|PACKAGE|	패키지
+|PARAMETER|	파라미터
+|TYPE|	클래스, 인터페이스, Enum 타입
+|===
+@Target 어노테이션은 하나 이상의 대상을 지정할 수 있습니다.
+
+[source, java]
+----
+@Target({ElementType.METHOD, ElementType.FIELD, ...})
+----
+
+link:./19_documented.adoc[이전: @Documented] +
+link:./21_inherited.adoc[다음: @Inherited]

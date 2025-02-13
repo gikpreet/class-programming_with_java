@@ -2,17 +2,21 @@
 
 이 연습에서는 사용자 정의 Annotation을 생성하고, Meta Annotation을 사용하여 Annotation에 Annotation을 적용합니다.
 
-== 연습 1: 사용자 정의 Annotation 생성
-
 이 연습에서는 디바이스, 게이트웨이, 노드를 가지고 상속 관계를 가지는 사용자 정의 Annotation을 생성합니다.
 
-=== 디바이스 클래스 확인
+== 실습 환경 준비
 
-1. Labs 폴더의 Lab13-2/Starter/Exercise1 디렉토리에서 내용을 확인합니다.
-2. Labs13-2/Starter/Exercise1 디렉토리를 Visual Studio Code에서 엽니다.
-3. 작성자 신뢰 경고 창에서, 예, 작성자를 신뢰합니다. 버튼을 클릭합니다.
-4. Visual Studio Code에서 Device.java 파일을 엽니다.
-5. Device 클래스의 getDeviceInformation 메소드를 확인합니다. 
+1. 웹 브라우저에서 아래 주소로 이동합니다.
++
+https://github.com/gikpreet/class-programming_with_java/blob/master/Module13_annotation/LabFile/Lab13-2.zip
++
+2. Lab13-2.zip 파일의 압축을 해제합니다.
+3. Starter 폴더를 Visual Studio Code에서 엽니다.
+
+== 디바이스 클래스 확인
+
+1. Visual Studio Code 탐색기에서 Device.java 파일을 엽니다.
+2. Device 클래스의 getDeviceInformation 메소드를 확인합니다. 
 a. getDeviceInformation 메소드는 Reflection을 이용해 클래스의 Annotation 정보를 가져옵니다.
 +
 [source, java]

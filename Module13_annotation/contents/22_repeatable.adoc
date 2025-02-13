@@ -47,5 +47,7 @@ public class RepeatableAnnotationTest { }
 }
 ----
 
+---
+
 link:./21_inherited.adoc[이전: @Inherited] +
-link:./23_define_type.adoc[다음: Annotation 타입 정의]
+link:./23_chapter5_define_type.adoc[다음: Annotation 타입 정의]

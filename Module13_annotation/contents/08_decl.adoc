@@ -91,3 +91,4 @@ public class Cache<@Immutable V> { . . . }
 ---
 
 link:./07_chapter2_target.adoc[이전: Annotation Target] +
+link:./09_impl.adoc[다음: 구현부 Annotation]

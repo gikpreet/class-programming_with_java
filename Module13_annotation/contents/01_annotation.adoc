@@ -14,7 +14,7 @@
 2. link:./07_chapter2_target.adoc[Annotation Target]
 3. link:./10_chapter3_standard.adoc[표준 Annotation]
 4. link:./17_chapter4_meta_annotation.adoc[Meda Annotation]
-5. Annotation과 Reflection
+5. link:./23_chapter5_define_type.adoc[사용자 정의 Annotation 타입 정의]
 
 ---
 

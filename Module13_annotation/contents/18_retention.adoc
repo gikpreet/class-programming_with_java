@@ -1,4 +1,5 @@
 = @Retention
+
 * Java 컴파일러에게 해당 Annotation이 어느 시점까지 영향을 미치는지 알림
 * RetentionPolicy로 제한을 둠
 ** SOURCE +
@@ -53,6 +54,8 @@ RUNTIME 유지 정책은 실행시에 리플렉션을 이용하여 클래스 파
     String value() default "RetentionPolicy.RUNTIME";
 }
 ----
+
+---
 
 link:./17_meta_annotation.adoc[이전: Meta Annotation] +
 link:./19_documented.adoc[다음: @Documented]

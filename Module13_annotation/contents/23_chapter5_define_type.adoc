@@ -1,4 +1,4 @@
-= Chapter 5: Annotation 타입 정의
+= Chapter 5: 사용자 정의 Annotation 타입 정의
 
 Java는 사용자의 프로그램에 필요한 사용자 정의 Annotation을 만들 수 있도록 제공합니다. 이 단원에서는 사용자 정의 Annotation을 정의하는 방법에 대해 알아봅니다.
 

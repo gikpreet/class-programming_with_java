@@ -63,3 +63,4 @@ public class CustomerList() { ... }
 ---
 
 link:./05_aop_annotation.adoc[이전: AOP와 Annotation] +
+link:./07_chapter2_target.adoc[다음: Chapter 2: Annotation Target]

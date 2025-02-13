@@ -35,5 +35,7 @@
 @Target({ElementType.METHOD, ElementType.FIELD, ...})
 ----
 
+---
+
 link:./19_documented.adoc[이전: @Documented] +
 link:./21_inherited.adoc[다음: @Inherited]

@@ -73,5 +73,7 @@ batterySupport=”true”})
 public class CellPhone { … }
 ----
 
+---
+
 link:./23_chapter5_define_type.adoc[이전: Chapter 5: Annotation 타입 정의] +
 link:./25_lab13-2.adoc[다음: Lab 13-2 사용자 정의 Annotation 타입 정의]

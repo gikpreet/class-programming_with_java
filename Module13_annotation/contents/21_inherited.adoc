@@ -1,4 +1,5 @@
 = @Inherited
+
 * Annotation이 서브 클래스에 상속되도록 함
 * @Inherited Annotation이 적용된 클래스의 서브 클래스는 Annotation을 명시하지 않아도 적용된 것과 같이 인식됨
 * 클래스 정의에서만 사용
@@ -30,5 +31,7 @@ class BaseClass {}
 class DerivedClass extends BaseClass {} // @CustomAnnotation 어노테이션이 적용됨
 ----
 
+---
+
 link:./20_target.adoc[이전: @Target] +
-link:./21_repeatable.adoc[다음: @Repeatable]
+link:./22_repeatable.adoc[다음: @Repeatable]

@@ -35,5 +35,7 @@ colors.forEach(color->{
 });
 ----
 
+---
+
 link:./32_readonly_collection.adoc[이전: 읽기 전용 Collection] +
 link:./34_review.adoc[다음: 검토]

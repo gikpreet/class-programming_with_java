@@ -32,5 +32,7 @@ catch (UnsupportedOperationException e){
 }
 ----
 
+---
+
 link:./31_collections_concurrency_control.adoc[이전: Collections 동시성 처리] +
 link:./33_checked_collection.adoc[다음: Checked Collection]

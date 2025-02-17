@@ -16,4 +16,6 @@
 3. Iterable 인터페이스와 Iterator 인터페이스의 메소드를 기술하세요.
 4. ArrayList와 Vector의 차이점에 대해 설명하세요
 
+---
+
 link:./33_checked_collection.adoc[이전: Checked Collection]

@@ -18,5 +18,7 @@ Collection Framework의 Vector와 Hashtable 객체에는 멀티스레드 환경�
 
 ArrayList, HashMap등 동시성 처리가 되어 있지 않은 객체에 동시성 처리가 필요할 때, Collections 클래스의 synchronizeList, SynchronizedSet, SynchronizedMap등의 동시성 지원 메소드를 사용할 수 있습니다.
 
+---
+
 link:./30_collections_overview.adoc[이전: Collections 클래스 개요] +
 link:./32_readonly_collection.adoc[다음: 읽기 전용 Collection]

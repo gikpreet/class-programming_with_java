@@ -81,5 +81,7 @@ Collections.reverse(numbers);
 Collections.shuffle(numbers);
 ----
 
+---
+
 link:./29_collections_class.adoc[이전: Collections 클래스] +
 link:./31_collections_concurrency_control.adoc[다음: Collections 클래스 동시성 처리]

@@ -39,5 +39,7 @@ ListIterator<E> listIterator(int index)|Interator를 확장한 ListIterator를 �
 |static <E> List<E> of(E e1)|e1 <-- list 를 수정 불가능한 list (ImmutableCollections) 반환 합니다. java 9에서 추가되었습니다.
 |===
 
+---
+
 link:./13_list.adoc[이전: List] +
 link:./15_arraylist.adoc[다음: ArrayList]

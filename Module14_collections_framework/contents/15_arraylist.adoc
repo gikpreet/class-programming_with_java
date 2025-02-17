@@ -73,6 +73,8 @@ list.remove("white");
 list.contains("green")
 ----
 
+---
+
 link:./14_list_interface.adoc[이전: List 인터페이스] +
 link:./16_linkedlist.adoc[다음: LinkedList]
 

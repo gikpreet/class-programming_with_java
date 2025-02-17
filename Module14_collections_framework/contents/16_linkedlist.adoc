@@ -87,6 +87,8 @@ while(iterator.hasNext()) {
 }
 ----
 
+---
+
 link:./15_arraylist.adoc[이전: ArrayList] +
 link:./17_queue_interface.adoc[다음: Queue 인터페이스]
 

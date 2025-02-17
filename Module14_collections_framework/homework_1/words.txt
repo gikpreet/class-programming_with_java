@@ -1,18 +1,18 @@
-1. cultures s문화, 교양
-2. experience   경험, 경험하다
-3. education    교육
-4. symbol   상징
-5. effect   결과, 영향, 효과
-6. liberty  자유
-7. affair   사건, 일
-8. comfort  안락, 위안
-9. tradition 	전통
-10. subject 	학과, 주제, 주어
-11. object 	물건, 목적, 반대하다
-12. source 	출처, 근원
-13. revolution 	혁명
-14. pollution 	오염
-15. system 	체계, 조직, 제도s
+1. cultures	문화, 교양
+2. experience	경험, 경험하다
+3. education	교육
+4. symbol	상징
+5. effect	결과, 영향, 효과
+6. liberty	자유
+7. affair	사건, 일
+8. comfort	안락, 위안
+9. tradition	전통
+10. subject	학과, 주제, 주어
+11. object	물건, 목적, 반대하다
+12. source	출처, 근원
+13. revolution	혁명
+14. pollution	오염
+15. system	체계, 조직, 제도s
 16. triumph 	승리
 17. respect 	존경, 존경하다
 18. communication 의사소통, 전달

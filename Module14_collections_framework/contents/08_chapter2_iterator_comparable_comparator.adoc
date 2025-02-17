@@ -8,5 +8,7 @@ Iterator는 사전적 의미로는 반복자를 의미하며, 데이터가 집�
 * Comparable
 * Comparator
 
+---
+
 link:./07_collection_interface_methods.adoc[이전: Collection 인터페이스 메소드] +
 link:./09_iterable_iterator.adoc[다음: Iterable과 Iterator]

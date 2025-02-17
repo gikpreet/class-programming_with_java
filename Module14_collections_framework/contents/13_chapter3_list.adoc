@@ -10,6 +10,8 @@ List는 요소(Element)간의 순서가 있고, 크기가 가변적인 자료구
 5. Vector
 6. Stack
 
+---
+
 link:./12_lab14-1.adoc[이전: Lab 14-1 Collection 인터페이스를 구현하는 클래스 구현] +
 link:./14_list_interface.adoc[다음: List 인터페이스]
 

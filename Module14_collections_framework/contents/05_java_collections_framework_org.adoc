@@ -33,5 +33,7 @@ ArrayList 클래스의 인스턴스는 아래와 같은 방법으로 생성할 �
 AbstractList<String> list = new ArrayList<>();
 ----
 
+---
+
 link:./04_collection_stored_structure.adoc[이전: Collection 클래스의 저장 구조] +
 link:./06_collection_interface.adoc[다음: Collection 인터페이스]

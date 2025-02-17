@@ -40,5 +40,7 @@ myList.add(1);
 System.out.println(myList.isEmpty());
 ----
 
+---
+
 link:./02_introduction_collection.adoc[이전: Collection 개요] +
 link:./04_collection_stored_structure.adoc[다음: Collection 클래스의 저장 구조]

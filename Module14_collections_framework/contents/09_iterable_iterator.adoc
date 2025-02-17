@@ -127,6 +127,8 @@ while (iterator.hasNext()) {
 }
 ----
 
+---
+
 link:./08_iterator_comparable_comparator.adoc[이전: Iterator, Comparable, Comparator] +
 link:./10_comparable.adoc[다음: Comparable 인터페이스]
 

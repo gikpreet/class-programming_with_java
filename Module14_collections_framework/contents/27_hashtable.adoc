@@ -69,5 +69,7 @@ while(iterator.hasNext()) {
 }
 ----
 
+---
+
 link:./26_hashmap.adoc[이전: HashMap] +
 link:./28_collections_class.adoc[다음: Collections 클래스]

@@ -21,7 +21,7 @@ link:./contents/00_collections_framework.adoc[Module 14 Collections Framework]
 ** link:./contents/16_linkedlist.adoc[LinkedList]
 ** link:./contents/17_queue_interface.adoc[Queue]
 ** link:./contents/18_vector.adoc[Vector]
-** link:./contents/19_stack.adoc[Stack Stack]
+** link:./contents/19_stack.adoc[Stack]
 
 * link:./contents/20_set.adoc[Chapter 4: Set]
 ** link:./contents/21_set_interface.adoc[Set 인터페이스]

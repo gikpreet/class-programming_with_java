@@ -91,5 +91,7 @@ while(iterator.hasNext()) {
     System.out.println(entry.getKey() + ": " + entry.getValue());
 ----
 
+---
+
 link:./25_map_interface.adoc[이전: Map 인터페이스] +
 link:./27_hashtable.adoc[다음: Hashtable]

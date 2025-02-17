@@ -80,5 +80,7 @@ while(iterator.hasNext()) {
 }
 ----
 
+---
+
 link:./21_set_interface.adoc[이전: Set 인터페이스] +
 link:./23_treeset.adoc[다음: TreeSet]

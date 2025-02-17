@@ -96,4 +96,4 @@ while(iterator.hasNext()) {
 ---
 
 link:./22_hashset.adoc[이전: HashSet] +
-link:./24_map.adoc[다음: Map]
+link:./24_chapter5_map.adoc[다음: Chapter 5: Map]

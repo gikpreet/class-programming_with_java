@@ -23,6 +23,8 @@ image:../images/image07.png[]
 |크기증가|Vector Size의 100% 증가|ArrayList Size의 50% 증가
 |===
 
+---
+
 link:./17_queue_interface.adoc[이전: Queue 인터페이스] +
 link:./19_stack.adoc[다음: Stack]
 

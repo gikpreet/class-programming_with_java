@@ -1,4 +1,4 @@
-= Module 17: Thread
+= Module 16: Thread
 
 == 모듈 목표
 

@@ -181,5 +181,5 @@ Java Stream의 정렬은 데이터를 간단하고 효율적으로 정렬하는 
 
 ---
 
-link:./18_mapping.adoc[이전: Mapping] +
-link:./20_limit_skip.adoc[다음: 제한과 건너뛰기]
+link:./03-4_mapping.adoc[이전: Mapping] +
+link:./03-6_limit_skip.adoc[다음: 제한과 건너뛰기]

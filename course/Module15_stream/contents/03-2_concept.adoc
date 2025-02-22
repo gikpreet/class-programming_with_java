@@ -201,5 +201,5 @@ names.stream()
 
 ---
 
-link:./15_intermediate_operations.adoc[중간 연산] +
-link:./17_filtering.adoc[필터링]
+link:./03-1_intermediate_operations.adoc[이전: 중간 연산] +
+link:./03-3_filtering.adoc[다음: 필터링]

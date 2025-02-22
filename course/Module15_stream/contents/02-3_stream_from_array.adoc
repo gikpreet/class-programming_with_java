@@ -24,5 +24,5 @@ System.out.println(sum);  // 출력: 6 (2 + 4)
 
 ---
 
-link:./08_stream_from_collection.adoc[이전: Collection 기반 Stream API]
-link:./10_stream_from_file.adoc[다음: File 기반 Stream API]
+link:./02-2_stream_from_collection.adoc[이전: Collection 기반 Stream API] +
+link:./02-4_stream_from_file.adoc[다음: File 기반 Stream API]

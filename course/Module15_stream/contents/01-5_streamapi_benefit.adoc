@@ -173,5 +173,5 @@ Stream API는 Java에서 데이터를 효율적으로 처리할 수 있도록 �
 
 ---
 
-link:./05_stream_collection.adoc[이전: Stream과 Collection의 차이] +
-link:./07_usage.adoc[다음: Stream API 사용법]
+link:./01-4_stream_collection.adoc[이전: Stream과 Collection의 차이] +
+link:./02-1_usage.adoc[다음: Chapter 2: Stream API 사용법]

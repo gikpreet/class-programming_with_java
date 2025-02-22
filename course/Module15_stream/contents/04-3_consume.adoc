@@ -212,5 +212,5 @@ public class PaginationExample {
 
 ---
 
-link:./22_concept.adoc[이전: 최종 연산 개요] +
-link:./24_aggregation.adoc[다음: 집계]
+link:./04-2_concept.adoc[이전: 최종 연산 개요] +
+link:./04-4_aggregation.adoc[다음: 집계]

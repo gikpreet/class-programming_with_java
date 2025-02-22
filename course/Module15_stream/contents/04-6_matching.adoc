@@ -179,4 +179,5 @@ Java Stream API의 매칭 연산은 스트림 데이터에서 특정 조건을 �
 
 ---
 
-link:./25_collection_transfer.adoc[이전: 컬렉션 변환] +
+link:./04-5_collection_transfer.adoc[이전: 컬렉션 변환] +
+link:./04-7_find.adoc[다음: 요소 찾기]

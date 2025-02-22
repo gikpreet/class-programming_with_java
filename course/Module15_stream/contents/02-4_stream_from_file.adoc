@@ -108,5 +108,5 @@ public class ParallelFileProcessingExample {
 
 ---
 
-link:./09_stream_from_array.adoc[이전: 배열 기반 Stream API] +
-link:./11_stream_from_iterable.adoc[다음: Iterable 기반 Stream API]
+link:./02-3_stream_from_array.adoc[이전: 배열 기반 Stream API] +
+link:./02-5_stream_from_iterable.adoc[다음: Iterable 기반 Stream API]

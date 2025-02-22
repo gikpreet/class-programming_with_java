@@ -125,5 +125,5 @@ Stream.builder()는 유연하게 스트림 요소를 생성하거나 동적으�
 
 ---
 
-link:./11_stream_from_iterable.adoc[이전: Iterable 기반 Stream API] +
-link:./13_how_stream_works.adoc[다음: Stream 동작방식]
+link:./02-5_stream_from_iterable.adoc[이전: Iterable 기반 Stream API] +
+link:./02-7_how_stream_works.adoc[다음: Stream 동작방식]

@@ -259,3 +259,8 @@ public class IteratorExample {
 |noneMatch()|	boolean|	조건을 만족하지 않는지 검사
 |min() / max()|	Optional<T>|	최소값 또는 최대값 반환
 |===
+
+---
+
+link:./04-1_terminal_operation.adoc[이전: Chapter 4: 최종 연산] +
+link:./04-3_consume.adoc[다음: 데이터 소비]

@@ -234,5 +234,5 @@ numbers.parallelStream()
 
 ---
 
-link:./07_usage.adoc[이전: Stream 사용법] +
-link:./09_stream_from_array.adoc[다음: 배열 기반 Stream API]
+link:./02-1_usage.adoc[이전: Stream 사용법] +
+link:./02-3_stream_from_array.adoc[다음: 배열 기반 Stream API]

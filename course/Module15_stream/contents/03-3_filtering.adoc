@@ -184,5 +184,5 @@ public class StreamPipelineExample {
 
 ---
 
-link:./16_concept.adoc[이전: 중간 연산 개요] +
-link:./18_mapping.adoc[다음: 매핑]
+link:./03-2_concept.adoc[이전: 중간 연산 개요] +
+link:./03-4_mapping.adoc[다음: 매핑]

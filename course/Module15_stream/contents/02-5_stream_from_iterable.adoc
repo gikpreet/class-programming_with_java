@@ -169,5 +169,5 @@ Iterable 기반 Stream API는 Java의 유연성과 Stream API의 강력함을 �
 
 ---
 
-link:./10_stream_from_file.adoc[이전: 파일 기반 Stream API] +
-link:./11_stream_builder.adoc[다음: Stream.builder()]
+link:./02-4_stream_from_file.adoc[이전: 파일 기반 Stream API] +
+link:./02-6_stream_builder.adoc[다음: Stream.builder()]

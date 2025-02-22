@@ -229,5 +229,7 @@ public class LazyExecutionExample {
 
 Java Stream의 매핑은 데이터를 변환하는 데 매우 강력하며, 직관적이고 유연한 방식으로 데이터 처리를 구현할 수 있습니다.
 
-link:./17_filter.adoc[이전: 필터링] +
-link:./18_sorting.adoc[다음: 정렬]
+---
+
+link:./03-3_filtering.adoc[이전: 필터링] +
+link:./03-5_sorting.adoc[다음: 정렬]

@@ -231,5 +231,5 @@ Java Stream API의 컬렉션 변환 연산은 데이터를 효율적으로 가�
 
 ---
 
-link:./24_aggregation.adoc[이전: 집계] +
-link:./26_matching.adoc[다음: 메칭]
+link:./04-4_aggregation.adoc[이전: 집계] +
+link:./04-6_matching.adoc[다음: 메칭]

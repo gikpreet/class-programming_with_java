@@ -250,5 +250,5 @@ Java Stream API의 집계는 데이터의 합계, 평균, 개수, 최대/최소�
 
 ---
 
-link:./23_consume.adoc[이전: 데이터 소비] +
-link:./25_collection_transfer.adoc[다음: 컬렉션 변환]
+link:./04-3_consume.adoc[이전: 데이터 소비] +
+link:./04-5_collection_transfer.adoc[다음: 컬렉션 변환]

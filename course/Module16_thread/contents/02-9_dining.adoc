@@ -63,4 +63,6 @@ public void philosopher() {
 }
 ----
 
-link:./18_프로세스_스케줄링.adoc[다음: 프로세스 스케줄링]
+--- 
+link:./02-8_producer_consumer.adoc[이전: 생산자와 소비자] +
+link:./02-10_process_scheduleing.adoc[다음: 프로세스 스케줄링]

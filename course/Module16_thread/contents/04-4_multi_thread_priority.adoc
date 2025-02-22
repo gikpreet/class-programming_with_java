@@ -28,4 +28,7 @@ setPriority 메소드에 Thread 클래스의 Thread 우선순위 상수를 이�
 |MIN_PRIORITY	|1
 |===
 
+---
+
+link:./04-3_thread_creation_and_run.adoc[이전: Java에서 Thread 생성과 싷행] +
 link:./27_Thread와_동시성_제어_.adoc[다음: Thread 동시성 제어]

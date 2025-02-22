@@ -35,4 +35,7 @@ image:../images/image07.png[]
 $ dpkg -l | grep ssh
 ----
 
-link:./08_IO_리다이렉션.adoc[다음: I/O 리다이렉션]
+---
+
+link:./01-5_standard_stream.adoc[이전: 표준 스트림] +
+link:./01-7_io_redirection.adoc[다음: I/O 리다이렉션]

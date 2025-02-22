@@ -41,4 +41,5 @@ public class Example {
 }
 ----
 
-link:./25_Java에서_Thread_생성과_실행.adoc[다음: Java에서 Thread 생성과 실행]
+link:./04-1_java_thread_programming.adoc[이전: Chapter 4: Java Thread 프로그래밍] +
+link:./04-3_thread_creation_and_run.adoc[다음: Java에서 Thread 생성과 실행]

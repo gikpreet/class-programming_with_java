@@ -177,6 +177,9 @@ $ cat <option> <filename>
 |-T	|탭을 ^| 로 바꿔서 표시합니다.
 |===
 
-link:./06_표준_스트림.adoc[다음: 표준 스트림]
+---
+
+link:./01-3_unix_directory.adoc[이전: 유닉스 디렉토리] +
+link:./01-5_standard_stream.adoc[다음: 표준 스트림]
 
 

@@ -102,7 +102,10 @@
 |루트 사용자의 홈 디렉토리
 |===
 
-link:./05_유닉스_기본_명령어.adoc[다음: 유닉스 기본 명령어]
+---
+
+link:./01-2_directory_folder.adoc[이전: 디렉토리와 폴더] +
+link:./01-4_basic_commands.adoc[다음: 유닉스 기본 명령어]
 
 
 

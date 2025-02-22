@@ -11,9 +11,11 @@ Thread(Thread)란 프로세스 내에서 실행되는 여러 개의 실행 단�
 
 == Table of contents
 
-1.	기본 유닉스 명령어
+1.	link:./01-1_basic_unix_commands.adoc[기본 유닉스 명령어]
 2.	프로세스 개요
 3.	Thread 개요
+
+---
 
 link:./02_기본_유닉스_명령어.adoc[다음: 기본 유닉스 명령어]
 

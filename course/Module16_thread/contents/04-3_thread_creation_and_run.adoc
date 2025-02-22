@@ -80,4 +80,7 @@ Thread worker1 = new Thread(task);
 worker1.start();
 ----
 
-link:./26_Java_Multi_Thread와_우선순위.adoc[다음: Java Multi Thread와 우선순위]
+---
+
+link:./04-2_main_thread.adoc[이전: Main Thread] +
+link:./04-4_multi_thread_priority.adoc[다음: Java Multi Thread와 우선순위]

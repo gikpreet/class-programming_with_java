@@ -22,4 +22,7 @@ Multi Thread 프로그래밍의 이점은 아래와 같이 4가지로 생각할 
 * 규모 적응성(Scalability) +
 다중 Thread의 이점은 멀티 프로세서 구조에서 더욱 증가할 수 있습니다. 멀티 프로세서 구조에서는 각각의 Thread가 다른 프로세서에서 병렬로 실행될 수 있기 때문입니다. 단일 Thread 프로세스는 프로세서가 아무리 많더라도 한 프로세서에서만 처리됩니다.
 
-link:./23_Java_Thread_프로그래밍.adoc[다음: Java Thread 프로그래밍]
+---
+
+link:./03-3_process_thread.adoc[이전: 프로세스와 Thread] +
+link:./04-1_java_thread_programming.adoc[다음: Chapter 4: Java Thread 프로그래밍]

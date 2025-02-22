@@ -144,4 +144,6 @@ User 1:50
 +
 5. 연습이 종료되었습니다.
 
-link:./29_Thread_상태_변화.adoc[다음: Thread 상태 변화]
+---
+
+link:./04-6_thread_status_changes.adoc[이전: Thread 상태 변화]

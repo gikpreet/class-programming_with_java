@@ -52,4 +52,7 @@ CPU에 먼저 도착하는 순서대로 프로세스를 할당하는 방식으�
 * HRN(Highest Response-ratio Next) +
 SJF의 단점을 보완하는 알고리즘이며, 우선 순위 계산식을 사용하여 자원을 할당합니다.
 
-link:./19_Thread.adoc[다음: Thread]
+---
+
+link:./02-9_dining.adoc[이전: 철학자들의 저녁식사] +
+link:./03-1_thread.adoc[다음: Thread]

@@ -161,3 +161,7 @@ static class MyThread implements Runnable {
 }
 ----
 
+---
+
+link:./04-5_thread_concurrency_control.adoc[이전: Thread 병행성 제어] +
+link:./04-lab17-1.adoc[Lab 17-1: synchronized를 이용한 Thread 동기화]

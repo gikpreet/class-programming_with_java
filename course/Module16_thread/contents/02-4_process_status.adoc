@@ -21,5 +21,7 @@ Ready 리스트의 맨 앞에 있던 프로세스가 CPU를 점유하게 되는 
 * Timeout +
 운영체제는 프로세스가 프로세서를 계속 독점해서 사용하지 못하게 하기 위해 clock interrupt를 두어서 프로세스가 일정 시간 동안만 (시분할 시스템의 time slice) 프로세서를 점유할 수 있게 합니다.
 
+---
 
-link:./13_프로세스_제어블록.adoc[다음: 프로세스 제어블록]
+link:./02-4_process.adoc[이전: 프로세스] +
+link:./02-5_process_control_block.adoc[다음: 프로세스 제어블록]

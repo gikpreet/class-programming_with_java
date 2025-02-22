@@ -158,4 +158,7 @@ decreaseCount:-4
 decreaseCount:-5
 ----
 
-link:./28_Lab17_1.adoc[다음: Lab 17-1: synchronized를 이용한 Thread 동기화]
+---
+
+link:./04-4_multi_thread_priority.adoc[이전: 멀티스레드와 우선순위] +
+link:./04-6_thread_status_changes.adoc[다음: Thread 상태 변화]

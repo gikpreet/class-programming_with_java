@@ -5,7 +5,7 @@
 * 각 Thread별로 Stack과 Register를 가지고 있음
 * 한 번에 하나의 Thread만 실행 가능
 
----s
+---
 
 == 프로세스와 Thread
 
@@ -23,4 +23,7 @@ Resister 값은 thread 명령어의 어디까지 수행했는지를 기억하고
 +
 프로세스 내의 Thread들은 프로세스처럼 독립적이지 않습니다. 모든 Thread는 똑 같은 전역 변수를 공유하고 있음을 뜻하는 똑 같은 주소 공간을 갖습니다. 각 Thread가 프로세스 주소 공간에서 메모리 주소를 액세스 할 수 있기 때문에 Thread는 읽기 쓰기가 가능하며 심지어는 다른 Thread의 스택까지도 지워버릴 수 있습니다. Thread 간에는 보호가 불가능하고 실제로 필요 없기 때문에 어떤 보호 기능도 존재하지 않습니다.
 
-link:./22_Thread의_장점.adoc[다음: Thread의 장점]
+---
+
+link:./03-2_introduction_thread.adoc[이전: Thread 개요] +
+link:./03-4_thread_benefit.adoc[다음: Thread의 장점]

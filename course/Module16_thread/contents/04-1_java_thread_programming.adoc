@@ -1,6 +1,6 @@
 = Java Thread 프로그래밍
 
-Java는 멀티 Thread를 지원합니다. 이 장에서는 Java에서 Thread 관련 클래스를 사용하여 멀티 Thread 프로그램을 구현하는 방법에 대해 공부합니다.
+Java는 멀티 Thread를 지원합니다. 이 단원에서는 Java에서 Thread 관련 클래스를 사용하여 멀티 Thread 프로그램을 구현하는 방법에 대해 공부합니다.
 
 == Table of Contents
 

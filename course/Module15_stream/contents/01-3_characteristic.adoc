@@ -167,5 +167,5 @@ catch (Exception e) {}
 
 ---
 
-link:./03_concept.adoc[이전: Stream의 개념과 정의] +
-link:./05_stream_collection.adoc[다음: Stream과 Collection의 차이]
+link:./01-2_concept.adoc[이전: Stream의 개념과 정의] +
+link:./01-4_stream_collection.adoc[다음: Stream과 Collection의 차이]

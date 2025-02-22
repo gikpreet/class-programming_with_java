@@ -88,5 +88,5 @@ Java Stream은 복잡한 데이터 처리 작업을 간단하고 효율적으로
 
 ---
 
-link:./02_introduction.adoc[이전: Stream 소개] +
-link:./04_characteristic.adoc[다음: Stream의 특징]
+link:./01-1_introduction.adoc[이전: Stream 소개] +
+link:./01-3_characteristic.adoc[다음: Stream의 특징]

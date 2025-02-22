@@ -6,12 +6,12 @@ Java의 Stream은 Java 8에서 도입된 기능으로, 데이터의 연속적인
 
 == Table of Contents
 
-1. Stream의 개념과 정의
-2. Stream의 특징
+1. link:./01-2_concept.adoc[Stream의 개념과 정의]
+2. link:./01-3_characteristic.adoc[Stream의 특징]
 3. Stream과 컬렉션의 차이점
 4. Stream API의 장점
 
 ---
 
-link:./01_stream.adoc[이전: Module 18: Stream] +
-link:./03_concept.adoc[다음: Stream의 개념과 정의]
+link:./00_introduction.adoc[이전: Module 18: Stream] +
+link:./01-2_concept.adoc[다음: Stream의 개념과 정의]

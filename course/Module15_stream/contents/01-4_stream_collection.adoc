@@ -135,5 +135,5 @@ Stream과 컬렉션은 서로 보완적인 관계를 가지며, 컬렉션을 Str
 
 ---
 
-link:./04_characteristic.adoc[이전: Stream의 특징]
-link:./06_streamapi_benefit.adoc[다음: Stream API의 장점]
+link:./01-3_characteristic.adoc[이전: Stream의 특징] +
+link:./01-5_streamapi_benefit.adoc[다음: Stream API의 장점]

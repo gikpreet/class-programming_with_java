@@ -1,0 +1,83 @@
+= 메소드 선언
+
+* 메소드는 특정 작업을 수행하는 일련의 문장들을 하나로 묶은 것
+* 함수, 서브루틴, 프로시저, 서브 프로그램과 비슷한 개념
+* main 메소드: 사용자가 정의하는 메소드와 동일한 문법을 사용함
+
+[source, java]
+----
+class MyClass {
+    static void myMethod() {
+        System.out.println(“My Method”);
+    }
+    public static void main(String[] args) {
+        // ...
+    }
+}
+----
+
+---
+
+메소드는 Java 프로그램에서 특정 작업을 수행하는 일련의 문들을 하나로 묶은 문 그룹입니다. 메소드는 흔히 함수, 서브루틴, 프로시저 등과 비슷한 개념이지만 클래스 밖에 존재할 수 없으며, 반드시 클래스 또는 객체의 일부로 호출되어야 합니다.
+
+아래 간단한 예제는 두 개의 메소드를 포함하고 있습니다.
+
+[source, java]
+----
+public class ExampleClass {
+    static void myMethod() {
+        System.out.println(“My Method”);
+    }
+    public static void main(String[] args) {
+        System.out.println(“main Method”);
+    }
+}
+----
+
+* main 메소드 +
+Java 응용 프로그램의 진입점(Application Entry Point)
+* println 메소드 +
+Java 라이브러리가 제공하는 표준 출력 메소드
++ myMethod 메소드 +
+MyClass에 사용자 정의 선언된 static 메소드
+
+== 메소드 생성
+
+메소드를 생성할 때는 아래와 같은 규칙에 따라야 합니다.
+
+* 메소드 이름 +
+메소드 이름은 Java에서 허용하는 모든 문자를 사용할 수 있으며, 대소문자를 구분합니다.
+* 파라미터 +
+메소드 이름 다음에 하나 이상의 파라미터 목록이 옵니다. 각 파라미터는 타입과 이름을 지정해야 하며, 괄호로 묶어야 합니다. 메소드에 파라미터가 없는 경우에도 괄호를 써야합니다.
+* 메소드 바디 +
+메소드 바디는 if, switch, for등의 문과 마찬가지로 중괄호( { 와 } )로 둘러싸인 블록 내부에 정의됩니다.
+
+== 메소드 정의 구문
+
+메소드를 정의할 때는 아래와 같은 구문을 사용합니다.
+
+[source, java]
+----
+static void methodName() {
+    method body
+}
+----
+
+다음 예는 MyClass에서 myMethod라는 메소드를 만드는 방법을 보여줍니다.
+
+[source, java]
+----
+public class MyClass {
+    static void myMethod() {
+        System.out.println(“Example method”);
+    }
+    public static void main(String[] args) {
+        System.out.println(“main method”);
+    }
+}
+----
+
+---
+
+link:./02_method.adoc[이전: 메소드] +
+link:./04_method_invocation.adoc[다음: 메소드 호출]

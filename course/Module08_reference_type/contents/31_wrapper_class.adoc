@@ -1,0 +1,59 @@
+= Wrapper 클래스
+
+* 기본 데이터 타입(Primitive Data Type)을 객체로 취급해야 하는 경우에 사용
+* 8개의 기본 타입에 해당하는 데이터를 객체로 포장
+* 각각의 타입에 해당하는 데이터를 인자로 해당 값을 가지는 객체로 생성
+* java.lang 패키지에 포함
+
+[source, java]
+----
+int primitiveTypeVariable = 1;
+Integer wrapperType = new Integer(primitiveTypeVariable);
+wrapperType.toString();
+----
+
+---
+
+기본 데이터 타입을 객체로 처리해야 하는 경우가 있습니다. 메소드의 인수로 참조 타입이 요구되면, 기본 데이터 타입을 사용할 수 없습니다. 이런 경우, 기본 데이터 타입을 객체로 변환해야 합니다. Java는 8개의 기본 데이터 타입을 참조 타입 객체로 변환해주는 클래스를 제공합니다.
+
+Java에서 기본 데이터 타입을 객체로 변환해주는 클래스를 Wrapper 클래스라고 합니다. Wrapper 클래스는 각각의 타입에 해당하는 데이터를 파라미터 인자로 전달받아, 해당 값을 가지는 객체로 만듭니다. Wrapper 클래스는 java.lang 패키지에 포함되어 있습니다.
+
+Java의 기본 데이터 타입(Primitive Data Type)에 대응하는 Wrapper 클래스는 아래와 같습니다.
+
+[%header, cols="1,2", width=70%]
+|===
+|Primitive Data Type	|Wrapper Class
+|byte	|Byte
+|short	|Short
+|int	|Integer
+|long	|Long
+|float	|Float
+|double	|Double
+|char	|Character
+|boolean	|Boolean
+|===
+
+기본 데이터 타입은 아래와 같이 객체로 Wrapping 될 수 있습니다.
+
+[source, java]
+----
+int primitiveTypeVariable = 1;
+Integer wrapperType = new Integer(primitiveTypeVariable);
+----
+
+기본 데이터 타입이 객체로 Wrapping 되면, Object에서 상속되는 Java의 모든 객체와 같은 방법으로 사용될 수 있습니다.
+
+[source, java]
+----
+int primitiveTypeVariable = 1;
+Integer wrapperType = new Integer(primitiveTypeVariable);
+Integer wrapperType2 = new Integer(2);
+wrappertype.equals(wrapperType2);
+----
+
+Wrapper 클래스는 산술 연산을 위해 정의된 클래스가 아니므로, 인스턴스에 저장된 값을 변경할 수 없습니다.
+
+---
+
+link:./30_type_casting.adoc[이전: 타입 변환] +
+link:./32_boxing_unboxing.adoc[다음: Boxing과 Unboxing]

@@ -1,0 +1,15 @@
+= Chapter 6: Collections 클래스
+
+java.util 패키지의 Collection 클래스는 Collection 인터페이스를 구현하는 인스턴스를 반환하는 static 메소드로 구성된 유틸리티 클래스로, collection을 위한 많은 동작들을 포함하고 있습니다. 이 장에서는 Collections 클래스가 제공하는 기능들에 대해 학습합니다.
+
+== Table of Contents
+
+1. link:./30_collections_overview.adoc[Collections 클래스]
+2. link:./31_collections_concurrency_control.adoc[Collection 동기화]
+3. link:./32_readonly_collection.adoc[Unmodifiable Collection]
+4. link:./33_checked_collection.adoc[Checked Collection]
+
+---
+
+link:./28_treemap.adoc[이전: TreeMap] +
+link:./30_collections_overview.adoc[다음: Collections 클래스 개요]

@@ -1,0 +1,17 @@
+= 참조 타입
+
+참조 타입은 Java와 같은 객체지향 언어에서 아주 중요한 기능입니다. 이를 통해 객체의 상호작용을 기반으로 한 응용 프로그램을 작성하고, 효과적으로 실행할 수 있습니다.
+
+== Table of Contents
+
+1. link:./03_comparision.adoc[값 타입과 참조 타입 비교]
+2. link:./04_declare_release.adoc[참조 타입 변수의 선언과 해제]
+3. link:./05_ref_variable.adoc[초기화되지 않은 참조 타입 변수]
+4. link:./06_comparision.adoc[값 타입의 비교와 참조 타입의 비교]
+5. link:./07_same_ref.adoc[같은 객체에 대한 여러 변수의 참조]
+6. link:./08_ref_as_parameter.adoc[메소드 파라미터에 참조 타입 사용]
+
+---
+
+link:./01_reference_type.adoc[이전: 참조타입] +
+link:./03_comparision.adoc[다음: 값 타입과 참조타입 비교]

@@ -1,0 +1,100 @@
+= 오버로드 된 메소드 사용
+
+* 오버로드 된 메소드 사용을 고려해야 할 때
+** 다른 파라미터가 필요한 유사한 메소드가 있을 때
+** 기존 코드에 새 기능을 추가하고 싶을 때
+* 과용 금지
+** 디버깅과 유지 보수가 어려움
+
+---
+
+오버로드 된 메소드는 파라미터의 개수가 다르거나 타입이 다른 두 개의 비슷한 메소드가 있는 경우 유용하게 사용될 수 있습니다.
+
+== 다른 파라미터가 필요한 유사한 메소드
+
+사용자에게 인사말을 출력하는 메소드가 포함된 클래스가 있을 때, 사용자 이름이 알려진 경우도 있고 그렇지 않은 경우가 있습니다. 다음 코드와 같이 사용자 이름이 알려진 경우 `greetUser`, 그렇지 않은 경우 `greet` 메소드를 사용하여 다른 메시지를 출력하도록 할 수 있습니다.
+
+[source, java]
+----
+public class Greetings {
+    static void greet() {
+        System.out.println("Hello");
+    }
+
+    static void greetUser(String name) {
+        System.out.println("Hello " + name);
+    }
+
+    public static void main(String[] args) {
+        greet();
+        greetUser("Kitty");
+    }
+}
+----
+
+코드는 잘 동작하지만, 클래스에는 거의 동일한 작업을 수행하지만 이름이 다른 두 메소드가 있습니다. 다음 코드와 같이 메소드 오버로딩을 사용하여 이 클래스를 다시 작성할 수 있습니다.
+
+[source, java]
+----
+public class Greetings {
+    static void greet() {
+        System.out.println("Hello");
+    }
+
+    static void greet(String name) {
+        System.out.println("Hello " + name);
+    }
+
+    public static void main(String[] args) {
+        greet();
+        greet("Kitty");
+    }
+}
+----
+
+== 기존 코드에 새 기능 추가
+
+메소드 오버로딩은 기존 코드를 광범위하게 변경하지 않고 기본 응용 프로그램에 새 기능을 추가하려는 경우이도 유용합니다. 다음 코드와 같이 특정 시간에 따라 다른 인사말을 출력하는 다른 메소드를 추가하여 확장할 수 있습니다.
+
+[source, java]
+----
+public class Greetings {
+    enum TimeOfDay {Morning, Afternoon, Evening}
+
+    static void greet() {
+        System.out.println("Hello");
+    }
+
+    static void greet(String name) {
+        System.out.println("Hello " + name);
+    }
+
+    static void greet(String name, TimeOfDay timeOfDay) {
+        String message = "";
+
+        switch(timeOfDay) {
+            case Morning:
+                message = "Good morning, ";
+                break;
+            case Afternoon:
+                message = "Good Afternoon, ";
+                break;
+            case Evening:
+                message = "Good evening";
+                break;
+        }
+        System.out.println(message + name);
+    }
+
+    public static void main(String[] args) {
+        greet();
+        greet("Kitty");
+        greet("Crab", TimeOfDay.Morning);
+    }
+}
+----
+
+---
+
+link:./16_method_signature.adoc[이전: 메소드 시그너처] +
+link:./18_lab_5-1.adoc[다음: Lab 5-1 메소드 생성과 사용]

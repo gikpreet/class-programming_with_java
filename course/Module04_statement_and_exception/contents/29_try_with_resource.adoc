@@ -1,0 +1,55 @@
+= try-with-resource clause (try-with-resource 절)
+ 
+* 예외 발생 여부와 상관없이 try 절에 명시한 객체의 close 메소드를 호출
+* 스트림, 소켓, 데이터베이스 연결 등을 finally 절에서 close() 메소드를 명시적으로 호출하지 않아도 연결을 닫고 리소스를 회수
+
+[source, java]
+----
+try (Scanner scanner = new Scanner(System.in) {
+    int i = Integer.parseInt(scanner.nextLine());
+    int j = Integer.parseInt(scanner.nextLine());
+    int k = i / j;
+}
+catch (ArithmeticException e) {
+    e.printStackTrace();
+}
+----
+
+---
+
+`try-with-resource` 문을 사용하면 예외 발생 여부와 상관없이 `try` 절에 명시된 객체의 `close` 메소드를 자동으로 호출하여 여러 위험을 줄일 수 있습니다.
+
+스트림, 소켓, 데이터베이스 연결 등 다른 객체 또는 프로세스와 연결된 객체는 사용이 종료된 후 명시적으로 연결을 닫지 않으면 메모리 누수 등의 심각한 문제가 발생할 수 있습니다. 이를 방지하기 위해 finally 절에서 명시적으로 연결 객체의 `close()` 메소드를 호출하는 코드를 작성합니다.
+
+[source, java]
+----
+Scanner scanner = new Scanner(System.in);
+try {
+   ...
+}
+catch (ArithmeticException e) {
+   ...
+}
+finally {
+   scanner.close();	// 명시적으로 연결을 닫음
+}
+----
+
+`try-with-resource` 문을 사용하면 코드의 복잡성을 줄이고 예기치 못한 상황에서도 연결을 종료하여 안전한 프로그램을 작성할 수 있습니다.
+
+[source, java]
+----
+try(Scanner scanner = new Scanner(System.in)) {
+    ...
+}
+catch (ArithmeticException e) {
+    e.printStackTrace();
+}
+----
+
+`try-with-resource` 문에 사용될 수 있는 객체는 `AutoCloseable` 의 서브 타입이어야 합니다.
+
+---
+
+link:./28_finally.adoc[이전: finally statement (finally 문)] +
+link:./30_lab4-2.adoc[다음: Lab 4-2 예외 처리]

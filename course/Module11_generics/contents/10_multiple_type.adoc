@@ -1,0 +1,227 @@
+= 다중 타입 파라미터
+
+* 여러 개의 타입 파라미터 사용 가능
+* 다양한 데이터 타입을 동시에 처리
+* 복잡한 데이터 구조나 로직을 더 유연하계 설계
+* 클래스에서 다중 타입 파라미터 사용
++
+[source, java]
+----
+class ClassName<T1, T2, T3> { ... }
+----
+* 인터페이스에서 다중 타입 파라미터 사용
++
+[source, java]
+----
+interface InterfaceName<K, V> { ... }
+----
+* 메소드에서 다중 타입 파라미터 사용
++
+[source, java]
+----
+public <T1, T2> 반환타입 메서드명(T1 매개변수1, T2 매개변수2) { ... }
+----
+
+---
+
+Java Generics는 여러 개의 타입 파라미터를 사용할 수 있습니다. 이를 통해 다양한 데이터 타입을 동시에 처리할 수 있으며, 복잡한 데이터 구조나 로직을 더 유연하게 설계할 수 있습니다.
+
+== 다중 타입 파라미터
+
+다중 타입 파라미터는 `<>` 안에 여러 개의 타입 파라미터를 쉼표(,)로 구분하여 선언합니다. 주로 클래스, 인터페이스, 메서드에서 사용되며, 여러 타입의 관계를 표현하거나 다양한 타입의 데이터를 다룰 수 있게 해줍니다.
+
+[source, java]
+----
+class ClassName<T1, T2, T3> {
+    // 클래스 내용
+}
+
+interface InterfaceName<K, V> {
+    // 인터페이스 내용
+}
+
+public <T1, T2> 반환타입 메서드명(T1 매개변수1, T2 매개변수2) {
+    // 메서드 내용
+}
+----
+
+== 사용법
+
+=== 클래스에서 다중 타입 파라미터 사용
+
+클래스에서 여러 개의 타입 파라미터를 선언하여 필드나 메서드에서 사용할 수 있습니다.
+
+[source, java]
+----
+class Pair<K, V> {
+    private K key;
+    private V value;
+
+    public Pair(K key, V value) {
+        this.key = key;
+        this.value = value;
+    }
+
+    public K getKey() {
+        return key;
+    }
+
+    public V getValue() {
+        return value;
+    }
+}
+----
+
+사용:
+
+[source, java]
+----
+public class Main {
+    public static void main(String[] args) {
+        Pair<String, Integer> pair = new Pair<>("Age", 30);
+        System.out.println("Key: " + pair.getKey());
+        System.out.println("Value: " + pair.getValue());
+    }
+}
+----
+
+=== 메소드에서 다중 타입 파라미터 사용
+
+메서드에 여러 타입 파라미터를 선언하여 다양한 타입의 매개변수와 반환 타입을 다룰 수 있습니다.
+
+[source, java]
+----
+public class MultiTypeMethod {
+    public static <T1, T2> void printPair(T1 first, T2 second) {
+        System.out.println("First: " + first);
+        System.out.println("Second: " + second);
+    }
+
+    public static void main(String[] args) {
+        printPair("Hello", 123);
+        printPair(10.5, true);
+    }
+}
+----
+
+=== 인터페이스에서 다중 타입 파라미터 사용
+
+인터페이스에서도 다중 타입 파라미터를 선언하여 다양한 데이터 타입을 처리할 수 있습니다.
+
+[source, java]
+----
+interface Mapper<K, V> {
+    void put(K key, V value);
+    V get(K key);
+}
+
+class MyMapper<K, V> implements Mapper<K, V> {
+    private Map<K, V> map = new HashMap<>();
+
+    @Override
+    public void put(K key, V value) {
+        map.put(key, value);
+    }
+
+    @Override
+    public V get(K key) {
+        return map.get(key);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Mapper<String, Integer> mapper = new MyMapper<>();
+        mapper.put("One", 1);
+        mapper.put("Two", 2);
+
+        System.out.println(mapper.get("One")); // 출력: 1
+    }
+}
+----
+
+== 다중 타입 파라미터 활용
+
+=== 복합 데이터 구조
+
+다중 타입 파라미터를 사용하여 키-값 구조나 다차원 데이터를 표현할 수 있습니다.
+
+[source, java]
+----
+class Triple<K, V, T> {
+    private K key;
+    private V value;
+    private T description;
+
+    public Triple(K key, V value, T description) {
+        this.key = key;
+        this.value = value;
+        this.description = description;
+    }
+
+    public K getKey() {
+        return key;
+    }
+
+    public V getValue() {
+        return value;
+    }
+
+    public T getDescription() {
+        return description;
+    }
+}
+----
+
+사용:
+
+[source, java]
+----
+public class Main {
+    public static void main(String[] args) {
+        Triple<String, Integer, String> triple = new Triple<>("Age", 30, "Person's age");
+        System.out.println("Key: " + triple.getKey());
+        System.out.println("Value: " + triple.getValue());
+        System.out.println("Description: " + triple.getDescription());
+    }
+}
+----
+
+=== 다중 제한(Type bound)
+
+다중 타입 파라미터에 각기 다른 제한을 설정할 수 있습니다.
+
+[source, java]
+----
+class Processor<T extends Number, U extends Comparable<U>> {
+    private T number;
+    private U comparable;
+
+    public Processor(T number, U comparable) {
+        this.number = number;
+        this.comparable = comparable;
+    }
+
+    public boolean isGreater(U other) {
+        return comparable.compareTo(other) > 0;
+    }
+}
+----
+
+== 요약
+
+[%header, cols="1, 2"]
+|===
+|구성 요소|설명
+|<T1, T2>|두 개 이상의 타입 파라미터 선언
+|클래스에서 사용|클래스의 필드와 메서드에 다양한 타입 사용 가능
+|메서드에서 사용|메서드의 매개변수, 반환 타입에 다중 타입 사용 가능
+|인터페이스에서 사용|인터페이스 구현체에서 다중 타입을 지원
+|복합 데이터 구조|키-값 쌍, 삼중 구조 등 복잡한 데이터 구조를 정의 가능
+|타입 제한 설정|extends 키워드로 각 타입 파라미터의 제한 가능
+|===
+
+---
+
+link:./09_type_parameter.adoc[이전: 타입 파라미터 선언 및 사용] +
+link:./11_generic_class.adoc[다음: Generic 클래스 정의]

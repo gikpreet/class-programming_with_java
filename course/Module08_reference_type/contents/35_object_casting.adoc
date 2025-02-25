@@ -1,0 +1,42 @@
+= Object 타입 변환
+
+* Object는 모든 클래스의 기본 클래스
+* 모든 참조 타입은 Object로 변환 가능
+* 모든 객체는 Object에 할당될 수 있음
+
+[source, java]
+----
+Object o;
+o = iron;
+o = (Object)iron;
+----
+
+---
+
+모든 참조 타입은 `Object` 클래스를 상속합니다. 이는 모든 참조 타입은 Object 타입으로 변환 될 수 있다는 것을 의미합니다.
+
+== 모든 참조 타입은 `Object` 타입에 할당될 수 있습니다.
+
+모든 클래스는 직접적으로 또는 간접적으로 Object 타입에서 상속됩니다. 따라서 어떠한 참조 타입이든 Object 객체에 암시적/명시적 방법으로 할당될 수 있습니다.
+
+[source, java]
+----
+Object object;
+IronMan ironMan = new IronMan();
+object = ironMan;
+object = (Object)ironMan;
+----
+
+== instanceof 연산자와 Object
+
+모든 경우에 `true` 를 반환합니다.
+
+[source, java]
+----
+ironMan instanceof Object;	// true
+----
+
+---
+
+link:./34_instanceof.adoc[이전: instanceof 연산자] +
+link:./36_interface_casting.adoc[다음: 인터페이스 타입 변환]

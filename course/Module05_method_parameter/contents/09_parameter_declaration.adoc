@@ -1,0 +1,51 @@
+= 파라미터 선언과 호출
+
+* 파라미터 선언
+** 메소드 이름 뒤 괄호( ( 와 ) )에 선언
+** 각 파라미터의 이름과 타입을 정의
+* 메소드를 호출하며 파라미터에 인자(argument)를 전달
+** 호출할 메소드에 정의된 파라미터의 타입에 맞는 값을 전달
+
+[source, java]
+----
+static void defineParametersIntoMethod(int n, string s) {
+    ...
+}
+defineParametersIntoMethod(1, “Hello, World!”)
+----
+
+---
+
+파라미터를 사용하면 정보를 메소드 안으로 전달하고 밖으로 return할 수 있습니다. 메소드를 정의할 때 메소드 이름 다음에 오는 괄호에 파라미터 목록을 포함합니다.
+
+== 파라미터 정의
+
+각 파라미터는 타입과 이름을 가집니다. 메소드 이름 다음에 오는 괄호안에 파라미터를 선언합니다. 파라미터를 선언하는데 사용되는 구문은 각 파라미터를 구분하는 구분자를 세미콜론( ; ) 때신 쉼표( , )를 사용한다는 점을 제외하고는 지역변수를 선언하는데 사용되는 구문과 동일합니다.
+
+[source, java]
+----
+static void defineParametersIntoMethod(int i, string s) {
+    …
+}
+----
+
+`defineParametersIntoMethod` 메소드는 `i` 와 `s` 두 파라미터를 사용하여 선언되었습니다. 첫 번째 파라미터는 int 타입이고 두 번째 파라미터는 String 타입입니다. 각 파라미터는 쉼표( , )를 사용하여 구분됩니다.
+
+== 메소드를 호출하여 파라미터에 인자(argument)를 전달
+
+파라미터가 정의된 메소드를 호출하는 코드는 반드시 파라미터에 인자를 제공해야 합니다. 다음 코드는 파라미터를 사용하여 메소드를 호출하는 방법에 대한 두 가지 예를 보여줍니다. 두 경우 모두 `defuneParametersIntoMethod`` 메소드의 `i` 파라미터와 `s` 파라미터에 대응하여 배치됩니다.
+
+[source, java]
+----
+defineParameetersIntoMethod(2, “Hello, World!”);
+
+int value = 10;
+String message = “Hello World!”;
+
+defineParaemetersIntoMethod(value, message);
+----
+
+---
+
+link:./08_parameter.adoc[이전: 파라미터] + 
+link:./10_parameter_passing.adoc[다음: 파라미터 전달 메커니즘]

@@ -1,0 +1,96 @@
+= Module 15: Stream
+
+Java의 Stream은 Java 8에서 도입된 기능으로, 데이터의 연속적인 흐름(stream)을 처리하기 위한 선언형(declarative) 방식의 API입니다. 이를 통해 컬렉션, 배열 또는 I/O 채널과 같은 데이터 소스를 함수형 프로그래밍 스타일로 처리할 수 있습니다. Stream을 사용하면 데이터를 효율적으로 필터링, 매핑, 정렬, 집계 등의 작업을 수행할 수 있습니다.
+
+이 모듈에서는 Java의 Stream API에 대해 학습합니다.
+
+이 장을 마치면, 다음과 같은 것들을 할 수 있게 됩니다.
+
+* Stream API를 이용해서 복잡한 연산을 간결하게 처리할 수 있습니다.
+* 필터링, 매핑, 정렬, 반복, 매칭, 기본 집계 등 다양한 형태의 연산을 통해 결과를 얻을 수 있습니다.
+* Stream을 이용한 연산에서 람다 식(Lambda Expression)을 사용할 수 있습니다.
+
+== Table of contents
+
+1. Stream 소개
+2. Stream 기본 사용법
+3. 중간 연산 (Intermediate Operations)
+4. 최종 연산 (Terminal Operations)
+5. 특수 Stream
+6. 고급 주제
+7. Collection과 Stream
+
+---
+
+link:01-1_introduction_to_stream.adoc[다음: Stream 소개]
+
+////
+1. Stream 소개
+1.1 Stream의 개념과 정의
+1.2 Stream의 특징
+1.3 Stream과 컬렉션의 차이점
+1.4 Stream API의 장점
+
+2. Stream 기본 사용법
+2.1 Stream 생성 방법
+    2.1.1 컬렉션 기반 Stream
+    2.1.2 배열 기반 Stream
+    2.1.3 파일 기반 Stream
+    2.1.4 Stream.builder()
+2.2 Stream의 작동 원리
+2.3 Stream의 라이프사이클 (중간 연산과 최종 연산)
+
+3. 중간 연산 (Intermediate Operations)
+3.1 필터링: filter()
+3.2 매핑: map()과 flatMap()
+3.3 정렬: sorted()
+3.4 중복 제거: distinct()
+3.5 제한 및 건너뛰기: limit()와 skip()
+
+4. 최종 연산 (Terminal Operations)
+4.1 데이터 소비: forEach()
+4.2 집계: reduce(), count(), max(), min()
+4.3 컬렉션 변환: collect()와 Collectors
+4.4 매칭: anyMatch(), allMatch(), noneMatch()
+4.5 요소 찾기: findFirst()와 findAny()
+
+5. 특수 Stream
+5.1 기본형 Stream: IntStream, LongStream, DoubleStream
+5.2 범위 생성: range()와 rangeClosed()
+5.3 무한 Stream: iterate()와 generate()
+
+6. 고급 주제
+6.1 Stream의 병렬 처리: parallelStream()
+6.2 성능 최적화 및 병렬 Stream의 주의점
+6.3 Stream의 Lazy Evaluation
+6.4 Stream의 Short-Circuit 연산
+
+7. Collectors 활용법
+7.1 기본 수집기: toList(), toSet(), toMap()
+7.2 그룹화와 분할: groupingBy(), partitioningBy()
+7.3 통계 수집: summarizingInt(), averagingDouble()
+7.4 커스텀 수집기 만들기
+
+8. 실전 예제
+8.1 데이터 필터링 및 정렬
+8.2 다중 조건 검색
+8.3 데이터 집계와 분석
+8.4 파일 처리와 Stream
+8.5 JSON 데이터 파싱과 Stream
+
+9. Stream의 한계와 대안
+9.1 Stream 사용 시 주의점
+9.2 Stream이 적합하지 않은 경우
+9.3 Stream 대체 도구 (e.g., Reactor, RxJava)
+
+10. 실습 프로젝트
+10.1 사용자 데이터 분석 프로그램
+10.2 온라인 쇼핑몰 주문 처리 시스템
+10.3 로그 파일 분석 도구
+
+부록
+A. Stream 관련 자주 묻는 질문(FAQ)
+B. Java Stream과 함수형 인터페이스
+C. 주요 Stream 메서드 요약표
+D. 참고 자료 및 학습 리소스
+////

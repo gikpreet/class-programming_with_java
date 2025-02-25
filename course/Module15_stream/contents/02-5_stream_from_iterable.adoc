@@ -1,0 +1,173 @@
+== Iterable 기반 Stream API
+
+* Iterable 인터페이스를 구현한 데이터 소스를 스트림으로 변환
+* Iterable 객체를 변환하면 데이터를 필터링, 변환, 집계, 병렬 처리 등 함수형 스타일로 다룰 수 있음
+** 사용자 정의 Iterable을 포함한 모든 Iterable 기반 데이터 소스를 스트림으로 처리
+** Spliterator를 사용하여 데이터의 순차적 또는 병렬 처리를 최적화
+** 필터링, 매핑, 집계 등 고수준 연산을 간결한 함수형 스타일로 처리
+** 병렬 스트림을 간단히 생성하여 대규모 데이터도 빠르게 처리
+
+---
+
+Iterable 기반 Stream API는 Java의 Stream API를 활용하여 `Iterable` 인터페이스를 구현한 데이터 소스를 스트림으로 변환하고 처리하는 방법을 의미합니다. `Iterable` 은 Java에서 컬렉션 클래스(예: List, Set, Queue 등)의 상위 인터페이스로, 순차적으로 요소를 반복(iterate)할 수 있는 객체를 나타냅니다.
+
+Stream API를 통해 Iterable 객체를 변환하면 데이터를 필터링, 변환, 집계, 병렬 처리 등 함수형 스타일로 다룰 수 있습니다.
+
+== Stream 생성
+
+`Iterable` 은 직접적으로 Stream API를 제공하지 않기 때문에, 일반적으로 `StreamSupport` 클래스를 사용하여 변환해야 합니다.
+
+[source, java]
+----
+StreamSupport.stream(iterable.spliterator(), false);  // false는 순차 스트림, true는 병렬 스트림
+----
+
+== 예제
+
+아래와 같이 양수를 0.5초 간격으로 return 하는 Generator 메소드가 있을 때,
+
+[source, java]
+----
+class Caps {
+    public Iterable<Integer> getEven() {
+        return new Generator();
+    }
+}
+
+class Generator implements Iterable<Integer> {
+    static int result = 0;
+
+    public Iterable<Integer> getEven() {
+        return this;
+    } 
+
+    public Iterator<Integer> iterator() {
+        return new EvenIterator();
+    }
+
+    public static class EvenIterator implements Iterator<Integer> {
+        public boolean hasNext() {
+            return true;
+        }
+
+        public Integer next() {
+            try {
+                result += 2;
+                Thread.sleep(500);
+            }
+            catch (Exception e) {}
+            return result;
+        }
+    }
+}
+----
+
+아래와 같이 순차적으로(또는 병렬로) 데이터를 return하는 Stream을 생성할 수 있습니다.
+
+[source, java]
+----
+import java.util.Iterator;
+import java.util.Spliterator;
+import java.util.Spliterators;
+import java.util.stream.StreamSupport;
+
+class Test {
+    public static void main(String[] args) {
+        Caps caps = new Caps();
+
+        StreamSupport.stream(Spliterators.spliteratorUnknownSize(caps.getEven().iterator(), Spliterator.ORDERED), false)
+            .map(i -> i + 1)
+            .forEach(System.out::println);
+    }
+}
+----
+
+=== Collection을 Iterable로 처리
+
+`List` 는 `Iterable` 을 구현하고 있으므로, 이를 Stream으로 변환하여 처리할 수 있습니다.
+
+[source, java]
+----
+import java.util.*;
+import java.util.stream.*;
+import java.util.stream.StreamSupport;
+
+public class IterableToStreamExample {
+    public static void main(String[] args) {
+        Iterable<String> iterable = Arrays.asList("Java", "Stream", "API", "Iterable");
+
+        // Iterable을 Stream으로 변환
+        Stream<String> stream = StreamSupport.stream(iterable.spliterator(), false);
+
+        // Stream API 사용
+        stream.filter(s -> s.length() > 3)
+              .map(String::toUpperCase)
+              .forEach(System.out::println);
+    }
+}
+----
+
+=== 배열을 Iterable로 처리
+
+Arrays 클래스의 asList 메소드를 사용하여 배열을 Collection으로 변환한 후 이를 Stream으로 변환하여 처리할 수 있습니다.
+
+[source, java]
+----
+import java.util.*;
+import java.util.stream.*;
+
+public class CustomIterableExample {
+    public static void main(String[] args) {
+        // Custom Iterable 생성
+        Iterable<Integer> iterable = () -> Arrays.asList(1, 2, 3, 4, 5).iterator();
+
+        // Iterable을 Stream으로 변환
+        Stream<Integer> stream = StreamSupport.stream(iterable.spliterator(), false);
+
+        // Stream API 사용
+        int sum = stream.filter(n -> n % 2 == 0)  // 짝수만 필터링
+                        .mapToInt(Integer::intValue)
+                        .sum();
+
+        System.out.println("Sum of even numbers: " + sum); // 출력: 6
+    }
+}
+----
+
+== 병렬 처리
+
+`StreamSupport.stream()` 메서드의 두 번째 인수로 `true` 를 전달하면 병렬 스트림을 생성할 수 있습니다.
+
+[source, java]
+----
+import java.util.*;
+import java.util.stream.*;
+
+public class ParallelStreamExample {
+    public static void main(String[] args) {
+        Iterable<Integer> iterable = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+
+        // 병렬 스트림 생성
+        Stream<Integer> parallelStream = StreamSupport.stream(iterable.spliterator(), true);
+
+        // 병렬 처리
+        parallelStream.filter(n -> n % 2 == 0)
+                      .forEach(System.out::println); // 출력 순서는 보장되지 않음
+    }
+}
+----
+
+== Spliterator 클래스
+
+Spliterator는 Java 8에서 도입된 인터페이스로, `Iterator` 와 비슷한 역할을 하지만 병렬 처리에 최적화되어 있습니다.
+`Iterable.spliterator()` 를 호출하여 `Spliterator` 객체를 얻을 수 있으며, Stream API에서 이를 기반으로 스트림을 생성합니다.
+
+* 병렬 처리 지원: 데이터의 분할 처리를 쉽게 수행.
+* 연산 특징 제공: Spliterator는 스트림 연산의 힌트(ORDERED, SORTED, SIZED 등)를 제공합니다.
+
+Iterable 기반 Stream API는 Java의 유연성과 Stream API의 강력함을 결합하여 다양한 데이터 소스를 처리할 수 있는 기능을 제공합니다. 이를 활용하면 코드의 가독성과 효율성을 높이고, 다양한 데이터 구조를 일관된 방식으로 다룰 수 있습니다. StreamSupport.stream()과 Spliterator를 사용해 Iterable을 간단히 스트림으로 변환하고 처리하면, 함수형 프로그래밍의 이점을 더욱 효과적으로 활용할 수 있습니다.
+
+---
+
+link:./02-4_stream_from_file.adoc[이전: 파일 기반 Stream API] +
+link:./02-6_stream_builder.adoc[다음: Stream.builder()]

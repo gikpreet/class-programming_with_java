@@ -1,0 +1,51 @@
+= 초기화 되지 않은 참조 타입 변수
+
+* 초기화 되지 않은 참조 타입 변수를 참조
+** 멤버나 변수에 액세스 할 수 없음
+* 잘못된 참조 검출
+** 컴파일러는 정적으로 초기화되지 않은 참조를 검출
+** 런타임에 초기화되지 않은 참조 타입에 액세스하면 NullReferenceException 예외 발생
+
+---
+
+선언된 참조 변수가 유효한 참조를 가리키도록 초기화가 된 경우에만 참보 변수를 통해 개체의 멤버에 액세스 할 수 있습니다. 초기화 되지 않아 참조 타입 변수가 유효하지 않으면 멤버 변수나 메소드에 액세스 할 수 없습니다.
+
+컴파일러는 이런 경우를 검출할 수 있습니다. 만약 조건문 등으로 컴파일러가 잘못된 참조를 검출하기 어려운 경우에는 런타임에 오류를 처리합니다.
+
+== 컴파일시에 초기화 되지 않은 참조 타입 변수 검출
+
+컴파일러는 프로그램이 실행되기 전에 잘못된 참조를 검출할 수 있습니다. 아래 예에서, `BankAccount` 타입 참조 변수 `account` 는 선언되었지만 초기화 되지 않았습니다. 컴파일러는 이 오류를 검출하고 컴파일하지 않습니다.
+
+[source, java]
+----
+BankAccount account;
+account.accountNumber = 1;	// 컴파일 오류: variable might not have been initialized
+----
+
+== 런타임시에 잘못된 참조
+
+컴파일시에 검출할 수 없는 잘못된 참조의 경우가 더 많습니다. Java 런타임은 참조 타입 변수의 null 여부를 확인하기 위해 사용하기 전에 참조 변수의 값을 확인합니다.
+참조 타입 변수의 값이 null일 때 변수를 사용하면 런타임은 `NullPointerException` 을 던집니다. 이 예외는 try-catch 문을 사용해서 잡을 수 있습니다.
+
+[source, java]
+----
+try {
+    account.accountNumber = 1;
+}
+catch (NullPointerException e) {
+    e.printStackTrace();
+}
+----
+
+다른 방법으로, 변수가 null인지 여부를 명시적으로 체크하여 예외 발생을 피할 수 있습니다. 
+
+[source, java]
+----
+if (account != null)
+    account.accountNumber = 1;
+----
+
+---
+
+link:./04_declare_release.adoc[이전: 참조 타입 변수의 선언과 해제] +
+link:./06_comparision.adoc[다음: 값 타입의 비교와 참조 타입의 비교]

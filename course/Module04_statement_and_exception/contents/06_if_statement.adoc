@@ -1,0 +1,80 @@
+= if Statement (if 문)
+
+* 조건문의 결과에 따라 블록의 실행 여부를 결정
+* 문법
+----
+if (boolean-expression)
+	첫 번째 문
+else
+	두 번째 문
+----
+
+* 정수 값을 사용할 수 없음
+----
+int x;
+…
+if (x) ...	// Java에서는 (x != 0)으로 써야 함
+if (x = 0)	// Java에서는 (x == 0)으로 써야 함
+----
+
+if 문은 가장 많이 사용되는 의사 결정문입니다. 다음과 같이 선택적으로 else 절과 결합될 수 있습니다. 
+
+----
+if (boolean-expression)
+	첫 번째 Statement
+else
+	두 번째 Statement
+----
+
+`if` 문은 boolean 식을 평가하여 따라야 할 작업 과정을 결정합니다. boolean 식이 `true` 로 계산되면 첫 번째 문으로 제어가 이동하며, boolean 식이 `False` 로 계산되고 `else` 절이 있으면 두 번째 식으로 이동합니다. boolean 식이 `false` 로 평가되고 `else` 절이 없으면 `if` 문을 건너 뜁니다.
+
+== 예제
+
+아래와 같이 간단한 if 문에 포함된 문을 작성할 수 있습니다.
+
+[source, java]
+----
+if (number % 2 == 0)
+	System.out.println(“even”);
+----
+
+포함된 문에는 중괄호가 필요하지 않지만 오류가 적고 읽기 쉬운 코드를 작성하기 위해서 중괄호를 쓰는 것이 좋습니다. 다음과 같이 중괄호를 사용할 수 있습니다.
+
+[source, java]
+----
+if (number % 2 == 0) {
+	System.out.println(“even”);
+}
+----
+
+== 정수 값을 사용할 수 없음
+
+C와 C\++ 같은 언어에서는 if 문에 정수 값을 사용합니다. C 언어와 C++ 언어에서는 0이면 false, 0이 아닌 다른 정수는 true로 인식합니다. 아래는 C 언어에서의 예입니다.
+
+[source, c]
+----
+int main() {
+    int x = 0;
+    if (x) {
+        printf("X means true!");
+    }
+    else {
+        printf("X means false");
+    }
+}
+----
+
+Java에서는 if 조건문에 정수를 사용할 수 없으며, 몇몇 언어와 달리 정수를 boolean 값으로 암시적 타입 변환하지 않습니다. 
+
+[source, java]
+----
+int x;
+…
+if (x) …	    // x != 0 으로 써야 함
+if (x = 0) …	// x == 0 으로 써야 함
+----
+
+---
+
+link:./05_selection_statement[이전: Selection Statement (선택 문)] +
+link:./07_cascading_if.adoc[다음: Cascading if statement (Cascading if 문)]

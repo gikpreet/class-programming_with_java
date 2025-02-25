@@ -1,0 +1,78 @@
+== 포함된 클래스에 접근
+
+* 포함된 클래스는 public 또는 private으로 선언될 수 있음
+
+[source, java]
+----
+class Bank {
+    public class Account { ... }
+    private class AccountNumberCreator { ... }
+}
+
+class Program {
+    public static void main(String[] args) {
+        Bank.Account			// 접근 가능
+        Bank.AccountNumberCreator	// 접근 불가
+    }
+}
+----
+
+---
+
+데이터 및 메소드를 `public` 또는 `private` 으로 선언하여 액세스 범위를 조절할 수 있듯이, 포함된 클래스 역시 같은 방법으로 액세스 가능성을 제어합니다.
+
+
+== public 포함된 클래스
+
+`public` 으로 선언된 포함된 클래스에는 액세스 제한이 없습니다. 어디에서든지 접근할 수 있습니다. 포함된 클래스의 전체 이름은 포함하는 클래스의 외부에서 액세스하고자 할 때 반드시 사용해야 합니다.
+
+== private 포함된 클래스
+
+`private` 으로 선언된 포함된 클래스에는 `private` 으로 선언된 데이터 또는 메소드와 같은 액세스 제한이 있습니다. 아래의 경우 `Bank` 클래스의 외부에서는 `AccountNumberGenerator` 클래스에 액세스 할 수 있습니다.
+
+[source, java]
+----
+class Bank { 
+    private class AccountNumberGenerator { 
+        ... 
+    } 
+} 
+
+class Program { 
+    public static void main(String[] args) {
+        Bank.AccountNumberGenerator variable; //  컴파일 시 오류
+    } 
+}
+----
+
+위 예제에서 `main` 메소드는 `Program` 클래스에 존재하며, `AccountNumberGenerator` 클래스는 Bank 클래스에 포함된 클래스로 선언되어 있습니다. `AccoutNumberGenerator` 클래스는 `private` 으로 선언되어 있으므로 `Program` 클래스에 선언된 `main` 메소드에서는 `AccountNumberGenerator` 클래스에 액세스 할 수 없습니다.
+
+`private` 으로 선언된 포함된 클래스는 아래와 같이 포함하는 클래스의 멤버만 액세스 할 수 있습니다.
+
+[source, java]
+----
+class Bank 
+{ 
+    public class Account { 
+        public void setup()  { 
+            NumberSetter.set(this); 
+            balance = 0;
+        } 
+        private class NumberSetter { 
+            public static void set(Account account) { 
+                account.number = nextNumber++; 
+            } 
+            private static int nextNumber = 2311; 
+        } 
+        private int number; 
+        private int balance; 
+    }   
+}
+----
+
+이 코드에서 `Account.setup` 메소드는 `NumberSetter` 클래스에 액세스할 수 있습니다. `NumberSetter` 클래스는 `private` 클래스이지만 `Account` 내에 선언되었고 `setup` 메소드는 `account` 의 메소드이기 때문입니다.
+
+---
+
+link:./17_nested_class.adoc[이전: 포함된 클래스 생성] +
+link:./19_lab_7-1.adoc[다음: Lab 7-1 클래스를 만들고 사용]

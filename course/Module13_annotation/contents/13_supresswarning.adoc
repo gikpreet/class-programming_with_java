@@ -1,0 +1,120 @@
+= @SuppressWarning
+
+* 컴파일러에서 특정 경고에 대한 메시지를 생성하지 않도록 지시
+* Java 언어의 경고 범주
+* deprecation – 사용이 제한된 요소 사용에 대한 경고
+* unchecked – Generics가 출현하기 이전 코드와 동작시 위험성에 관한 경고
+여러 범주를 함께 묶어서 처리 가능
+
+[source, java]
+----
+@SuppressWarnings({"unchecked", "deprecation“})
+void useDeprecatedMethod() {
+   …
+}
+----
+
+---
+
+@Deprecated Annotation이 적용되어 있는 메소드를 호출할 경우, 컴파일러는 경고를 생성합니다. 하지만 사용자가 그 사실을 알면서 경고를 무시하고 해당 메소드를 사용하고자 하는 경우, 경고 메시지는 번거로운 내용일 수 있습니다.
+
+@SuppressWarning Annotation을 적용하면 지시된 경고 타입에 대해 컴파일러가 경고 메시지를 생성하지 않습니다.
+
+[source, java]
+----
+public class ObjectClass {  
+    @Deprecated
+    void deprecatedMethod() { }
+}
+----
+
+@Deprecated Annotation이 적용된 ObjectClass의 useDeprecatedMethod를 호출하면 컴파일러가 경고를 발생합니다.
+
+[source, java]
+----
+class MyClass {
+    ObjectClass objectOne = new ObjectClass();
+    
+void useDeprecatedMethod() {
+        objectOne.deprecatedMethod();
+    }
+}
+----
+
+----
+$ javac ObjectClass.java MyClass.java
+Note: ObjectClass.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+----
+
+MyClass의 useDeprecatedMethod 메소드에서 @Deprecated Annotation이 적용된 ObjectClass의 deprecatedMethod를 호출할 때 컴파일러 경고를 발생하지 않도록 하려면 @SuppressWarning Annotation을 적용합니다.
+
+[source, java]
+----
+class MyClass {
+    ObjectClass objectOne = new ObjectClass();
+    
+    @SuppressWarning("deprecated");
+void useDeprecatedMethod() {
+        objectOne.deprecatedMethod();
+    }
+}
+----
+
+@SuppressWarning 어노테이션 전파 @SuppressWarnings 어노테이션이 클래스와 메소드에 각각 주어질 경우, 컴파일러에서는 메소드에도 클래스에서 주어진 경고 제한을 적용해야 합니다. 클래스와 메소드에서 각기 다른 경고 제약이 주어질 경우, 메소드에서는 두가지 경고 제약을 모두 적용되어야 합니다.
+
+[source, java]
+----
+@SuppressWarnings("deprecation")
+Public class Base<T> {
+   @SuppressWarnings("unchecked")
+    public T get() { … }
+}
+----
+
+위 코드는 Base 클래스에 경고 제한으로 “deprecation”이 주어지고, 메소드 get에는 “unchecked”가 적용되었습니다. 이에 따라, Base 클래스내에서는 @Deprecated로 표기된 클래스나 메소드 등의 사용으로 인해 발생할 수 있는 경고 메시지를 제한하고, 메소드 get에는 @Deprecated로 표기된 클래스나 메소드 등의 사용으로 인해 발생할 수 있는 경고메시지 뿐만 아니라 미확인 오퍼레이션이과 관련된 경고메시지 또한 제한합니다.
+
+주의 사항 @SuppressWarning 어노테이션 사용시에는 Target 뿐 아니라 Advice(경고 타입)에도 주의해야 합니다. 아래와 같이 경고 메시지 타입을 all로 적용하면 해당 Target에서 발생할 수 있는 모든 경고 메시지를 제한하여, 잠재적인 오류까지도 숨길 수 있습니다.
+
+[source, java]
+----
+@SuppressWarnings("all")
+Public class Base<T> {
+   @SuppressWarnings("unchecked")
+    public T get() { … }
+}
+----
+
+@SuppressWarning 어노테이션의 경고 메시지 종류
+
+[%header, cols="1,3"]
+|===
+|경고 메시지 타입|설명
+|Boxing|	Boxing/Unboxing 작업과 관련된 경고를 표시하지 않음
+|unused|	사용하지 않은 코드에 대한 경고를 표시하지 않음
+|cast|	객체 캐스트 작업과 관련된 경고를 표시하지 않음
+|deprecation|	더 이상 사용되지 않는 클래스 또는 메소드와 같은 사용 중단과 관련된 경고를 표시하지 않음
+|restriction|	권장되거나 금지된 참조 사용과 관련된 경고를 표시하지 않음
+|dep-ann|	더 이상 사용되지 않는 어노테이션과 관련된 경고를 표시하지 않음
+|fallthrough|	switch문에서 break 문 누락과 관련된 경고를 표시하지 않음
+|finally|	반환되지 않는 finally 블록 과 관련된 경고를 표시하지 않음
+|hiding|	변수를 숨기는 지역 관련 경고를 표시하지 않음
+|incomplete-switch|	switch 문의 누락된 항목과 관련된 경고를 표시하지 않음(enum case)
+|nls|	nls이 아닌 문자열 리터럴과 관련된 경고를 표시하지 않음
+|null|	null 분석과 관련된 경고를 표시하지 않음
+|serial|	일반적으로 Serializable 클래스에서 발견되는 누락된 serialVersionUID 필드와 관련된 경고를 표시하지 않음
+|static-access|	잘못된 정적 변수 액세스와 관련된 경고를 표시하지 않음
+|synthetic-access|	내부 클래스의 최적화되지 않은 액세스와 관련된 경고를 표시하지 않음
+|unchecked|	확인되지 않은 작업과 관련된 경고를 표시하지 않음
+|unqualified-field-access|	규정되지 않은 필드 액세스와 관련된 경고를 표시하지 않음
+|javadoc|	Javadoc과 관련된 경고를 표시하지 않음
+|rawtypes|	원시 유형 사용과 관련된 경고를 표시하지 않음
+|resource|	Closeable 유형의 리소스 사용과 관련된 경고를 표시하지 않음
+|super|	수퍼 호출없이 메소드 재정의와 관련된 경고를 표시하지 않음
+|sync-override|	동기화된 메소드를 재정의할 때동기화 누락으로 인한 경고를 표시하지 않음
+|===
+
+---
+
+link:./12_override.adoc[이전: @Override] +
+link:./14_safevarags.adoc[다음: @SafeVarags]

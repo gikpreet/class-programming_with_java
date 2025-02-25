@@ -1,0 +1,137 @@
+= Hello, World revisited
+
+[source, java]
+----
+public class Hello {
+    public static void main(String[] args) {
+        System.out.println(“Hello, World”);
+    }
+}
+----
+
+---
+
+제일 처음에 보았던 Hello World 코드를 다시 살펴봅시다. 이제, 아래 질문에 대답할 수 있어야 합니다.
+
+* 런타임은 클래스를 어떻게 호출합니까?
+* main 메소드가 정적인 이유는 무엇입니까?
+
+== 런타임의 클래스 호출
+
+클래스에 정적 main 메소드가 있으면, 컴파일러는 이를 프로그램의 진입점(entry point)로 만듭니다. 이 때, main 메소드의 시그너처는 아래와 같아야 합니다.
+
+[source, java]
+----
+public static void main(String[] args)
+----
+
+아래와 같이 Hello.java 소스 파일에 두 개의 클래스가 있으면,
+
+[source, java]
+----
+public class Hello {
+    public static void main(String[] args) {
+        System.out.println("Hello, World");
+    }
+}
+
+class Example {
+    public static void main(String[] args) {
+        System.out.println("Hello, Example");
+    }
+}
+----
+
+Hello.java 소스 파일을 컴파일 하면 두 개의 .class 파일이 생성됩니다.
+
+----
+> javac Hello.java
+Hello.class
+Example.class
+----
+
+Hello.class와 Example.class는 모두 응용 프로그램 진입점을 포함하고 있습니다. 각 클래스는 모두 응용 프로그램 진입점을 통한 실행이 가능합니다.
+
+----
+> java Hello
+Hello, World!
+> java Example
+Hello, Example
+----
+
+
+프로그램에 main 함수 즉 응용 프로그램 진입점이 없으면, 일종의 라이브러리가 됩니다. 클래스의 가시성과 접근 제한만 허용된다면 .class에 존재하는 클래스에 액세스 할 수 있습니다.
+아래와 같이 응용 프로그램 진입점이 선언되지 않은 클래스 역시 문제없이 컴파일 됩니다.
+
+[source, java]
+----
+public class Utilities {
+    public static void printArray(int[] array) {
+        for(int i: array)
+            System.out.print(i + " ");
+    }
+}
+----
+
+----
+> javac Utilities.java
+----
+
+아래 프로그램은 Utilities.class 파일에 존재하는 Utilities 클래스의 printArray 정적 메소드를 호출합니다.
+
+[source, java]
+----
+public class Sample {
+    public static void main(String[] args) {
+        int[] array = {2,3,4,5,2,3,4};
+
+        Utilities.printArray(array);
+    }
+}
+----
+
+----
+> javac Sample.java
+----
+
+프로그램이 컴파일 되면, Sample 클래스의 main 메소드에서 Utilities 클래스의 printArray 정적 메소드를 호출할 수 있습니다.
+
+== 왜 main이 정적 메소드인가?
+
+main 메소드가 정적 메소드가 되면 런타임이 클래스의 인스턴스를 만들 수가 없습니다. 다음과 같이 동적 메소드(non-static 메소드)는 객체에서만 호출할 수 있습니다.
+
+[source, java]
+----
+class Example {
+    void nonStatic() { … }
+    public static void main(String[] args) {
+        Example example = new Example();
+        example.nonStatic();
+        nonStatic();	// 컴파일 시 오류
+    }
+}
+----
+
+이는 만약 main이 동적 메소드라면, 런타임은 실행시에 main 메소드를 호출하기 위해 객체를 생성해야 합니다.
+
+[source, java]
+----
+class Example {
+    void main() {
+        …
+    }
+}
+----
+
+이것이 뜻하는 바는, main이 동적 메소드라면 런타임은 실행을 위해 다음 코드를 실행해야 합니다.
+
+[source, java]
+----
+Example example = new Example();
+example.main();
+----
+
+---
+
+link:./12_java_and_OOP.adoc[이전: Java와 객체지향] +
+link:./14_simple_class_definition.adoc[다음: 단순한 클래스 정의]

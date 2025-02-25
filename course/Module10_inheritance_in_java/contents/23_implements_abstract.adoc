@@ -1,0 +1,55 @@
+= 추상 메소드 구현
+
+* 추상 클래스에서 구현이 없는 메소드 선언
+* abstract 키워드 사용
+* 추상 클래스에서만 추상 메소드를 선언할 수 있음
+
+[source, java]
+----
+public abstract class StringInstrument {
+    String name;
+    int numberOfString;
+
+    public abstract void changeString();
+}
+
+public class Guitar extends StringInstrument {
+    public void changeString() { ... }
+}
+----
+
+---
+
+abstract 키워드를 사용하여 추상 클래스에 추상 메소드를 추가할 수 있습니다. 추상 클래스에서 파생된 클래스는 추상 클래스의 추상 메소드를 반드시 구현해야 합니다.
+일반 클래스에서는 abstract 키워드를 사용한 추상 메소드를 선언할 수 있습니다.
+
+[source, java]
+----
+class violin {
+    abstract void play();	// 컴파일 시 오류
+}
+----
+
+인터페이스에서 default와 static을 제외한 모든 메소드는 추상 메소드입니다. abstract 키워드를 사용해서 선언할 수도 있습니다.
+
+[source, java]
+----
+interface Instrument {
+    abstract void play();
+    abstract void tune();
+}
+----
+
+추상 메소드는 구현을 포함할 수 없습니다.
+
+[source, java]
+----
+abstract class StringInstrument {
+    abstract void changeString() { ... };	// 컴파일 시 오류
+}
+----
+
+---
+
+link:./22_abstract_interface.adoc[이전: 추상 클래스와 인터페이스] +
+link:./24_lab_10-1.adoc[다음: Lab 10-1 상속을 사용하여 인터페이스 구현]

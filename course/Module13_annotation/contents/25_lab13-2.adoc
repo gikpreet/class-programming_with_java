@@ -1,0 +1,207 @@
+= Lab 13-2 사용자 정의 Annotation 생성
+
+이 연습에서는 사용자 정의 Annotation을 생성하고, Meta Annotation을 사용하여 Annotation에 Annotation을 적용합니다.
+
+이 연습에서는 디바이스, 게이트웨이, 노드를 가지고 상속 관계를 가지는 사용자 정의 Annotation을 생성합니다.
+
+== 실습 환경 준비
+
+1. 웹 브라우저에서 아래 주소로 이동합니다.
++
+https://github.com/gikpreet/class-programming_with_java/blob/master/Module13_annotation/LabFile/Lab13-2.zip
++
+2. Lab13-2.zip 파일의 압축을 해제합니다.
+3. Starter 폴더를 Visual Studio Code에서 엽니다.
+
+== 디바이스 클래스 확인
+
+1. Visual Studio Code 탐색기에서 Device.java 파일을 엽니다.
+2. Device 클래스의 getDeviceInformation 메소드를 확인합니다. 
+a. getDeviceInformation 메소드는 Reflection을 이용해 클래스의 Annotation 정보를 가져옵니다.
++
+[source, java]
+----
+private DeviceInformation getDeviceInformation() {
+    Annotation[] annotations = this.getClass().getAnnotations();
+    for(Annotation annotation : annotations) {
+        if (annotation instanceof DeviceInformation) {
+            return  (DeviceInformation) annotation;
+        }
+    }
+    throw new UnsupportedOperationException("No Device Information");
+}
+----
+
+== 디바이스 정보 Annotation 생성
+
+1. Visual Studio Code 탐색기에서 DeviceInformation.java 파일을 엽니다.
+2. DeviceInformation Annotation 타입에 필드를 추가합니다.
+a. 기본값이 "device"인 String 타입의 type
+b. 기본값이 없는 String 타입의 model
+3. 완성된 Annotation 타입은 아래와 유사할 것입니다.
++
+[source, java]
+----
+import java.lang.annotation.*;
+
+public @interface DeviceInformation {
+    String type() default "device";
+    String model();
+}
+----
++
+4. 작업을 저장합니다.
+5. Device.java 파일을 엽니다.
+6. getType() 메소드와 getModel() 메소드의 주석을 해제합니다.
++
+[source, java]
+----
+import java.lang.annotation.Annotation;
+
+public class Device {
+    Device() {
+    }
+
+    private DeviceInformation getDeviceInformation() {
+        Annotation[] annotations = this.getClass().getAnnotations();
+        for(Annotation annotation : annotations) {
+            if (annotation instanceof DeviceInformation) {
+                return  (DeviceInformation) annotation;
+            }
+        }
+        throw new UnsupportedOperationException("No Device Information");
+    }
+
+    public String getType() {
+        try {
+            return this.getDeviceInformation().type();
+        }
+        catch(Exception e) {
+            return "unknown";
+        }
+    }
+
+    public String getModel() {
+        try {
+            return  this.getDeviceInformation().model();
+        }
+        catch(Exception e) {
+            return "unknown";
+        }
+    }
+}
+----
++
+7. DeviceExample.java 파일을 엽니다.
+8. showDeviceInformation 메소드의 두 코드 라인의 주석을 해제합니다.
++
+[source, java]
+----
+public class DeviceExample {
+    public static void showDeviceInformation(Device device) {
+        System.out.println("Type : " + device.getType());
+        System.out.println("Model : " + device.getModel());
+    }
+
+    public static void main(String[] args) {
+        Device device = new Device();
+
+        DeviceExample.showDeviceInformation(device);
+    }
+}
+----
++
+9. 아래 명령을 수행하여 프로그램을 컴파일합니다. 오류가 있으면 수정합니다.
++
+----
+$ javac *.java
+----
++
+10. 아래 명령을 수행하여 프로그램을 실행합니다.
++
+----
+$ java DeviceExample
+Type : unknown
+Model : unknown
+----
+
+== 디바이스 정보 Annotation 추가
+
+1. Visual Studio Code에서 Device.java 파일을 엽니다.
+2. Device 클래스에 DeviceInformation 어노테이션을 추가합니다.
+3. 코드는 아래와 유사할 것입니다.
++
+[source, java]
+----
+@DeviceInformation
+public class Device { … }
+----
++
+4. 아래 명령을 실행하여 프로그램을 컴파일하고 오류를 확인합니다.
++
+----
+$ javac *.java
+Device.java:3: error: annotation @DeviceInformation is missing a default value for the element 'model'
+@DeviceInformation
+^
+1 error
+----
++
+5. @DeviceInformation Annotation에 model="Galaxy Book Pro"를 파라미터를 추가합니다.
++
+[source, java]
+----
+@DeviceInformation(model=”Galaxy Book Pro”)
+public class Device { … }
+----
++
+6. 아래 명령을 수행하여 프로그램을 컴파일합니다.
++
+----
+$ javac Device.java
+----
++
+아래 명령을 수행하여 프로그램을 실행하고 결과를 확인합니다.
++
+----
+$ java DeviceExample
+Type : unknown
+Model : unknown
+----
+
+== Annotation 설정
+
+1. Visual Studio Code 탐색기에서 DeviceInformation.java 파일을 엽니다.
+2. DeviceInformation Annotation 타입에 @Target 어노테이션을 Element.TYPE 대상으로 추가합니다.
+3. DeviceInformation Annotation 타입에 @Retention 어노테이션을 4RetentionPolicy.RUNTIME 시점으로 추가합니다.
+4. 완성된 코드는 아래와 유사할 것입니다.
++
+[source, java]
+----
+@Target({ElementType.TYPE})
+@Retention(RetentionPolicy.RUNTIME)
+public @interface DeviceInformation {
+    String type() default "device";
+    String model();
+}
+----
++
+5. 아래 명령을 수행하여 프로그램을 컴파일 합니다.
++
+----
+$ javac *.java
+----
++
+6. 아래 명령을 수행하여 프로그램을 실행합니다.
++
+----
+$ java DeviceExample
+Type : device
+Model : Galaxy Book Pro
+----
++
+7. 실습이 중료되었습니다.
+
+---
+
+link:./24_type_creation.adoc[이전: Annotation 타입 생성]

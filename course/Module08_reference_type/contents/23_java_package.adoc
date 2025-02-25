@@ -1,0 +1,16 @@
+= Java 패키지
+
+Java의 패키지는 비슷한 성격의 클래스들을 모아 놓은 디렉토리입니다. Java는 클래스들을 여러 이름공간으로 정리하며, 소속된 각 타입에 대해 고유한 이름 공간들을 제공합니다. 이 장에서는 Java 패키지의 동작 방법과 Java에서 제공되는 클래스들을 제공하는 패키지를 알아봅니다.
+
+== Table of Contents
+
+1. link:./24_overview_java_package.adoc[Java 패키지]
+2. link:./25_java_lang_package.adoc[java.lang 패키지]
+3. link:./26_java_util_package.adoc[java.util 패키지]
+4. link:./27_java_io_package.adoc[java.io 패키지]
+5. link:./28_other_package.adoc[기타 유용한 패키지]
+
+---
+
+link:./22_common_method.adoc[이전: 공통 메소드] +
+link:./24_overview_java_package.adoc[다음: Java 패키지 개요]

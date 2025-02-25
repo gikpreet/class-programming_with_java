@@ -1,0 +1,17 @@
+= 타입 변환
+
+이 단원에서는 Java에서 참조 타입의 타입 변환에 대해 배웁니다. 참조 타입은 다른 타입으로 변환될 수 있지만, 반드시 변환되는 객체사이에 관계가 있어야 합니다.
+
+== Table of Contents
+
+1. link:./31_wrapper_class.adoc[Wrapper 클래스]
+2. link:./32_boxing_unboxing.adoc[Boxing과 Unboxing]
+3. link:./33_super_sub_casting.adoc[슈퍼 클래스/서브 클래스 변환]
+4. link:./34_instanceof.adoc[Instanceof 연산자]
+5. link:./35_object_casting.adoc[Object 타입 변환]
+6. link:./36_interface_casting.adoc[인터페이스 타입 변환]
+
+---
+
+link:./29_lab_8-1.adoc[이전: 8-1: 참조 타입 변수를 선언하고 사용] +
+link:./31_wrapper_class.adoc[다음: Wrapper 클래스]

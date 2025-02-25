@@ -1,0 +1,153 @@
+= Annotation의 필요성과 활용 목적
+
+* 코드의 가독성과 명확성 향상
+* 보일러플레이트 최소화 및 설정 간소화
+* 컴파일 타임 및 런타임 검증 지원
+* 프레임워크 및 라이브러리 통합을 쉽게 함
+
+---
+
+어노테이션(Annotation)은 자바 코드에 부가적인 메타데이터를 추가하여 컴파일러, 개발 도구, 프레임워크, 런타임 환경 등이 해당 정보를 기반으로 특정 작업을 수행하도록 돕는 기능입니다. Annotation은 자바 5(Java 1.5) 버전부터 도입되었으며, 코드의 가독성, 유지보수성, 개발 효율성을 향상시키는 중요한 도구로 자리 잡았습니다.
+
+== Annotation이 필요한 이유
+
+=== 코드의 가독성과 명확성 향상
+
+어노테이션은 코드에 의미를 부여하여, 코드가 수행하는 역할을 명확하게 설명합니다.개발자가 코드를 읽을 때 의도를 쉽게 파악할 수 있어, 코드 리뷰 및 유지보수 시 효율이 높아집니다.
+
+* @Override를 보면 해당 메서드가 부모 클래스의 메서드를 오버라이딩한 것임을 즉시 알 수 있습니다.
+* @Deprecated는 해당 코드가 더 이상 권장되지 않음을 명확히 알려줍니다.
+
+=== 반복 코드 최소화 및 설정 간소화
+
+XML과 같은 복잡한 설정 파일을 사용하는 대신, 어노테이션을 활용하면 코드 안에서 간결하게 설정할 수 있습니다. 설정 파일을 따로 관리하지 않아도 되고, 코드와 설정이 한 곳에 있어 직관적입니다.
+
+스프링 프레임워크에서는 과거 XML 기반 설정을 @Component, @Autowired 등의 어노테이션으로 대체.
+
+[source, java]
+----
+@Component
+public class UserService {
+    @Autowired
+    private UserRepository userRepository;
+}
+----
+
+=== 컴파일 타임 및 런타임 검증 지원
+
+어노테이션은 컴파일 타임 또는 런타임에 코드의 정확성을 검증하는 데 사용됩니다. 개발 초기 단계에서 오류를 발견하여, 디버깅 비용을 절감할 수 있습니다.
+
+* @Override: 메서드 오버라이딩 오류를 컴파일 타임에 발견 가능.
+* 사용자 정의 어노테이션 + 리플렉션을 활용하면 런타임에도 유효성 검증 가능.
+
+[source, java]
+----
+@Override
+public void toString() { // 오타가 있을 경우 컴파일 오류 발생
+    return "Example";
+}
+----
+
+=== 프레임워크 및 라이브러리 통합 용이성
+
+스프링(Spring), 하이버네이트(Hibernate), JPA(Java Persistence API) 등 현대 자바 프레임워크들은 어노테이션을 기반으로 동작합니다. 프레임워크가 어노테이션을 기반으로 자동 설정 및 관리하므로 개발자는 핵심 비즈니스 로직에 집중할 수 있습니다.
+
+JPA에서는 @Entity, @Table, @Id 등을 통해 데이터베이스 매핑을 정의합니다.
+
+[source, java]
+----
+@Entity
+@Table(name = "users")
+public class User {
+    @Id
+    private Long id;
+
+    @Column(name = "username")
+    private String username;
+}
+----
+
+== Annotation 활용 목적
+
+=== 컴파일러에 지시 (Compiler Instructions)
+
+어노테이션은 컴파일러에게 특정 작업을 수행하도록 지시할 수 있습니다. 코드 품질을 관리하고 불필요한 경고를 억제합니다.
+
+* @Override: 오버라이딩 검증
+* @SuppressWarnings: 불필요한 경고 억제
+* @SafeVarargs: 제네릭 가변 인수의 경고 제거
+
+[source, java]
+----
+@SuppressWarnings("unchecked")
+List<String> list = new ArrayList();
+----
+
+=== 코드 자동 생성 및 처리 (Code Generation)
+
+롬복(Lombok)과 같은 라이브러리는 어노테이션을 활용해 코드 자동 생성을 지원합니다.
+
+@Getter, @Setter, @Builder 등을 사용하면, 반복적인 코드 작성이 필요 없습니다.
+java
+복사
+편집
+@Data
+@AllArgsConstructor
+public class User {
+    private String name;
+    private int age;
+}
+➡️ 목적: 보일러플레이트(반복) 코드 제거로 개발 생산성 향상
+
+=== 런타임 처리 및 동적 동작 제어 (Runtime Processing)
+
+어노테이션은 리플렉션(reflection) 기술과 함께 사용되어 런타임에서 동적으로 처리됩니다.
+
+스프링에서는 @Autowired로 의존성 주입(Dependency Injection)을 수행하며ㅡ JUnit의 @Test 어노테이션은 테스트 메서드로 인식하여 자동 실행합니다.
+
+[source, java]
+----
+@Test
+public void testAddition() {
+    assertEquals(4, 2 + 2);
+}
+----
+
+➡️ 목적: 런타임 동작 제어 및 자동화된 테스트 환경 구축
+
+=== API 문서화 (Documentation)
+
+@Documented 어노테이션은 API 문서(Javadoc)에 어노테이션 정보를 포함시킵니다.
+
+라이브러리 개발 시, 외부 개발자들이 API를 쉽게 이해할 수 있도록 도와줍니다.
+
+[souece, java]
+----
+@Documented
+public @interface MyAnnotation {
+    String value();
+}
+----
+
+➡️ 목적: 코드 문서화를 통해 협업 효율성 및 API 가독성 향상
+
+=== 보안 및 유효성 검증 (Security & Validation)
+
+어노테이션은 보안 및 데이터 검증을 위한 도구로도 활용됩니다.
+
+Bean Validation(@NotNull, @Size)을 통해 데이터 유효성 검증, 스프링 시큐리티의 @Secured로 접근 제어 관리
+
+[source, java]
+----
+@Secured("ROLE_ADMIN")
+public void deleteUser(Long id) {
+    // 관리자만 접근 가능
+}
+----
+
+➡️ 목적: 보안 강화 및 데이터 무결성 유지
+
+---
+
+link:./03_whatis_annotation.adoc[이전: Annotation 개요] +
+link:./05_aop_annotation.adoc[다음: AOP와 Annotation]

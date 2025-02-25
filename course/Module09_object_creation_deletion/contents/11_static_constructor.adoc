@@ -1,0 +1,14 @@
+= static 생성자
+
+* static 생성자는 객체 인스턴스가 생성되기 전에 동작됨
+** static 필드를 초기화 함
+* Java는 static 생성자를 지원하지 않음
+
+---
+
+Java 프로그래밍 언어는 static 생성자를 지원하지 않습니다.
+
+---
+
+link:./10_private_constructor.adoc[이전: private 생성자] +
+link:./12_lab_9-1.adoc[다음: Lab 9-1 객체 생성]

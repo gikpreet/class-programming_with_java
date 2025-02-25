@@ -1,0 +1,16 @@
+= 캡슐화(encapsulation)
+
+캡슐화는 객체지향의 중요한 원칙 하나이며, 잘 된 추상화의 강력한 도구입니다. 이 장에서는 객체지향의 캡슐화에 대해 배웁니다.
+
+== Table of Contents
+
+1. link:./07_data_method.adoc[데이터와 메소드의 결합]
+2. link:./08_visibility.adoc[접근 가시성 제어]
+3. link:./09_why_encapsulation.adoc[왜 캡슐화를 해야 하는가?]
+4. link:./10_object_data.adoc[객체 데이터]
+5. link:./11_using_static_data.adoc[정적 데이터 사용]
+
+---
+
+link:./05_abstraction.adoc[이전: 추상화(Abstraction)] +
+link:./07_data_method.adoc[다음: 데이터와 메소드의 결합]

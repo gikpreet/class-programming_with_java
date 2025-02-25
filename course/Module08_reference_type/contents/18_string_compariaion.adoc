@@ -1,0 +1,50 @@
+= String 값 비교
+
+* `equals` 메소드
+** String의 참조 위치가 아닌 값을 비교
+* `compareTo` 메소드와 `compareToIgnoreCase` 메소드
+** 대소문자를 구분하여 비교
+** 사전순 비교
+** int 값 return
+
+---
+
+`String` 객체에 포함된 문자열의 값은 비교 연산자인 `==` 와 `!=` 을 사용해서 비교하지 않는 것이 좋습니다. 문자열의 값을 비교할 때는 문자열 비교를 위해 만들어진 메소드를 사용하는 것이 좋습니다.
+
+* `equals` 메소드 +
+`String` 클래스는 `java.lang.Object` 클래스에서 상속한 `equals` 메소드를 가지고 있습니다. 이 메소드는 오버라이드되어 `String` 객체끼리의 값을 비교하여 같을 경우 `true`, 다를 경우 `false인` Boolean 값을 return합니다.
+
+[source, java]
+----
+String s1 = "Hello";
+String s2 = "Hello";
+
+if (s1.equals(s2)) {
+    System.out.println("same!");
+}
+----
+
+* `compareTo` 메소드 +
+`compareTo()` 메소드는 두 문자열을 정렬 순서에 따라 비교합니다. return하는 값은 값의 비교 결과에 따라 다릅니다.
+** 숫자를 return하는 경우 +
+두 String 객체의 값을 사전순으로 비교하다가 다른 문자가 발견될 경우 다른 두 문자의 ASCII 코드 값을 뺀 값을 return합니다.
++
+[source, java]
+----
+String s1 = "Yesterday";
+String s2 = "Yeserday";
+s1.compareTo(s2);
+----
++
+`s1` 과 `s2` 의 두 문자열에서 첫번째로 발견되는 다른 문자인 t와 e를 비교해서, t의 ASCII 값인 116에서 e의 ASCII 값인 101을 뺀 수인 15를 return 합니다.
++
+** 0을 return하는 경우 +
+두 문자열이 값이 대소문자를 구분하여 완전히 동일합니다.
+
+* `compareToIgnoreCase` 메소드 +
+`compareTo()` 메소드와 동일하게 동작하지만 대소문자를 구분하지 않습니다.
+
+---
+
+link:./17_string_method_operator.adoc[이전: String 클래스 메소드, 연산자] +
+link:./19_string_compare_operator.adoc[다음: String 비교 연산자]

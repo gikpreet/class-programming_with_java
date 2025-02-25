@@ -1,0 +1,176 @@
+= Generic 클래스 상속
+
+* 부모와 자식 모두 Generic일 수 있으며, 타입 파라미터를 공유하거나 고정할 수 있음
+* 와일드카드(?), 타입 제한(extends, super)을 통해 더 유연한 상속이 가능
+* 타입 소거(Type Erasure)로 인해 런타임에는 제네릭 정보가 사라짐
+
+---
+
+Java에서 제네릭(Generic) 클래스의 상속은 일반 클래스의 상속과 유사하지만, 제네릭 타입 매개변수의 처리 방식에 몇 가지 중요한 차이가 있습니다. 이를 이해하기 위해 기본 개념, 예제, 그리고 주요 주의사항으로 나누어 설명하겠습니다.
+
+== 기본 개념
+
+Generic 클래스는 클래스 선언 시 타입을 매개변수로 받아서 다양한 타입에 대해 재사용할 수 있게 합니다. 이 Generic 클래스를 상속할 때는 다음과 같은 방식으로 처리할 수 있습니다.
+
+* 슈퍼 클래스가 제네릭일 때, 서브 클래스가 Generic일 수도 있고 아닐 수도 있음
+* 상속 시 타입 파라미터를 그대로 유지하거나, 특정 타입으로 고정할 수 있음
+
+=== 슈퍼 클래스와 자식 클래스 모두 Generic인 경우
+
+`GenericChild<T>` 가 `GenericParent<T>` 를 상속하면서 동일한 타입 매개변수 T를 사용합니다.
+즉, `GenericChild<String>` 은 `GenericParent<String>` 의 기능을 그대로 물려받습니다.
+
+[source, java]
+----
+// 슈퍼퍼 클래스
+class GenericParent<T> {
+    private T data;
+
+    public GenericParent(T data) {
+        this.data = data;
+    }
+
+    public T getData() {
+        return data;
+    }
+}
+
+// 서브 클래스도 제네릭
+class GenericChild<T> extends GenericParent<T> {
+    public GenericChild(T data) {
+        super(data);
+    }
+
+    public void display() {
+        System.out.println("Data: " + getData());
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        GenericChild<String> child = new GenericChild<>("Hello");
+        child.display();  // 출력: Data: Hello
+    }
+}
+----
+
+== 서브 클래스가 구체적인 타입으로 상속하는 경우
+
+`IntegerChild` 는 제네릭 클래스가 아니며, `GenericParent<Integer>` 로 상속하여 타입을 Integer로 고정했습니다.
+이로 인해 `IntegerChild` 내부에서는 항상 Integer 타입을 처리하므로 타입 캐스팅이 필요 없습니다.
+
+[source, java]
+----
+// 슈퍼 클래스
+class GenericParent<T> {
+    private T data;
+
+    public GenericParent(T data) {
+        this.data = data;
+    }
+
+    public T getData() {
+        return data;
+    }
+}
+
+// 서브 클래스가 타입을 Integer로 고정
+class IntegerChild extends GenericParent<Integer> {
+    public IntegerChild(Integer data) {
+        super(data);
+    }
+
+    public void square() {
+        System.out.println("Square: " + (getData() * getData()));
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        IntegerChild child = new IntegerChild(5);
+        child.square();  // 출력: Square: 25
+    }
+}
+----
+
+== 슈퍼 클래스가 Generic, 서브 클래스가 추가적인 타입 파라미터를 가지는 경우
+
+자식 클래스인 `GenericChild` 는 부모의 Generic 타입 T를 유지하면서 추가적인 타입 파라미터 U를 추가했습니다.
+
+[source, java]
+----
+// 부모 클래스
+class GenericParent<T> {
+    private T data;
+
+    public GenericParent(T data) {
+        this.data = data;
+    }
+
+    public T getData() {
+        return data;
+    }
+}
+
+// 자식 클래스가 추가적인 타입 매개변수 U를 가짐
+class GenericChild<T, U> extends GenericParent<T> {
+    private U extraData;
+
+    public GenericChild(T data, U extraData) {
+        super(data);
+        this.extraData = extraData;
+    }
+
+    public void display() {
+        System.out.println("Data: " + getData() + ", Extra Data: " + extraData);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        GenericChild<String, Integer> child = new GenericChild<>("Hello", 100);
+        child.display();  // 출력: Data: Hello, Extra Data: 100
+    }
+}
+----
+
+== 와일드 카드와 상속
+
+아래와 같은 코드가 있을 때, 두 클래스는 상속 관계가 아니고, Generic은 타입 불변이므로 컴파일 오류가 발생합니다.
+
+[source, java]
+----
+Parent<Number> parent = new Parent<>(100);
+Parent<Integer> child = new Parent<>(200);
+
+parent = child; // 컴파일 오류 발생!
+----
+
+=== 와일드 카드 사용
+
+* `? extends Number: Number` 또는 그 하위 클래스(Integer, Double) 허용
+* **읽기 전용(read-only)**으로 주로 사용 (쓰기 제한 있음)
+
+[source, java]
+----
+Parent<? extends Number> parent;  // Number 또는 그 하위 클래스 허용
+parent = new Parent<Integer>(123);  // OK
+parent = new Parent<Double>(45.67); // OK
+----
+
+=== super 와일드 카드 사용
+
+* `? super Integer: Integer` 또는 그 상위 클래스(Number, Object) 허용
+* 주로 **쓰기 가능(write)**한 상황에 사용
+
+[source, java]
+----
+Parent<? super Integer> parent;
+parent = new Parent<Number>(100);   // OK
+parent = new Parent<Object>("Hi");  // OK
+----
+
+---
+
+link:./30_inhertance_generics.adoc[이전: 상속과 Generics] +
+link:./32_generic_method_overriding.adoc[다음: Generic 메소드 오버라이딩]

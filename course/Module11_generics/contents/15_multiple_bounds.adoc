@@ -1,0 +1,138 @@
+= 다중 제한
+
+* 타입 파라미터에 특정 조건을 만족하는 타입만 사용하도록 제한
+* 여러개의 조건을 지정하여 타입을 제한
+
+[source, java]
+----
+<T extends 상위클래스 & 인터페이스1 & 인터페이스2>
+----
+
+---
+
+Generics는 **타입 제한(bound)**을 사용하여 특정 조건을 만족하는 타입만 사용하도록 제한할 수 있습니다. **다중 제한**은 여러 개의 조건을 지정하여 타입을 제한하는 방식입니다.
+
+== 구문
+
+상위 클래스와 인터페이스를 동시에 사용할 경우 상위 클래스는 반드시 첫 번째로 지정해야 하며, 이후 인터페이스를 나열합니다.
+
+[source, java]
+----
+<T extends 상위클래스 & 인터페이스1 & 인터페이스2>
+----
+
+인터페이스만 사용할 경우 순서는 상관없습니다.
+
+== 예제: 상위 클래스와 인터페이스를 함께 사용
+
+타입 파라미터에 상위 클래스와 인터페이스를 함께 사용하는 경우
+
+* 아래 예제에서 `T extends Animal & Flyable` 은 `T`가 `Animal` 클래스의 서브클래스이고 `Flyable` 인터페이스를 구현한 클래스여야 한다는 조건을 의미합니다.
+* `Bird` 는 `Animal` 을 상속하고 `Flyable` 을 구현했으므로 `Cage<Bird>` 를 사용할 수 있습니다.
+
+[source, java]
+----
+interface Flyable {
+    void fly();
+}
+
+class Animal {
+    void eat() {
+        System.out.println("Eating...");
+    }
+}
+
+class Bird extends Animal implements Flyable {
+    @Override
+    public void fly() {
+        System.out.println("Flying...");
+    }
+}
+
+class Cage<T extends Animal & Flyable> {
+    private T occupant;
+
+    public Cage(T occupant) {
+        this.occupant = occupant;
+    }
+
+    public void makeOccupantFly() {
+        occupant.fly();
+    }
+
+    public void feedOccupant() {
+        occupant.eat();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Bird bird = new Bird();
+        Cage<Bird> birdCage = new Cage<>(bird);
+
+        birdCage.feedOccupant();
+        birdCage.makeOccupantFly();
+    }
+}
+----
+
+== 예제: 인터페이스만 사용
+
+* `T extends Swimable & Runnable` 은 `T` 가 `Swimable` 과 `Runnable` 인터페이스를 모두 구현해야 함을 나타냅니다.
+* `Amphibian` 은 두 인터페이스를 모두 구현하므로 `Habitat<Amphibian>` 을 사용할 수 있습니다.
+
+[source, java]
+----
+interface Swimable {
+    void swim();
+}
+
+interface Runnable {
+    void run();
+}
+
+class Amphibian implements Swimable, Runnable {
+    @Override
+    public void swim() {
+        System.out.println("Swimming...");
+    }
+
+    @Override
+    public void run() {
+        System.out.println("Running...");
+    }
+}
+
+class Habitat<T extends Swimable & Runnable> {
+    private T resident;
+
+    public Habitat(T resident) {
+        this.resident = resident;
+    }
+
+    public void performActions() {
+        resident.swim();
+        resident.run();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Amphibian frog = new Amphibian();
+        Habitat<Amphibian> habitat = new Habitat<>(frog);
+
+        habitat.performActions();
+    }
+}
+----
+
+== 주의
+
+* 상위 클래스는 하나만 지정 가능합니다. Java는 단일 상속만 지원하기 때문에 다중 제한에서 상위 클래스는 하나만 사용할 수 있습니다. 따라서, T extends Class1 & Class2와 같은 선언은 허용되지 않습니다.
+* 인터페이스는 여러 개 지정할 수 있습니다. 인터페이스는 필요한 만큼 나열할 수 있습니다.
+* 상위 클래스가 있다면 반드시 첫 번째에 나와야 합니다.
+
+---
+
+link:./14_extends_keywords.adoc[이전: extends 키워드] +
+link:./16_lab11-1.adoc[다음: Lab 11-1 기본적인 Generics 사용]

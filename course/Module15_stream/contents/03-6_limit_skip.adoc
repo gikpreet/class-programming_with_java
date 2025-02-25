@@ -1,0 +1,111 @@
+= 제한 및 건너뛰기
+
+* 스트림 데이터 처리 시 요소의 개수를 조정하거나 일부를 제외하는 데 사용
+* 데이터를 효율적으로 처리할 수 있도록 도와줌
+* 제한 메소드
+** `limit(long maxSize)`
+* 건너뛰기 메소드
+** `skip(long n)`
+
+---
+
+Java Stream API에서 **제한(Limiting)**과 **건너뛰기(Skipping)**는 스트림 데이터 처리 시 요소의 개수를 조정하거나 일부를 제외하는 데 사용됩니다. 이 두 연산은 스트림의 **중간 연산(Intermediate Operation)**으로 동작하며, 데이터를 효율적으로 처리할 수 있도록 도와줍니다.
+
+== 제한 (Limiting)
+
+스트림 요소의 최대 개수를 제한합니다. 스트림의 요소가 많을 때, 앞에서부터 원하는 개수만큼만 가져오고 나머지는 제외할 수 있습니다.
+
+=== limit(long maxSize)
+
+스트림의 앞에서부터 최대 maxSize개의 요소만 포함하는 새로운 스트림을 반환합니다. 메모리 및 처리 시간을 절약할 수 있습니다.
+
+아래 예제는 숫자 스트림에서 지정된 원소 개수 만큼만 데이터를 처리합니다.
+
+[source, java]
+----
+import java.util.stream.Stream;
+
+public class LimitExample {
+    public static void main(String[] args) {
+        Stream<Integer> numbers = Stream.of(1, 2, 3, 4, 5, 6);
+
+        numbers.limit(3) // 처음 3개 요소만 가져옴
+               .forEach(System.out::println); // 출력: 1, 2, 3
+    }
+}
+----
+
+== 건너뛰기 (Skipping)
+
+스트림의 처음 N개의 요소를 제외하고 나머지 요소를 처리합니다. 스트림의 앞부분을 생략하고 싶을 때 유용합니다.
+
+=== `skip(long n)`
+
+스트림의 처음 n개의 요소를 건너뛰고 나머지 요소로 구성된 새로운 스트림을 반환합니다. 불필요한 데이터를 건너뛰어 효율적으로 처리할 수 있도록 합니다.
+
+아래 예제는 숫자 스트림에서 지정된 원소 개수 만큼만 데이터를 건너 뜁니다.
+
+[source, java]
+----
+import java.util.stream.Stream;
+
+public class SkipExample {
+    public static void main(String[] args) {
+        Stream<Integer> numbers = Stream.of(1, 2, 3, 4, 5, 6);
+
+        numbers.skip(3) // 처음 3개 요소 건너뛰기
+               .forEach(System.out::println); // 출력: 4, 5, 6
+    }
+}
+----
+
+== 제한과 건너뛰기의 조합
+
+limit()과 skip()을 조합하여, 원하는 범위의 요소만 추출할 수 있습니다. 예를 들어, 페이징 처리와 같은 작업에 활용할 수 있습니다.
+
+아래 예제는 1 ~ 3 번째 사이의 특정 범위의 요소 추출
+
+[source, java]
+----
+import java.util.List;
+
+public class LimitSkipExample {
+    public static void main(String[] args) {
+        List<String> names = List.of("Alice", "Bob", "Charlie", "David", "Eve");
+
+        names.stream()
+             .skip(1)  // 처음 1개 요소 건너뛰기
+             .limit(3) // 다음 3개 요소만 가져오기
+             .forEach(System.out::println); // 출력: Bob, Charlie, David
+    }
+}
+----
+
+== 성능 최적화와 활용
+
+`limit()` 과 `skip()` 은 처리할 데이터 양을 줄여 성능 최적화에 도움을 줍니다. 큰 데이터 세트에서 필요한 부분만 처리하거나, 데이터를 페이징 처리할 때 자주 사용됩니다.
+
+[source, java]
+----
+import java.util.List;
+
+public class PaginationExample {
+    public static void main(String[] args) {
+        List<String> data = List.of("A", "B", "C", "D", "E", "F", "G");
+
+        int page = 2;
+        int pageSize = 3;
+
+        data.stream()
+            .skip((page - 1) * pageSize) // (2 - 1) * 3 = 3개 건너뛰기
+            .limit(pageSize)            // 다음 3개 가져오기
+            .forEach(System.out::println); // 출력: D, E, F
+    }
+}
+----
+
+Java Stream에서 제한과 건너뛰기는 데이터 처리의 범위를 효율적으로 제어하는 강력한 도구입니다.
+
+---
+
+link:./19_sorting.adoc[이전: 정렬] + 

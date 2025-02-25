@@ -1,0 +1,48 @@
+= 상수 선언
+
+* 상수는 컴파일시에 초기화 됨
+* final 키워드를 사용하여 선언
+
+---
+
+상수는 생성자와는 별도로 초기화 됩니다. 상수 변수는 절대로 변하지 않는 값을 나타내며, final 키워드를 사용하여 정의됩니다.
+
+[source, java]
+----
+final double pi = 3.14;
+----
+
+상수를 이용하여 원의 넓이를 구하는 메소드를 아래와 같이 작성할 수 있습니다.
+
+[source, java]
+----
+public class Calculator {
+    final double pi = 3.14;
+    public double getAreaOfCircle(double radius) {
+        return radius * radius * pi;
+    }
+}
+----
+
+종속성이 순환 특성이 아니라면 동일한 프로그램 내의 다른 상수에 종속될 수 있습니다. 컴파일러는 적절한 순서로 상수 선언을 자동으로 평가합니다.
+
+[source, java]
+----
+public class Calculator {
+    final double pi = 3.14;
+    final double tau = pi * 2;
+
+    public double getAreaOfCircle(double radius) {
+        return radius * radius * pi;
+    }
+
+    public double getCircumference(double radius) {
+        return radius * tau;
+    }
+}
+----
+
+---
+
+link:./08_initializer_list.adoc[이전: 초기자 목록] +
+link:./10_private_constructor.adoc[다음: private 생성자]

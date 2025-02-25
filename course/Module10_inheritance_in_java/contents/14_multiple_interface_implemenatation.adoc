@@ -1,0 +1,69 @@
+= 다중 인터페이스 구현
+
+* 클래스는 하나 이상의 인터페이스를 구현할 수 있음
+* 인터페이스는 하나 이상의 인터페이스를 확장할 수 있음
+* 클래스는 인터페이스의 메소드를 반드시 구현해야 함
+
+[source, java]
+----
+interface Flyable {
+    void fly();
+}
+
+interface Sucklable {
+    void suckle();
+}
+
+class Bat implements Flyable, Sucklable {
+    void fly() { ... }
+    void suckle() { ... }
+}
+----
+
+---
+
+Java는 단일 상속만 허용하지만 하나의 클래스에서 여러 인터페이스를 구현할 수 있습니다. 
+
+== 인터페이스 구현
+
+클래스가 단 하나의 클래스만 상속할 수 있는 것과는 달리, 클래스는 하나 이상의 인터페이스를 구현할 수 있습니다. 
+
+|===
+|**참고** 사실 클래스는 하나의 클래스를 항상 상속하고 있습니다. 슈퍼 클래스를 명시하지 않았다해도 암시적으로 Object클래스의 서브 클래스로 선언됩니다.
+|===
+
+인터페이스는 여러 개의 인터페이스를 상속할 수 있습니다. 인터페이스는 구현을 포함하지 않는 것이 원칙입니다. 따라서, 인터페이스는 다른 인터페이스를 구현하지 않고 계약을 확장하기 때문에 인터페이스가 인터페이스의 서브 타입이 될 때는 implements가 아닌 extends 키워드를 사용합니다.
+
+[source, java]
+----
+interface Swimable { ... }
+interface AirBreathable { ... }
+interface Cetacean extends Swimable, AirBreathable { ... }
+class Whale implements Cetacean { ... }
+----
+
+인터페이스는 클래스를 상속할 수 없습니다. 
+
+
+[source, java]
+----
+class Soldier {}
+interface Attackable extends Soldier {}
+----
+
+== 가시성
+
+인터페이스는 접근 제한자 없이 선언하면 default 제한이 되며, public을 접근 제한자로 선언할 수 있습니다.
+
+[source, java]
+----
+interface Attackable { … }		// default
+class Soldier implements Attackable { … }
+----
+
+== 인터페이스 메소드
+
+직, 간접적으로 인터페이스를 구현하는 모든 클래스는 관련된 인터페이스의 모든 추상 메소드를 구현해야 합니다. 
+
+link:./13_define_interface.adoc[이전: 인터페이스 선언] +
+link:./15_implement_interface_method.adoc[다음: 인터페이스 메소드 구현]

@@ -1,0 +1,139 @@
+= Stream과 Collection의 차이
+
+[%header, cols="1,2,2"]
+|===
+|특징|Stream|Collection
+|목적|데이터 처리|데이터 저장 및 관리
+|데이터 저장 여부|저장하지 않음|메모리에 저장
+|재사용 가능 여부|한 번 사용 후 재사용 불가|반복적으로 사용 가능
+|연산 실행 방식|Lazy Evaluation (지연 실행)|Eager Evaluation (즉시 실행)
+|데이터 변경 여부|불변성 유지|데이터 삽입, 삭제, 수정 가능
+|처리 방식|내부 반복, 병렬 처리 가능|외부 반복, 병렬 처리 직접 구현 필요
+|데이터 크기|무제한 가능|메모리에 의해 제한
+|도입 시기|Java 8|Java 1.2
+|===
+
+---
+
+Java에서 Stream과 **컬렉션(Collection)**은 데이터를 처리하기 위해 사용되지만, 본질적으로 서로 다른 목적과 동작 방식을 가집니다. Stream은 데이터를 처리하기 위한 도구, 컬렉션은 데이터를 저장하고 관리하기 위한 구조입니다. 
+
+== Stream과 Collection의 목적
+
+[%header, cols=2]
+|===
+|Stream|Collection
+|데이터를 처리하기 위한 API입니다.|데이터를 저장하고 관리하기 위한 구조입니다.
+|읽기 및 연산 작업에 중점을 둡니다.|데이터 삽입, 삭제, 검색 등 조작 작업에 중점을 둡니다.
+|===
+
+== 데이터 저장 여부
+
+[%header, cols=2]
+|===
+|Stream|Collection
+|데이터를 직접 저장하지 않습니다.|데이터를 메모리에 저장합니다.
+|데이터는 데이터 소스(컬렉션, 배열 등)에서 읽어옵니다.|메모리에 데이터를 담아두고 필요할 때 꺼냅니다.
+|===
+
+== Single-use
+
+[%header, cols=2]
+|===
+|Stream|Collection
+|한 번 사용되면 재사용할 수 없습니다.|데이터를 여러 번 사용할 수 있습니다.
+|최종 연산이 호출된 후 Stream은 닫히고 재사용이 불가능합니다.|컬렉션의 데이터는 반복적으로 접근 가능합니다.
+|===
+
+[source, java]
+----
+List<String> list = Arrays.asList("A", "B", "C");
+
+// Stream은 한 번 사용 후 재사용 불가
+Stream<String> stream = list.stream();
+stream.forEach(System.out::println);
+stream.forEach(System.out::println);  // IllegalStateException 발생
+
+// 컬렉션은 반복 사용 가능
+for (String s : list) {
+    System.out.println(s);
+}
+for (String s : list) {
+    System.out.println(s);  // 다시 사용 가능
+}
+----
+
+== Lazy Evaluation
+
+[%header, cols=2]
+|===
+|Stream|Collection
+|게으른 연산(Lazy Evaluation) 방식을 사용합니다.|즉시 연산(Eager Evaluation) 방식으로 동작합니다.
+|최종 연산이 호출되기 전까지 중간 연산이 실행되지 않습니다.|데이터가 삽입되면 즉시 메모리에 저장됩니다.
+|===
+
+[source, java]
+----
+List<String> names = Arrays.asList("Alice", "Bob", "Charlie");
+
+names.stream()
+     .filter(name -> {
+         System.out.println("Filtering: " + name);
+         return name.startsWith("A");
+     }); // 중간 연산만 설정, 실행되지 않음
+
+names.stream()
+     .filter(name -> name.startsWith("A"))
+     .forEach(System.out::println);  // 최종 연산 시 중간 연산 실행
+----
+
+== 변경 가능 여부
+
+[%header, cols=2]
+|===
+|Stream|Collection
+|불변성을 유지하며 원본 데이터를 변경하지 않습니다.|컬렉션은 데이터를 삽입, 삭제, 변경할 수 있습니다.
+|연산 결과는 새로운 Stream 또는 데이터를 반환합니다.|컬렉션의 데이터는 필요에 따라 직접 수정 가능합니다.
+|===
+
+== 데이터 처리 방식
+
+[%header, cols=2]
+|===
+|Stream|Collection
+|데이터를 순차적 또는 병렬로 처리합니다.|데이터를 순차적으로만 처리합니다.
+|병렬 처리(parallelStream())를 통해 멀티코어를 활용할 수 있습니다.|병렬 처리를 지원하지 않으며, 직접 구현해야 합니다.
+|===
+
+== 데이터 크기
+
+[%header, cols=2]
+|===
+|Stream|Collection
+|데이터 크기가 무제한일 수 있습니다.|데이터 크기는 메모리에 의해 제한됩니다.
+|무한 스트림(e.g., Stream.iterate(), generate())을 생성할 수 있습니다.|메모리 용량에 따라 데이터 크기가 결정됩니다.
+|===
+
+[source, java]
+----
+Stream<Integer> infiniteStream = Stream.iterate(0, n -> n + 1);
+infiniteStream.limit(10).forEach(System.out::println); // 0~9 출력
+----
+
+== 반복 구조
+
+[%header, cols=2]
+|===
+|Stream|Collection
+|Stream은 내부 반복(Internal Iteration)을 사용합니다.|컬렉션은 외부 반복(External Iteration)을 사용합니다.
+|데이터 처리를 Stream 내부에서 관리하며 코드가 간결합니다.|개발자가 반복문을 작성하여 처리합니다.
+|===
+
+* Stream은 데이터를 처리하는 데 초점을 맞추어, 선언적이고 효율적인 방식으로 작업을 수행합니다.
+* **컬렉션(Collection)**은 데이터를 저장하고 조작하는 데 사용됩니다.
+
+Stream과 컬렉션은 서로 보완적인 관계를 가지며, 컬렉션을 Stream으로 변환하여 사용하면 강력한 데이터 처리 기능을 활용할 수 있습니다.
+
+---
+
+link:./01-3_characteristic.adoc[이전: Stream의 특징] +
+link:./01-5_streamapi_benefit.adoc[다음: Stream API의 장점]

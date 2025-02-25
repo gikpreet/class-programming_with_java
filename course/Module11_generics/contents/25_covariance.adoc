@@ -1,0 +1,98 @@
+= extends와 공변성
+
+*  **"A가 B의 하위 타입이면, Generic<A>도 Generic<B>의 하위 타입으로 간주할 수 있다"**는 개념
+*  Generic은 기본적으로 공변성을 지원하지 않음
+* `? extends T` 는 PECS 원칙에서 Producer의 역할을 수행
+** `? extends T` : 데이터를 제공(읽기)하는 상황에 적합
+** `? super T` : 데이터를 소비(쓰기)하는 상황에 적합
+
+---
+
+Java에서 **공변성(Covariance)**은 타입 계층 구조에서 상위 클래스와 하위 클래스 간의 관계를 제네릭 타입에도 적용하는 개념입니다. 이는 특히 ? extends 와일드카드를 사용할 때 유용합니다.
+
+== 공변성(Covariance)
+
+공변성은 **"A가 B의 하위 타입이면, Generic<A>도 Generic<B>의 하위 타입으로 간주할 수 있다"**는 개념입니다.
+Java에서는 배열이 공변성을 지원하지만, 제네릭은 기본적으로 공변성을 지원하지 않습니다.
+
+배열은 공변적이므로, 하위 타입 배열을 상위 타입 배열로 참조할 수 있습니다.
+
+[source, java]
+----
+Integer[] intArray = {1, 2, 3};
+Number[] numArray = intArray; // 배열은 공변성 허용
+numArray[0] = 3.14; // 런타임 에러 (ArrayStoreException)
+----
+
+Generic은 기본적으로 공변성을 지원하지 않습니다.
+
+[source, java]
+----
+List<Integer> intList = List.of(1, 2, 3);
+// List<Number> numList = intList; // 컴파일 에러: 제네릭은 비공변적
+----
+
+== 와일드카드와 공변성
+
+Java에서 **? extends T**를 사용하면, 특정 클래스 T와 그 하위 타입을 다룰 수 있는 제네릭 타입을 정의할 수 있습니다. 이를 통해 제네릭 타입의 공변성을 구현할 수 있습니다.
+
+아래 리스트는 T 또는 T 의 하위 클래스 타입만 허용합니다. 이 경우, 읽기 작업은 안전하지만 쓰기 작업은 제한됩니다.
+
+[source, java]
+----
+List<? extends T>
+----
+
+== extends 와일드카드
+
+extends 와일드카드는 읽기 작업만 가능하며, return 된 데이터는 항상 T로 형변환 할 수 있습니다.
+
+[source, java]
+----
+public void printNumbers(List<? extends Number> list) {
+    for (Number num : list) {
+        System.out.println(num);
+    }
+}
+----
+
+쓰기 작업은 불가능합니다. 컬렉션에 새로운 데이터를 추가할 수 없습니다. 추가하려는 데이터가 T의 정확한 타입인지 알 수 없으므로, 타입 안정성을 보장할 수 없기 때문입니다.
+
+[source, java]
+----
+public void addNumber(List<? extends Number> list) {
+    // list.add(1); // 컴파일 에러: 쓰기 불가
+}
+----
+
+`? extends T` 는 "이 타입은 최소한 T와 호환된다"는 것을 컴파일러에 알립니다. 따라서 `T` 이상의 상위 타입으로 처리할 수 있습니다.
+
+== 공변성의 한계와 문제점
+
+* 쓰기 제한 +
+`? extends T` 는 데이터를 읽는 데는 적합하지만, 데이터를 쓰는 데는 사용할 수 없습니다. 이 한계를 극복하려면 `? super T` 를 사용해야 합니다.
+
+* 런타임 타입 소거 +
+Java는 **타입 소거(Type Erasure)**를 사용하기 때문에, 런타임에는 제네릭 타입 정보가 유지되지 않습니다. 따라서 공변성을 사용하더라도 컴파일 타임에만 타입 안정성이 보장됩니다.
+
+* 타입 캐스팅 필요
+*? extends T* 로 읽은 데이터는 명시적 타입 캐스팅 없이 하위 타입으로 처리할 수 없습니다.
++
+[source, java]
+----
+List<? extends Number> list = List.of(1, 2, 3);
+Number num = list.get(0); // 읽기는 가능
+Integer integer = (Integer) list.get(0); // 타입 캐스팅 필요
+----
+
+== 공변성과 PECS 원칙
+
+`? extends T` 는 PECS(Producer Extends, Consumer Super) 원칙에서 Producer의 역할을 수행합니다. 즉:
+
+* `? extends T` : 데이터를 제공(읽기)하는 상황에 적합
+* `? super T` : 데이터를 소비(쓰기)하는 상황에 적합
+
+---
+
+link:./24_wild_card.adoc[이전: 와일드카드] +
+link:./26_contravariance.adoc[다음: ? super T와 반공변성(Contravariance)]

@@ -1,0 +1,141 @@
+= Java의 함수형 프로그래밍 개념
+
+* 람다 표현식 (Lambda Expression)
+** 익명 함수를 간결하게 표현.
+** 문법: (매개변수) `\->` { 함수 본문 }
++
+[source, java]
+----
+Runnable r = () -> System.out.println("Hello, Lambda!");
+----
++
+* 함수형 인터페이스 (Functional Interface)
+** 하나의 추상 메서드만 가진 인터페이스.
++
+[source, java]
+----
+@FunctionalInterface
+interface Calculator {
+    int calculate(int x, int y);
+}
+----
+* 스트림 API (Stream API)
+** 컬렉션 데이터를 함수형 스타일로 처리.
+** 기능: 필터링, 매핑, 정렬, 집계 등.
++
+[source, java]
+----
+names.stream()
+     .filter(name -> name.startsWith("C"))
+     .map(String::toUpperCase)
+     .forEach(System.out::println);
+----
++
+* 메서드 참조 (Method Reference)
+** 람다 표현식을 더 간결하게 표현.
+** 문법: ClassName::methodName
++
+[source, java]
+----
+names.forEach(System.out::println);
+----
++
+* 불변성과 순수 함수
+* 상태 변경 없이 입력값만으로 결과 반환.
++
+[source, java]
+----
+Function<Integer, Integer> square = x -> x * x;
+----
+
+---
+
+자바의 함수형 프로그래밍 개념은 Java 8부터 도입된 람다 표현식(Lambda Expression)과 함께 제공된 스트림 API, 그리고 함수형 인터페이스 등을 중심으로 이루어져 있습니다. 함수형 프로그래밍은 함수(메서드)를 일급 시민(First-Class Citizen)으로 취급하며, 불변성(immutability)과 선언적(declarative) 코드를 중시합니다.
+
+. 람다 표현식 (Lambda Expression)
++
+람다 표현식은 익명 함수(anonymous function)를 표현하는 방법으로, 코드를 더 간결하고 직관적으로 작성할 수 있게 합니다.
++
+[source, java]
+----
+(매개변수) -> { 함수 본문 }
+----
++
+[source, java]
+----
+Runnable r = new Runnable() {
+    @Override
+    public void run() {
+        System.out.println("Hello, Lambda!");
+    }
+};
+
+// 람다 표현식
+Runnable r = () -> System.out.println("Hello, Lambda!");
+----
+
+. 함수형 인터페이스 (Functional Interface)
++
+단 하나의 추상 메서드를 가지는 인터페이스입니다. 자바에서 람다 표현식은 이러한 함수형 인터페이스를 구현하는 익명 객체로 간주됩니다.
++
+[source, java]
+----
+@FunctionalInterface
+interface Calculator {
+    int calculate(int x, int y);
+}
+
+Calculator add = (x, y) -> x + y;
+System.out.println(add.calculate(3, 5)); // 출력: 8
+----
+
+. 스트림 API (Stream API)
++
+컬렉션 데이터를 함수형 스타일로 처리할 수 있도록 지원하는 도구입니다. 스트림 API는 데이터를 필터링, 매핑, 정렬, 집계 등 다양한 작업을 간결하게 수행할 수 있게 합니다.
++
+[source, java]
+----
+import java.util.Arrays;
+import java.util.List;
+
+public class Main {
+    public static void main(String[] args) {
+        List<String> names = Arrays.asList("Alice", "Bob", "Charlie", "David");
+        
+        names.stream()
+             .filter(name -> name.startsWith("C"))
+             .map(String::toUpperCase)
+             .forEach(System.out::println); // 출력: CHARLIE
+    }
+}
+----
+
+. 메서드 참조 (Method Reference)
++
+람다 표현식을 더 간단히 표현하기 위한 문법으로, 특정 메서드나 생성자를 참조할 수 있습니다.
++
+[source, java]
+----
+ClassName::methodName
+----
++
+[source, java]
+----
+List<String> names = Arrays.asList("Alice", "Bob", "Charlie");
+names.forEach(System.out::println); // System.out의 println 메서드를 참조
+----
+
+. 불변성 (Immutability)과 상태 없는 함수 (Stateless Function)
++
+함수형 프로그래밍에서는 상태를 변경하지 않고 입력값만을 바탕으로 결과를 반환하는 순수 함수(Pure Function)를 지향합니다.
++
+[source, java]
+----
+Function<Integer, Integer> square = x -> x * x;
+System.out.println(square.apply(5)); // 출력: 25
+----
+
+---
+
+link:./03_overview.adoc[이전: Lambda Expression 개요] +
+link:./05_why_lambda.adoc[다음: Lambda Expression의 필요성]

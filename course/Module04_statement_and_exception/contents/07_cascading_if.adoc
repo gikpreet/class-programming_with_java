@@ -1,0 +1,116 @@
+= Cascading if statement (Cascading if 문)
+
+[source, java]
+----
+int monthNumber = 2;
+int daysInMonth = 0;
+
+if (monthNumber == 2) {
+    daysInMonth = 28;
+}
+else if (monthNumber == 4) {
+    daysInMonth = 30;
+}
+else if (monthNumber == 6) {
+    daysInMonth = 30;
+}
+else if (monthNumber == 9) {
+    daysInMonth = 30;
+}
+else if (monthNumber == 11) {
+    daysInMonth = 30;
+}
+else {
+    daysInMonth = 31;
+}
+----
+
+---
+
+`else if` 문을 사용하여 단일 if 문에서 원하는 만큼의 분기를 가지는 계단식(Cascading) `if` 문을 처리할 수 있습니다.
+
+하나의 if 문은 단일 분기 지점을 가집니다. 따라서, 아래와 같이 작성한 두 if 문은 if 조건문의 결과와 상관없이 모두 실행됩니다.
+
+[source, java]
+----
+if (monthNumber == 1) {
+    daysInMonth = 31;
+}
+
+if (monthNumber == 2) {
+    daysInMonth = 28
+}
+----
+
+`Cascading if` 문은 하나의 문으로 동작합니다. 아래와 같이 `else if` 로 이어진 `Cascading if` 문은 `monthNumber` 변수의 값에 따라 하나의 `if` 문 블록만이 실행됩니다. `Cascading if` 문에 의해 제어되는 문은 상호 배타적이므로 `else if` 문 집합 전체에서 하나의 문만 실행됩니다.
+
+[source, java]
+----
+int monthNumber = 2;
+int daysInMonth = 0;
+
+if (monthNumber == 2) {
+    daysInMonth = 28;
+}
+else if (monthNumber == 4) {
+    daysInMonth = 30;
+}
+else if (monthNumber == 6) {
+    daysInMonth = 30;
+}
+else if (monthNumber == 9) {
+    daysInMonth = 30;
+}
+else if (monthNumber == 11) {
+    daysInMonth = 30;
+}
+else {
+    daysInMonth = 31;
+}
+----
+
+== 중첩 if 문
+
+중첩 if 문을 사용하면 `매달린 else(dangling else)` 라고 불리는 문제를 가지게 됩니다. 이는 `if` 조건문에서 `else` 와 `if` 의 결합관계를 명확하게 구분할 수 없을 때 발생하는 문제로, 버그가 발생할 수 있습니다.
+
+[source, java]
+----
+if (percent >= 0 && percent <= 100) 
+    if (percent > 50)
+        System.out.println("pass");
+else 
+    System.out.println("Error: out of range");
+----
+
+`else` 는 첫 번째 `if` 와 동일한 열에 들여쓰기 됩니다. 코드를 읽을 때 `else` 는 두 번째 if와 연결되지 않은 것으로 보입니다. 이런 모드는 버그를 유발합니다. 레이아웃에 관계없이 컴파일러는 else 절을 가장 가까운 if 문에 바인딩합니다. 따라서, 컴파일러는 위의 코드를 아래와 같이 해석합니다.
+
+[source, java]
+----
+if (percent >= 0 && percent <= 100) {
+    if (percent > 50)
+        System.out.println("pass");
+    else
+        System.out.println("Error: out of Range");
+}
+----
+
+이런 문제를 해결하는 단 한 가지 방법은 중첩 `if` 문을 쓸 때 반드시 블록을 사용하는 것입니다.
+
+[source, java]
+----
+if (percent >= 0 && percent <= 100) {
+    if (percent > 50) {
+        System.out.println("pass");
+    }
+}
+else {
+        System.out.println("Error: out of Range");
+}
+----
+
+`Cascading if` 문을 사용할 때는 적절한 들여쓰기를 사용하면 긴 `if` 문장을 빠르고 정확하게 읽을 수 있습니다.
+
+---
+
+link:./06_if_statement.adoc[이전: if Statement (if 문)] +
+link:./08_switch.adoc[다음: switch statement(switch 문)]

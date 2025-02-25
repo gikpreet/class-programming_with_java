@@ -1,0 +1,261 @@
+= Lab 8-1: 참조 타입 변수를 선언하고 사용
+
+== 연습 1 두 개의 파라미터를 가진 인스턴스 메소드 추가
+
+이 연습에서는 Lab 7에서 개발한 `BankAccount` 클래스를 재 사용하여 지정된 계정에서 다른 계정으로 돈을 이체하는 `transferForm` 이라는 새 인스턴스 메소드를 추가합니다.
+
+=== transferForm 메소드 정의
+1.	Visual Studio Code를 실행합니다.
+2.	파일 메뉴에서 폴더 열기를 클릭하고 c:\Labs\Lab8-1\Starter 폴더를 엽니다
+3.	작성자 신뢰 경고 창에서, 예, 작성자를 신뢰합니다 버튼을 클릭합니다.
+4.	Visual Studio Code 탐색기에서 BankAccount.java 파일을 엽니다.
+5.	`BankAccount` 클래스를 수정합니다.
+A.	public 인스턴스 메소드 `tranferFrom` 를 `BankAccount` 클래스에 작성합니다.
+B.	첫 번째 파라미터는 `BankAccount` 객체이며 이 객체에서 내 계좌로 자금이 이체됩니다. 파라미터 이름은 `accForm` 으로 지정합니다.
+C.	두 번째 파라미터는 `BigDecimal` 타입 값이며, 전송될 액수입니다. 파리미터 이름은 `amount` 로 지정합니다.
+D.	메소드는 값을 반환하지 않습니다.
+6.	`transferFrom` 메소드의 블록에, 아래 동작을 수행하는 문장을 작성합니다.
+A.	`accForm` 객체의 `withDraw` 메소드를 사용하여 `amount` 만큼의 금액을 인출합니다.
+B.	금액의 인출 가능 여부를 테스트합니다. 만약 가능하면, 내 계좌의 `deposit` 메소드를 사용하여 `amount` 만큼의 금액을 입금합니다.
++
+완성된 코드는 아래와 유사할 것입니다:
++
+[source, java]
+--
+public class BankAccount {
+    …
+    public void transferFrom(BankAccount accFrom, BigDecimal amount) {
+        if (accFrom.withDraw(amount)) {
+            this.deposit(amount);
+        }
+    }
+}
+--
+
+=== transferForm 메소드 테스트
+1.	Visual Studio Code 탐색기에서, 새 파일 아이콘을 클릭합니다.
+2.	파일 이름을 Test.java라고 입력합니다.
+3.	Test 클래스에 main 메소드를 작성합니다.
++
+[source, java]
+--
+public class Test {
+    public static void main(String[] args) {
+        
+    }
+}
+--
++
+4.	`main` 메소드에서, 두 개의 `BankAccount` 객체를 생성하고, 각 객체의 `setData` 메소드를 사용하여 잔고를 100으로 채웁니다.
+5.	계좌 번호, 계좌 주인 이름, 잔고를 출력하는 코드를 작성합니다.
+6.	한 계좌에서 다른 계좌로 10을 이체하는 코드를 작성합니다.
+7.	계좌 이체 전과 이후의 계좌 정보를 출력합니다.
+8.	완성된 코드는 아래와 유사할 것입니다:
++
+[source, java]
+--
+import java.math.BigDecimal;
+
+public class Test {
+    public static void main(String[] args) {
+        BankAccount account1 = new BankAccount();
+        account1.setData("James", new BigDecimal("100.0"));
+        BankAccount account2 = new BankAccount();
+        account2.setData("Jason", new BigDecimal("100.0"));
+
+        System.out.println("Before Transfer:");
+        displayAccountInfo(account1);
+        displayAccountInfo(account2);
+
+        account1.transferFrom(account2, new BigDecimal("10.0"));
+
+        System.out.println("After Transfer:");
+        displayAccountInfo(account1);
+        displayAccountInfo(account2);
+    }
+
+    public static void displayAccountInfo(BankAccount account) {
+        System.out.printf("Account No: %d, Owner Name %s, Balance: %s\n", account.getNumber(), account.getOwnerName(), account.getBalance());
+    }
+}
+--
++
+9.	작업을 저장합니다.
+10.	아래 명령을 수행하여 프로그램을 컴파일 합니다.
++
+----
+> javac *.java
+----
++
+11.	오류가 있으면 수정하고 다시 컴파일 합니다.
+12.	아래 명령을 실행하여 프로그램을 실행하고 결과를 확인합니다.
++
+----
+> java Test
+Before Transfer:
+Account No: 0, Owner Name James; Balance: 100.0
+Account No: 1, Owner Name Jason; Balance: 100.0
+After Transfer:
+Account No: 0, Owner Name James; Balance: 110.0
+Account No: 1, Owner Name Jason; Balance: 90.0
+----
+
+== 연습 2 문자열 반전
+
+이 연습에서는 `Utilities` 클래스에 `reverseString` 라는 이름의 정적 메소드를 작성합니다. 이 메소드는 문자열을 입력 받아 반전된 문자열을 반환합니다.
+
+1.	Visual Studio Code 탐색기에서, Utilities.java 파일을 엽니다.
+2.	`Utilities` 클래스에 `reverseString` 이라는 이름의 메소드를 작성합니다.
+A.	`s` 라는 이름의 `String` 타입 파라미터를 가집니다.
+B.	메소드는 `String` 타입 값을 return 합니다.
+3.	`reverseString` 메소드에 `result` 라는 이름의 `String` 타입 변수를 선언하고 "" 로 초기화 합니다.
+4.	`reverseString` 메소드에 문자열을 반전하는 코드를 작성합니다.
+A.	반복문을 사용하여 메소드 파라미터 인자로 전달받은 문자열의 마지막 문자부터 한 글자씩 읽어 역순으로 result 변수에 할당합니다. `String` 클래스의 `charAt()` 메소드를 사용할 수 있습니다.
++
+|===
+|**TIP** String 클래스는 기본적으로 char 배열입니다. length() 메소드는 문자열의 크기를 나타내지만, charAt() 메소드에서 사용하는 문자의 위치는 0에서 시작합니다. 따라서 length() 메소드의 return값 까지 반복하면 StringIndexOutOfBoundsException이 발생합니다.
+|===
++
+B.	완성된 코드는 아래와 유사할 것입니다.
++
+[source, java]
+----
+public static String reverseString(String s) {
+    String result = "";
+
+    for (int i = s.length() - 1; i >= 0; i--) {
+        result = result + s.charAt(i);
+    }
+
+    return result;
+}
+----
++
+5.	작업을 저장합니다.
+
+=== reverseString 메소드 테스트
+
+1.	Visual Studio 탐색기에서 Test.java 파일을 엽니다.
+2.	`main` 메소드의 제일 아래에, `String` 형 변수 `s` 를 선언하고 Hello 문자열로 초기화합니다.
+3.	`Utilities` 클래스에 작성한 정적 메소드 `reverseString` 메소드를 호출하고 파라미터로 `s` 를 넘깁니다. `reverseString` 메소드의 return 값을 `s` 에 다시 할당합니다.
+4.	`s` 를 출력합니다.
+5.	완성된 테스트 코드는 아래와 유사할 것입니다:
++
+[source, java]
+----
+public static void main(String[] args) {
+    ...
+    String s = "Hello";
+    s = Utilities.reverseString(s);
+    System.out.println(s);
+}
+----
++
+6.	작업을 저장합니다.
+7.	아래 명령을 수행하여 프로그램을 컴파일 합니다.
++
+----
+> javac *.java
+----
++
+8.	아래 명령을 수행하여 프로그램을 실행하고 결과를 확인합니다.
++
+----
+> java Test
+…
+olleH
+----
+
+== 연습 3 텍스트 파일의 소문자 복사본 생성
+
+이 연습에서는 텍스트 파일의 이름을 입력 받아 파일을 읽은 후 읽은 파일의 모든 문자를 소문자로 변경한 복사본을 생성하는 프로그램을 작성합니다. 프로그램은 입력 받은 파일이 폴더에 존재하는지 확인하고 파일이 존재하지 않으면 프로그램을 종료합니다. 파일이 있으면, 파일을 읽어 모든 문자를 소문자로 변경한 후 새 파일을 생성하고 씁니다.
+이 프로그램에서는 java.io 패키지에 포함된 `FileInputStream` 클래스와 `FileOutputStream` 클래스를 사용하여 파일을 읽고 씁니다 프로그램을 작성하기 전에 java.io 패키지에 포함된 두 클래스의 사용법을 알아두는 것이 좋습니다.
+
+=== 파일 복사 응용 프로그램 작성
+
+1.	Visual Studio Code 탐색기에서, 새 파일 아이콘을 클릭합니다.
+2.	파일 이름을 CopyFileLower.java라고 입력합니다.
+3.	파일의 제일 첫 줄에 `java.io` 패키지의 모든 클래스와 `java,.util.Scanner` 클래스를 `import` 하는 코드를 작성합니다.
+4.	`CopyFileLower` 클래스에 `main` 메소드를 작성하고, `String` 타입의 두 변수 `stringFrom` 과 `stringTo` 를 선언합니다. 이 두 변수는 입력 파일의 이름과 출력파일의 이름을 위해 사용됩니다.
+5.	`CopyFileLower` 클래스의 `main` 메소드에 파일 입력을 위한 `BufferedReader` 타입 변수 `fileStreamFrom` 과 파일 출력을 위한 `FileOutputStream` 타입 변수 `fileStreamTo` 를 선언합니다.
+6.	`System.in` 스트림을 인자로 `Scanner` 클래스를 생성합니다.
+7.	"Copy From: "" 문자열을 출력한 후 `scanner` 객체를 통해 입력 받은 문자열을 `stringFrom` 변수에 할당합니다.
+8.	같은 방식으로, "Copy To: "" 문자열을 출력한 후 `scanner` 객체를 통해 입력 받은 문자열을 stringFrom 변수에 할당합니다.
+9.	`scanner` 스트림을 닫습니다.
+10.	`stringFrom` 변수를 파라미터 인자로 `FileReader` 클래스를 생성합니다.
+11.	`try` 문을 작성하고 `FileNotFoundException` 과 `IOException`, 두 예외를 처리하는 `catch` 문을 작성합니다.
+12.	`try` 문에서, `FileReader` 타입 변수 `inputFile` 을 선언하고 `stringFrom` 변수를 파라미터로 `FileReader` 객체를 생성합니다.
+13.	`try` 문에서, `File` 타입 변수 `outputFile` 을 선언하고 `stringTo` 변수를 파라미터로 File 객체를 생성합니다.
+14.	`try` 문에서, `fileStreamFrom` 변수를 `BufferedReader` 객체로 생성합니다. `inputFile` 을 생성 인자로 사용합니다.
+15.	`try` 문에서, `fileStremTo` 변수를 `BufferedWriter` 객체로 생성합니다. `outputFile` 을 파라미터로 생성되는 새 `FileWriter` 객체를 생성 인자로 사용합니다.
+16.	`String` 타입 변수 `stringBuffer` 를 선언하고 "" 로 초기화합니다.
+17.	`while` 반복문을 사용하여, `fileStreamFrom` 의 `readLine` 메소드를 사용해 파일을 라인 별로 읽어 들이고, 읽은 라인을 소문자로 변환하여 `fileStreamTo` 스트림에 씁니다. `BufferedWriter` 는 개행 처리를 하지 않으므로 한 줄을 쓴 후 개행 문자를 스트림에 씁니다.
++
+|===
+|**TIP** `BufferedReader` 클래스의 `readLine()` 메소드는 스트림에서 한 라인을 읽어 `String` 타입으로 return 하고, 읽을 라인이 없으면 null을 return 합니다.
+|===
++
+18.	`fileStreamFrom` 스트림을 닫습니다.
+19.	`fileStreamTo` 스트림을 닫습니다.
+20.	`catch` 절에, 알맞은 오류 메시지를 씁니다.
+21.	완성된 코드는 아래와 유사할 것입니다:
++
+[source, java]
+----
+import java.io.*;
+import java.util.Scanner;
+
+public class CopyFileLower {
+    public static void main(String[] args) {
+        String stringFrom, stringTo;
+        BufferedReader fileStreamFrom;
+        BufferedWriter fileStreamTo;
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Copy From: ");
+        stringFrom = scanner.nextLine();
+        System.out.print("Copy To: ");
+        stringTo = scanner.nextLine();
+        scanner.close();
+
+        try {
+            FileReader inputFile = new FileReader(stringFrom);
+            File outputFile = new File(stringTo);
+
+            fileStreamFrom = new BufferedReader(inputFile);
+            fileStreamTo = new BufferedWriter(new FileWriter(outputFile));
+
+            String stringBuffer = "";
+            while ((stringBuffer = fileStreamFrom.readLine()) != null) {
+                stringBuffer = stringBuffer.toLowerCase();
+                fileStreamTo.write(stringBuffer);
+                fileStreamTo.write("\n");
+            }
+
+            fileStreamFrom.close();
+            fileStreamTo.close();
+        }
+        catch(FileNotFoundException e) {
+            System.out.println("File " + stringFrom + " not found");
+        }
+        catch(IOException e) {
+            System.out.println("Problem occurred when try to writing file");
+        }
+    }
+}
+----
+22.	파일을 저장합니다.
+23.	터미널을 열고 아래 명령을 수행하여 프로그램을 컴파일 합니다.
++
+----
+> javac CopyFileLower.java
+----
++
+24.	파일을 실행하고 YESTERDAY.txt 파일을 Copy From으로 입력합니다.
+25.	Copy To에 yesterday_lower.txt를 입력합니다.
+26.	생성된 파일을 확인합니다.
+
+---
+
+link:./28_other_package.adoc[이전: 기타 유용한 패키지] +
+link:./30_type_casting.adoc[다음: 타입 변환]

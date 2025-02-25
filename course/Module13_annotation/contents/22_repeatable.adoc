@@ -1,0 +1,53 @@
+= @Repeatable
+* 반복되는 Annotation이 필요할 경우 사용
+* 반복되는 Annotation을 위한 컨테이너 Annotation
+
+[source, java]
+----
+@Repeatable(Animals.class)
+@interface Animal {
+    String species();
+    String lifespan();
+}
+
+@Retention(RetenionPolicy.RUNTIME)
+@interface Animals {
+    Animal[] value;
+}
+
+@Animal(species="cat", lifespan="15")
+@Animal(species="cow", lifespan="20")
+public class RepeatableAnnotationTest { ... }
+----
+
+---
+
+@Repeatable 어노테이션은 여러 번 반복해서 적용해야 하는 어노테이션을 정의할 때 사용합니다.
+
+[source, java]
+----
+@Animal(species="cat", lifespan="15")
+@Animal(species="cow", lifespan="20")
+public class RepeatableAnnotationTest { }
+----
+
+일반적인 어노테이션과 달리 같은 이름의 어노테이션이 있을 수 있어 어노테이션들을 하나로 묶어서 다룰 수 있는 어노테이션 컨테이너가 필요합니다.
+
+[source, java]
+----
+@Repeatable(Animals.class)
+@interface Animal {
+   String species();
+   String lifespan();
+}
+
+@Retention(RetentionPolicy.RUNTIME)
+@interface Animals{
+   Animal[] value();
+}
+----
+
+---
+
+link:./21_inherited.adoc[이전: @Inherited] +
+link:./23_chapter5_define_type.adoc[다음: Annotation 타입 정의]

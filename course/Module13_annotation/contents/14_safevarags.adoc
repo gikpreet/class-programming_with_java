@@ -1,0 +1,37 @@
+= @SafeVarags
+
+* 가변 길이 파라피터 사용시 발생할 수 있는 잠재적 불완전 요소에 대해 보장할 경우 사용
+* 재정의 불가 메소드에 대해서만 사용 가능
+** Java 8에서는 static 메소드와 final 인스턴스 메소드에만 적용 가능
+** Java 9부터 private 인스턴스 메소드에도 적용 가능
+
+---
+
+[sourcek java]
+----
+@SafeVarargs
+public final void unsaftAdd(T... items) {
+    Collections.addAll(this.itemList, items);
+}
+----
+
+@SafeVarargs Annotation이 적용된 메소드 또는 생성자는 가변 길이 파라미터로인해 발생할 수 있는 잠재적인 오류 가능성에 대해 경고하지 않습니다. 이는 메소드나 생성자의 작성자가 가변 길이 파라미터에 대해 안정성을 보장할 경우 해당 메소드나 생성자에 적용합니다.
+
+@SafeVarargs Annotaation은 해당 메소드나 생성자에 한해 적용되며, 이를 상속받은 메소드나 생성자에는 적용되지 않습니다.
+
+[source, java]
+----
+public class MyClass<T> {
+private List<T> itemList = new ArrayList<>();
+
+@SafeVarargs
+public final void unsafeAdd(T... items) {
+      Collections.addAll(this.itemList, items);
+  }
+}
+----
+
+---
+
+link:./13_supresswarning.adoc[이전: @SupressWarning] +
+link:./15_functionalinterface.adoc[다음: @FunctionalInterface]

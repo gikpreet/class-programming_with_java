@@ -1,0 +1,34 @@
+= 인터페이스 타입 변환
+
+* 인터페이스는 인터페이스에 정의된 멤버에 액세스 하는 데만 사용됨
+* 인터페이스에서 파생된 클래스에 정의된 메소드 및 변수는 인터페이스를 통해 액세스 할 수 없음
+
+---
+
+클래스가 인터페이스를 구현하는 경우에도(즉, 인터페이스의 서브타입인 경우에도) 같은 방법으로 타입을 변환할 수 있습니다. 아래와 같은 인터페이스 타입이 있으면, 
+
+[source, java]
+----
+IFlyable canFly;
+----
+
+클래스에서와 같은 방법으로 타입을 변환할 수 있습니다.
+
+[source, java]
+----
+IFlyable canFly;
+IronMan ironMan = new IronMan();
+canFly = ironMan;
+----
+
+인터페이스의 타입 변환에서도 런타임 타입 변환에 실패하면 ClassCaseException이 발생하며, 클래스에서와 같은 방법으로 instanceof 연산자를 사용할 수 있습니다.
+
+[source, java]
+----
+if (ironMan instanceof IFlyable)	// true
+----
+
+---
+
+link:./35_object_casting.adoc[이전: Object 타입 변환] +
+link:./37_lab_8-2.adoc[다음: Lab 8-2 타입 변환]

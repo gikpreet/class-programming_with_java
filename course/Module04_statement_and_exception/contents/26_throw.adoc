@@ -1,0 +1,78 @@
+= throw statement (throw 문)
+
+* 상황에 맞는 적절한 예외를 발생시킴
+* 예외에 의미 있는 메시지를 제공
+
+[source, java]
+----
+public static void main(String[] args) {
+    try {
+        int dayNumber = Integer.parseInt(args[0]);
+        if (dayNumber < 1 || dayNumber >= 60) {
+            throw new IlligalArgumentException("Invalid day number");
+	        // 여기부터의 코드는 실행되지 않음
+        }  
+    }
+    catch (DateTimeException e) {
+        System.out.println(e.getMessage());
+    }
+}
+----
+
+Java는 `try-catch` 블록을 사용하여 객체지향 적인 우아한 방법으로 발생하는 오류를 처리할 수 있는 방법을 제공합니다. `try-catch` 블록에서 발생한 오류에 특정 메시지를 포함해야 하거나 또는 상황에 따라 적절한 예외를 발생시켜야 할 경우 `throw` 문을 사용하여 예외를 임의적으로 발생시켜 적절한 catch절로 전달할 수 있습니다.
+
+== 시스템 정의 예외
+
+예외를 발생시켜야 하는 경우 런타임은 `throw` 문을 실행하고 시스템에 정의된 예외를 발생시킵니다. 이것은 프로그램의 실행을 즉시 중단하고 해당 클래스를 기반으로 예외를 처리할 수 있는 첫 번째 `catch` 블록으로 제어를 이동합니다.
+
+== 프로그래머가 발생시키는 예외
+
+다음과 같이 `throw` 문을 사용하여 고유한 예외를 발생시킬 수 있습니다:
+
+[source, java]
+----
+if (dayNumber < 1 || dayNumber >= 365) {
+    String fault = minute + " is not a valid minute";
+    throw new DateTimeException(fault);
+}
+----
+
+위 예에서 `throw` 문은 숫자가 연 단위에 유효하지 않은 숫자일 경우 사용자 정의 예외인 `DateTimeException` 을 발생시킵니다.
+
+예외를 발생시킬 때는 일반적으로 발생시킬 예외의 매개변수로 예외의 이유를 알 수 있는 메시지를 전달합니다. 이 메시지는 예외를 잡을 때 출력하거나 로그 등에 기록할 수 있습니다. 적절한 예외 클래스를 throw하는 것 또한 좋은 방법입니다.
+
+== 예외 객체 사용
+
+C++와는 다르게, 해당 개체의 형식이 `java.lang.Throwable` 타입인 경우에만 객체를 예외로 발생시킬 수 있습니다. 또한, 다음과 같이 `catch` 블록에서 `throw` 문을 사용하여 현재 예외 객체를 다시 발생시킬 수 있습니다.
+
+[source, java]
+----
+catch (DateTimeException e) {
+    throw e;
+}
+----
+
+또한 catch문에서 다른 예외 또한 발생시킬 수 있습니다.
+
+[source, java]
+----
+catch (IOException e) {
+   …
+   throw new FileNotFoundException(fileName);
+}
+----
+
+아래와 같이 catch 블록에서 잡은 예외 정보를 포함하는 다른 예외를 발생시킬 수도 있습니다.
+
+[source, java]
+----
+catch (IOException e) {
+   …
+   throw new FileNotFoundException(fileName, e);
+}
+----
+
+---
+
+link:./25_throw_exception.adoc[이전: 예외 발생시키기] +
+link:./27_exception_method.adoc[다음: 메소드에 예외 선언]

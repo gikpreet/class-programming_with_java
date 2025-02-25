@@ -1,0 +1,16 @@
+= 추상클래스
+
+추상 클래스는 파생된 클래스에서 완료할 수 있는 부분적인 구현을 제공하는데 사용됩니다. 추상 클래스는 여러 서브 클래스에서 재사용할 수 있는 코드를 상속하여 재사용을 제공한다는 데에서 유용합니다. 이 장에서는 추상 클래스를 생성하고 사용하는 것을 배웁니다.
+
+== Table of Contents
+
+1. link:./contents/19_declare_abstract_class.adoc[추상 클래스 선언]
+2. link:./contents/20_abstract_in_hire.adoc[클래스 계층 구조에서 추상 클래스 사용]
+3. link:./contents/21_abstract_in_hire2.adoc[클래스 계층 구조에서 추상 클래스 사용 (2)]
+4. link:./contents/22_abstract_interface.adoc[추상 클래스와 인터페이스]
+5. link:./contents/23_implements_abstract.adoc[추상 메소드 구현]
+
+---
+
+link:./17_static_method_in_interface.adoc[이전: 인터페이스에서 static 메소드 구현] +
+link:./19_declare_abstract_class.adoc[다음: 추상 클래스 선언]

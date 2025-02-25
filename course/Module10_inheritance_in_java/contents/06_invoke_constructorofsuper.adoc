@@ -1,0 +1,139 @@
+= 슈퍼 클래스 생성자 호출
+
+* 생성자는 반드시 super 키워드를 사용해서 호출
+* private 생성자는 파생 클래스에서 액세스 할 수 없음
+* super 키워드로 식별자 범위 한정
+
+[source, java]
+----
+class Product {
+    protected Product(String name)
+    ...
+}
+
+class IDCard extends Product {
+    public IDCard(String name) { 
+        super(name);
+    }
+}
+----
+
+---
+
+서브 클래스 생성자에서 슈퍼 클래스의 생성자를 호출하려면 `super` 키워드를 사용합니다. 구문은 다음과 같습니다.
+
+[source, java]
+----
+subclass(…) {
+    super(…)
+}
+----
+
+슈퍼 클래스의 생성자 호출을 생성자 초기자(constructor initializer)라고 합니다.
+
+== 생성자 선언
+
+서브 클래스가 슈퍼 클래스 생성자를 명시적으로 호출하지 않으면 Java 컴파일러는 암시적으로 super() 형식의 생성자 초기자를 호출합니다.
+
+[source, java]
+----
+class SubClass {
+    public SubClass() {
+        …
+    }
+}
+----
+
+는
+
+[source, java]
+----
+class SubClass {
+    public SubClass() {
+       super()
+    }
+}
+----
+
+와 동일합니다.
+
+이 암시적 동작은 객체지향적 상속의 컨셉을 완벽히 만족합니다.
+
+* 슈퍼 클래스를 명시적으로 선언하지 않는 클래스는 파라미터가 없는 `public` 생성자를 포함하는 `java.lang.Object` 를 암시적으로 확장합니다.
+* 클래스에 생성자가 없으면 컴파일러는 기본 생성자라는 파라미터가 없는 `public` 생성자를 자동으로 생성합니다.
+클래스가 명시적인 생성자를 가지고 있는 경우, 컴파일러는 기본 생성자를 생성하지 않습니다. 그러나 서브 클래스의 생성자가 기본 클래스의 생성자와 일치하지 않으면 컴파일러는 오류를 발생합니다.
+
+[source, java]
+----
+class SuperClass {
+    public SuperClass(String name) {
+        System.out.println("Hello");
+    }
+}
+
+class SubClass extends SClass {
+    public SubClass(String name) {}	// 컴파일시 오류
+}
+----
+
+SubClass 클래스의 생성자는 암시적으로 `super()` 생성자 초기자를 포함하지만 슈퍼 클래스 `SuperClass` 에는 파라미터가 없는 생성자가 없기 때문에 오류가 발생합니다. 이 코드는 아래와 같이 수정되어야 합니다.
+
+[source, java]
+----
+class SuperClass {
+    public SuperClass(String name) {
+        System.out.println("Hello");
+    }
+}
+
+class SubClass extends SClass {
+    public SubClass(String name) {
+        super(name)
+    }
+}
+----
+
+== 생성자 액세스 규칙
+
+파생된 생성자가 슈퍼 클래스의 생성자를 호출하기 위한 액세스 규칙은 일반 메소드 액세스 규칙과 동일합니다. 기본 생성자가 `private` 이면 서브 클래스는 이에 액세스 할 수 없습니다.
+
+[source, java]
+----
+class NonDerivable { 
+    private NonDerivable() {  } 
+} 
+
+class Impossible extends NonDerivable { 
+    public Impossible() {  } // Compile-time error 
+}
+----
+
+이런 경우, 서브 클래스가 슈퍼 클래스의 생성자를 호출할 수 있는 방법은 없습니다. 즉, 생성자가 `private` 인 클래스에서는 자식 클래스가 파생될 수 없습니다.
+
+== 식별자 범위 지정
+
+`super` 키워드를 사용하여 식별자 범위를 한정할 수 있습니다. 서브 클래스는 슈퍼 클래스 멤버와 이름이 같은 멤버를 선언할 수 있으므로 유용할 수 있습니다.
+
+[source, java]
+----
+class SuperClass {
+    protected String name;
+    public SuperClass(String name) {}
+}
+
+class SubClass extends SuperClass {
+    private String name;
+    public SubClass(String name) {
+        super(name);
+        this.name = name;
+    }
+    public void doSomething(String name) {
+        super.name = name;
+    }
+}
+----
+
+---
+
+link:./05_access_to_supermembers.adoc[이전: 슈퍼 클래스 멤버에 액세스] +
+link:./07_method_implementation.adoc[다음: 메소드 구현]

@@ -1,0 +1,395 @@
+= Lab 4-2: 예외 처리
+
+== 연습 1 날짜 번호 검증
+
+이 연습에서는 Lab 4-1에서 작성한 프로그램에 기능을 추가합니다. 프로그램은 사용자가 표준 입력으로 전달한 초기 날짜 번호를 검사하여 1보다 작거나 365보다 크면 예외를 발생시킵니다. 프로그램은 catch 절에서 이 예외를 잡고 메시지를 처리합니다.
+
+1.	Visual Studio Code를 실행합니다.
+2.	파일 메뉴에서 폴더 열기를 클릭하고, c:\Labs\Lab04-2\Starter 폴더를 선택합니다.
+3.	작성자 신뢰 경고 창에서, 예, 작성자를 신뢰합니다 버튼을 클릭합니다.
+4.	Visual Studio Code 탐색기에서 Whatday.java 파일을 엽니다.
+5.	`main` 메소드의 모든 코드를 `try` 블록으로 지정합니다.
+6.	`dayNum` 변수 선언 아래에, `if` 절을 추가하고 `dayNum` 변수의 값이 1보다 작거나 365보다 크면 `IllegalArgumentException` 을 발생시키는 코드를 작성합니다. 예외는 "Out of Range of Valid Dates" 메시지를 포함합니다.
+7.	완성된 코드는 아래와 유사할 것입니다.
++
+[source, java]
+----
+import java.util.Scanner;
+
+public class Whatday {
+    static int[] daysInMonth  = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    static int[] daysInLeapMonth  = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    static String[] monthNames = {"January", "Feburary", "March", "April", "May", "June", "July", "August", "Sepetember", "October", "November", "December"};
+
+    public static void main(String[] args) {
+        try {
+            System.out.print("Enter a day number between 1 and 365: ");
+            Scanner scanner = new Scanner(System.in);
+            String line = scanner.nextLine();
+            int dayNum = Integer.parseInt(line);
+
+            if (dayNum < 1 || dayNum > 365) {
+                throw new IllegalArgumentException("Out of date range");
+            }
+
+            int monthNum = 0;
+
+            for (int days: daysInMonth) {
+                if (dayNum <= days) {
+                    break;
+                }
+                else {
+                    dayNum -= days;
+                    monthNum++;
+                }
+            }
+            
+            String monthName = monthNames[monthNum];
+            
+            System.out.printf("%s, %d ", monthName, dayNum);
+            scanner.close();
+        }
+        catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        }
+    }
+}
+----
++
+8.	작업을 저장합니다.
+9.	Whatday.java 프로그램을 컴파일하고 오류가 있으면 수정합니다. 성공적으로 컴파일되면 프로그램을 실행합니다.
+10.	프로그램이 실행되면 1보다 작거나 365보다 큰 숫자를 입력하고 발생한 예외가 안전하게 처리되는 것을 확인합니다.
++
+----
+> java Whatday
+Enter year number: Enter a day Number between 1 and 365: 368
+java.lang.IllegalArgumentException: Out of date range
+        at Whatday.main(Whatday.java:17)
+----
+
+== 연습 2 윤년 처리
+
+**연도를 입력하는 코드 작성**
+
+이 연습에서는 앞에서 작성한 프로그램에 윤년을 처리하는 기능을 추가합니다. 이 연습에서는 프로그램에서 사용자에게 날짜 번호 외에 연도를 묻는 메시지를 추가하며, 프로그램은 지정된 연도를 받아 해당 연도가 윤년인지 판별하는 코드를 작성합니다. 연도가 윤년이면 날짜 번호가 1에서 366까지로 지정되며, 윤년이 아니면 1에서 365로 지정됩니다. foreach 문을 하나 더 추가하여 윤년의 월과 쌍을 계산합니다.
+
+1.	이전 연습에서 작성한 Whatday.java 파일을 엽니다.
+2.	`try` 문의 첫 줄 코드를 "Enter a year number: "를 출력하도록 변경합니다.
+3.	`scanner` 에서 입력 받은 문자를 `line` 변수에 할당하는 라인 아래에, 입력 받은 문자열을 정수형으로 변환하여 정수형 변수 yearNum에 할당하는 코드를 작성합니다.
+4.	작성한 코드 아래에, "Enter a day number between 1 and 365"를 출력하는 코드를 추가합니다.
+5.	`scanner` 에서 문자를 입력 받아 위에서 선언한 `line` 변수에 할당하는 코드를 출력 메시지 아래에 추가합니다.
+6.	완성된 코드는 아래와 유사할 것입니다:
++
+[source, java]
+----
+try {
+    System.out.print("Enter year number: ");
+    Scanner scanner = new Scanner(System.in);
+    String line = scanner.nextLine();
+    int yearNum = Integer.parseInt(line);
+
+    System.out.print("Enter a day Number between 1 and 365: ");
+    line = scanner.nextLine();
+    int dayNum = Integer.parseInt(line);
+
+    ...
+}
+catch (IllegalArgumentException e) {
+    e.printStackTrace();
+}
+----
++
+7.	작업을 저장합니다.
+8.	Whatday.java 프로그램을 컴파일하고 오류가 있으면 수정합니다.
+
+== 윤년을 판별하는 코드 추가
+
+1.	`yearNum` 변수 선언 코드 아래에 `isLeapYear` 라는 boolean 타입 변수를 선언하는 코드를 추가하고 `yearNum` 변수에 할당된 값이 윤년인지 아닌지를 판단하는 boolean 식으로 초기화합니다. 다음 두 항목이 모두 참인 경우 윤년에 해당합니다.
++
+* 4로 나누어 떨어지는 경우
+* 100으로 나눌 수 없고 400으로 나눌 수 있는 경우
++
+2.	`isLeapYear` 변수 선언 다음에 `isLeapYear` 값에 따라 "it's leap year" 또는 "it’s common year"를 출력하는 `if` 문을 작성합니다.
+3.	완성된 코드는 아래와 유사할 것입니다.
++
+[source, java]
+----
+public class Whatday {
+    static int[] daysInMonth  = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    static int[] daysInLeapMonth  = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    static String[] monthNames = {"January", "Feburary", "March", "April", "May", "June", "July", "August", "Sepetember", "October", "November", "December"};
+
+    public static void main(String[] args) {
+        try {
+            System.out.print("Enter year number: ");
+            Scanner scanner = new Scanner(System.in);
+            String line = scanner.nextLine();
+            int yearNum = Integer.parseInt(line);
+
+            boolean isLeapYear = (yearNum % 4 == 0) && 
+                                 (yearNum % 100 != 0 || yearNum % 400 == 0);
+
+            if (isLeapYear) {
+                System.out.println("it's Leap Year");
+            }
+            else {
+                System.out.println("it's Common Year");
+            }
+
+            System.out.print("Enter a day Number between 1 and 365: ");
+            line = scanner.nextLine();
+            int dayNum = Integer.parseInt(line);
+
+            if (dayNum < 1 || dayNum > 365) {
+                throw new IllegalArgumentException("Out of date range");
+            }
+
+            int monthNum = 0;
+
+            ...
+            
+            String monthName = monthNames[monthNum];
+            
+            System.out.printf("%s, %d ", monthName, dayNum);
+            scanner.close();
+        }
+        catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        }
+    }
+}
+----
++
+4.	작업을 저장합니다.
+5.	Whatday.java 프로그램을 컴파일하고 오류가 있으면 수정합니다. 컴파일에 성공하면 프로그램을 실행하고 윤년값이 아래 표와 같이 제대로 계산되는지 확인합니다.
++
+[%header, cols="1,1" width=50%]
+|===
+|윤년|	평년
+|1992|	2022
+|2004|	1973
+|1980|	1953
+|===
+
+6.	위에서 작성한 `if` 문을 주석처리 합니다.
+
+== 윤년과 평년에 따른 1년의 일수 계산
+
+1.	`isLeapYear` 변수 선언 아랫 줄에, `int` 타입 변수 `maxDayNum` 을 선언하고 `isLeapYear`` 값에 따라 365(평년)와 366(윤년) 값이 할당되는 구문을 추가합니다.
+2.	"Enter a number between 1 and 365: "를 출력하는 라인을 윤년이면 "… between 1 and 366: "", 평년이면 "…between 1 and 365: "를 출력하도록 수정합니다.
+3.	작업을 저장하고 프로그램을 컴파일합니다. 오류가 있으면 수정합니다. 프로그램을 실행하여 윤년과 평년에 따라 숫자가 제대로 표시되는지 확안힙니다.
+4.	아래의 예외를 발생시키는 `if` 문에서 `dayNum` 의 가장 큰 수 한계를 `maxDayNum` 변수로 변경합니다.
+5.	완성되는 코드는 아래와 유사할 것입니다.
++
+[source, java]
+----
+public class Whatday {
+    static int[] daysInMonth  = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    static int[] daysInLeapMonth  = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    static String[] monthNames = {"January", "Feburary", "March", "April", "May", "June", "July", "August", "Sepetember", "October", "November", "December"};
+
+    public static void main(String[] args) {
+        try {
+            System.out.print("Enter year number: ");
+            Scanner scanner = new Scanner(System.in);
+            String line = scanner.nextLine();
+            int yearNum = Integer.parseInt(line);
+
+            boolean isLeapYear = (yearNum % 4 == 0) && 
+                                 (yearNum % 100 != 0 || yearNum % 400 == 0);
+
+            int maxDayNum = isLeapYear ? 366: 365;
+
+            System.out.print("Enter a day Number between 1 and " + maxDayNum + ": ");
+            line = scanner.nextLine();
+            int dayNum = Integer.parseInt(line);
+
+            if (dayNum < 1 || dayNum > maxDayNum) {
+                throw new IllegalArgumentException("Out of date range");
+            }
+
+            int monthNum = 0;
+
+            ...
+            
+            String monthName = monthNames[monthNum];
+            
+            System.out.printf("%s, %d ", monthName, dayNum);
+            scanner.close();
+        }
+        catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        }
+    }
+}
+----
++
+6.	작업을 저장합니다.
+7.	작업을 저장하고 프로그램을 컴파일합니다. 오류가 있으면 수정합니다. 프로그램을 실행하여 프로그램이 잘 동작하는지 확인합니다.
+
+== 윤년의 월 일을 바르게 계산
+1.	`monthNum` 변수 선언 아래 줄에 if-else 문을 추가합니다. 이 if-else 문의 boolean 식에 `isLeapYear` 변수를 지정합니다.
+2.	아래의 `foreach` 문을 `if` 문으로 이동합니다. `if` 문과 `else` 문 모두에 같은 `foreach` 문이 위치하도록 아래와 같이 코드를 작성합니다.
++
+[source, java]
+----
+if (isLeapYear) {
+    for (int days: daysInMonth) {
+        if (dayNum <= days) {
+            break;
+        }
+        else {
+            dayNum -= days;
+            monthNum++;
+        }
+    }    
+}
+else {
+    for (int days: daysInMonth) {
+        if (dayNum <= days) {
+            break;
+        }
+        else {
+            dayNum -= days;
+            monthNum++;
+        }
+    }
+}
+----
+3.	작업을 저장합니다.
+4.	작업을 저장하고 프로그램을 컴파일합니다. 오류가 있으면 수정합니다. 윤년이 아직 처리되지 않는 것을 확인합니다.
+5.	코드의 위쪽에서 `daysInLeapMonth`` 배열을 확인합니다. 이 배열은 `daysInMonth` 배열과 다르게 2번쨰 달이 29로 지정되어 있는 것을 확인합니다.
+6.	if-else문의 true 부분 foreach 문의 `daysInMonth` 에서 `daysInLeapMonth` 로 변경합니다.
+7.	완성된 코드는 아래와 유사할 것입니다.
++
+[source, java]
+----
+import java.util.Scanner;
+
+public class Whatday {
+    static int[] daysInMonth  = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    static int[] daysInLeapMonth  = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    static String[] monthNames = {"January", "Feburary", "March", "April", "May", "June", "July", "August", "Sepetember", "October", "November", "December"};
+
+    public static void main(String[] args) {
+        try {
+            System.out.print("Enter year number: ");
+            Scanner scanner = new Scanner(System.in);
+            String line = scanner.nextLine();
+            int yearNum = Integer.parseInt(line);
+
+            boolean isLeapYear = (yearNum % 4 == 0) && 
+                                 (yearNum % 100 != 0 || yearNum % 400 == 0);
+
+            int maxDayNum = isLeapYear ? 366: 365;
+
+            System.out.print("Enter a day Number between 1 and " + maxDayNum + ": ");
+            line = scanner.nextLine();
+            int dayNum = Integer.parseInt(line);
+
+            if (dayNum < 1 || dayNum > maxDayNum) {
+                throw new IllegalArgumentException("Out of date range");
+            }
+
+            int monthNum = 0;
+
+            if (isLeapYear) {
+                for (int days: daysInLeapMonth) {
+                    if (dayNum <= days) {
+                        break;
+                    }
+                    else {
+                        dayNum -= days;
+                        monthNum++;
+                    }
+                }    
+            }
+            else {
+                for (int days: daysInMonth) {
+                    if (dayNum <= days) {
+                        break;
+                    }
+                    else {
+                        dayNum -= days;
+                        monthNum++;
+                    }
+                }
+            }
+            
+            String monthName = monthNames[monthNum];
+            
+            System.out.printf("%s, %d ", monthName, dayNum);
+            scanner.close();
+        }
+        catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        }
+    }
+}
+----
++
+8.	작업을 저장합니다.
+9.	Whatday.java 프로그램을 컴파일합니다. 오류가 있으면 수정합니다. 프로그램을 실행하여 입력 값에 따라 아래와 같은 날짜를 출력하는 것을 확인합니다.
++
+[%header, cols="1,1,1", width=70%]
+|===
+|연도|	날짜 번호|	날짜
+|1999|	32|	February, 1
+|2000|	32|	February, 1
+|1999|	60|	March, 1
+|2000|	60|	February, 29
+|1999|	91|	April, 1
+|2000|	91|	March, 31
+|1999|	186|	July, 5
+|2000|	186|	July, 4
+|1999|	304|	October, 31
+|2000|	304|	October, 30
+|1999|	327|	November, 23
+|2000|	327|	November, 22
+|1999|	359|	December, 25
+|2000|	359|	December, 24
+|===
+
+== 연습 3 finally 절을 사용하여 리소스 해제
+
+여기에서는 `finally` 절을 사용하여 표준 입력을 위해 사용한 `scanner` 클래스를 닫고 리소스를 회수합니다.
+
+1.	main 메소드의 try-catch 문에 `finally` 문을 선언합니다.
+2.	`try` 절의 `Scanner` 클래스를 생성하는 코드를 `main` 메소드의 시작부분 `try` 절 밖으로 이동합니다.
++
+[source, java]
+----
+public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+    try {
+        System.out.print("Enter year number: ");
+        String line = scanner.nextLine();
+        int yearNum = Integer.parseInt(line);
+      …
+    }
+    ...
+}
+----
++
+3.	try절 마지막 줄의 `scanner` 객체를 닫는 코드를 `finally`` 블록으로 이동합니다. 완성된 코드는 아래와 유사할 것입니다.
++
+[source, java]
+----
+        System.out.printf("%s, %d ", monthName, dayNum);
+    }
+    catch (IllegalArgumentException e) {
+        e.printStackTrace();
+    }
+    finally {
+        scanner.close();
+    }
+}
+----
++
+4.	작업을 저장하고 프로그램을 컴파일합니다. 오류가 있으면 수정합니다. 프로그램을 실행하고 동작을 확인합니다.
+5.	실습이 종료되었습니다.
+
+---
+
+link:./29_try_with_resource.adoc[이전: try-with-resource clause (try-with-resource 절)] +
+link:./31_review.adoc[다음: 검토]

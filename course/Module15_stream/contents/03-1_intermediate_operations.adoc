@@ -1,0 +1,18 @@
+= Chapter 3: 중간 연산
+
+Java Stream의 **중간 연산(Intermediate Operations)**은 스트림에서 데이터를 변환하거나 필터링하는 작업을 수행하는 단계입니다. 중간 연산은 지연 실행(Lazy Evaluation) 특성을 가지며, 최종 연산(Terminal Operation)이 호출될 때까지 실제로 실행되지 않습니다.
+
+이 단원에서는 Java Stream API에서 지원하는 중간 연산에 대해 알아봅니다.
+
+== Table of Contents
+
+1. link:./03-2_concept.adoc[중간 연산 개요]
+2. link:./03-3_filtering.adoc[필터링]
+3. link:./03-4_mapping.adoc[매핑]
+4. link:./03-5_sorting.adoc[정렬]
+5. link:./03-6_limit_skip.adoc[제한 및 건너뛰기]
+
+---
+
+link:./02-8_stream_lifecycle.adoc[이전: Stream 라이프사이클] +
+link:./03-2_concept.adoc[다음: 중간 연산 개요]

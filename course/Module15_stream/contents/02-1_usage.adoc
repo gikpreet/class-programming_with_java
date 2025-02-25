@@ -1,0 +1,20 @@
+= Chapter 2: Stream 사용법
+
+Java의 Stream API는 데이터를 선언적이고 함수형 프로그래밍 스타일로 처리할 수 있도록 도와줍니다. Stream API를 활용하려면 기본적인 사용 단계를 이해해야 합니다
+
+이 단원에서는 Stream API의 기본적인 사옹 방법을 알아봅니다.
+
+== Table of Contents
+
+1. link:./02-2_stream_from_collection.adoc[Collection 기반 Stream]
+2. link:./02-3_stream_from_array.adoc[배열 기반 Stream]
+3. link:./02-4_stream_from_file.adoc[파일 기반 Stream]
+4. link:./02-5_stream_from_iterable.adoc[Iterable 기반 Stream API]
+5. link:./02-6_stream_builder.adoc[Stream.builder()]
+6. link:./02-7_how_stream_works.adoc[Stream의 작동 원리]
+7. link:./02-8_stream_lifecycle.adoc[Stream의 라이프사이클]
+
+---
+
+link:./01-5_streamapi_benefit.adoc[이전: Stream API의 장점] +
+link:./02-2_stream_from_collection.adoc[다음: Collection 기반 API]

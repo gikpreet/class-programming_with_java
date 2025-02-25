@@ -1,0 +1,171 @@
+= Stream의 특징
+
+* 데이터를 효율적으로 처리하고 현대적인 함수형 프로그래밍 스타일을 지원하는 데 중점
+
+---
+
+Java Stream의 주요 특징은 데이터를 효율적으로 처리하고 현대적인 함수형 프로그래밍 스타일을 지원하는 데 중점을 둡니다. 
+
+== 선언형 프로그래밍
+
+Stream은 데이터를 처리할 때 "어떻게(how)"가 아닌, "무엇(what)"을 처리할지에 초점을 맞춘 선언형 프로그래밍 스타일을 지원합니다.
+이로 인해 코드가 간결하고 가독성이 좋아집니다.
+
+* 명령형 프로그래밍 방식(Imperative):
++
+[source, java]
+----
+List<String> result = new ArrayList<>();
+for (String name : names) {
+    if (name.startsWith("A")) {
+        result.add(name.toUpperCase());
+    }
+}
+----
+
+* Stream을 활용한 선언형 방식:
++
+[source, java]
+----
+List<String> result = names.stream()
+                           .filter(name -> name.startsWith("A"))
+                           .map(String::toUpperCase)
+                           .collect(Collectors.toList());
+----
+
+== 원본 데이터 불변성(Immutability)
+
+Stream은 원본 데이터를 변경하지 않습니다. 모든 연산은 새로운 Stream 또는 결과 데이터를 반환하며, 원본 데이터는 그대로 유지됩니다.
+
+[source, java]
+----
+List<String> names = Arrays.asList("Alice", "Bob", "Charlie");
+names.stream()
+     .filter(name -> name.startsWith("A"))
+     .map(String::toUpperCase)
+     .forEach(System.out::println);
+
+System.out.println(names);
+----
+
+----
+ALICE
+[Alice, Bob, Charlie]
+----
+
+== Lazy Evaluation
+
+Stream의 중간 연산(Intermediate Operations)은 결과를 즉시 반환하지 않고, 최종 연산(Terminal Operation)이 호출될 때만 실행됩니다. 이 특징은 성능 최적화에 매우 유리하며, 불필요한 연산을 줄일 수 있습니다.
+
+[source, java]
+----
+List<String> names = Arrays.asList("Alice", "Bob", "Charlie");
+
+names.stream()
+     .filter(name -> {
+         System.out.println("Filtering: " + name);
+         return name.startsWith("A");
+     })
+     .map(name -> {
+         System.out.println("Mapping: " + name);
+         return name.toUpperCase();
+     })
+     .forEach(System.out::println);
+----
+
+----
+Filtering: Alice
+Mapping: Alice
+ALICE
+Filtering: Bob
+Filtering: Charlie
+----
+
+== Single-use
+
+Stream은 한 번만 사용 가능하며, 최종 연산이 호출된 이후에는 다시 사용할 수 없습니다. Stream이 종료된 후 동일한 Stream 객체를 재사용하려 하면 예외가 발생합니다.
+
+[source, java]
+----
+Stream<String> stream = Stream.of("A", "B", "C");
+
+stream.forEach(System.out::println); // 정상 동작
+stream.forEach(System.out::println); // IllegalStateException 발생
+----
+
+== 병렬처리 지원
+
+Stream은 데이터 처리를 병렬로 수행할 수 있는 parallelStream() 메서드를 제공합니다. 이를 통해 멀티코어 프로세서의 성능을 효과적으로 활용할 수 있습니다. 병렬 처리는 데이터를 여러 쓰레드에서 나누어 처리하며, 복잡한 설정 없이 병렬 작업을 구현할 수 있습니다. 병렬 처리는 성능 향상에 유리하지만, 데이터의 순서가 중요하지 않은 경우에 적합합니다. 또한, 병렬 처리는 항상 성능을 향상시키는 것은 아니며, 데이터 크기와 작업 특성에 따라 다를 수 있습니다.
+
+[source, java]
+----
+List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+
+numbers.parallelStream()
+       .forEach(System.out::println); // 병렬로 출력
+----
+
+== 함수형 프로그래밍 지원
+
+Stream은 람다 표현식 및 메서드 참조를 활용하여 함수형 프로그래밍 스타일을 지원합니다. 함수형 인터페이스(Predicate, Function, Consumer 등)를 사용해 데이터를 필터링, 매핑, 변환할 수 있습니다.
+
+[source, java]
+----
+List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+
+numbers.stream()
+       .filter(n -> n % 2 == 0)         // Predicate: 짝수 필터링
+       .map(n -> n * n)                 // Function: 제곱값으로 변환
+       .forEach(System.out::println);   // Consumer: 출력
+----
+
+== 데이터 흐름 중심 (Data Flow-Oriented)
+
+Stream은 데이터를 **"저장"**하는 대신, **"처리 흐름"**에 중점을 둡니다. 즉, 데이터 소스에서 데이터를 읽어 중간 연산을 거쳐 최종 연산으로 결과를 반환하는 파이프라인으로 동작합니다.
+
+이러한 "데이터 흐름" 방식은 메모리 사용량을 줄이고 대용량 데이터를 처리하는 데 적합합니다.
+
+[source, java]
+----
+Stream<Integer> infiniteStream = Stream.iterate(0, n -> n + 1);
+
+infiniteStream.limit(5).forEach(System.out::println); // 0, 1, 2, 3, 4 출력
+----
+
+== 다양한 데이터 소스 지원
+
+Stream은 컬렉션, 배열, 파일, I/O 등 다양한 데이터 소스에서 생성할 수 있습니다.
+
+[source, java]
+----
+// 컬렉션
+List<String> list = Arrays.asList("A", "B", "C");
+list.stream().forEach(System.out::println);
+// 배열
+Stream.of("X", "Y", "Z").forEach(System.out::println);
+try {
+    // 파일
+    Files.lines(Paths.get("YESTERDAY.txt")).forEach(System.out::println);
+    }
+catch (Exception e) {}
+----
+
+== 요약
+
+[%header, cols="1,2"]
+|===
+|특징|설명
+|선언형 프로그래밍|데이터를 간결하고 직관적으로 처리.
+|게으른 연산|최종 연산이 호출될 때까지 중간 연산이 실행되지 않음.
+|원본 데이터 불변성|데이터가 안전하게 유지됨.
+|단일 소비|Stream은 한 번만 사용 가능.
+|병렬 처리 지원|멀티코어 프로세서를 활용한 병렬 데이터 처리 가능.
+|함수형 프로그래밍 지원|람다 표현식과 결합하여 유연하고 간결한 코드 작성.
+|중간 연산과 최종 연산|구분	데이터 파이프라인의 단계적 처리.
+|다양한 데이터 소스 지원|컬렉션, 배열, 파일, I/O 등 다양한 소스에서 사용 가능.
+|===
+
+---
+
+link:./01-2_concept.adoc[이전: Stream의 개념과 정의] +
+link:./01-4_stream_collection.adoc[다음: Stream과 Collection의 차이]

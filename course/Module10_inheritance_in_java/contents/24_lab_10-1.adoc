@@ -1,0 +1,173 @@
+= Lab 10-1 : 상속을 사용하여 인터페이스 구현
+
+이 연습에서는 상속을 사용하여 인터페이스를 구현하고 클래스의 다형성을 구현하는 것을 실습합니다.
+
+Java를 비롯한 많은 언어에서는 서브 타이핑(Subtyping)을 통해서 다형성을 구현하여, 이는 interface를 사용하여 구현됩니다. 인터페이스는 타입의 행위를 설명하는데 사용될 수 있습니다.
+
+A가 B의 서브 타입이 되기 위해서는 B 타입의 인스턴스가 사용될 자리에 A타입의 인스턴스를 넣어도 아무런 영향을 받지 않아야 합니다. 객체는 결국 메시지 전달을 통해 일을 하며, 어떤 메시지가 주어졌을 때 그에 반응할 수 있는 메소드가 구현되어 있다면 해당 객체를 다른 객체로 바꿀 수 있습니다.
+
+Java에서 서브 타입을 구현하는 방법이 바로 interface입니다. 
+
+이 연습에서는 인터페이스를 사용하여 Functor를 만들고 다형적이며 재사용 가능한 객체를 만드는 것을 연습합니다.
+
+== 연습 5-2에서 작성한 코드 확인
+
+1.	Visual Studio Code를 실행합니다.
+2.	파일 메뉴에서 폴더 열기를 클릭하고 c:\Labs\Lab10-1\Starter 폴더를 엽니다.
+3.	작성자 신뢰 경고 창에서, 예, 작성자를 신뢰합니다 버튼을 클릭합니다.
+4.	Visual Studio Code 탐색기에서 Adder.java 파일을 열고 코드를 확인합니다.
++
+[source, java]
+----
+class Adder {
+    public int apply(int right, int left) {
+        return right + left;
+    }
+}
+----
++
+5.	탐색기에서 Multiflier.java 파일을 열고 코드를 확인합니다.
++
+[source, java]
+----
+public class Multiplier {
+    public int apply(int left, int right) {
+        return left * right;
+    }
+}
+----
++
+6.	탐색기에서 Algorithm.java 파일을 열고 코드를 확인합니다. `sigma` 와 `pi` 메소드는 오버로드된 `accumulate` 메소드를 호출합니다.
++
+[source, java]
+----
+public static int sigma(int begin, int end, int step) {
+    return accumulate(new Adder(), 0, begin, end, step); 
+}
+
+public static int pi(int begin, int end, int step) {
+    return accumulate(new Multiplier(), 1, begin, end, step);
+}
+----
++
+7.	`accumulate` 메소드는 오버로드 되어 `Adder` 클래스와 `Multiplier` 클래스를 파라미터로 더하기와 곱하기를 수행합니다.
++
+[source, java]
+----
+static int accumulate(Adder adder, int init, int begin, int end, int step) {
+    int result = init;
+    for (int next = begin; next <= end; next = next + step) {
+        result = adder.apply(result, next);
+    }
+    return result;
+}
+
+static int accumulate(Multiplier multiplier, int init, int begin, int end, int step) {
+    int result = init;
+    for (int next = begin; next <= end; next = next + step) {
+        result = multiplier.apply(result, next);
+    }
+    return result;
+}
+----
+
+== Adder와 Multiplier 클래스를 BinaryOp 타입으로 수정
+
+두 `accumulate` 메소드의 첫 번째 파라미터인 `Adder` 클래스와 `Multiplier` 는 같은 두 숫자를 인자로 받아 연산하는 같은 행위(Common Behavior)를 수행합니다. 인터페이스를 만들고 `accumulate` 메서드의 인자로 사용하고 `Adder` 클래스와 `Multiplier` 클래스를 인터페이스의 서브 타입으로 구현하면, 인터페이스에 정의된 공통 행위(Common Behavior)로 `Adder` 클래스와 `Multiplier` 클래스를 같은 타입으로 만들 수 있습니다.
+
+1.	Visual Studio 탐색기에서 BinaryOp.java 파일을 엽니다.
+2.	BinaryOp.java 파일에 int 타입 `right`, `left를` 파라미터로 하여 int 타입을 반환하는 `apply` 추상 메소드를 작성합니다.
+3.	완성된 코드는 아래와 유사할 것입니다.
++
+[source, java]
+----
+interface BinaryOp {
+    int apply(int left, int right);
+}
+----
++
+4.	탐색기에서 Adder.java 파일을 열고, `Adder` 클래스가 `BinaryOp` 인터페이스를 구현하도록 코드를 수정합니다.
++
+[source, java]
+----
+class Adder implements BinaryOp {
+    public int apply(int left, int right) {
+        return left + right;
+    }
+}
+----
++
+5.	탐색기에서 Multiplier.java 파일을 열고, Multiplier 클래스가 BinaryOp 인터페이스를 구현하도록 코드를 수정합니다.
++
+[source, java]
+----
+public class Multiplier implements BinaryOp {
+    public int apply(int left, int right) {
+        return left * right;
+    }
+}
+----
++
+6.	작업을 저장합니다.
+7.	아래 명령을 수행하여 프로그램을 컴파일 합니다. 오류가 있으면 수정합니다.
++
+----
+> javac *.java
+----
+
+== BinaryOp 타입을 사용하여 다형성 구현
+
+`Algorithm` 클래스의 오버로드 된 두 `accumulate` 메소드는 첫 번째 파라미터로 `Adder` 클래스와 `Multiplier` 클래스를 받습니다. 이 두 클래스는 이제 `BinaryOp` 의 서브 타입으로 리팩토링 되었고, 다형적으로 동작할 수 있으므로 오버로딩이 필요없습니다.
+
+1.	첫 번째 `accumulate` 메소드의 첫 번째 인자를 `BinaryOp` 타입 `binder` 로 변경합니다.
+2.	for 문에서, `adder` 를 `binder` 로 변경합니다.
+3.	두 번째 `accumulate` 메소드를 삭제합니다.
+4.	완성된 `Algorithm` 클래스의 코드는 아래와 유사할 것입니다.
++
+[source, java]
+----
+public class Algorithm {
+    static final int addFrom1To10 = 55;
+    
+    public static int sigma(int begin, int end, int step) {
+        return accumulate(new Adder(), 0, begin, end, step); 
+    }
+
+    public static int pi(int begin, int end, int step) {
+        return accumulate(new Multiplier(), 1, begin, end, step);
+    }
+
+    static int accumulate(BinaryOp binder, int init, int begin, int end, int step) {
+        int result = init;
+        for (int next = begin; next <= end; next = next + step) {
+            result = binder.apply(result, next);
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(sigma(1, 10, 1));
+        System.out.println(pi(1, 10, 1));
+    }
+}
+----
++
+5.	작업을 저장합니다.
+6.	아래 명령을 수행하여 프로그램을 컴파일 합니다. 오류가 있으면 수정합니다.
++
+----
+> javac *.java
+----
++
+7.	아래 명령을 수행하여 프로그램을 실행합니다.
++
+----
+> java Algorithm
+55
+3678800
+----
+
+---
+
+link:./23_implements_abstract.adoc[이전: 추상 메소드 구현] +
+link:./25_lab_10-2.adoc[다음: Lab 10-2 ArrayList와 LinkedList 구현]

@@ -1,0 +1,183 @@
+= 메칭
+
+* 스트림의 요소들이 특정 조건을 만족하는지 확인하는 작업을 수행
+* 스트림 데이터를 평가한 결과를 boolean 값으로 return
+
+[%header, cols="1,3"]
+|===
+|메소드|설명
+|`anyMatch()`|하나라도 조건을 만족하면 true.
+|`allMatch()`|모두 조건을 만족하면 true.
+|`noneMatch()`|모두 조건을 만족하지 않으면 true.
+|===
+
+---
+
+**Java Stream API의 매칭(Matching)**은 스트림의 요소들이 특정 조건을 만족하는지 확인하는 작업을 수행합니다. 매칭은 **최종 연산(Terminal Operation)**으로 동작하며, 스트림 데이터를 평가한 결과를 boolean 값으로 반환합니다.
+
+== Stream API 매칭 연산 메소드
+
+=== `anyMatch(Predicate predicate)`
+
+스트림의 요소 중 하나라도 주어진 조건을 만족하면 true를 return 하며, 모든 요소를 평가할 필요 없이, 조건에 부합하는 첫 번째 요소를 찾으면 처리를 종료합니다.
+
+[source, java]
+----
+import java.util.stream.Stream;
+
+public class AnyMatchExample {
+    public static void main(String[] args) {
+        Stream<String> names = Stream.of("Alice", "Bob", "Charlie");
+
+        // "A"로 시작하는 이름이 있는지 확인
+        boolean hasNameStartingWithA = names.anyMatch(name -> name.startsWith("A"));
+
+        System.out.println("Contains name starting with 'A': " + hasNameStartingWithA); // 출력: true
+    }
+}
+----
+
+=== `allMatch(Predicate predicate)`
+
+스트림의 모든 요소가 주어진 조건을 만족하면 true를 return 하며, 하나라도 조건을 만족하지 않는 요소를 찾으면 처리를 종료하고 false를 반환합니다.
+
+[source, java]
+----
+import java.util.stream.Stream;
+
+public class AllMatchExample {
+    public static void main(String[] args) {
+        Stream<Integer> numbers = Stream.of(2, 4, 6, 8);
+
+        // 모든 숫자가 짝수인지 확인
+        boolean areAllEven = numbers.allMatch(num -> num % 2 == 0);
+
+        System.out.println("Are all numbers even?: " + areAllEven); // 출력: true
+    }
+}
+----
+
+=== `noneMatch(Predicate predicate)`
+
+스트림의 모든 요소가 주어진 조건을 만족하지 않으면 true를 return 합니다. 조건에 부합하는 요소를 찾는 즉시 처리를 종료하고 false를 return합니다.
+
+[source, java]
+----
+import java.util.stream.Stream;
+
+public class NoneMatchExample {
+    public static void main(String[] args) {
+        Stream<String> names = Stream.of("Alice", "Bob", "Charlie");
+
+        // 이름에 "Z"가 포함된 요소가 없는지 확인
+        boolean noNameWithZ = names.noneMatch(name -> name.contains("Z"));
+
+        System.out.println("No name contains 'Z': " + noNameWithZ); // 출력: true
+    }
+}
+----
+
+== 매칭 연산 특징
+
+* 단축 평가(Short-circuiting):
+** 모든 매칭 연산은 단축 평가를 사용합니다.
+** 조건을 만족하거나 만족하지 않는 요소를 찾는 즉시 연산을 종료하므로 효율적입니다.
+* 스트림의 소모성:
+** 매칭 연산을 수행하면 스트림이 소비되므로, 동일한 스트림을 재사용할 수 없습니다.
+** 일한 데이터를 다시 처리하려면 새 스트림을 생성해야 합니다.
+* 병렬 스트림에서의 동작:
+** 매칭 연산은 병렬 스트림에서도 동일한 결과를 보장합니다.
+** 부적으로 효율적인 평가를 위해 병렬로 처리됩니다.
+
+== 예제
+
+=== 숫자 리스트에서 특정 조건 확인
+
+[source, java]
+----
+import java.util.List;
+
+public class MatchingExample {
+    public static void main(String[] args) {
+        List<Integer> numbers = List.of(1, 3, 5, 7, 9);
+
+        // 하나라도 짝수가 있는지 확인
+        boolean hasEven = numbers.stream().anyMatch(num -> num % 2 == 0);
+        System.out.println("Contains even number: " + hasEven); // 출력: false
+
+        // 모든 숫자가 홀수인지 확인
+        boolean allOdd = numbers.stream().allMatch(num -> num % 2 != 0);
+        System.out.println("All numbers are odd: " + allOdd); // 출력: true
+
+        // 짝수가 없는지 확인
+        boolean noneEven = numbers.stream().noneMatch(num -> num % 2 == 0);
+        System.out.println("No even numbers: " + noneEven); // 출력: true
+    }
+}
+----
+
+=== 문자열 리스트에서 조건 확인
+
+[source, java]
+----
+import java.util.List;
+
+public class StringMatchingExample {
+    public static void main(String[] args) {
+        List<String> fruits = List.of("Apple", "Banana", "Cherry", "Date");
+
+        // 하나라도 "C"로 시작하는 과일이 있는지 확인
+        boolean hasC = fruits.stream().anyMatch(fruit -> fruit.startsWith("C"));
+        System.out.println("Contains fruit starting with 'C': " + hasC); // 출력: true
+
+        // 모든 과일 이름이 3글자 이상인지 확인
+        boolean allLongNames = fruits.stream().allMatch(fruit -> fruit.length() >= 3);
+        System.out.println("All fruits have long names: " + allLongNames); // 출력: true
+
+        // 이름에 "Z"가 포함된 과일이 없는지 확인
+        boolean noZ = fruits.stream().noneMatch(fruit -> fruit.contains("Z"));
+        System.out.println("No fruit contains 'Z': " + noZ); // 출력: true
+    }
+}
+----
+
+== 매칭 연산 응용
+
+=== 조건부 필터링 후 매칭
+매칭 연산을 필터링과 함께 사용하여 특정 조건을 가진 데이터만 평가할 수 있습니다.
+
+[source, java]
+----
+import java.util.List;
+
+public class ConditionalMatchingExample {
+    public static void main(String[] args) {
+        List<String> names = List.of("Alice", "Bob", "Charlie", "David");
+
+        // "D"로 시작하는 이름들 중 하나라도 5글자인지 확인
+        boolean result = names.stream()
+                              .filter(name -> name.startsWith("D"))
+                              .anyMatch(name -> name.length() == 5);
+
+        System.out.println("Matching condition: " + result); // 출력: true
+    }
+}
+----
+
+== 요약
+Java Stream API의 매칭 연산은 스트림 데이터에서 특정 조건을 확인하는 데 유용합니다.
+
+[%header, cols="1,3"]
+|===
+|메소드|설명
+|`anyMatch()`|하나라도 조건을 만족하면 true.
+|`allMatch()`|모두 조건을 만족하면 true.
+|`noneMatch()`|모두 조건을 만족하지 않으면 true.
+|===
+
+이 연산은 효율적인 단축 평가를 지원하며, 데이터를 필터링하거나 조건을 확인하는 데 자주 사용됩니다.
+
+---
+
+link:./04-5_collection_transfer.adoc[이전: 컬렉션 변환] +
+link:./04-7_find.adoc[다음: 요소 찾기]

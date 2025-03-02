@@ -1,0 +1,185 @@
+= 정렬
+
+* 스트림 요소를 특정 기준에 따라 정렬하는 작업
+* 본적으로 오름차순 정렬이 이루어지며, 커스텀 정렬 기준을 지정할 수도 있음
+* 메소드
+* `sorted()`, `sorted(Comparator<? super T> comparator)`
+---
+
+Java Stream의 **정렬(Sorting)**은 스트림 요소를 특정 기준에 따라 정렬하는 작업을 말합니다. 정렬은 중간 연산으로 동작하며, 정렬된 새로운 스트림을 반환합니다. 기본적으로 오름차순 정렬이 이루어지며, 커스텀 정렬 기준을 지정할 수도 있습니다.
+
+== `sorted()`
+
+스트림 요소를 기본 정렬 순서(Natural Order)로 정렬합니다. 요소는 반드시 Comparable 인터페이스를 구현해야 합니다.
+
+[source, java]
+----
+import java.util.List;
+
+public class SortedExample {
+    public static void main(String[] args) {
+        List<Integer> numbers = List.of(5, 3, 1, 4, 2);
+
+        // 기본 정렬 (오름차순)
+        numbers.stream()
+               .sorted()
+               .forEach(System.out::println); // 출력: 1, 2, 3, 4, 5
+    }
+}
+----
+
+== `sorted(Comparator<? super T> comparator)`
+
+스트림 요소를 사용자 정의 정렬 기준에 따라 정렬합니다. Comparator는 정렬 순서를 정의하는 함수형 인터페이스입니다.
+
+[source, java]
+----
+import java.util.List;
+
+public class CustomSortExample {
+    public static void main(String[] args) {
+        List<String> names = List.of("Alice", "Bob", "Charlie");
+
+        // 문자열 길이로 정렬
+        names.stream()
+             .sorted((a, b) -> Integer.compare(a.length(), b.length()))
+             .forEach(System.out::println); // 출력: Bob, Alice, Charlie
+    }
+}
+----
+
+== 오름차순 정렬
+
+기본적으로 sorted() 메서드는 오름차순으로 정렬합니다.
+
+[source, java]
+----
+import java.util.List;
+
+public class AscendingSortExample {
+    public static void main(String[] args) {
+        List<Integer> numbers = List.of(7, 3, 9, 1, 5);
+
+        numbers.stream()
+               .sorted() // 기본 정렬: 오름차순
+               .forEach(System.out::println); // 출력: 1, 3, 5, 7, 9
+    }
+}
+----
+
+== 내림차순 정렬
+
+Comparator를 사용해 내림차순으로 정렬할 수 있습니다.
+
+[source, java]
+----
+import java.util.List;
+import java.util.Comparator;
+
+public class DescendingSortExample {
+    public static void main(String[] args) {
+        List<Integer> numbers = List.of(7, 3, 9, 1, 5);
+
+        numbers.stream()
+               .sorted(Comparator.reverseOrder()) // 내림차순 정렬
+               .forEach(System.out::println); // 출력: 9, 7, 5, 3, 1
+    }
+}
+----
+
+== 객체의 특정 필드로 정렬
+
+객체 리스트를 특정 필드값을 기준으로 정렬할 수 있습니다.
+
+[source, java]
+----
+import java.util.List;
+
+class Person {
+    String name;
+    int age;
+
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return name + " (" + age + ")";
+    }
+}
+
+public class ObjectSortExample {
+    public static void main(String[] args) {
+        List<Person> people = List.of(
+            new Person("Alice", 30),
+            new Person("Bob", 25),
+            new Person("Charlie", 35)
+        );
+
+        // 나이순으로 정렬
+        people.stream()
+              .sorted((p1, p2) -> Integer.compare(p1.age, p2.age)) // 나이 기준 오름차순 정렬
+              .forEach(System.out::println); // 출력: Bob (25), Alice (30), Charlie (35)
+    }
+}
+----
+
+== 복합 조건으로 정렬
+
+여러 기준을 조합해 정렬할 수도 있습니다.
+
+아래 예제는 나이로 오름차순 정렬하며, 나이가 같다면 이름으로 오름차순 정렬.
+
+[source, java]
+----
+import java.util.List;
+import java.util.Comparator;
+
+public class MultiSortExample {
+    public static void main(String[] args) {
+        List<Person> people = List.of(
+            new Person("Alice", 30),
+            new Person("Bob", 25),
+            new Person("Charlie", 25),
+            new Person("David", 30)
+        );
+
+        people.stream()
+              .sorted(Comparator.comparingInt((Person p) -> p.age)
+                                .thenComparing(p -> p.name)) // 나이 -> 이름 순으로 정렬
+              .forEach(System.out::println);
+    }
+}
+----
+
+== 정렬과 필터링 조합
+정렬과 필터링을 함께 사용하여 특정 조건의 데이터를 정렬할 수 있습니다.
+
+아래 예제는 데이터 소스에서 짝수만 필터링 한 후 내림차순으로 정렬합니다.
+[source, java]
+----
+import java.util.List;
+import java.util.Comparator;
+
+public class SortAndFilterExample {
+    public static void main(String[] args) {
+        List<Integer> numbers = List.of(7, 2, 8, 3, 6, 4, 5);
+
+        numbers.stream()
+               .filter(num -> num % 2 == 0) // 짝수 필터링
+               .sorted(Comparator.reverseOrder()) // 내림차순 정렬
+               .forEach(System.out::println); // 출력: 8, 6, 4, 2
+    }
+}
+----
+
+== 요약
+
+Java Stream의 정렬은 데이터를 간단하고 효율적으로 정렬하는 강력한 도구입니다. 정렬 기준을 자유롭게 지정할 수 있어 다양한 요구사항에 대응할 수 있습니다.
+
+---
+
+link:./03-4_mapping.adoc[이전: Mapping] +
+link:./03-6_limit_skip.adoc[다음: 제한과 건너뛰기]

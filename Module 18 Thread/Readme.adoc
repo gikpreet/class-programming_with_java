@@ -1,3 +1,0 @@
-= Thread 프로그래밍
-
-link:./Thread/01_Thread_개요.adoc[시작: Thread 개요]

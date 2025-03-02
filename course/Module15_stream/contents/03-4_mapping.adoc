@@ -1,0 +1,235 @@
+= 매핑
+
+* 스트림 요소를 다른 형태로 변환하는 작업을 의미
+* 원본 스트림의 데이터를 가공하거나 새로운 데이터 구조를 만들기 위해 주로 사용
+* 메소드
+** `map(Function<T, R> mapper)`
+** `flatMap(Function<T, Stream<R>> mapper)`
+** `mapToInt`, `mapToDouble`, `mapToLong`
+** `flatMapToInt`, `flatMapToDouble`, `flatMapToLong`
+
+---
+
+Java Stream의 **매핑(Mapping)**은 스트림 요소를 다른 형태로 변환하는 작업을 의미합니다. 매핑은 중간 연산(Intermediate Operation)으로 동작하며, 원본 스트림의 데이터를 가공하거나 새로운 데이터 구조를 만들기 위해 주로 사용됩니다.
+
+== map(Function<T, R> mapper)
+
+스트림의 각 요소를 주어진 함수에 적용하여 변환합니다. 변환된 요소를 포함하는 새로운 스트림을 반환합니다.
+
+아래 예제는 스트림 파이프라인의 각 문자열의 길이를 출력합니다.
+
+[source, java]
+----
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class MapExample {
+    public static void main(String[] args) {
+        List<String> names = List.of("Alice", "Bob", "Charlie");
+
+        // 각 문자열의 길이로 변환
+        List<Integer> lengths = names.stream()
+                                     .map(String::length) // 이름의 길이를 계산
+                                     .collect(Collectors.toList());
+
+        System.out.println(lengths); // 출력: [5, 3, 7]
+    }
+}
+----
+
+아래 예제는 스트리 파이프라인의 문자들을 대문자로 변환합니다.
+
+[source, java]
+----
+import java.util.List;
+
+public class MapToUpperExample {
+    public static void main(String[] args) {
+        List<String> names = List.of("Alice", "Bob", "Charlie");
+
+        // 대문자로 변환
+        names.stream()
+             .map(String::toUpperCase)
+             .forEach(System.out::println); // 출력: ALICE, BOB, CHARLIE
+    }
+}
+----
+
+== flatMap(Function<T, Stream<R>> mapper)
+
+각 요소를 스트림으로 변환하고, 중첩된 스트림을 하나의 스트림으로 평탄화(flatten)합니다. 주로 리스트나 배열과 같은 중첩된 구조를 처리할 때 사용됩니다.
+
+아래 예제는 중첩된 두 리스트를 하나로 만듭니다.
+[source, java]
+----
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class FlatMapExample {
+    public static void main(String[] args) {
+        List<List<String>> nestedList = List.of(
+            List.of("A", "B"),
+            List.of("C", "D"),
+            List.of("E")
+        );
+
+        // 중첩된 리스트를 평탄화
+        List<String> flatList = nestedList.stream()
+                                          .flatMap(List::stream) // 리스트를 스트림으로 변환 후 평탄화
+                                          .collect(Collectors.toList());
+
+        System.out.println(flatList); // 출력: [A, B, C, D, E]
+    }
+}
+----
+
+== `mapToInt`, `mapToDouble`, `mapToLong`
+
+스트림 요소를 특정 기본 타입(int, double, long)으로 변환한 후, 기본형 특화 스트림(IntStream, DoubleStream, LongStream)을 반환합니다.
+
+아래 예제는 문자열 길이의 합을 계산합니다.
+
+[source, java]
+----
+import java.util.List;
+
+public class MapToIntExample {
+    public static void main(String[] args) {
+        List<String> names = List.of("Alice", "Bob", "Charlie");
+
+        // 문자열 길이의 합 계산
+        int totalLength = names.stream()
+                               .mapToInt(String::length) // 길이를 int로 변환
+                               .sum(); // IntStream에서 합 계산
+
+        System.out.println(totalLength); // 출력: 15
+    }
+}
+----
+
+== `flatMapToInt`, `flatMapToDouble`, `flatMapToLong`
+
+flatMap과 유사하지만, 결과를 기본형 특화 스트림으로 평탄화합니다.
+
+아래 예제는 2차원 배열을 1차원으로 변환합니다.
+
+[source, java]
+----
+import java.util.Arrays;
+
+public class FlatMapToIntExample {
+    public static void main(String[] args) {
+        int[][] numbers = {{1, 2}, {3, 4}, {5, 6}};
+
+        // 2차원 배열을 1차원 배열로 변환
+        Arrays.stream(numbers)
+              .flatMapToInt(Arrays::stream) // 배열 평탄화
+              .forEach(System.out::println); // 출력: 1, 2, 3, 4, 5, 6
+    }
+}
+----
+
+== 매핑과 필터링의 조합
+
+매핑과 필터링은 자주 조합되어 데이터의 변환과 조건 처리를 동시에 수행합니다.
+
+아래 예제는 짝수만 2배로 변환합니다.
+
+[source, java]
+----
+import java.util.List;
+
+public class MapAndFilterExample {
+    public static void main(String[] args) {
+        List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6);
+
+        numbers.stream()
+               .filter(num -> num % 2 == 0) // 짝수 필터링
+               .map(num -> num * 2)        // 2배로 변환
+               .forEach(System.out::println); // 출력: 4, 8, 12
+    }
+}
+----
+
+== 매핑과 정렬의 조합
+
+매핑 결과를 정렬하여 출력할 수도 있습니다.
+
+아래 예제는 문자열 길이로 정렬 후 대문자로 변환합니다.
+
+[source, java]
+----
+import java.util.List;
+
+public class MapAndSortExample {
+    public static void main(String[] args) {
+        List<String> names = List.of("Alice", "Bob", "Charlie", "David");
+
+        names.stream()
+             .sorted((a, b) -> Integer.compare(a.length(), b.length())) // 길이로 정렬
+             .map(String::toUpperCase) // 대문자로 변환
+             .forEach(System.out::println); // 출력: BOB, ALICE, DAVID, CHARLIE
+    }
+}
+----
+
+== 매핑과 수집(Collecting)
+
+매핑 결과를 리스트, 집합 등의 데이터 구조로 수집할 수 있습니다.
+
+아래 예제는 문자열을 대문자로 변환 후 리스트로 수집합니다.
+
+[source, java]
+----
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class MapAndCollectExample {
+    public static void main(String[] args) {
+        List<String> names = List.of("Alice", "Bob", "Charlie");
+
+        List<String> upperCaseNames = names.stream()
+                                           .map(String::toUpperCase) // 대문자로 변환
+                                           .collect(Collectors.toList()); // 리스트로 수집
+
+        System.out.println(upperCaseNames); // 출력: [ALICE, BOB, CHARLIE]
+    }
+}
+----
+
+== 매핑과 성능 최적화
+
+스트림의 매핑은 지연 실행(Lazy Evaluation) 특성을 가지므로, 최종 연산(Terminal Operation)이 호출되기 전까지는 실제로 실행되지 않습니다. 이를 통해 불필요한 작업을 줄이고 효율적으로 데이터를 처리합니다.
+
+[source, java]
+----
+import java.util.List;
+
+public class LazyExecutionExample {
+    public static void main(String[] args) {
+        List<String> names = List.of("Alice", "Bob", "Charlie");
+
+        names.stream()
+             .map(name -> {
+                 System.out.println("Mapping: " + name);
+                 return name.toUpperCase();
+             })
+             .forEach(System.out::println); // 최종 연산으로 출력
+
+        // 출력:
+        // Mapping: Alice
+        // ALICE
+        // Mapping: Bob
+        // BOB
+        // Mapping: Charlie
+        // CHARLIE
+    }
+}
+----
+
+Java Stream의 매핑은 데이터를 변환하는 데 매우 강력하며, 직관적이고 유연한 방식으로 데이터 처리를 구현할 수 있습니다.
+
+---
+
+link:./03-3_filtering.adoc[이전: 필터링] +
+link:./03-5_sorting.adoc[다음: 정렬]

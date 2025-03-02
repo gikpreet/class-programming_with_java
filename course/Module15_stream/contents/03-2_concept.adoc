@@ -1,0 +1,205 @@
+= 중간 연산 개요
+
+* 스트림에서 데이터를 변환하거나 필터링하는 작업을 수행하는 단계
+* 지연 실행(Lazy Evaluation)
+* 최종 연산(Terminal Operation)이 호출될 때까지 실제로 실행되지 않음음
+* 중간 연산은 서로 연결(체이닝)할 수 있어, 복잡한 데이터 처리 파이프라인을 간결한 코드로 구현
+
+---
+
+Java Stream의 **중간 연산(Intermediate Operations)**은 스트림에서 데이터를 변환하거나 필터링하는 작업을 수행하는 단계입니다. 중간 연산은 지연 실행(Lazy Evaluation) 특성을 가지며, 최종 연산(Terminal Operation)이 호출될 때까지 실제로 실행되지 않습니다.
+
+== 특징
+
+* 새로운 스트림 반환 +
+중간 연산은 기존 스트림을 변환하거나 필터링하고, 결과로 새로운 스트림을 반환합니다. 원본 데이터는 변경되지 않습니다.
+* 지연 실행 +
+중간 연산 자체는 실행되지 않고, 최종 연산이 호출될 때 실제로 동작합니다. 이로 인해 불필요한 계산을 방지하고 효율적인 데이터 처리가 가능합니다.
+* 체이닝 가능 +
+중간 연산은 서로 연결(체이닝)할 수 있어, 복잡한 데이터 처리 파이프라인을 간결한 코드로 구현할 수 있습니다.
+
+== 주요 연산(메소드)
+
+=== `filter(Predicate<T> predicate)`
+
+조건에 맞는 요소만 포함하는 스트림을 생성합니다.
+
+[source, java]
+----
+List<String> names = List.of("Alice", "Bob", "Charlie", "David");
+Stream<String> filteredStream = names.stream()
+                                     .filter(name -> name.startsWith("A"));
+
+filteredStream.forEach(System.out::println);
+----
+
+=== `map(Function<T, R> mapper)`
+
+스트림의 각 요소를 다른 형태로 변환합니다.
+
+[source, java]
+----
+List<String> names = List.of("Alice", "Bob", "Charlie");
+Stream<Integer> lengthStream = names.stream()
+                                    .map(String::length); // 각 이름의 길이로 변환
+
+lengthStream.forEach(System.out::println); // 출력: 5, 3, 7
+----
+
+=== `flatMap(Function<T, Stream<R>> mapper)`
+
+중첩된 스트림을 하나의 스트림으로 평탄화(flatten)합니다.
+
+[source, java]
+----
+List<List<String>> nestedList = List.of(
+    List.of("A", "B"),
+    List.of("C", "D"),
+    List.of("E")
+);
+
+Stream<String> flatStream = nestedList.stream()
+                                      .flatMap(List::stream); // 중첩된 리스트를 평탄화
+
+flatStream.forEach(System.out::println); // 출력: A, B, C, D, E
+----
+
+=== `sorted()`, `sorted(Comparator<? super T> comparator)`
+스트림 요소를 정렬합니다. 기본적으로 자연 정렬(Comparable 인터페이스 기준)을 사용하며, 사용자 정의 Comparator도 적용할 수 있습니다.
+
+[source, java]
+----
+List<Integer> numbers = List.of(5, 3, 8, 1);
+Stream<Integer> sortedStream = numbers.stream()
+                                      .sorted();
+
+sortedStream.forEach(System.out::println); // 출력: 1, 3, 5, 8
+----
+[source, java]
+----
+List<String> names = List.of("Alice", "Bob", "Charlie");
+Stream<String> reverseSortedStream = names.stream()
+                                          .sorted(Comparator.reverseOrder());
+
+reverseSortedStream.forEach(System.out::println); // 출력: Charlie, Bob, Alice
+----
+
+=== `distinct()`
+
+스트림에서 중복된 요소를 제거합니다.
+
+[source, java]
+----
+List<Integer> numbers = List.of(1, 2, 2, 3, 3, 3, 4);
+Stream<Integer> distinctStream = numbers.stream()
+                                        .distinct();
+
+distinctStream.forEach(System.out::println); // 출력: 1, 2, 3, 4
+----
+
+=== `limit(long maxSize)`
+
+스트림의 요소 개수를 지정된 개수로 제한합니다.
+
+[source, java]
+----
+Stream<Integer> infiniteStream = Stream.iterate(1, n -> n + 1); // 무한 스트림
+Stream<Integer> limitedStream = infiniteStream.limit(5);
+
+limitedStream.forEach(System.out::println); // 출력: 1, 2, 3, 4, 5
+----
+
+=== `skip(long n)`
+
+스트림의 처음 n개의 요소를 건너뜁니다.
+
+[source, java]
+----
+List<Integer> numbers = List.of(1, 2, 3, 4, 5);
+Stream<Integer> skippedStream = numbers.stream()
+                                       .skip(2); // 처음 2개 요소 건너뜀
+
+skippedStream.forEach(System.out::println); // 출력: 3, 4, 5
+----
+
+=== `peek(Consumer<T> action)`
+
+스트림 요소를 처리하면서, 각 요소에 대해 추가 작업을 수행할 수 있습니다. 주로 디버깅 목적으로 사용됩니다.
+
+[source, java]
+----
+List<String> names = List.of("Alice", "Bob", "Charlie");
+Stream<String> peekStream = names.stream()
+                                 .filter(name -> name.length() > 3)
+                                 .peek(name -> System.out.println("Filtered: " + name)) // 디버깅 용도
+                                 .map(String::toUpperCase);
+
+peekStream.forEach(System.out::println); // 출력: Filtered: Alice, Filtered: Charlie, ALICE, CHARLIE
+----
+
+=== `takeWhile(Predicate<T> predicate)` (Java 9 이상)
+
+조건이 참인 동안 요소를 처리하고, 거짓이 되면 스트림 처리를 중단합니다.
+
+[source, java]
+----
+List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6);
+Stream<Integer> takenStream = numbers.stream()
+                                     .takeWhile(n -> n < 4);
+
+takenStream.forEach(System.out::println); // 출력: 1, 2, 3
+----
+
+=== `dropWhile(Predicate<T> predicate)` (Java 9 이상)
+조건이 참인 동안 요소를 건너뛰고, 거짓이 된 시점부터 스트림을 처리합니다.
+
+[source, java]
+----
+List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6);
+Stream<Integer> droppedStream = numbers.stream()
+                                       .dropWhile(n -> n < 4);
+
+droppedStream.forEach(System.out::println); // 출력: 4, 5, 6
+----
+
+== 지연 실행
+
+중간 연산은 지연 실행되므로, 최종 연산이 호출되기 전까지 아무런 작업도 수행되지 않습니다. 최종 연산이 호출되면 파이프라인 형태로 연결된 모든 중간 연산이 한꺼번에 실행됩니다.
+
+[source, java]
+----
+List<String> names = List.of("Alice", "Bob", "Charlie");
+
+names.stream()
+    .filter(name -> {
+        System.out.println("Filtering: " + name);
+        return name.startsWith("A");
+    })
+    .map(name -> {
+        System.out.println("Mapping: " + name);
+        return name.toUpperCase();
+    })
+    .forEach(System.out::println); // 최종 연산
+----
+
+== 메소드 체이닝
+
+중간 연산은 체이닝을 통해 조합할 수 있습니다. 체이닝을 활용하면 복잡한 데이터 처리도 간결한 코드로 작성할 수 있습니다.
+
+[source, java]
+----
+List<String> names = List.of("Alice", "Bob", "Charlie", "David");
+
+names.stream()
+    .filter(name -> name.length() > 3)
+    .map(String::toUpperCase)
+    .sorted()
+    .forEach(System.out::println);
+----
+
+중간 연산은 데이터 변환, 필터링, 정렬 등 다양한 작업을 수행하며, 최종 연산과 결합해 효율적으로 데이터 파이프라인을 구성할 수 있습니다. 지연 실행과 체이닝을 통해 복잡한 작업도 간결하고 효율적으로 처리할 수 있다는 점이 Stream API의 강점입니다.
+
+---
+
+link:./03-1_intermediate_operations.adoc[이전: 중간 연산] +
+link:./03-3_filtering.adoc[다음: 필터링]

@@ -1,0 +1,92 @@
+= Stream의 개념과 정의
+
+* Java 8에서 도입된 데이터 처리 추상화 API
+* 컬렉션, 배열, 파일 등의 데이터 소스를 선언적이고 함수형 프로그래밍 스타일로 처리
+* **데이터의 흐름(flow)**을 처리하는 데 중점
+** 데이터를 직접 저장하지 않음
+** 데이터를 읽어 필요한 연산을 수행
+** 연산이 데이터에 적용되지 않으며, 새로운 데이터 흐름을 생성
+* 특징
+* 선언형 접근: 데이터 처리 과정을 간단하고 직관적으로 표현.
+* 함수형 프로그래밍 지원: 람다 표현식과 잘 어울림.
+* 원본 데이터 불변성 유지: 데이터를 안전하게 처리 가능.
+* Lazy Evaluation: 성능 최적화 가능.
+* 단일 소비: 한 번 사용된 Stream은 재사용 불가.
+
+---
+
+Stream은 Java 8에서 도입된 데이터 처리 추상화 API로, 컬렉션, 배열, 파일 등의 데이터 소스를 선언적이고 함수형 프로그래밍 스타일로 처리하기 위한 도구입니다.
+
+Stream은 데이터를 직접 저장하지 않으며, **데이터의 흐름(flow)**을 처리하는 데 중점을 둡니다. 데이터 소스에서 데이터를 읽어 필요한 연산(필터링, 매핑, 정렬, 집계 등)을 수행하는 동안, 원본 데이터를 변경하지 않고 새로운 데이터 흐름을 생성합니다.
+
+== 주요 개념
+
+=== 데이터 처리 파이프라인
+
+Stream은 데이터를 단계적으로 처리하는 파이프라인 형태로 동작합니다. 이 파이프라인은 다음 세 가지로 구성됩니다:
+
+* Source (데이터 소스): 컬렉션, 배열, I/O 등 다양한 데이터 소스.
+* Intermediate Operations (중간 연산): 데이터를 변환하거나 필터링하는 연산. 항상 lazy(지연 실행) 방식으로 동작.
+* Terminal Operations (최종 연산): 데이터를 소비하고 결과를 반환하거나 출력하는 연산.
+
+[source, java]
+----
+List<String> result = names.stream()                                // 데이터 소스
+                           .filter(name -> name.startsWith("A"))    // 중간 연산
+                           .map(String::toUpperCase)                // 중간 연산
+                           .collect(Collectors.toList());           // 최종 연산
+----
+
+=== Lazy Evaluation (게으른 연산)
+
+Stream의 중간 연산은 실제로 결과를 즉시 반환하지 않습니다. 대신 최종 연산이 호출될 때 모든 중간 연산이 한 번에 처리됩니다. 이를 통해 불필요한 연산을 줄이고 성능을 최적화할 수 있습니다.
+
+=== 데이터의 불변성
+
+Stream은 원본 데이터를 변경하지 않습니다. 모든 연산은 새로운 Stream이나 결과를 반환하며, 원본 데이터는 그대로 유지됩니다.
+
+=== Single-use
+
+Stream은 한 번만 사용할 수 있습니다. 최종 연산이 호출되면 Stream은 종료되고 더 이상 사용할 수 없습니다.
+
+== Collection과 스트림
+
+[%header, cols="1,2,3"]
+|===
+||목적|처리
+|Collection|데이터를 저장하고 조직하기 위한 구조|데이터는 메모리에 미리 로드되며 필요시 반복문으로 처리
+|Stream|데이터를 읽고 처리하기 위한 구조|데이터를 한 번에 한 요소씩 읽으며, 컬렉션의 저장 용도와는 다름
+|===
+
+== Philosophy
+
+Stream은 데이터 처리에 대한 선언적 접근 방식을 제공합니다. 전통적인 명령형 프로그래밍에서는 처리 과정을 일일이 명시적으로 작성해야 하지만, Stream은 **"어떻게 처리할지" 대신 "무엇을 처리할지"**에 집중할 수 있게 합니다.
+
+* 명령형 프로그래밍 방식
++
+[source, java]
+----
+List<String> result = new ArrayList<>();
+for (String name : names) {
+    if (name.startsWith("A")) {
+        result.add(name.toUpperCase());
+    }
+}
+----
+
+* 선언형 프로그래밍 방식
++
+[source, java]
+----
+List<String> result = names.stream()
+                           .filter(name -> name.startsWith("A"))
+                           .map(String::toUpperCase)
+                           .collect(Collectors.toList());
+----
+
+Java Stream은 복잡한 데이터 처리 작업을 간단하고 효율적으로 수행할 수 있도록 설계되었습니다. 대규모 데이터 세트에서 특히 유용하며, 가독성과 성능을 모두 개선할 수 있는 도구입니다.
+
+---
+
+link:./01-1_introduction.adoc[이전: Stream 소개] +
+link:./01-3_characteristic.adoc[다음: Stream의 특징]

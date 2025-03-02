@@ -1,0 +1,111 @@
+= Stream 동작 방식
+
+---
+
+Java의 Stream API는 데이터 처리 파이프라인을 제공하며, 함수형 프로그래밍 스타일로 컬렉션, 배열, 또는 외부 데이터 소스의 요소를 효율적으로 처리할 수 있도록 설계되었습니다.
+
+Stream은 내부적으로 데이터를 지연(lazy) 처리하며, 데이터를 소스에서 중간 연산을 통해 변환하고, 최종 연산으로 결과를 얻는 구조로 작동합니다.
+
+== Stream의 작동 원리
+Stream API는 세 가지 주요 단계로 구성됩니다:
+
+1. 데이터 소스(Source) +
+스트림은 컬렉션, 배열, I/O 채널, 파일, 또는 임의의 데이터 소스로부터 생성됩니다.
+2. 중간 연산(Intermediate Operation) +
+스트림 데이터를 변환하거나 필터링하는 작업을 수행합니다. 중간 연산은 지연(lazy) 실행되며, 결과로 새로운 스트림을 반환합니다.
+3. 최종 연산(Terminal Operation) + 
+스트림의 데이터를 소모하여 결과를 생성합니다. 최종 연산이 호출되기 전까지 중간 연산은 실제로 실행되지 않습니다.
+
+== 데이터 소스
+
+Stream은 여러 데이터 소스에서 생성될 수 있습니다.
+
+* 컬렉션: Collection.stream() 또는 Collection.parallelStream()
+* 배열: Arrays.stream(array)
+* 정적 메서드: Stream.of(), Stream.builder(), Stream.generate(), Stream.iterate()
+* 파일: Files.lines(Path path)
+* 기타: 사용자 정의 데이터 소스
+
+== 중간 연산
+
+중간 연산은 스트림을 변환하는 연산입니다. 대표적인 중간 연산은 아래와 같습니다:
+
+* filter(): 조건에 맞는 요소만 필터링
+* map(): 요소를 변환
+* flatMap(): 중첩된 스트림을 평면화
+* sorted(): 스트림 요소 정렬
+* distinct(): 중복 제거
+* limit() / skip(): 요소의 수를 제한하거나 건너뛰기
+
+중간 연산은 lazy(지연 실행)됩니다. 따라서 최종 연산이 호출되기 전까지는 실제 작업을 수행하지 않습니다.
+
+== 최종 연산
+
+최종 연산은 스트림을 소모하고 결과를 생성합니다. 결과는 다음 중 하나일 수 있습니다:
+
+* 값을 반환 (collect(), count(), findFirst(), 등)
+* 요소를 반복 (forEach())
+
+최종 연산이 호출되면:
+* 중간 연산이 실행됩니다.
+* 스트림이 소모되며, 다시 사용할 수 없습니다.
+
+대표적인 최종 연산:
+* forEach(): 각 요소를 처리 (return 값 없음)
+* collect(): 데이터를 리스트, 집합 등으로 수집
+* reduce(): 요소를 결합하여 단일 결과 생성
+* count(): 요소 개수 반환
+* anyMatch() / allMatch(): 조건 일치 여부 확인
+
+== Lazy Evaluation
+
+Stream의 중요한 특징은 **지연 실행(lazy evaluation)**입니다.
+
+중간 연산은 최종 연산이 호출되기 전까지 실행되지 않습니다. 최종 연산이 호출되면 스트림 파이프라인이 한 번에 처리됩니다. 이 덕분에 스트림은 필요한 데이터만 계산하여 처리 효율을 극대화합니다.
+
+[source, java]
+----
+List<String> names = List.of("Alice", "Bob", "Charlie");
+names.stream()
+     .filter(name -> {
+         System.out.println("Filtering: " + name);
+         return name.startsWith("A");
+     })
+     .forEach(System.out::println);
+----
+
+== 내부 구조
+
+Stream API는 내부적으로 Spliterator와 Pipeline 구조를 사용하여 작동합니다:
+
+* Spliterator
+** 데이터를 나누어 탐색(iterate)할 수 있는 구조를 제공합니다.
+** 병렬 스트림에서는 Spliterator를 통해 데이터를 분할하여 병렬 처리가 이루어집니다.
+* Pipeline
+** 스트림의 중간 연산과 최종 연산은 파이프라인으로 연결됩니다.
+** 각 연산은 단일 작업으로 결합되며, 요소가 파이프라인을 따라 이동하며 처리됩니다.
+
+== 병렬 처리
+
+Stream은 병렬 처리(parallelStream())를 통해 멀티코어 CPU를 활용할 수 있습니다.
+
+[source, java]
+----
+List<String> names = List.of("Alice", "Bob", "Charlie", "David");
+
+long count = names.parallelStream()
+                  .filter(name -> name.length() > 3)
+                  .count();
+----
+
+* 내부적으로 Spliterator를 사용하여 데이터 소스를 분할.
+* 각 분할된 데이터는 독립적으로 병렬 처리.
+* 최종 결과는 병렬 작업의 결과를 병합하여 반환.
+
+Java Stream은 데이터 소스를 효율적으로 처리하기 위해 설계된 강력한 도구입니다.
+지연 실행, 파이프라인 구조, 병렬 처리 등 다양한 기능을 제공하여 코드 가독성과 실행 성능을 향상시킵니다. Stream의 작동 원리를 이해하면 데이터 처리 파이프라인을 더 잘 설계하고 최적화된 코드를 작성할 수 있습니다.
+
+---
+
+link:./02-6_stream_builder.adoc[이전: Stream.builder()] +
+link:./02-8_stream_lifecycle.adoc[다음: Stream 라이프사이클]

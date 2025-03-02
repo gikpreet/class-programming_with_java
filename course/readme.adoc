@@ -14,3 +14,5 @@
 12. link:./Module12_lambda_expression/contents/01_Lambda.adoc[Module 12: Lambda Expression]
 13. link:./Module13_annotation/contents/01_annotation.adoc[Module 13: Annotation]
 14. link:./Module14_collections_framework/contents/00_collections_framework.adoc[Module 14: Collections Framework]
+15. link:./Module15_stream/contents/01_stream.adoc[Module 15: Stream]
+16. link:./Module16_thread/contents/00_introduction.adoc[Module 16: Thread]

@@ -1,4 +1,4 @@
-= 값 타입과 참조 타입
+= Chapter 1: 값 타입과 참조 타입
 
 모든 변수에는 변수에 저장할 값의 범위를 결정하는 타입이 지정됩니다. Java는 컴파일 시 변수에 저장된 값이 항상 적절한 형식임을 보장하는 type-safe한 언어입니다.
 
@@ -6,11 +6,11 @@
 
 == Table of Contents
 
-1. link:./03_valuetype_reftype.adoc[값 타입과 참조 타입]
-2. link:./04_java_primitive_data_type.adoc[Java 데이터 타입]
-3. link:./05_primitive_data_type.adoc[기본 데이터 타입]
+1. link:./01-2_valuetype_reftype.adoc[값 타입과 참조 타입]
+2. link:./01-3_java_primitive_data_type.adoc[Java 데이터 타입]
+3. link:./01-4_primitive_data_type.adoc[기본 데이터 타입]
 
 ---
 
-link:./01_Primitive_data_type.adoc[이전: 기본 데이터 타입 타입] +
-link:./03_valuetype_reftype.adoc[다음: 값 타입과 참조 타입]
+link:./00_introduction.adoc[이전: Module 03: 기본 데이터 타입] +
+link:./01-2_valuetype_reftype.adoc[다음: 값 타입과 참조 타입]

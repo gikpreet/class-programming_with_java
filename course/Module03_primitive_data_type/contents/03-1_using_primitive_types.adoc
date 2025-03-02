@@ -1,0 +1,16 @@
+= Chapter 3: 기본 데이터 타입 사용
+
+프로그램에서 변수를 사용하려면 변수를 선언하고, 자동으로 값이 할당되지 않은 경우 변수에 값을 할당해야 합니다. 이 단원에서는 원시 데이터 타입 변수를 선언하고 값을 할당하는 여러가지 방법 및 변수를 연산에 사용하는 방법을 배웁니다.
+
+== Table of Contents
+
+1.	link:./03-2_locationvariable_assign.adoc[지역 변수 선언과 값 할당]
+2.	link:./03-3_compoundassignment.adoc[합성 할당]
+3.	link:./03-4_operator.adoc[일반 연산자]
+4.	link:./03-5_incrementoperation.adoc[증가/감소 연산]
+5.	link:./03-6_priority.adoc[연산자 우선 순위]
+
+---
+
+link:./02-4_java_keyword.adoc[이전: Java 키워드] +
+link:./03-2_locationvariable_assign.adoc[다음: 지역 변수 선언과 값 할당]

@@ -37,5 +37,5 @@ double result = doubleValue + intValue;	// double로 암시적 타입 변환
 
 ---
 
-link:./19_explicit_casting[이전: 명시적 타입 변환] +
-link:./21_review.adoc[다음: 검토]
+link:./04-4_explicit_casting[이전: 명시적 타입 변환] +
+link:./99_review.adoc[다음: 검토]

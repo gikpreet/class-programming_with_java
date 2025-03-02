@@ -111,5 +111,5 @@ HelloWorld.java:6: error: variable customerCount might not have been initialized
 
 ---
 
-link:./10_using_primitive_types.adoc[이전: 기본 데이터 타입 사용] +
-link:./12_compoundassignment.adoc[다음: 합성 할당]
+link:./03-1_using_primitive_types.adoc[이전: 기본 데이터 타입 사용] +
+link:./03-3_compoundassignment.adoc[다음: 합성 할당]

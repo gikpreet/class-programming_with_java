@@ -114,5 +114,5 @@ System.out.println(customerCount);	// 24를 출력
 
 ---
 
-link:./13_operator.adoc[이전: 일반 연산자] +
-link:./15_priority.adoc[다음: 연산자 우선 순위]
+link:./03-4_operator.adoc[이전: 일반 연산자] +
+link:./03-6_priority.adoc[다음: 연산자 우선 순위]

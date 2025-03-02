@@ -77,5 +77,5 @@ int intValue = (int)floatValue;  // int의 표현 범위를 넘으므로 2147483
 
 ---
 
-link:./18_implicit_casting.adoc[이전: 암시적 타입 변환] +
-link:./20_typecasting.adoc[다음: 연산시 타입 변환]
+link:./04-3_implicit_casting.adoc[이전: 암시적 타입 변환] +
+link:./04-5_typecasting.adoc[다음: 연산시 타입 변환]

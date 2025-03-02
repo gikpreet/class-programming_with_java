@@ -24,5 +24,5 @@ Java의 연산자에서 할당 연산자(=, +=. -= 등)는 우선 순위가 가�
 
 ---
 
-link:./14_incrementoperation.adoc[이전: 증가/감소 연산] +
-link:./16_type_casting.adoc[다음: 데이터 타입 변환]
+link:./03-5_incrementoperation.adoc[이전: 증가/감소 연산] +
+link:./04-1_type_casting.adoc[다음: Chapter 4: 데이터 타입 변환]

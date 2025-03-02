@@ -15,5 +15,5 @@ Java에서 변수의 이름을 지정할 때는 아래 규칙에 따라야 합�
 
 ---
 
-link:./06_variable_naming.adoc[이전: 변수 이름 붙이기] +
-link:./08_naming_recommandation.adoc[다음: 권장되는 변수 이름 짓기]
+link:./02-1_variable_naming.adoc[이전: 변수 이름 붙이기] +
+link:./02-3_naming_recommandation.adoc[다음: 권장되는 변수 이름 짓기]

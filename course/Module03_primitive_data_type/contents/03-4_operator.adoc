@@ -99,5 +99,5 @@ Java 프로그래밍 언어에서 제공하는 일반 연산자는 아래와 같
 
 ---
 
-link:./12_compoundassignment.adoc[이전: 합성 할당] +
-link:./14_incrementoperation.adoc[다음: 증가/감소 연산]
+link:./03-3_compoundassignment.adoc[이전: 합성 할당] +
+link:./03-5_incrementoperation.adoc[다음: 증가/감소 연산]

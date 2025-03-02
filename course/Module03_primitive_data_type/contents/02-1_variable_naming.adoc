@@ -1,15 +1,16 @@
-== 변수 이름 붙이기
+= Chapter 2: 변수 이름 붙이기
 
 변수를 사용하기 전에, 먼저 변수에 대해 의미 있고 적절한 이름을 사용해야 합니다.
 
 이 단원에서는 변수 이름을 지정할 때 사용하는 Java의 표준 이름 지정 규칙과 권고 사항, 변수 이름에 사용할 수 없는 Java에서 예약된 키워드에 대해 알아봅니다.
 
 == Table of Contents
-1.	link:./07_naming_rule.adoc[변수 명명 규칙]
-2.	link:./08_naming_recommandation.adoc[권장되는 변수 이름 짓기]
-3.	link:./09_java_keyword.adoc[Java 키워드]
+
+1.	link:./02-2_naming_rule.adoc[변수 명명 규칙]
+2.	link:./02-3_naming_recommandation.adoc[권장되는 변수 이름 짓기]
+3.	link:./02-4_java_keyword.adoc[Java 키워드]
 
 ---
 
-link:./05_primitive_data_type.adoc[이전: 기본 데이터 타입] +
-link:./07_naming_rule.adoc[다음: 변수 명명 규칙]
+link:./01-4_primitive_data_type.adoc[이전: 기본 데이터 타입] +
+link:./02-2_naming_rule.adoc[다음: 변수 명명 규칙]

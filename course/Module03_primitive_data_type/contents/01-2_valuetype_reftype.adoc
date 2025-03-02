@@ -27,5 +27,5 @@ image:./images/image02.png[reference type, 400]
 
 ---
 
-link:./02_value_ref.adoc[이전: 값 타입과 참조 타입] +
-link:./04_java_primitive_data_type.adoc[다음: Java 기본 데이터 타입]
+link:./01-1_value_ref.adoc[이전: 값 타입과 참조 타입] +
+link:./01-3_java_primitive_data_type.adoc[다음: Java 기본 데이터 타입]

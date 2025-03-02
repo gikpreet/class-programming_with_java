@@ -35,5 +35,5 @@ class ProductFactory { }
 
 ---
 
-link:./07_naming_rule.adoc[이전: 변수 명명 규칙] +
-link:./09_java_keyword.adoc[다음: Java 키워드]
+link:./02-2_naming_rule.adoc[이전: 변수 명명 규칙] +
+link:./02-4_java_keyword.adoc[다음: Java 키워드]

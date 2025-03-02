@@ -60,5 +60,5 @@ variable %= expression; // variable = variable % expression;
 
 ---
 
-link:./11_locationvariable_assign.adoc[이전: 지역 변수 선언과 값 할당] +
-link:./13_operator.adoc[다음: 일반 연산자]
+link:./03-2_locationvariable_assign.adoc[이전: 지역 변수 선언과 값 할당] +
+link:./03-4_operator.adoc[다음: 일반 연산자]

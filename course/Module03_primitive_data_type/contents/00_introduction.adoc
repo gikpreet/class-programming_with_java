@@ -14,11 +14,11 @@
 
 == 목차
 
-1.	link:./02_value_ref.adoc[값 타입과 참조 타입]
-2.	link:./06_variable_naming.adoc[변수 이름 붙이기]
-3.	link:./10_using_primitive_types.adoc[기본 데이터 타입 사용]
-4.	link:./16_type_casting.adoc[데이터 타입 변환]
+1.	link:./01-1_value_ref.adoc[값 타입과 참조 타입]
+2.	link:./02-1_variable_naming.adoc[변수 이름 붙이기]
+3.	link:./03-1_using_primitive_types.adoc[기본 데이터 타입 사용]
+4.	link:./04-1_type_casting.adoc[데이터 타입 변환]
 
 ---
 
-link:./02_value_ref.adoc[다음: 값 타입과 참조 타입]
+link:./01-1_value_ref.adoc[다음: 값 타입과 참조 타입]

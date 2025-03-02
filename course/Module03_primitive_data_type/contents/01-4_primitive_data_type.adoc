@@ -27,5 +27,5 @@ Java는 8개의 기본 데이터 타입을 제공합니다.
 
 ---
 
-link:./04_java_primitive_data_type.adoc[이전: Java 데이터 타입] +
-link:./06_variable_naming.adoc[다음: 변수 이름 붙이기]
+link:./01-3_java_primitive_data_type.adoc[이전: Java 데이터 타입] +
+link:./02-1_variable_naming.adoc[다음: 변수 이름 붙이기]
